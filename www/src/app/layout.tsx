@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Családiház tervezés',
   description: 'todo',
+  themeColor: "#BABEAE"
 }
 
 import Header from '@/components/header/Header';
