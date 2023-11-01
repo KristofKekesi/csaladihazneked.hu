@@ -9,11 +9,11 @@ export default function Header(props: {}) {
 		<>
 			<div className="flex flex-col text-black/75 sticky top-0 z-40">
 				<div className="flex flex-row justify-between gap-4 px-6 py-3 bg-[#BABEAE]">
-				<Link href={`${HOST}`}>Név</Link>
+				<Link href={"./"}>Név</Link>
 					<div className="flex flex-row gap-4">
-						<Link href={`${HOST}/blog`}>Blog</Link>
-						<Link href={`${HOST}/galeria`}>Galéria</Link>
-						<Link href={`${HOST}#elerhetosegek`}>Elérhetőség</Link>
+					<Link href={"./blog"}>Blog</Link>
+				<Link href={"./galeria"}>Galéria</Link>
+				<Link href={"./#elerhetosegek"}>Elérhetőség</Link>
 					</div>
 				</div>
 				<div className="w-full flex justify-between">
