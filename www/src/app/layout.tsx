@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
 import "@/app/globals.css"
 
-const inter = Inter({ subsets: ['latin'] })
+import { GeistSans } from 'geist/font'
 
 import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
@@ -26,9 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${GeistSans.className} max-w-full`}>
         <Header />
-        <main className="a -translate-y-6 bg-white rounded-3xl pt-3">
+        <main className="-translate-y-6 pt-3">
           {children}
         </main>
         <Footer />
