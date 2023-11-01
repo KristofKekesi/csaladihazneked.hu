@@ -1,17 +1,23 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import "@/app/globals.css"
 
 const inter = Inter({ subsets: ['latin'] })
 
+import Header from '@/components/header/Header';
+import Footer from '@/components/footer/Footer';
+
+
 export const metadata: Metadata = {
   title: 'Családiház tervezés',
-  description: 'todo',
+  description: 'todo'
+}
+
+
+export const viewport: Viewport = {
   themeColor: "#BABEAE"
 }
 
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
 
 export default function RootLayout({
   children,
