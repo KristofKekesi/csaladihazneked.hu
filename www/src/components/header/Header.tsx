@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { HOST } from "../../../config";
+import { Separator } from "../ui/separator";
 
 export default function Header(props: {}) {
 	return(
@@ -12,8 +13,10 @@ export default function Header(props: {}) {
 				<Link href={"./"}>Név</Link>
 					<div className="flex flex-row gap-4">
 					<Link href={"./blog"}>Blog</Link>
-				<Link href={"./galeria"}>Galéria</Link>
-				<Link href={"./#elerhetosegek"}>Elérhetőség</Link>
+					<Link href={"./galeria"}>Galéria</Link>
+					<Link href={"./#elerhetosegek"}>Elérhetőség</Link>
+					<Separator orientation="vertical" className="bg-black/50" />
+					<Link href={"./tervrajzok"}>Tervrajzok</Link>
 					</div>
 				</div>
 				<div className="w-full flex justify-between">
