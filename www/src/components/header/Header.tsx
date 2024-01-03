@@ -8,7 +8,7 @@ import { Separator } from "../ui/separator";
 export default function Header(props: {}) {
 	return(
 		<>
-			<div className="flex flex-col text-black/75 sticky top-0 z-40">
+			<header className="flex flex-col text-black/75 sticky top-0 z-30">
 				<div className="flex flex-row justify-between gap-4 px-6 py-3 bg-[#BABEAE]">
 				<Link href={"./"}>Név</Link>
 					<div className="flex flex-row gap-4">
@@ -27,7 +27,7 @@ export default function Header(props: {}) {
 						<div className="w-full h-full bg-white rounded-tr-3xl" />
 					</div>
 				</div>
-			</div>
+			</header>
 			<div className="bg-[#BABEAE]">
 			</div>
 		</>

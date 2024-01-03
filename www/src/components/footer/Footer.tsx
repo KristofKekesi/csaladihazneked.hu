@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { HOST } from "../../../config";
 import { Separator } from "../ui/separator";
 
-export default function Footer(props: {}) {
+export default function Footer() {
 	return(
 		<footer className="w-full bg-[#B0A187] px-6 pt-6 pb-3 flex flex-row justify-between gap-4 rounded-t-3xl text-black/75">
 			<div className="flex flex-col sm:flex-row justify-between">
