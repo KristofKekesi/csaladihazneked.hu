@@ -50,7 +50,9 @@ export function onClick(props: any) {
 }
 
 
-function CustomImageRenderer(props: {photo: Photo, wrapperStyle: any, layout: any, imageProps: any}) {
+function CustomImageRenderer(props: {
+    photo: Photo, wrapperStyle: any, layout: any, imageProps: any
+}) {
     const source = TRANSPARENT_IMAGES ? "/transparent.png" : props.photo.src;
 
     props.wrapperStyle["height"] = props.layout.height;

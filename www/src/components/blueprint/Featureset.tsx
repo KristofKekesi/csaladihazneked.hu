@@ -1,6 +1,7 @@
 import { Cuboid, Fan, ShowerHead, Sofa } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Blueprint } from "@/types/Blueprint";
 
 type FeatureProps = {
 	children: JSX.Element,
@@ -22,15 +23,18 @@ type FeaturesetProps = {
 	className?: string
 };
 
-// TODO(KristofKekesi): get maxReturn working
-export default function Featureset({blueprint, type, maxReturn, className} : FeaturesetProps) {
+export default function Featureset({blueprint, type, className} : FeaturesetProps) {
 	return (
 		<ul className={cn(className)}>
-			{type == "rooms" ? <>
-				<Feature number={blueprint.rooms.rooms} label="szoba"><Cuboid className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={blueprint.rooms.livingroom} label="nappali"><Sofa className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={blueprint.rooms.bathroom} label="fürdő"><ShowerHead className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={blueprint.rooms.wc} label="mosdó"><Fan className="h-4 w-4 mr-2" /></Feature>
+			{type === "rooms" ? <>
+				<Feature number={blueprint.rooms.rooms} label="szoba">
+					<Cuboid className="h-4 w-4 mr-2" /></Feature>
+				<Feature number={blueprint.rooms.livingroom} label="nappali">
+					<Sofa className="h-4 w-4 mr-2" /></Feature>
+				<Feature number={blueprint.rooms.bathroom} label="fürdő">
+					<ShowerHead className="h-4 w-4 mr-2" /></Feature>
+				<Feature number={blueprint.rooms.wc} label="mosdó">
+					<Fan className="h-4 w-4 mr-2" /></Feature>
 			</> : <>
 			</>}
 		</ul>

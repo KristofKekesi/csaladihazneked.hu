@@ -81,5 +81,5 @@ export default function Blog() {
 			<button type="submit" className="py-1 px-2 rounded-md bg-white hover:bg-white/80 transition-colors col-span-1 h-10">Feliratkozás</button>
 		</div>
     </main>
-  )
+  );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Photo } from "@/types/Photo";
 
 //TODO(KristofKekesi): TypeScriptify
 
@@ -9,12 +10,15 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 //       \_  ___  ___>
 //         \__) \__)
 
-export default function Lightbox(props: {index: number, maxIndex: number, photo: Photo, onClick: any}) {
+export default function Lightbox(props: {
+    index: number, maxIndex: number, photo: Photo, onClick: any
+}) {
     function prev() {
         if (props.index !== 0) {
             if (typeof window === "object") {
                 const prevElement = document.getElementById((props.index - 1).toString())!;
-                const prevWrapper = document.getElementById((props.index - 1).toString() + "-wrapper")!;
+                const prevWrapper =
+                    document.getElementById((props.index - 1).toString() + "-wrapper")!;
                 
                 prevElement.classList.add("selected");
                 prevElement.style.position = "fixed";
@@ -35,7 +39,8 @@ export default function Lightbox(props: {index: number, maxIndex: number, photo:
         if (props.index !== props.maxIndex - 1) {
             if (typeof window === "object") {
                 const nextElement = document.getElementById((props.index + 1).toString())!;
-                const nextWrapper = document.getElementById((props.index + 1).toString() + "-wrapper")!;
+                const nextWrapper =
+                    document.getElementById((props.index + 1).toString() + "-wrapper")!;
                 
                 nextElement.classList.add("selected");
                 nextElement.style.position = "fixed";

@@ -6,7 +6,7 @@ import getRandomBlueprint from "@/lib/random";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
 import PostMedium from "@/components/blog/PostMedium";
 import { Blueprint } from "@/types/Blueprint";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 
