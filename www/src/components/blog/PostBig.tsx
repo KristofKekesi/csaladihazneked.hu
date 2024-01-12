@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { Post } from "@/types/post";
 
 export default function PostBig(props: {post: Post}) {
 	return (
