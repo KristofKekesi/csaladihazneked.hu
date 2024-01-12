@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": ["next/core-web-vitals", "next"],
+	"rules": {
+		"semi": "warn",
+		"eol-last": "warn",
+		"quotes": ["error", "double"],
+		"no-unused-expressions": "error",
+		"no-unused-labels": "error",
+		"no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
+		"no-alert": "error",
+		"eqeqeq": "error",
+		"max-len": ["warn", 100],
+		"newline-before-return": "error",
+		"for-direction": "error"
+	}
 }

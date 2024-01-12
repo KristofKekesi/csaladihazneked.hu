@@ -4,21 +4,20 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 import PostBig from "./PostBig";
+import { cn } from "@/lib/utils";
 
-export default function PostBigCarousel() {
+export default function PostBigCarousel(props: {className: Object}) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);
 
 	return (
-		<div className="w-full flex justify-center">
+		<div className={cn("w-full flex justify-center cursor-ew-resize", props.className)}>
 			<Carousel
 				className="w-full"
 				plugins={[plugin.current]}
@@ -28,7 +27,7 @@ export default function PostBigCarousel() {
 			>
 				<CarouselContent>
 					{Array.from({ length: 5 }).map((_, index) => (
-					<CarouselItem className="basis-1/3" key={index}>
+					<CarouselItem className="basis-1/1 md:basis-1/2 xl:basis-1/3" key={index}>
 						<PostBig post={{
 							id: 0,
 							title: "Harmadik bejegyzés",
