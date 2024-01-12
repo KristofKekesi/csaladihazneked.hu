@@ -10,6 +10,7 @@ import { Photo } from "@/types/Photo";
 
 import Lightbox from "@/components/gallery/Lightbox";
 import { TRANSPARENT_IMAGES } from "../../../config";
+import { cn } from "@/lib/utils";
 
 //TODO(KristofKekesi): TypeScriptify
 
@@ -60,8 +61,20 @@ function CustomImageRenderer(props: {
     return (
         <>
             <div onClick={onClick} style={props.wrapperStyle}>
-                <div style={{ display: "block", position: "relative", width: "100%", height: "100%" }}>
-                    <Image data-src={props.photo.src} data-index={props.layout.index} className={"photo " + props.imageProps.className} src={source} alt={props.photo.alt} title={props.photo.title} loading="lazy" sizes={props.imageProps.sizes} fill />
+                <div style={
+                    { display: "block", position: "relative", width: "100%", height: "100%" }
+                }>
+                    <Image
+                        data-src={props.photo.src}
+                        data-index={props.layout.index}
+                        className={"photo " + props.imageProps.className}
+                        src={source}
+                        alt={props.photo.alt}
+                        title={props.photo.title}
+                        loading="lazy"
+                        sizes={props.imageProps.sizes}
+                        fill
+                    />
 					{
 						//TODO(KristofKekesi) accent-color: from css variables
 					}
@@ -84,7 +97,11 @@ function CustomRowRenderer(props: any) {
     });
 
     return (
-        <div ref={ref} className={"motion-safe:transition-all opacity-0 motion-safe:delay-500 motion-safe:duration-500 motion-reduce:translate-y-0 select-none " + props.rowContainerProps.className} style={props.rowContainerProps.style}>
+        <div ref={ref} className={cn(
+            "motion-safe:transition-all opacity-0 motion-safe:delay-500motion-safe:duration-500"
+            ,"motion-reduce:translate-y-0 select-none ",
+            props.rowContainerProps.className
+        )} style={props.rowContainerProps.style}>
             {props.children}
         </div>
     );
@@ -100,8 +117,11 @@ export default function CustomGallery(props: {images: Array<Photo>, className?: 
         if (document.getElementsByTagName("html")[0].getAttribute("selected") === "") {
             document.querySelector("meta[name='theme-color']")!.setAttribute("content",  "#000000");
         } else {
-            const lastContent = document.querySelector("meta[name='theme-color']")!.getAttribute("last-content")!;
-            document.querySelector("meta[name='theme-color']")!.setAttribute("content",  lastContent);
+            const lastContent =
+            document.querySelector("meta[name='theme-color']")!
+                .getAttribute("last-content")!;
+            document.querySelector("meta[name='theme-color']")!
+                .setAttribute("content",  lastContent);
         }
     }
 
@@ -113,11 +133,24 @@ export default function CustomGallery(props: {images: Array<Photo>, className?: 
     return(
         <>
             <div className={props.className}>
-                <PhotoAlbum layout="rows" photos={props.images} targetRowHeight={height} spacing={3} renderRowContainer={CustomRowRenderer} renderPhoto={CustomImageRenderer} />
+                <PhotoAlbum
+                    layout="rows"
+                    photos={props.images}
+                    targetRowHeight={height}
+                    spacing={3}
+                    renderRowContainer={CustomRowRenderer}
+                    renderPhoto={CustomImageRenderer}
+                />
             </div>
             {props.images.map((photo: Photo, index: number, array: object) => {
                 return (
-                    <Lightbox key={index} index={index} onClick={onClick} photo={photo} maxIndex={Object.keys(array).length}/>
+                    <Lightbox
+                        key={index}
+                        index={index}
+                        onClick={onClick}
+                        photo={photo}
+                        maxIndex={Object.keys(array).length}
+                    />
                 );
             })}
         </>

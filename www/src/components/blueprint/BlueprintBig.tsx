@@ -12,8 +12,11 @@ import Featureset from "./Featureset";
 import Link from "next/link";
 import { Blueprint } from "@/types/Blueprint";
 
-export default function BlueprintBig(props: {blueprint: Blueprint}) {
+const IMG = "https://damassets.autodesk.net/content/" +
+"dam/autodesk/www/solutions/generative-design/fy22/images/" + 
+"blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg";
 
+export default function BlueprintBig(props: {blueprint: Blueprint}) {
 	return (
 		<Card className="flex rounded-t-3xl">
 			<div className="w-2/3">
@@ -54,10 +57,17 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
 					<Button variant={"link"}>Hasonló tervrajzok</Button>
-					<Link href={`./tervrajzok/${props.blueprint.id}`}><Button>Olvass tovább <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
+					<Link href={`./tervrajzok/${props.blueprint.id}`}>
+						<Button>
+							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
+						</Button>
+					</Link>
 				</CardFooter>
 			</div>
-			<div className="w-1/3 rounded-tr-3xl" style={{backgroundImage: "url(https://damassets.autodesk.net/content/dam/autodesk/www/solutions/generative-design/fy22/images/blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg)"}}></div>
+			<div
+				className="w-1/3 rounded-tr-3xl"
+				style={{backgroundImage: `url(${IMG})`}}
+			/>
 		</Card>
 	);
 }

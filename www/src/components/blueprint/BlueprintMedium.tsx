@@ -17,28 +17,45 @@ type Props = {
 	className?: string
 }
 
+const IMG = "https://damassets.autodesk.net/content/" +
+"dam/autodesk/www/solutions/generative-design/fy22/images/" + 
+"blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg";
+
 export default function BlueprintMedium(props: Props) {
 	return (
 		<Card
 			className={cn("group rounded-b-3xl", props.className)}
-			style={{backgroundImage: "url(https://damassets.autodesk.net/content/dam/autodesk/www/solutions/generative-design/fy22/images/blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg)"}}
+			style={{backgroundImage: `url(${IMG})`}}
 		>
-			<CardHeader className="flex flex-col aspect-video backdrop-blur-none group-hover:backdrop-blur-2xl bg-transparent group-hover:bg-black/05 transition-all" >
-				<CardTitle className="flex justify-between items-baseline opacity-0 group-hover:opacity-100 transition-opacity"><span>{props.blueprint.title}</span><span className="text-lg">{ props.blueprint.price } Ft</span></CardTitle>
-				<CardDescription className="opacity-0 group-hover:opacity-100 transition-opacity">{props.blueprint.description}</CardDescription>
+			<CardHeader className="flex flex-col aspect-video backdrop-blur-none
+			group-hover:backdrop-blur-2xl bg-transparent group-hover:bg-black/05 transition-all" >
+				<CardTitle className="flex justify-between items-baseline opacity-0
+				group-hover:opacity-100 transition-opacity">
+					<span>{props.blueprint.title}</span>
+					<span className="text-lg">{ props.blueprint.price } Ft</span>
+				</CardTitle>
+				<CardDescription className="opacity-0 group-hover:opacity-100 transition-opacity">
+					{props.blueprint.description}
+				</CardDescription>
 			</CardHeader>
 			<CardContent className="pt-6 grid grid-cols-2 bg-white">
 				<ul className="col-span-1">
-					<li className="flex items-baseline"><Home className="h-4 w-4 mr-2" />{ props.blueprint.type }</li>
+					<li className="flex items-baseline"><Home className="h-4 w-4 mr-2" />
+						{ props.blueprint.type }
+					</li>
 					<li className="flex items-baseline"><Box className="h-4 w-4 mr-2" />
 						{ props.blueprint.squarem } m<sup>2</sup></li>
-					<li className="flex items-baseline"><Layers className="h-4 w-4 mr-2" />2 emelet</li>
+					<li className="flex items-baseline"><Layers className="h-4 w-4 mr-2" />
+						2 emelet
+					</li>
 				</ul>
 				<Featureset blueprint={props.blueprint} type={"rooms"} maxReturn={4} />
 			</CardContent>
 			<CardFooter className="bg-white flex justify-between pt-6 rounded-b-3xl">
 				<Button variant={"link"}>Hasonló tervrajzok</Button>
-				<Button variant={"secondary"}>Olvass tovább <ChevronRight className="h-4 w-4 ml-2" /></Button>
+				<Button variant={"secondary"}>
+					Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
+				</Button>
 			</CardFooter>
 		</Card>
 	);
