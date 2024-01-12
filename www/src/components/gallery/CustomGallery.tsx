@@ -6,6 +6,7 @@ React.useLayoutEffect = React.useEffect;
 import Image from "next/image";
 import PhotoAlbum from "react-photo-album";
 import { useInView } from "react-intersection-observer";
+import { Photo } from "@/types/Photo";
 
 import Lightbox from "@/components/gallery/Lightbox";
 import { TRANSPARENT_IMAGES } from "../../../config";
@@ -29,12 +30,16 @@ export function onClick(props: any) {
         document.getElementsByTagName("html")[0].removeAttribute("selected");
 
         element.style.position = "none";
+        element.style.height = "auto";
+        element.style.width = "auto";
         wrapper.classList.add("hidden");
 
 		document.getElementsByTagName("header")[0].style.position = "inline";
 		document.getElementsByTagName("footer")[0].style.position = "inline";
     } else {
         element.style.position = "fixed";
+        element.style.height = "100%";
+        element.style.width = "100%";
         wrapper.classList.remove("hidden");
 
 		document.getElementsByTagName("header")[0].style.position = "hidden";
@@ -45,7 +50,7 @@ export function onClick(props: any) {
 }
 
 
-function CustomImageRenderer(props: {photo: Photo, wrapperStyle: any, layout: any, imageProps: any, }) {
+function CustomImageRenderer(props: {photo: Photo, wrapperStyle: any, layout: any, imageProps: any}) {
     const source = TRANSPARENT_IMAGES ? "/transparent.png" : props.photo.src;
 
     props.wrapperStyle["height"] = props.layout.height;
@@ -70,22 +75,20 @@ function CustomRowRenderer(props: any) {
         triggerOnce: true,
         onChange: ((inView, event) => {
             if (inView) {
-                event.target.classList.add("motion-safe:translate-y-0");
                 event.target.classList.add("opacity-1");
-                event.target.classList.remove("motion-safe:translate-y-12");
                 event.target.classList.remove("opacity-0");
             }
         })
     });
 
     return (
-        <div ref={ref} className={"motion-safe:transition-all motion-safe:translate-y-12 opacity-0 motion-safe:delay-500 motion-safe:duration-500 motion-reduce:translate-y-0 select-none " + props.rowContainerProps.className} style={props.rowContainerProps.style}>
+        <div ref={ref} className={"motion-safe:transition-all opacity-0 motion-safe:delay-500 motion-safe:duration-500 motion-reduce:translate-y-0 select-none " + props.rowContainerProps.className} style={props.rowContainerProps.style}>
             {props.children}
         </div>
     );
 }
 
-export default function CustomGallery(props: {images: [Photo]}) {
+export default function CustomGallery(props: {images: Array<Photo>, className?: string}) {
     var height = 0;
     if (typeof screen !== "undefined") {
         height = screen ? (screen.height / 3.5) : 0;
@@ -107,7 +110,9 @@ export default function CustomGallery(props: {images: [Photo]}) {
 
     return(
         <>
-            <PhotoAlbum layout="rows" photos={props.images} targetRowHeight={height} spacing={3} renderRowContainer={CustomRowRenderer} renderPhoto={CustomImageRenderer} />
+            <div className={props.className}>
+                <PhotoAlbum layout="rows" photos={props.images} targetRowHeight={height} spacing={3} renderRowContainer={CustomRowRenderer} renderPhoto={CustomImageRenderer} />
+            </div>
             {props.images.map((photo: Photo, index: number, array: object) => {
                 return (
                     <Lightbox key={index} index={index} onClick={onClick} photo={photo} maxIndex={Object.keys(array).length}/>

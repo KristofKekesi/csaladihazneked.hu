@@ -5,7 +5,7 @@ import {
 	CarouselContent,
 	CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 import PostBig from "./PostBig";
@@ -17,7 +17,7 @@ export default function PostBigCarousel(props: {className: Object}) {
 	);
 
 	return (
-		<div className={cn("w-full flex justify-center", props.className)}>
+		<div className={cn("w-full flex justify-center cursor-ew-resize", props.className)}>
 			<Carousel
 				className="w-full"
 				plugins={[plugin.current]}

@@ -1,21 +1,29 @@
-import type { Metadata, Viewport } from 'next'
-import "@/app/globals.css"
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 
-import { GeistSans } from 'geist/font'
+import "@/app/globals.css";
 
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
+import { GeistSans } from "geist/font";
+
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 
 export const metadata: Metadata = {
-  title: 'Családiház tervezés',
-  description: 'todo'
-}
+  title: "Családiház tervezés",
+  description: "todo"
+};
 
 
 export const viewport: Viewport = {
   themeColor: "#BABEAE"
-}
+};
+
+const Caprasimo = localFont({
+  src: "../fonts/Caprasimo-Regular.ttf",
+  display: "swap",
+  variable: "--font-caprasimo"
+});
 
 
 export default function RootLayout({
@@ -25,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} max-w-full`}>
+      <body className={`${GeistSans.className} ${Caprasimo.variable} max-w-full`}>
         <Header />
         <main className="-translate-y-6 pt-3">
           {children}
@@ -33,5 +41,5 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
-  )
+  );
 }

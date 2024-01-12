@@ -5,19 +5,25 @@ import {
 	CarouselContent,
 	CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 import BlueprintBig from "./BlueprintBig";
 import { cn } from "@/lib/utils";
+import { Blueprint } from "@/types/Blueprint";
 
-export default function BlueprintBigCarousel(props: {className?: Object}) {
+type Props = {
+	blueprints: Array<Blueprint>,
+	className?: string
+}
+
+export default function BlueprintBigCarousel(props: Props) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);
 
 	return (
-		<div className={cn("w-full flex justify-center", props.className)}>
+		<div className={cn("w-full flex justify-center cursor-ew-resize", props.className)}>
 			<Carousel
 				className="w-full"
 				plugins={[plugin.current]}
@@ -26,9 +32,9 @@ export default function BlueprintBigCarousel(props: {className?: Object}) {
 				opts={{align: "center", loop: true, direction: "ltr"}}
 			>
 				<CarouselContent>
-					{Array.from({ length: 5 }).map((_, index) => (
+					{props.blueprints.map((blueprint, index) => (
 					<CarouselItem key={index}>
-						<BlueprintBig blueprint={{id: 0, title: "Tervrajz 1. - Teszt", description: "Lorem ipsum.", imageURL: "", squarem: 45, type: 2}} />
+						<BlueprintBig blueprint={blueprint} />
 					</CarouselItem>
 					))}
 				</CarouselContent>

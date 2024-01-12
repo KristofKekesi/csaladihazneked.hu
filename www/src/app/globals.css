@@ -74,3 +74,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+html[selected] {
+  overflow: hidden;
+}
+
+img.selected {
+  @apply fixed top-0 left-0 z-40 object-contain bg-black
+}
+
+img.photo {
+  @apply z-0
+}

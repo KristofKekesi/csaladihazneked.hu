@@ -1,26 +1,22 @@
-enum BlueprintType {
-	Apartman,
-	Lakás,
-	Csaladihaz,
-	Bolt,
-	Ipar
-}
-
-type Blueprint = {
+export type Blueprint = {
 	id: number,
 	title: string,
 	description?: string,
 	price?: number,
 	imageURL: string,
 	//
-	type: BlueprintType
+	type: "Lakás" | "Családihaz" | "Bolt" | "Ipar",
 	squarem: number,
 	floors: number,
 	//
-	rooms?: number,
-	livingroom?: number,
-	bathroom?: number,
-	wc?: number,
-	//
-	features?: [string]
+	rooms: {
+		rooms: number,
+		livingroom: number,
+		bathroom: number,
+		wc: number,
+	},
+	features: {
+		basement: boolean,
+		american_kitchen: boolean
+	}
 }

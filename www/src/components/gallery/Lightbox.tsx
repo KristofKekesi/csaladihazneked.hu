@@ -9,7 +9,6 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 //       \_  ___  ___>
 //         \__) \__)
 
-
 export default function Lightbox(props: {index: number, maxIndex: number, photo: Photo, onClick: any}) {
     function prev() {
         if (props.index !== 0) {

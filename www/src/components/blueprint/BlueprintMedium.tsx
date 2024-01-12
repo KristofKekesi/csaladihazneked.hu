@@ -7,35 +7,36 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Box, ChevronRight, Cuboid, DoorClosed, Fan, Home, Layers, MoreHorizontal, MousePointer2, Plus, ShowerHead, Sofa } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Box, ChevronRight, Home, Layers } from "lucide-react";
+import Featureset from "./Featureset";
+import { Blueprint } from "@/types/Blueprint";
+import { cn } from "@/lib/utils";
 
-export default function BlueprintMedium(props: {blueprint: Blueprint}) {
+type Props = {
+	blueprint: Blueprint,
+	className?: string
+}
+
+export default function BlueprintMedium(props: Props) {
 	return (
-		<Card className="group" style={{backgroundImage: "url(https://damassets.autodesk.net/content/dam/autodesk/www/solutions/generative-design/fy22/images/blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg)"}}>
-			<CardHeader className="flex flex-col justify-between aspect-video backdrop-blur-2xl group-hover:backdrop-blur-none bg-black/10 group-hover:bg-transparent transition-all" >
-				<div>
-					<CardTitle className="flex justify-between items-baseline group-hover:opacity-0 transition-opacity"><span>{props.blueprint.title}</span><span className="text-lg">79.000 Ft;</span></CardTitle>
-					<CardDescription className="group-hover:opacity-0 transition-opacity">{props.blueprint.description}</CardDescription>
-				</div>
-				<div>
-					<Badge variant={"secondary"} className="group-hover:opacity-0 transition-opacity"><MousePointer2 className="h-4 w-4 mr-2" /> Húzd ide a kurzort a képért</Badge>
-				</div>
+		<Card
+			className={cn("group rounded-b-3xl", props.className)}
+			style={{backgroundImage: "url(https://damassets.autodesk.net/content/dam/autodesk/www/solutions/generative-design/fy22/images/blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg)"}}
+		>
+			<CardHeader className="flex flex-col aspect-video backdrop-blur-none group-hover:backdrop-blur-2xl bg-transparent group-hover:bg-black/05 transition-all" >
+				<CardTitle className="flex justify-between items-baseline opacity-0 group-hover:opacity-100 transition-opacity"><span>{props.blueprint.title}</span><span className="text-lg">{ props.blueprint.price } Ft</span></CardTitle>
+				<CardDescription className="opacity-0 group-hover:opacity-100 transition-opacity">{props.blueprint.description}</CardDescription>
 			</CardHeader>
 			<CardContent className="pt-6 grid grid-cols-2 bg-white">
 				<ul className="col-span-1">
-					<li className="flex items-baseline"><Home className="h-4 w-4 mr-2" /> Családiház</li>
-					<li className="flex items-baseline"><Box className="h-4 w-4 mr-2" />85 m<sup>2</sup></li>
+					<li className="flex items-baseline"><Home className="h-4 w-4 mr-2" />{ props.blueprint.type }</li>
+					<li className="flex items-baseline"><Box className="h-4 w-4 mr-2" />
+						{ props.blueprint.squarem } m<sup>2</sup></li>
 					<li className="flex items-baseline"><Layers className="h-4 w-4 mr-2" />2 emelet</li>
 				</ul>
-				<ul className="col-span-1">
-					<li className="flex items-baseline"><Cuboid className="h-4 w-4 mr-2" />4 szoba</li>
-					<li className="flex items-baseline"><Sofa className="h-4 w-4 mr-2" />1 nappali</li>
-					<li className="flex items-baseline"><ShowerHead className="h-4 w-4 mr-2" />2 fürdő</li>
-					<li className="flex items-baseline"><Fan className="h-4 w-4 mr-2" />3 mosdó</li>
-				</ul>
+				<Featureset blueprint={props.blueprint} type={"rooms"} maxReturn={4} />
 			</CardContent>
-			<CardFooter className="bg-white flex justify-between pt-6">
+			<CardFooter className="bg-white flex justify-between pt-6 rounded-b-3xl">
 				<Button variant={"link"}>Hasonló tervrajzok</Button>
 				<Button variant={"secondary"}>Olvass tovább <ChevronRight className="h-4 w-4 ml-2" /></Button>
 			</CardFooter>
