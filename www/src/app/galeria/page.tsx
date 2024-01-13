@@ -1,4 +1,5 @@
 import CustomGallery from "@/components/gallery/CustomGallery";
+import { Subtitle, Title } from "@/components/general/Typography";
 import { Photo } from "@/types/Photo";
 
 const images: Array<Photo> = [
@@ -344,8 +345,8 @@ const images: Array<Photo> = [
 export default function Galeria() {
   return (
     <main className="flex flex-col just pt-3">
-      <h1 className="text-6xl px-6 font-caprasimo">Galéria</h1>
-      <h1 className="text-2xl font-bold font-serif px-6">Kiemelt képek</h1>
+      <Title value="Galéria" />
+      <Subtitle value="Kiemelt képek" />
       <hr className="pb-4" />
       <CustomGallery className="px-6 pt-2" images={images} />
     </main>

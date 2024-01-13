@@ -40,10 +40,12 @@ export default async function Page({ params }: { params: { id: string } }) {
 					<CardFooter className="flex flex-col items-end gap-4">
 						{ `${blueprint.price} Ft` }
 						<div className="flex justify-end gap-4">
-							<Button variant="secondary">
-								<Mail className="h-4 w-4 mr-2" />
-								Kapcsolat
-							</Button>
+							<Link href="/#elerhetosegek">
+								<Button variant="secondary">
+									<Mail className="h-4 w-4 mr-2" />
+									Kapcsolat
+								</Button>
+							</Link>
 							<Link href="https://buy.stripe.com/test_4gw5kT6Xq5Sr9wI288">
 								<Button>
 									<ShoppingCart className="h-4 w-4 mr-2" /> Vásárlás

@@ -7,7 +7,7 @@ export default function Footer() {
 		justify-between gap-4 rounded-t-3xl text-black/75">
 			<div className="flex flex-col sm:flex-row justify-between">
 				<p>
-					<Link className="hover:text-black/50 transition-colors" href={"./"}>
+					<Link className="hover:text-black/50 transition-colors" href="/">
 						csaladihazneked.hu
 					</Link> 
 					<span className="hidden sm:inline">© 2023</span>
@@ -23,20 +23,20 @@ export default function Footer() {
 				<div className="flex flex-col sm:flex-row gap-4 items-end">
 					<Link
 						className="hover:text-black/50 transition-colors"
-						href={"./blog"}
+						href="/blog"
 					>
 						Blog
 					</Link>
 					<Link
 						className="hover:text-black/50 transition-colors"
-						href={"./galeria"}
+						href="/galeria"
 					>
 						Galéria
 					</Link>
 				</div>
 				<Link
 					className="hover:text-black/50 transition-colors hidden sm:inline"
-					href={"./#elerhetosegek"}
+					href="/#elerhetosegek"
 				>
 					Elérhetőség
 				</Link>
@@ -44,13 +44,13 @@ export default function Footer() {
 				<div className="flex flex-col sm:flex-row gap-4">
 					<Link
 						className="hover:text-black/50 transition-colors"
-						href={"./tervrajzok"}
+						href="/tervrajzok"
 					>
 						Tervrajzok
 					</Link>
 					<Link
 						className="hover:text-black/50 transition-colors inline sm:hidden"
-						href={"./#elerhetosegek"}
+						href="/#elerhetosegek"
 					>
 						Elérhetőség
 					</Link>

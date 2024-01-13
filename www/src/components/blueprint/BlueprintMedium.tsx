@@ -54,7 +54,7 @@ export default function BlueprintMedium(props: Props) {
 					<span className="hidden md:inline">Hasonló tervrajzok</span>
 					<span className="inline md:hidden">Hasonlók</span>
 				</Button>
-				<Link href={`./tervrajzok/${props.blueprint.id}`}>
+				<Link href={`/tervrajzok/${props.blueprint.id}`}>
 					<Button variant={"secondary"}>
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
 					</Button>
