@@ -10,13 +10,13 @@ export default function Footer() {
 					<Link className="hover:text-black/50 transition-colors" href={"./"}>
 						csaladihazneked.hu
 					</Link> 
-					© 2023
+					<span className="hidden sm:inline">© 2023</span>
 				</p>
 				<Link 
-					className="inline sm:hidden hover:text-black/50 transition-colors"
+					className="inline sm:hidden hover:text-black/50 transition-colors text-sm mt-2"
 					href="https://www.kekesi.dev"
 				>
-					Készítette Kékesi Kristóf
+					Készítette: <span className="whitespace-nowrap text-base">Kékesi Kristóf</span>
 				</Link>
 			</div>
 			<div className="flex flex-row gap-4">

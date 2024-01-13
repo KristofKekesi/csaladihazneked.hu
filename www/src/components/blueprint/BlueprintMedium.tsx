@@ -11,21 +11,18 @@ import { Box, ChevronRight, Home, Layers } from "lucide-react";
 import Featureset from "./Featureset";
 import { Blueprint } from "@/types/Blueprint";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type Props = {
 	blueprint: Blueprint,
 	className?: string
 }
 
-const IMG = "https://damassets.autodesk.net/content/" +
-"dam/autodesk/www/solutions/generative-design/fy22/images/" + 
-"blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg";
-
 export default function BlueprintMedium(props: Props) {
 	return (
 		<Card
-			className={cn("group rounded-b-3xl", props.className)}
-			style={{backgroundImage: `url(${IMG})`}}
+			className={cn("group rounded-b-3xl bg-cover", props.className)}
+			style={{backgroundImage: `url(${ props.blueprint.imageURL })`}}
 		>
 			<CardHeader className="flex flex-col aspect-video backdrop-blur-none
 			group-hover:backdrop-blur-2xl bg-transparent group-hover:bg-black/05 transition-all" >
@@ -34,7 +31,8 @@ export default function BlueprintMedium(props: Props) {
 					<span>{props.blueprint.title}</span>
 					<span className="text-lg">{ props.blueprint.price } Ft</span>
 				</CardTitle>
-				<CardDescription className="opacity-0 group-hover:opacity-100 transition-opacity">
+				<CardDescription 
+				className="opacity-0 group-hover:opacity-100 transition-opacity text-ellipsis">
 					{props.blueprint.description}
 				</CardDescription>
 			</CardHeader>
@@ -52,10 +50,15 @@ export default function BlueprintMedium(props: Props) {
 				<Featureset blueprint={props.blueprint} type={"rooms"} maxReturn={4} />
 			</CardContent>
 			<CardFooter className="bg-white flex justify-between pt-6 rounded-b-3xl">
-				<Button variant={"link"}>Hasonló tervrajzok</Button>
-				<Button variant={"secondary"}>
-					Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
+				<Button variant={"link"}>
+					<span className="hidden md:inline">Hasonló tervrajzok</span>
+					<span className="inline md:hidden">Hasonlók</span>
 				</Button>
+				<Link href={`./tervrajzok/${props.blueprint.id}`}>
+					<Button variant={"secondary"}>
+						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
+					</Button>
+				</Link>
 			</CardFooter>
 		</Card>
 	);

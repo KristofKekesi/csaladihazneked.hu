@@ -20,7 +20,7 @@ export default function PostMedium(props: Props) {
 			className={cn("flex justify-between items-end bg-cover", props.className)}
 			style={{backgroundImage: `url(${IMG})`}}
 		>
-			<CardHeader className="backdrop-blur-2xl rounded-l-lg bg-black/5 w-1/3 h-32">
+			<CardHeader className="backdrop-blur-2xl rounded-l-lg bg-black/5 w-1/2 md:w-1/3 h-32">
 				<CardTitle>{props.post.title}</CardTitle>
 				<CardDescription>{props.post.description}</CardDescription>
 			</CardHeader>

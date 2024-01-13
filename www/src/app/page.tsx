@@ -9,13 +9,14 @@ import { Blueprint } from "@/types/Blueprint";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { Title } from "@/components/general/Typography";
 
 export default async function Home() {
 	const blueprints = await getBlueprints();
 
 	return (
 		<main className="flex flex-col pt-3">
-			<h1 className="text-6xl font-caprasimo px-6">Csaladihazneked.hu</h1>
+			<Title value="Csaladihazneked.hu" className="text-xl md:text-6xl" />
 			<h1 className="text-2xl font-bold font-serif px-6">Bemutatkozás</h1>
 			<hr className="pb-4" />
 			<p className="px-6">
@@ -47,14 +48,14 @@ export default async function Home() {
 			<h1 className="text-2xl font-bold font-serif px-6 pt-6">Legutóbbi híreink</h1>
 			<hr className="pb-4" />
 			<div className="mx-6 grid grid-cols-5 gap-4">
-				<PostMedium className="col-span-4" post={{
+				<PostMedium className="col-span-5 xl:col-span-4" post={{
 					id: 0,
 					title: "Harmadik bejegyzés",
 					description: "Mi is ez itt?",
 					imageURL: "",
 					content: ""
 				}} />
-				<Card className="flex justify-between">
+				<Card className="justify-between hidden xl:flex">
 					<CardHeader>
 						<CardTitle className="font-serif">Minden bejegyzés</CardTitle>
 					</CardHeader>
@@ -98,7 +99,7 @@ export default async function Home() {
 				<div className="col-span-5 flex flex-col ml-2 mb-2">
 					<h3 className="text-2xl font-bold font-serif">Email küldés</h3>
 				</div>
-				<div className="flex flex-col items-start col-span-2">
+				<div className="flex flex-col items-start col-span-5 md:col-span-2">
 					<Label className="text-base font-normal ml-2" htmlFor="email">
 						Emailcím:
 					</Label>
@@ -110,7 +111,7 @@ export default async function Home() {
 						transition-colors w-full"
 					/>
 				</div>
-				<div className="flex flex-col items-start col-span-2">
+				<div className="flex flex-col items-start col-span-5 md:col-span-2">
 					<Label className="text-base font-normal ml-2" htmlFor="name">
 						Név:
 					</Label>
@@ -126,7 +127,7 @@ export default async function Home() {
 				<button
 					type="submit"
 					className="py-1 px-2 rounded-md bg-white hover:bg-white/80
-					transition-colors col-span-1 h-10"
+					transition-colors col-span-1 h-10 hidden md:inline"
 				>
 					Küldés
 				</button>
@@ -141,6 +142,16 @@ export default async function Home() {
 						transition-colorsresize-none h-fit file:border-0 file:bg-transparent
 						file:text-sm file:font-medium"
 					/>
+				</div>
+				<div className="grid grid-cols-5 col-span-5 items-baseline">
+					<span className="text-black/50 ml-2 text-base col-span-2">*: kötelező</span>
+					<button
+						type="submit"
+						className="py-1 mt-4 px-2 rounded-md bg-white hover:bg-white/80
+						transition-colors col-span-3 h-10 inline md:hidden col-start-3"
+					>
+						Küldés
+					</button>
 				</div>
 			</div>
 		</main>

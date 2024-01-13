@@ -1,5 +1,6 @@
 import PostBigCarousel from "@/components/blog/PostBigCarousel";
 import PostMedium from "@/components/blog/PostMedium";
+import { Subtitle, Title } from "@/components/general/Typography";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -10,11 +11,11 @@ const IMG = "https://damassets.autodesk.net/content/" +
 export default function Blog() {
 return (
 	<main className="flex flex-col just pt-3">
-	<h1 className="text-6xl px-6 font-caprasimo">Blog</h1>
-	<h1 className="text-2xl font-bold font-serif px-6">Kiemelt bejegyzések</h1>
+	<Title value="Blog" />
+	<Subtitle value="Kiemelt bejegyzések" />
 	<hr className="pb-4" />
-	<PostBigCarousel className="px-0 xl:px-6" />
-	<h1 className="text-2xl font-bold font-serif pt-6 px-6">Minden bejegyzés</h1>
+	<PostBigCarousel className="px-6" />
+	<Subtitle value="Minden bejegyzés" className="pt-6" />
 	<hr className="a pb-4" />
 	<section className="grid grid-cols-1 lg:grid-cols-2 px-6 gap-3">
 		<PostMedium post={{
@@ -74,7 +75,7 @@ return (
 			content: ""
 		}} />
 	</section>
-	<h1 className="text-2xl font-bold font-serif px-6 pt-6">Feliratkozás a hírlevélre</h1>
+	<Subtitle value="Feliratkozás a hírlevélre" className="pt-6" />
 	<hr className="pb-4" />
 	<div className="mx-6 -mb-6 px-6 pt-6 pb-6 grid grid-cols-5 justify-between items-end
 	gap-x-4 gap-y-2 rounded-t-3xl text-black/75 bg-[#BABEAE]">
@@ -86,7 +87,7 @@ return (
 				Az emailcímed megadásával elsőrorban értesülhetsz a legújabb tartalmainkról.
 			</p>
 		</div>
-		<div className="flex flex-col items-start col-span-4">
+		<div className="flex flex-col items-start col-span-5 md:col-span-4">
 			<Label
 				className="text-base font-normal ml-2"
 				htmlFor="email"
@@ -104,7 +105,7 @@ return (
 			<button
 				type="submit"
 				className="py-1 px-2 rounded-md bg-white hover:bg-white/80
-				transition-colors col-span-1 h-10"
+				transition-colors col-start-3 col-span-3 md:col-span-1 h-10"
 			>
 				Feliratkozás
 			</button>

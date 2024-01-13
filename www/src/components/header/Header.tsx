@@ -8,7 +8,8 @@ export default function Header() {
 			<header className="flex flex-col text-black/75 sticky top-0 z-30">
 				<div className="flex flex-row justify-between gap-4 px-6 py-3 bg-[#BABEAE]">
 				<Link className="hover:text-black/50 transition-colors" href={"./"}>
-					csaladihazneked.hu
+					<span className="hidden sm:inline">csaladihazneked.hu</span>
+					<span className="inline sm:hidden">Home</span>
 				</Link>
 					<div className="flex flex-row gap-4">
 					<Link className="hover:text-black/50 transition-colors" href={"./blog"}>
@@ -18,7 +19,7 @@ export default function Header() {
 						Galéria
 					</Link>
 					<Link
-						className="hover:text-black/50 transition-colors"
+						className="hover:text-black/50 transition-colors hidden sm:inline"
 						href={"./#elerhetosegek"}
 					>
 						Elérhetőség

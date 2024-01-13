@@ -32,11 +32,11 @@ export default function BlueprintMediumCarousel(props: Props) {
 				plugins={[plugin.current]}
 				onMouseEnter={plugin.current.stop}
       			onMouseLeave={plugin.current.reset}
-				opts={{align: "center", loop: true, direction: "ltr"}}
+				opts={{align: "start", loop: true, direction: "ltr"}}
 			>
 				<CarouselContent>
 					{props.blueprints.map((blueprint, index) => (
-					<CarouselItem className="basis-1/3" key={index}>
+					<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={index}>
 						<BlueprintMedium blueprint={blueprint} />
 					</CarouselItem>
 					))}
