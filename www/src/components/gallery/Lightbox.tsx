@@ -58,18 +58,43 @@ export default function Lightbox(props: {
 
 
     return (
-        <div key={props.index} id={props.index.toString() + "-wrapper"} className="selected hidden fixed z-50 select-none">
-            {props.index !== 0 ? <div className="text-white fixed flex flex-col justify-center h-screen left-0 top-0 z-50 text-8xl bg-black/30 backdrop-blur-lg" onClick={prev}>
-                <ChevronLeft className="h-14 w-14" style={{filter: "drop-shadow(5px 5px 10px #000000)"}} />
+        <div
+            key={props.index}
+            id={props.index.toString() + "-wrapper"}
+            className="selected hidden fixed z-50 select-none"
+        >
+            {props.index !== 0 ?
+                <div className="text-white fixed flex flex-col justify-center h-screen left-0 top-0
+                z-50 text-8xl bg-black/30 backdrop-blur-lg" onClick={prev}>
+                <ChevronLeft
+                    className="h-14 w-14"
+                    style={{filter: "drop-shadow(5px 5px 10px #000000)"}}
+                />
             </div> : <></>}
 
-            <Image className="w-screen h-screen" id={props.index.toString()} loading="lazy" data-src={props.photo.src} onClick={props.onClick} data-index={props.index} src={props.photo.src} alt={props.photo.alt} fill />
+            <Image
+                className="w-screen h-screen"
+                id={props.index.toString()}
+                loading="lazy"
+                data-src={props.photo.src}
+                onClick={props.onClick}
+                data-index={props.index}
+                src={props.photo.src}
+                alt={props.photo.alt}
+                fill
+            />
 
-            {props.index !== props.maxIndex - 1 ? <div className="text-white fixed flex flex-col justify-center h-screen right-0 top-14 -pt-24 z-50 text-8xl bg-black/30 backdrop-blur-lg" onClick={next}>
-                <ChevronRight className="h-14 w-14" style={{filter: "drop-shadow(5px 5px 10px #000000)"}} />
+            {props.index !== props.maxIndex - 1 ?
+                <div className="text-white fixed flex flex-col justify-center h-screen right-0
+                top-14 -pt-24 z-50 text-8xl bg-black/30 backdrop-blur-lg" onClick={next}>
+                <ChevronRight
+                    className="h-14 w-14"
+                    style={{filter: "drop-shadow(5px 5px 10px #000000)"}}
+                />
             </div> : <></>}
 
-            <div className="h-14 w-14 text-white fixed flex flex-col justify-center items-center right-0 top-0 z-50 text-8xl pointer-events-none bg-black/30 backdrop-blur-lg">
+            <div className="h-14 w-14 text-white fixed flex flex-col justify-center items-center
+            right-0 top-0 z-50 text-8xl pointer-events-none bg-black/30 backdrop-blur-lg">
                 <X className="h-10 w-10" style={{filter: "drop-shadow(5px 5px 10px #000000)"}} />
             </div>
         </div>

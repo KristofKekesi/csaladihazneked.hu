@@ -10,13 +10,17 @@ type Props = {
 	className?: string
 }
 
+const IMG = "https://damassets.autodesk.net/content/" +
+"dam/autodesk/www/solutions/generative-design/fy22/images/" + 
+"blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg";
+
 export default function PostMedium(props: Props) {
 	return (
 		<Card 
 			className={cn("flex justify-between items-end bg-cover", props.className)}
-			style={{backgroundImage: "url(https://damassets.autodesk.net/content/dam/autodesk/www/solutions/generative-design/fy22/images/blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg)"}}
+			style={{backgroundImage: `url(${IMG})`}}
 		>
-			<CardHeader className="backdrop-blur-2xl rounded-l-lg bg-black/5 w-1/3 h-32">
+			<CardHeader className="backdrop-blur-2xl rounded-l-lg bg-black/5 w-1/2 md:w-1/3 h-32">
 				<CardTitle>{props.post.title}</CardTitle>
 				<CardDescription>{props.post.description}</CardDescription>
 			</CardHeader>

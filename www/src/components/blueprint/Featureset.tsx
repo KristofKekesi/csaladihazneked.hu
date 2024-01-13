@@ -1,4 +1,4 @@
-import { Cuboid, Fan, ShowerHead, Sofa } from "lucide-react";
+import { Box, Building, Cuboid, Factory, Fan, Home, Layers, ShowerHead, Sofa, Store } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
@@ -18,25 +18,51 @@ function Feature( {children, number, label} : FeatureProps) {
 
 type FeaturesetProps = {
 	blueprint: Blueprint,
-	type: "rooms" | "features",
-	maxReturn: number,
+	type: "rooms" | "features" | "general",
+	maxReturn?: number,
 	className?: string
 };
 
-export default function Featureset({blueprint, type, className} : FeaturesetProps) {
+export default function Featureset(props: FeaturesetProps) {
 	return (
-		<ul className={cn(className)}>
-			{type === "rooms" ? <>
-				<Feature number={blueprint.rooms.rooms} label="szoba">
+		<ul className={cn(props.className)}>
+			{ props.type === "rooms" ? <>
+				<Feature number={props.blueprint.rooms.rooms} label="szoba">
 					<Cuboid className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={blueprint.rooms.livingroom} label="nappali">
+				<Feature number={props.blueprint.rooms.livingroom} label="nappali">
 					<Sofa className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={blueprint.rooms.bathroom} label="fürdő">
+				<Feature number={props.blueprint.rooms.bathroom} label="fürdő">
 					<ShowerHead className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={blueprint.rooms.wc} label="mosdó">
+				<Feature number={props.blueprint.rooms.wc} label="mosdó">
 					<Fan className="h-4 w-4 mr-2" /></Feature>
-			</> : <>
-			</>}
+			</> : null }
+
+			{ props.type === "features" ? <>
+				{props.blueprint.features.american_kitchen ? 
+				<li className="flex items-baseline list-disc">Amerikai konyha</li> : null}
+				{props.blueprint.features.basement ? 
+				<li className="flex items-baseline">Alagsor</li> : null}
+			</> : null }
+
+			{ props.type === "general" ? <>
+				<li className="flex items-baseline">
+					{ props.blueprint.type === "Bolt" ?
+					<Store className="h-4 w-4 mr-2" /> : null }
+					{ props.blueprint.type === "Családihaz" ?
+					<Home className="h-4 w-4 mr-2" /> : null }
+					{ props.blueprint.type === "Ipar" ?
+					<Factory className="h-4 w-4 mr-2" /> : null }
+					{ props.blueprint.type === "Lakás" ?
+					<Building className="h-4 w-4 mr-2" /> : null }
+					{ props.blueprint.type }
+				</li>
+				<li className="flex items-baseline">
+					<Box className="h-4 w-4 mr-2" />85 m<sup>2</sup>
+				</li>
+				<li className="flex items-baseline">
+					<Layers className="h-4 w-4 mr-2" />{ props.blueprint.floors } emelet
+				</li>
+			</> : null }
 		</ul>
 	);
 }

@@ -18,7 +18,7 @@ export default async function Blueprints() {
 			<BlueprintBigCarousel className="px-6" blueprints={ blueprints } />
 			<h1 className="text-2xl font-bold font-serif pt-6 px-6">Minden tervrajz</h1>
 			<hr className="pb-4" />
-			<div className="grid grid-cols-3 gap-4 pb-4 px-6">
+			<div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-4 pb-4 px-6">
 				{ blueprints.map((blueprint) => {
 					return <BlueprintMedium blueprint={blueprint} key={blueprint.id} />;
 				}) }
@@ -30,7 +30,7 @@ export default async function Blueprints() {
 				amelyikkel korábban már vásároltál."
 			>
 				<>
-					<div className="flex flex-col items-start col-span-4">
+					<div className="flex flex-col items-start col-span-5 md:col-span-4">
 						<Label className="text-base font-normal ml-2" htmlFor="email">
 							Emailcím:
 						</Label>
@@ -44,7 +44,7 @@ export default async function Blueprints() {
 					<button
 						type="submit"
 						className="py-1 px-2 rounded-md bg-white hover:bg-white/80 
-						transition-colors col-span-1 h-10"
+						transition-colors col-span-3 md:col-span-1 col-start-3 h-10"
 					>
 						Lekérés
 					</button>

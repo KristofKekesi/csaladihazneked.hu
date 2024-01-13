@@ -12,12 +12,13 @@ import Featureset from "./Featureset";
 import Link from "next/link";
 import { Blueprint } from "@/types/Blueprint";
 
-export default function BlueprintBig(props: {blueprint: Blueprint}) {
 
+export default function BlueprintBig(props: {blueprint: Blueprint}) {
 	return (
 		<Card className="flex rounded-t-3xl">
-			<div className="w-2/3">
-				<CardHeader className="backdrop-blur-2xl bg-black/5 rounded-tl-3xl">
+			<div className="w-full md:w-2/3">
+				<CardHeader className="backdrop-blur-2xl bg-black/5 
+				rounded-t-3xl md:rounded-tl-3xl md:rounded-tr-none">
 					<CardTitle className="flex justify-between items-baseline">
 						<span>{props.blueprint.title}</span>
 						<span className="text-lg">{props.blueprint.price} Ft;</span>
@@ -44,8 +45,13 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 							<Layers className="h-4 w-4 mr-2" />{ props.blueprint.floors } emelet
 						</li>
 					</ul>
-					<Featureset blueprint={props.blueprint} type={"rooms"} maxReturn={4} />
-					<ul className="col-span-1">
+					<Featureset
+						blueprint={props.blueprint}
+						type={"rooms"}
+						maxReturn={4}
+						className="col-start-3 sm:col-start-2"
+					/>
+					<ul className="col-span-1 hidden sm:inline">
 						<li>Amerikai konyha</li>
 						<li>Spájz</li>
 						<li>Biciklitároló</li>
@@ -53,11 +59,21 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 					</ul>
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
-					<Button variant={"link"}>Hasonló tervrajzok</Button>
-					<Link href={`./tervrajzok/${props.blueprint.id}`}><Button>Olvass tovább <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
+					<Button variant={"link"}>
+						<span className="inline md:hidden">Hasonlók</span>
+						<span className="hidden md:inline">Hasonló tervrajzok</span>
+					</Button>
+					<Link href={`./tervrajzok/${props.blueprint.id}`}>
+						<Button>
+							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
+						</Button>
+					</Link>
 				</CardFooter>
 			</div>
-			<div className="w-1/3 rounded-tr-3xl" style={{backgroundImage: "url(https://damassets.autodesk.net/content/dam/autodesk/www/solutions/generative-design/fy22/images/blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg)"}}></div>
+			<div
+				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline bg-cover"
+				style={{backgroundImage: `url(${ props.blueprint.imageURL })`}}
+			/>
 		</Card>
 	);
 }
