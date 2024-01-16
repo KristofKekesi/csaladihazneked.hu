@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { Post } from "@/types/post";
+import Balancer from "react-wrap-balancer";
 
 export default function PostBig(props: {post: Post}) {
 	return (
@@ -16,9 +17,10 @@ export default function PostBig(props: {post: Post}) {
 			backgroundImage: `url(${props.post.imageURL})`
 		}}>
 			<CardHeader className="backdrop-blur-2xl bg-black/5 rounded-t-lg">
-				<CardTitle className="flex flex-col md:flex-row justify-between items-baseline">
-					<span>{props.post.title}</span>
-					<span className="text-lg">2024/01/04</span>
+				<CardTitle className="flex flex-nowrap flex-col
+				md:flex-row justify-between items-baseline">
+					<Balancer>{props.post.title}</Balancer>
+					<span className="text-lg whitespace-nowrap">2024/01/04</span>
 				</CardTitle>
 				<CardDescription>{props.post.description}</CardDescription>
 			</CardHeader>

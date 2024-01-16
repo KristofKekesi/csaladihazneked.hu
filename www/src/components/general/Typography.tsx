@@ -1,3 +1,5 @@
+import Balancer from "react-wrap-balancer";
+
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -7,24 +9,38 @@ type Props = {
 }
 
 export function Title(props: Props) {
-	return(
+	return (
 		<h1
 			id={ props.id }
 			className={cn("text-6xl px-6 font-caprasimo", props.className)}
 		>
-			{ props.value }
+			<Balancer>{ props.value }</Balancer>
 		</h1>
 	);
 }
 
+export const subtitleClassNames: string = "text-2xl font-bold font-serif px-6";
+
 export function Subtitle(props: Props) {
-	return(
+	return (
 		<h2
 			id={ props.id }
-			className={cn("text-2xl font-bold font-serif px-6",
-			props.className)}
+			className={cn(subtitleClassNames, props.className)}
 		>
-			{ props.value }
+			<Balancer>{ props.value }</Balancer>
 		</h2>
+	);
+}
+
+export const headerClassNames: string = "text-lg font-bold font-serif px-6";
+
+export function Header(props: Props) {
+	return (
+		<h3
+			id={ props.id }
+			className={cn(headerClassNames, props.className)}
+		>
+			<Balancer>{ props.value }</Balancer>
+		</h3>
 	);
 }

@@ -9,7 +9,8 @@ import { Blueprint } from "@/types/Blueprint";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { Title } from "@/components/general/Typography";
+import { Subtitle, Title } from "@/components/general/Typography";
+import Balancer from "react-wrap-balancer";
 
 export default async function Home() {
 	const blueprints = await getBlueprints();
@@ -17,27 +18,32 @@ export default async function Home() {
 	return (
 		<main className="flex flex-col pt-3">
 			<Title value="Csaladihazneked.hu" className="text-xl md:text-6xl" />
-			<h1 className="text-2xl font-bold font-serif px-6">Bemutatkozás</h1>
+			<Subtitle value="Bemutatkozás" />
 			<hr className="pb-4" />
 			<p className="px-6">
 				A bejgli tésztájához a langyos tejben feloldjuk a porcukrot, majd az
 				élesztőt felfuttatjuk benne.A vajat kis tálban felolvasztjuk. A lisztet
 				tálba szitáljuk. Hozzáadjuk először az élesztős tejet és 2 db tojássárgáját,
-				majd a vajat és a sót, végül a reszelt citromhéjat. A tésztát jól összedolgozzuk:
+				majd a vajat és a sót, végül a reszelt citromhéjat.
+				A tésztát jól összedolgozzuk:
 				viszonylag kemény, rugalmas tésztát kell kapnunk. Meleg helyen pihentetjük,
 				ameddig elkészítjük a töltelékeket. A darált diót és darált mákot külön tálba
 				rakjuk, és összekeverjük 10-10 dkg cukorral és 1-1 dl tejjel. A vaníliáscukrot
-				szintén kétfelé osztjuk, és a töltelékekhez keverjük. Ha szeretjük, keverhetünk bele
-				mazsolát és reszelt citromhéjat is. A megkelt tésztát 2 részre osztjuk, és gáztepsi
-				méretű téglalapokat nyújtunk belőle. A tölteléket kb. 1 cm vastagságban eloszlatjuk
-				a tészta teljes felületén a széleken hagyva kb. 1 centi széles csíkot, majd óvatosan
-				feltekerjük. A két rudat a tepsibe helyezzük, nem túl szorosan egymáshoz, hiszen a
-				sütés közben még kelni fognak. A bejglik tetejét megkenjük a maradék
-				tojássárgájával, amihez 1 kanál tejet is keverhetünk, hogy még szebb színe legyen.
-				Húsvillával megszurkáljuk őket. 200 fokra előmelegített sütőben kb. 50-55
-				perc alatt szép aranybarnára sütjük a süteményeket.
+				szintén kétfelé osztjuk, és a töltelékekhez keverjük.
+				Ha szeretjük, keverhetünk bele
+				mazsolát és reszelt citromhéjat is.
+				A megkelt tésztát 2 részre osztjuk, és gáztepsi
+				méretű téglalapokat nyújtunk belőle.
+				A tölteléket kb. 1 cm vastagságban eloszlatjuk
+				a tészta teljes felületén a széleken hagyva kb. 1 centi széles csíkot,
+				majd óvatosan feltekerjük. A két rudat a tepsibe helyezzük, nem túl szorosan
+				egymáshoz, hiszen a sütés közben még kelni fognak. A bejglik tetejét
+				megkenjük a maradék tojássárgájával, amihez 1 kanál tejet is keverhetünk,
+				hogy még szebb színe legyen. Húsvillával megszurkáljuk őket. 200 fokra
+				előmelegített sütőben kb. 50-55 perc alatt szép
+				aranybarnára sütjük a süteményeket.
 			</p>
-			<h1 className="text-2xl font-bold font-serif px-6 pt-6">Partnereink</h1>
+			<Subtitle value="Partnereink" className="pt-4" />
 			<hr className="pb-4" />
 			<div className="px-6 flex w-full justify-evenly gap-4">
 				<div className="rounded-full bg-slate-100 w-32 h-32" />
@@ -45,7 +51,7 @@ export default async function Home() {
 				<div className="rounded-full bg-slate-100 w-32 h-32" />
 				<div className="rounded-full bg-slate-100 w-32 h-32" />
 			</div>
-			<h1 className="text-2xl font-bold font-serif px-6 pt-6">Legutóbbi híreink</h1>
+			<Subtitle value="Legutóbbi híreink" className="pt-6" />
 			<hr className="pb-4" />
 			<div className="mx-6 grid grid-cols-5 gap-4">
 				<PostMedium className="col-span-5 xl:col-span-4" post={{
@@ -57,7 +63,9 @@ export default async function Home() {
 				}} />
 				<Card className="justify-between hidden xl:flex">
 					<CardHeader>
-						<CardTitle className="font-serif">Minden bejegyzés</CardTitle>
+						<CardTitle className="font-serif">
+							<Balancer>Minden bejegyzés</Balancer>
+						</CardTitle>
 					</CardHeader>
 					<CardFooter className="flex items-end">
 						<Button variant={"secondary"}>
