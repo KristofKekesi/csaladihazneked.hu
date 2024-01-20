@@ -11,11 +11,11 @@ const IMG = "https://damassets.autodesk.net/content/" +
 export default function Blog() {
 return (
 	<main className="flex flex-col just pt-3">
-	<Title value="Blog" />
-	<Subtitle value="Kiemelt bejegyzések" />
+	<Title className="px-6">Blog</Title>
+	<Subtitle className="px-6">Kiemelt bejegyzések</Subtitle>
 	<hr className="pb-4" />
 	<PostBigCarousel className="px-6" />
-	<Subtitle value="Minden bejegyzés" className="pt-6" />
+	<Subtitle className="pt-6 px-6">Minden bejegyzés</Subtitle>
 	<hr className="a pb-4" />
 	<section className="grid grid-cols-1 lg:grid-cols-2 px-6 gap-3">
 		<PostMedium post={{
@@ -75,7 +75,7 @@ return (
 			content: ""
 		}} />
 	</section>
-	<Subtitle value="Feliratkozás a hírlevélre" className="pt-6" />
+	<Subtitle className="pt-6 px-6">Feliratkozás a hírlevélre</Subtitle>
 	<hr className="pb-4" />
 	<div className="mx-6 -mb-6 px-6 pt-6 pb-6 grid grid-cols-5 justify-between items-end
 	gap-x-4 gap-y-2 rounded-t-3xl text-black/75 bg-[#BABEAE]">

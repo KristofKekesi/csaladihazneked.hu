@@ -11,10 +11,10 @@ export default async function Page({ params }: { params: { id: string } }) {
 
 	return(
 		<main>
-			<Subtitle value="2024/01/14" className="pt-6" />
-			<Title value={ post.title } />
+			<Subtitle className="pt-6 px-6">2024/01/14</Subtitle>
+			<Title className="px-6">{ post.title }</Title>
 			<hr className="pb-4" />
-			<Subtitle value="Leírás" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Leírás</Subtitle>
 			<hr className="pb-4" />
 			<p className="px-6">
 				A bejgli tésztájához a langyos tejben feloldjuk a porcukrot, majd az
@@ -41,16 +41,18 @@ export default async function Page({ params }: { params: { id: string } }) {
 						<Balancer>Részletek</Balancer>
 					</CardTitle>
 					<CardContent className="flex flex-col pl-0 gap-4">
-						<p className="a text-lg font-semibold">Első bejegyzés</p>
-						<p>Írta: Kékesi Kristóf</p>
+						<div className="flex flex-col">
+							<p className="text-lg font-semibold">Első bejegyzés</p>
+							<p>Írta: Kékesi Kristóf</p>
+						</div>
 						<p>2024/04/14</p>
-						<Header value="Megemlített bejegyzések" className="p-0" />
-						<Header value="Megemlített tervrajzok" className="p-0" />
-						<Header value="Megemlített képek" className="p-0" />
+						<Header className="p-0">Megemlített bejegyzések</Header>
+						<Header className="p-0">Megemlített tervrajzok</Header>
+						<Header className="p-0">Megemlített képek</Header>
 					</CardContent>
 				</CardHeader>
 			</Card>
-			<Subtitle value="Hasonló bejegyzések" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Hasonló bejegyzések</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 
 				blueprints={[post, post, post, post, post]}

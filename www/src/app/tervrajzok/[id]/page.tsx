@@ -16,8 +16,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 
 	return(
 		<main>
-			<Subtitle value="Gárdony" className="pt-6" />
-			<Title value={ blueprint.title } />
+			<Subtitle className="pt-6 px-6">Gárdony</Subtitle>
+			<Title className="px-6">{ blueprint.title }</Title>
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">
 				<ImageCarousel 
@@ -55,7 +55,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 					</CardFooter>
 				</Card>
 			</div>
-			<Subtitle value="Leírás" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Leírás</Subtitle>
 			<hr className="pb-4" />
 			<p className="px-6">
 				A bejgli tésztájához a langyos tejben feloldjuk a porcukrot, majd az
@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 				Húsvillával megszurkáljuk őket. 200 fokra előmelegített sütőben kb. 50-55
 				perc alatt szép aranybarnára sütjük a süteményeket.
 			</p>
-			<Subtitle value="Hasonló tervrajzok" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 
 				blueprints={[blueprint, blueprint, blueprint, blueprint, blueprint]}

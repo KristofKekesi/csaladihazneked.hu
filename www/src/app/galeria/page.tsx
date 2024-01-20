@@ -345,8 +345,8 @@ const images: Array<Photo> = [
 export default function Galeria() {
   return (
     <main className="flex flex-col just pt-3">
-      <Title value="Galéria" />
-      <Subtitle value="Kiemelt képek" />
+      <Title className="px-6">Galéria</Title>
+      <Subtitle className="px-6">Kiemelt képek</Subtitle>
       <hr className="pb-4" />
       <CustomGallery className="px-6 pt-2" images={images} />
     </main>

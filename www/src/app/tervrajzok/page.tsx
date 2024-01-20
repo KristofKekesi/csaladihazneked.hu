@@ -13,12 +13,12 @@ export default async function Blueprints() {
 
 	return (
 		<main className="flex flex-col just pt-3">
-			<Title value="Tervrajzok" />
-			<Subtitle value="Kiemelt tervrajzok" />
+			<Title className="px-6">Tervrajzok</Title>
+			<Subtitle className="px-6">Kiemelt tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintBigCarousel className="px-6" blueprints={ blueprints } />
 			<h1 className="text-2xl font-bold font-serif pt-6 px-6">Minden tervrajz</h1>
-			<Subtitle value="Minden tervrajz" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Minden tervrajz</Subtitle>
 			<hr className="pb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-4 pb-4 px-6">
 				{ blueprints.map((blueprint) => {
