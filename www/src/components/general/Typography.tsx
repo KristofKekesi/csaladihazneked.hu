@@ -1,30 +1,45 @@
+import Balancer from "react-wrap-balancer";
+
 import { cn } from "@/lib/utils";
 
-type Props = {
-	value: string,
-	id?: string,
-	className?: string
-}
+export const titleClassNames: string = "text-6xl font-caprasimo";
 
-export function Title(props: Props) {
+export function Title(props: any) {
 	return(
 		<h1
+			{ ...props }
 			id={ props.id }
-			className={cn("text-6xl px-6 font-caprasimo", props.className)}
+			className={ cn(titleClassNames, props.className) }
 		>
-			{ props.value }
+			<Balancer>{ props.children }</Balancer>
 		</h1>
 	);
 }
 
-export function Subtitle(props: Props) {
+export const subtitleClassNames: string = "text-2xl font-bold font-serif";
+
+export function Subtitle(props: any) {
 	return(
 		<h2
+			{ ...props }
 			id={ props.id }
-			className={cn("text-2xl font-bold font-serif px-6",
-			props.className)}
+			className={ cn(subtitleClassNames, props.className) }
 		>
-			{ props.value }
+			<Balancer>{ props.children }</Balancer>
 		</h2>
+	);
+}
+
+export const headerClassNames: string = "text-lg font-bold font-serif";
+
+export function Header(props: any) {
+	return (
+		<h3
+			{ ...props }
+			id={ props.id }
+			className={ cn(headerClassNames, props.className) }
+		>
+			<Balancer>{ props.children }</Balancer>
+		</h3>
 	);
 }

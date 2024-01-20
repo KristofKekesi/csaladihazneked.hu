@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Post } from "@/types/post";
+import Balancer from "react-wrap-balancer";
 
 type Props = {
 	post: Post,
@@ -21,7 +22,9 @@ export default function PostMedium(props: Props) {
 			style={{backgroundImage: `url(${IMG})`}}
 		>
 			<CardHeader className="backdrop-blur-2xl rounded-l-lg bg-black/5 w-1/2 md:w-1/3 h-32">
-				<CardTitle>{props.post.title}</CardTitle>
+				<CardTitle>
+					<Balancer>{props.post.title}</Balancer>
+				</CardTitle>
 				<CardDescription>{props.post.description}</CardDescription>
 			</CardHeader>
 			<CardFooter>

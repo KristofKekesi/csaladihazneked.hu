@@ -1,21 +1,23 @@
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
 import Featureset from "@/components/blueprint/Featureset";
 import ImageCarousel from "@/components/general/ImageCarousel";
-import { Subtitle, Title } from "@/components/general/Typography";
+import { Subtitle, Title, subtitleClassNames } from "@/components/general/Typography";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import getRandomBlueprint from "@/lib/random";
+import { cn } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
 import { Mail, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import Balancer from "react-wrap-balancer";
 
 export default async function Page({ params }: { params: { id: string } }) {
 	const blueprint: Blueprint = await getBlueprint(params.id);
 
 	return(
 		<main>
-			<Subtitle value="Gárdony" className="pt-6" />
-			<Title value={ blueprint.title } />
+			<Subtitle className="pt-6 px-6">Gárdony</Subtitle>
+			<Title className="px-6">{ blueprint.title }</Title>
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">
 				<ImageCarousel 
@@ -24,10 +26,10 @@ export default async function Page({ params }: { params: { id: string } }) {
 				/>
 				<Card className="col-span-5 md:col-span-2 flex flex-col h-full justify-between">
 					<CardHeader className="flex flex-col">
-						<CardTitle>
-							<Subtitle value="Részletek" className="pb-4 px-0" />
+						<CardTitle className={ cn(subtitleClassNames, "pb-4 px-0" ) }>
+							<Balancer>Részletek</Balancer>
 						</CardTitle>
-						<CardContent className="grid grid-cols-2 lg:grid-cols-3 pl-0">
+						<CardContent className="grid grid-cols-2 xl:grid-cols-3 pl-0 gap-4">
 							<Featureset blueprint={blueprint} type="general" />
 							<Featureset blueprint={blueprint} type="rooms" />
 							<Featureset 
@@ -55,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 					</CardFooter>
 				</Card>
 			</div>
-			<Subtitle value="Leírás" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Leírás</Subtitle>
 			<hr className="pb-4" />
 			<p className="px-6">
 				A bejgli tésztájához a langyos tejben feloldjuk a porcukrot, majd az
@@ -75,7 +77,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 				Húsvillával megszurkáljuk őket. 200 fokra előmelegített sütőben kb. 50-55
 				perc alatt szép aranybarnára sütjük a süteményeket.
 			</p>
-			<Subtitle value="Hasonló tervrajzok" className="pt-6" />
+			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 
 				blueprints={[blueprint, blueprint, blueprint, blueprint, blueprint]}

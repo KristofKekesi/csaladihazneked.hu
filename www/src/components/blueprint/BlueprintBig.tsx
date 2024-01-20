@@ -11,6 +11,7 @@ import { Box, Building, ChevronRight, Factory, Home, Layers, Store } from "lucid
 import Featureset from "./Featureset";
 import Link from "next/link";
 import { Blueprint } from "@/types/Blueprint";
+import Balancer from "react-wrap-balancer";
 
 
 export default function BlueprintBig(props: {blueprint: Blueprint}) {
@@ -19,9 +20,11 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 			<div className="w-full md:w-2/3">
 				<CardHeader className="backdrop-blur-2xl bg-black/5 
 				rounded-t-3xl md:rounded-tl-3xl md:rounded-tr-none">
-					<CardTitle className="flex justify-between items-baseline">
-						<span>{props.blueprint.title}</span>
-						<span className="text-lg">{props.blueprint.price} Ft;</span>
+					<CardTitle className="flex flex-nowrap justify-between items-baseline">
+						<Balancer>{props.blueprint.title}</Balancer>
+						<span className="text-lg whitespace-nowrap">
+							{props.blueprint.price} Ft
+						</span>
 					</CardTitle>
 					<CardDescription>{props.blueprint.description}</CardDescription>
 				</CardHeader>

@@ -12,6 +12,7 @@ import Featureset from "./Featureset";
 import { Blueprint } from "@/types/Blueprint";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Balancer from "react-wrap-balancer";
 
 type Props = {
 	blueprint: Blueprint,
@@ -28,7 +29,7 @@ export default function BlueprintMedium(props: Props) {
 			group-hover:backdrop-blur-2xl bg-transparent group-hover:bg-black/05 transition-all" >
 				<CardTitle className="flex justify-between items-baseline opacity-0
 				group-hover:opacity-100 transition-opacity">
-					<span>{props.blueprint.title}</span>
+					<Balancer>{props.blueprint.title}</Balancer>
 					<span className="text-lg">{ props.blueprint.price } Ft</span>
 				</CardTitle>
 				<CardDescription 
