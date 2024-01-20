@@ -7,27 +7,27 @@ export default function Header() {
 		<>
 			<header className="flex flex-col text-black/75 sticky top-0 z-30">
 				<div className="flex flex-row justify-between gap-4 px-6 py-3 bg-[#BABEAE]">
-				<Link className="hover:text-black/50 transition-colors" href={"./"}>
+				<Link className="hover:text-black/50 transition-colors" href="/">
 					<span className="hidden sm:inline">csaladihazneked.hu</span>
 					<span className="inline sm:hidden">Home</span>
 				</Link>
 					<div className="flex flex-row gap-4">
-					<Link className="hover:text-black/50 transition-colors" href={"./blog"}>
+					<Link className="hover:text-black/50 transition-colors" href="/blog">
 						Blog
 					</Link>
-					<Link className="hover:text-black/50 transition-colors" href={"./galeria"}>
+					<Link className="hover:text-black/50 transition-colors" href="/galeria">
 						Galéria
 					</Link>
 					<Link
 						className="hover:text-black/50 transition-colors hidden sm:inline"
-						href={"./#elerhetosegek"}
+						href="/#elerhetosegek"
 					>
 						Elérhetőség
 					</Link>
 					<Separator orientation="vertical" className="bg-black/50" />
 					<Link
 						className="hover:text-black/50 transition-colors"
-						href={"./tervrajzok"}
+						href="/tervrajzok"
 					>
 						Tervrajzok
 					</Link>

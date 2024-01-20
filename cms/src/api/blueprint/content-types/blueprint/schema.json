@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blueprints",
+  "info": {
+    "singularName": "blueprint",
+    "pluralName": "blueprints",
+    "displayName": "Tervrajz",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uuid": {
+      "type": "uid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true,
+      "min": "0"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Lakás",
+        "Családi ház",
+        "Társasház",
+        "Ikerház",
+        "Üzlethelyiség"
+      ],
+      "required": true,
+      "default": "Családi ház"
+    },
+    "livingroom": {
+      "type": "integer"
+    },
+    "bedroom": {
+      "type": "integer"
+    },
+    "bathroom": {
+      "type": "integer"
+    },
+    "wc": {
+      "type": "integer"
+    },
+    "anteroom": {
+      "type": "integer"
+    },
+    "kitchen": {
+      "type": "integer"
+    },
+    "terasse": {
+      "type": "integer"
+    },
+    "balcony": {
+      "type": "integer"
+    },
+    "entrance": {
+      "type": "integer"
+    },
+    "laundry_room": {
+      "type": "boolean"
+    },
+    "dining_room": {
+      "type": "boolean"
+    },
+    "american_kitchen": {
+      "type": "boolean"
+    },
+    "garage": {
+      "type": "boolean"
+    },
+    "basement": {
+      "type": "boolean"
+    },
+    "attic": {
+      "type": "boolean"
+    },
+    "levels": {
+      "type": "integer"
+    },
+    "area": {
+      "type": "integer"
+    }
+  }
+}

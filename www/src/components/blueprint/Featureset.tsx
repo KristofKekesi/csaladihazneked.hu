@@ -1,4 +1,11 @@
-import { Box, Building, Cuboid, Factory, Fan, Home, Layers, ShowerHead, Sofa, Store } from "lucide-react";
+import {
+	Box, Building,
+	Cuboid,
+	Factory, Fan,
+	Home,
+	Layers,
+	ShowerHead, Sofa, Store
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
