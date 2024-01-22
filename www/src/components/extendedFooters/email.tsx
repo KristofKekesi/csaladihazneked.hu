@@ -4,10 +4,16 @@ import { Button } from "../ui/button";
 import ExtendedFooter from "../general/footer/ExtendedFooter";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { sendGAEvent } from "@next/third-parties/google";
+import { MAIL_FORM_API_COOLDOWN } from "../../../config";
+import { sendMail } from "@/app/api/mail/action";
 import { Textarea } from "../ui/textarea";
+import { useState } from "react";
 
 export default function EmailExtendedFooter() {
+	const [name, setName] = useState("a");
+	const [email, setEmail] = useState("a@a.com");
+	const [message, setMessage] = useState("a");
+
 	return (
 		<ExtendedFooter title="Email küldés">
 			<>
@@ -18,6 +24,7 @@ export default function EmailExtendedFooter() {
 					<Input
 						id="email"
 						type="email"
+						onChange={ (event) => setEmail(event.target.value) }
 						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
 						border-2 border-dashed focus:border-white border-transparent
 						transition-colors w-full select-auto"
@@ -31,14 +38,20 @@ export default function EmailExtendedFooter() {
 						id="name"
 						type="text"
 						autoComplete="username"
+						onChange={ (event) => setName(event.target.value) }
 						className="bg-white/40 focus:bg-white/20
 						hover:bg-white/30 border-2 border-dashed focus:border-white
 						border-transparent transition-colors w-full select-auto"
 					/>
 				</div>
 				<Button
-					type="submit"
+					onClick={() => fetch(
+						encodeURI(
+							`/api/mail?email-address=${email}&name=${name}&message=${message}`),
+						{ next: { revalidate: MAIL_FORM_API_COOLDOWN } }
+					)}
 					variant="secondary"
+					type="submit"
 					className="py-1 px-2 rounded-md bg-white hover:bg-white/80
 					transition-colors col-span-1 h-10 hidden md:inline"
 				>
@@ -50,6 +63,7 @@ export default function EmailExtendedFooter() {
 					</Label>
 					<Textarea
 						id="message"
+						onChange={ (event) => setMessage(event.target.value) }
 						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
 						border-2 border-dashed focus:border-white border-transparent
 						transition-colorsresize-none h-fit file:border-0 file:bg-transparent
@@ -59,11 +73,15 @@ export default function EmailExtendedFooter() {
 				<div className="grid grid-cols-5 col-span-5 items-baseline">
 					<span className="text-black/50 ml-2 text-base col-span-2">*: kötelező</span>
 					<Button
+						onClick={() => fetch(
+							encodeURI(
+								`/api/mail?email-address=${email}&name=${name}&message=${message}`),
+							{ next: { revalidate: MAIL_FORM_API_COOLDOWN } }
+						)}
 						variant="secondary"
 						type="submit"
 						className="py-1 mt-4 px-2 rounded-md bg-white hover:bg-white/80
 						transition-colors col-span-3 h-10 inline md:hidden col-start-3"
-						onClick={() => sendGAEvent({ event: "buttonClicked", value: "sendEmail" })}
 					>
 						Küldés
 					</Button>

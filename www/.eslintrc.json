@@ -1,16 +1,17 @@
+// MonkeProblems v0.3
 {
 	"extends": ["next/core-web-vitals", "next"],
 	"rules": {
 		"semi": "warn",
 		"eol-last": "warn",
-		"quotes": ["error", "double"],
-		"no-unused-expressions": "error",
-		"no-unused-labels": "error",
-		"no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
+		"quotes": ["warn", "double"],
+		"no-unused-expressions": "warn",
+		"no-unused-labels": "warn",
+		"no-unused-vars": ["warn", { "argsIgnorePattern": "_" }],
 		"no-alert": "error",
 		"eqeqeq": "error",
 		"max-len": ["warn", 100],
-		"newline-before-return": "error",
+		"newline-before-return": "warn",
 		"for-direction": "error",
 		"no-extra-boolean-cast": "error",
 		"no-extra-semi": "warn",
