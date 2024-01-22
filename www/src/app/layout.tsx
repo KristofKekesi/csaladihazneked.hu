@@ -9,8 +9,19 @@ import { Provider } from "react-wrap-balancer";
 
 
 export const metadata: Metadata = {
-	title: "Családiház tervezés",
-	description: "todo"
+	title: {
+		template: "%s | Családiház tervezés",
+		default: "Családiház tervezés"
+	},
+	description: "todo",
+	keywords: [
+		"családiház", "családiház tervezés", "tervrajz", "építész tervezés", "építész"
+	],
+	authors: [{ name: "Kékesi Kristóf", url: "https://www.kekesi.dev" }],
+	formatDetection: {
+		email: true, address: false, telephone: true
+	},
+	
 };
 
 

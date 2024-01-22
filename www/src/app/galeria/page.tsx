@@ -1,6 +1,7 @@
 import { Subtitle, Title } from "@/components/general/Typography";
 import CustomGallery from "@/components/general/gallery/CustomGallery";
 import { Photo } from "@/types/Photo";
+import { Metadata } from "next";
 
 const images: Array<Photo> = [
   {
@@ -341,6 +342,12 @@ const images: Array<Photo> = [
   
 }
 ];
+
+
+export const metadata: Metadata = {
+	title: "Galéria"
+};
+
 
 export default function Galeria() {
   return (

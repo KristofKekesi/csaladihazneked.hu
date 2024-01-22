@@ -1,11 +1,18 @@
 import { Subtitle, Title } from "@/components/general/Typography";
 import MailingListExtendedFooter from "@/components/extendedFooters/mailingList";
+import { Metadata } from "next";
 import PostBigCarousel from "@/components/blog/PostBigCarousel";
 import PostMedium from "@/components/blog/PostMedium";
 
 const IMG = "https://damassets.autodesk.net/content/" +
 "dam/autodesk/www/solutions/generative-design/fy22/images/" + 
 "blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg";
+
+
+export const metadata: Metadata = {
+	title: "Blog"
+};
+
 
 export default function Blog() {
 return (

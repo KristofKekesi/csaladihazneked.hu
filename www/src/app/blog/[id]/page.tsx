@@ -5,12 +5,29 @@ import { Balancer } from "react-wrap-balancer";
 import BlueprintSmall from "@/components/blueprint/BlueprintSmall";
 import { cn } from "@/lib/utils";
 import Markdown from "@/components/general/MarkDown";
+import { Metadata } from "next";
 import { Post } from "@/types/Post";
 import PostMediumCarousel from "@/components/blog/PostMediumCarousel";
 import PostSmall from "@/components/blog/PostSmall";
 
-export default async function Page({ params }: { params: { id: string } }) {
-	const post: Post = await getPost(params.id);
+
+type Props = {
+	id: string
+}
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+	console.log(props.id);
+	const post: Post = await getRandomPost();
+
+	return {
+		title: post.title,
+		description: post.description
+	};
+}
+
+
+export default async function Page(props: Props) {
+	const post: Post = await getPost(props.id);
 
 	return(
 		<main>

@@ -4,6 +4,12 @@ import BlueprintBigCarousel from "@/components/blueprint/BlueprintBigCarousel";
 import BlueprintMedium from "@/components/blueprint/BlueprintMedium";
 import ForgottenPurchaseExtendedFooter from "@/components/extendedFooters/forgottenPurchase";
 import { getRandomBlueprint } from "@/lib/random";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+	title: "Tervrajzok"
+};
 
 
 export default async function Blueprints() {

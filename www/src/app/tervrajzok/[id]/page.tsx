@@ -11,9 +11,26 @@ import { getRandomBlueprint } from "@/lib/random";
 import ImageCarousel from "@/components/general/ImageCarousel";
 import Link from "next/link";
 import Markdown from "@/components/general/MarkDown";
+import { Metadata } from "next";
 
-export default async function Page({ params }: { params: { id: string } }) {
-	const blueprint: Blueprint = await getBlueprint(params.id);
+
+type Props = {
+	id: string
+}
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+	console.log(props.id);
+	const blueprint: Blueprint = await getRandomBlueprint();
+
+	return {
+		title: blueprint.title,
+		description: blueprint.description
+	};
+}
+
+
+export default async function Page(props : Props) {
+	const blueprint: Blueprint = await getBlueprint(props.id);
 
 	return(
 		<main>
