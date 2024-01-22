@@ -5,7 +5,6 @@ import ExtendedFooter from "../general/footer/ExtendedFooter";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { MAIL_FORM_API_COOLDOWN } from "../../../config";
-import { sendMail } from "@/app/api/mail/action";
 import { Textarea } from "../ui/textarea";
 import { useState } from "react";
 

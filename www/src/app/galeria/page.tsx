@@ -1,7 +1,7 @@
 import { Subtitle, Title } from "@/components/general/Typography";
 import CustomGallery from "@/components/general/gallery/CustomGallery";
-import { Photo } from "@/types/Photo";
 import { Metadata } from "next";
+import { Photo } from "@/types/Photo";
 
 const images: Array<Photo> = [
   {
