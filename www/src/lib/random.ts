@@ -1,4 +1,5 @@
 import { Blueprint } from "@/types/Blueprint";
+import { Post } from "@/types/Post";
 
 const IMGs: Array<string> = [
 	"https://damassets.autodesk.net/content/" +
@@ -21,7 +22,7 @@ function randomBool(): boolean {
 	return Math.floor(Math.random() * 100 ) % 2 === 1;
 }
 
-export default function getRandomBlueprint(): Blueprint {
+export function getRandomBlueprint(): Blueprint {
 	let randomType: "Lakás" | "Családihaz" | "Bolt" | "Ipar" = "Ipar";
 	let random = randomNumber(0, 3);
 	switch (random) {
@@ -57,4 +58,19 @@ export default function getRandomBlueprint(): Blueprint {
 			american_kitchen: randomBool()
 		}
 	};
+}
+
+export function getRandomPost(): Post {
+	return {
+		id: randomNumber(0, 100000),
+		title: "_".repeat(10).split("").map(function(){
+			return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+			.charAt(Math.floor(62*Math.random()));}).join(""),
+		description: "_".repeat(123).split("").map(function(){
+			return "ABCD EFGHI JKLMN OPQRST UVWX YZ abc defgh ijklm nopqrst uvwxy z 012 3456 789"
+			.charAt(Math.floor(62*Math.random()));}).join(""),
+		imageURL: IMGs[Math.floor(Math.random()*IMGs.length)],
+		content: ""
+	}
+	;
 }

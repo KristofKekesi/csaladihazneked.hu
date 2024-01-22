@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Separator } from "../ui/separator";
+import { Separator } from "../../ui/separator";
 
 export default function Footer() {
 	return(
-		<footer className="w-full bg-[#B0A187] px-6 pt-6 pb-3 flex flex-row
+		<footer className="w-full bg-customBrown px-6 pt-6 pb-3 flex flex-row
 		justify-between gap-4 rounded-t-3xl text-black/75">
 			<div className="flex flex-col sm:flex-row justify-between">
 				<p>

@@ -6,11 +6,10 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
-import { cn } from "@/lib/utils";
-
-import BlueprintMedium from "./BlueprintMedium";
 import { Blueprint } from "@/types/Blueprint";
+import BlueprintMedium from "./BlueprintMedium";
+import { cn } from "@/lib/utils";
+import { useRef } from "react";
 
 type Props = {
 	blueprints: Array<Blueprint>,

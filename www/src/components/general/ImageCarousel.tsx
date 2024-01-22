@@ -2,13 +2,13 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
-Carousel,
-CarouselContent,
-CarouselItem
+	Carousel,
+	CarouselContent,
+	CarouselItem
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 type Props = {

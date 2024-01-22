@@ -3,14 +3,14 @@
 import React, { useEffect } from "react";
 React.useLayoutEffect = React.useEffect;
 
-import Image from "next/image";
-import PhotoAlbum from "react-photo-album";
-import { useInView } from "react-intersection-observer";
-import { Photo } from "@/types/Photo";
-
-import Lightbox from "@/components/gallery/Lightbox";
-import { TRANSPARENT_IMAGES } from "../../../config";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Lightbox from "@/components/general/gallery/Lightbox";
+import { Photo } from "@/types/Photo";
+import PhotoAlbum from "react-photo-album";
+import { TRANSPARENT_IMAGES } from "../../../../config";
+import { useInView } from "react-intersection-observer";
+
 
 //TODO(KristofKekesi): TypeScriptify
 

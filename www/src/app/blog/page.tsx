@@ -1,8 +1,7 @@
+import { Subtitle, Title } from "@/components/general/Typography";
+import MailingListExtendedFooter from "@/components/extendedFooters/mailingList";
 import PostBigCarousel from "@/components/blog/PostBigCarousel";
 import PostMedium from "@/components/blog/PostMedium";
-import { Subtitle, Title } from "@/components/general/Typography";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 const IMG = "https://damassets.autodesk.net/content/" +
 "dam/autodesk/www/solutions/generative-design/fy22/images/" + 
@@ -77,39 +76,7 @@ return (
 	</section>
 	<Subtitle className="pt-6 px-6">Feliratkozás a hírlevélre</Subtitle>
 	<hr className="pb-4" />
-	<div className="mx-6 -mb-6 px-6 pt-6 pb-6 grid grid-cols-5 justify-between items-end
-	gap-x-4 gap-y-2 rounded-t-3xl text-black/75 bg-[#BABEAE]">
-		<div className="col-span-5 flex flex-col ml-2 mb-4">
-			<h3 className="text-2xl font-bold font-serif">
-				Szeretnél emailben értesülni a legfrissebb híreinkről?
-			</h3>
-			<p className="text-black/75">
-				Az emailcímed megadásával elsőrorban értesülhetsz a legújabb tartalmainkról.
-			</p>
-		</div>
-		<div className="flex flex-col items-start col-span-5 md:col-span-4">
-			<Label
-				className="text-base font-normal ml-2"
-				htmlFor="email"
-			>
-					Emailcím:
-			</Label>
-			<Input
-				id="email"
-				type="email"
-				className="bg-white/40 focus:bg-white/20 hover:bg-white/30
-				border-2 border-dashed focus:border-white border-transparent
-				transition-colors w-full"
-			/>
-		</div>
-			<button
-				type="submit"
-				className="py-1 px-2 rounded-md bg-white hover:bg-white/80
-				transition-colors col-start-3 col-span-3 md:col-span-1 h-10"
-			>
-				Feliratkozás
-			</button>
-		</div>
+	<MailingListExtendedFooter />
 	</main>
 );
 }

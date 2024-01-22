@@ -11,6 +11,9 @@
 		"eqeqeq": "error",
 		"max-len": ["warn", 100],
 		"newline-before-return": "error",
-		"for-direction": "error"
+		"for-direction": "error",
+		"no-extra-boolean-cast": "error",
+		"no-extra-semi": "warn",
+		"sort-imports": ["warn", { "ignoreCase": true }]
 	}
 }

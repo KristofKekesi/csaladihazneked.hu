@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import Image from "next/image";
 import { Photo } from "@/types/Photo";
 
 //TODO(KristofKekesi): TypeScriptify
