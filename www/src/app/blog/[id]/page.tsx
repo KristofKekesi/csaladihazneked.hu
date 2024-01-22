@@ -12,11 +12,12 @@ import PostSmall from "@/components/blog/PostSmall";
 
 
 type Props = {
-	id: string
+	props: { id: string };
+	searchProps: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-	console.log(props.id);
+	console.log(props.props.id);
 	const post: Post = await getRandomPost();
 
 	return {
@@ -26,7 +27,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 
-export default async function Page(props: Props) {
+export default async function Page({ props, searchProps }: Props) {
 	const post: Post = await getPost(props.id);
 
 	return(
