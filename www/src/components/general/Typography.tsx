@@ -2,7 +2,7 @@ import Balancer from "react-wrap-balancer";
 
 import { cn } from "@/lib/utils";
 
-export const titleClassNames: string = "text-6xl font-caprasimo";
+export const titleClassNames: string = "text-6xl font-caprasimo select-auto";
 
 export function Title(props: any) {
 	return(
@@ -16,7 +16,7 @@ export function Title(props: any) {
 	);
 }
 
-export const subtitleClassNames: string = "text-2xl font-bold font-serif";
+export const subtitleClassNames: string = "text-2xl font-bold font-serif select-auto";
 
 export function Subtitle(props: any) {
 	return(
@@ -30,7 +30,7 @@ export function Subtitle(props: any) {
 	);
 }
 
-export const headerClassNames: string = "text-lg font-bold font-serif";
+export const headerClassNames: string = "text-lg font-bold font-serif select-auto";
 
 export function Header(props: any) {
 	return (

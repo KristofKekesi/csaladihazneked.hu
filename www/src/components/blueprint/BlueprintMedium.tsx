@@ -6,13 +6,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Box, ChevronRight, Home, Layers } from "lucide-react";
-import Featureset from "./Featureset";
 import { Blueprint } from "@/types/Blueprint";
+import { Button } from "@/components/ui/button";
+import { ChevronRight} from "lucide-react";
 import { cn } from "@/lib/utils";
+import Featureset from "./Featureset";
 import Link from "next/link";
-import Balancer from "react-wrap-balancer";
+import { subtitleClassNames } from "../general/Typography";
 
 type Props = {
 	blueprint: Blueprint,
@@ -28,33 +28,32 @@ export default function BlueprintMedium(props: Props) {
 			<CardHeader className="flex flex-col aspect-video backdrop-blur-none
 			group-hover:backdrop-blur-2xl bg-transparent group-hover:bg-black/05 transition-all" >
 				<CardTitle className="flex justify-between items-baseline opacity-0
-				group-hover:opacity-100 transition-opacity">
-					<Balancer>{props.blueprint.title}</Balancer>
-					<span className="text-lg">{ props.blueprint.price } Ft</span>
+				group-hover:opacity-100 transition-opacity gap-4">
+					<span className="line-clamp-2 select-auto">
+						{props.blueprint.title}
+					</span>
+					{ props.blueprint.price ? 
+						<span className={cn(subtitleClassNames, "text-xl select-auto")}>
+							{Intl.NumberFormat("hu-HU").format(props.blueprint.price)} Ft
+						</span>
+					: null }
 				</CardTitle>
-				<CardDescription 
-				className="opacity-0 group-hover:opacity-100 transition-opacity text-ellipsis">
+				<CardDescription className="opacity-0 group-hover:opacity-100
+				transition-opacity text-ellipsis select-auto">
 					{props.blueprint.description}
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="pt-6 grid grid-cols-2 bg-white">
-				<ul className="col-span-1">
-					<li className="flex items-baseline"><Home className="h-4 w-4 mr-2" />
-						{ props.blueprint.type }
-					</li>
-					<li className="flex items-baseline"><Box className="h-4 w-4 mr-2" />
-						{ props.blueprint.squarem } m<sup>2</sup></li>
-					<li className="flex items-baseline"><Layers className="h-4 w-4 mr-2" />
-						2 emelet
-					</li>
-				</ul>
+			<Featureset blueprint={ props.blueprint } type={"general"} className="col-span-1" />
 				<Featureset blueprint={props.blueprint} type={"rooms"} maxReturn={4} />
 			</CardContent>
-			<CardFooter className="bg-white flex justify-between pt-6 rounded-b-3xl">
-				<Button variant={"link"}>
-					<span className="hidden md:inline">Hasonló tervrajzok</span>
-					<span className="inline md:hidden">Hasonlók</span>
-				</Button>
+			<CardFooter className="bg-white flex justify-end pt-6 rounded-b-3xl">
+				{ //TODO(KristofKekesi): Implement
+				//<Button variant={"link"}>
+				//	<span className="hidden md:inline">Hasonló tervrajzok</span>
+				//	<span className="inline md:hidden">Hasonlók</span>
+				//</Button>
+				}
 				<Link href={`/tervrajzok/${props.blueprint.id}`}>
 					<Button variant={"secondary"}>
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />

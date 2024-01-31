@@ -1,17 +1,39 @@
-import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
-import Featureset from "@/components/blueprint/Featureset";
-import ImageCarousel from "@/components/general/ImageCarousel";
-import { Subtitle, Title, subtitleClassNames } from "@/components/general/Typography";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import getRandomBlueprint from "@/lib/random";
-import { cn } from "@/lib/utils";
-import { Blueprint } from "@/types/Blueprint";
-import { Mail, ShoppingCart } from "lucide-react";
-import Link from "next/link";
+import { Metadata, ResolvingMetadata } from "next";
+import { Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import Balancer from "react-wrap-balancer";
+import { Blueprint } from "@/types/Blueprint";
+import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import Featureset from "@/components/blueprint/Featureset";
+import { getRandomBlueprint } from "@/lib/random";
+import ImageCarousel from "@/components/general/ImageCarousel";
+import Link from "next/link";
+import { Mail } from "lucide-react";
+import Markdown from "@/components/general/MarkDown";
 
-export default async function Page({ params }: { params: { id: string } }) {
+
+type Props = {
+	params: { id: number }
+	searchParams: { [key: string]: string | string[] | undefined }
+  }
+
+  export async function generateMetadata(
+	{ params, searchParams }: Props,
+	parent: ResolvingMetadata
+  ): Promise<Metadata> {
+	console.log(params.id);
+	const blueprint: Blueprint = await getRandomBlueprint();
+
+	return {
+		title: blueprint.title,
+		description: blueprint.description
+	};
+}
+
+
+export default async function Page({ params, searchParams }: Props) {
 	const blueprint: Blueprint = await getBlueprint(params.id);
 
 	return(
@@ -40,26 +62,20 @@ export default async function Page({ params }: { params: { id: string } }) {
 						</CardContent>
 					</CardHeader>
 					<CardFooter className="flex flex-col items-end gap-4">
-						{ `${blueprint.price} Ft` }
-						<div className="flex justify-end gap-4">
-							<Link href="/#elerhetosegek">
-								<Button variant="secondary">
-									<Mail className="h-4 w-4 mr-2" />
-									Kapcsolat
-								</Button>
-							</Link>
-							<Link href="https://buy.stripe.com/test_4gw5kT6Xq5Sr9wI288">
-								<Button>
-									<ShoppingCart className="h-4 w-4 mr-2" /> Vásárlás
-								</Button>
-							</Link>
-						</div>
+						<span className={ subtitleClassNames }>
+							{ `${Intl.NumberFormat("hu-HU").format(blueprint.price!)} Ft` }
+						</span>
+						<Link href="/#elerhetosegek">
+							<Button>
+								<Mail className="h-4 w-4 mr-2" /> Kapcsolat
+							</Button>
+						</Link>
 					</CardFooter>
 				</Card>
 			</div>
 			<Subtitle className="pt-6 px-6">Leírás</Subtitle>
 			<hr className="pb-4" />
-			<p className="px-6">
+			<Markdown className="px-6">
 				A bejgli tésztájához a langyos tejben feloldjuk a porcukrot, majd az
 				élesztőt felfuttatjuk benne.A vajat kis tálban felolvasztjuk. A lisztet
 				tálba szitáljuk. Hozzáadjuk először az élesztős tejet és 2 db tojássárgáját,
@@ -76,7 +92,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 				tojássárgájával, amihez 1 kanál tejet is keverhetünk, hogy még szebb színe legyen.
 				Húsvillával megszurkáljuk őket. 200 fokra előmelegített sütőben kb. 50-55
 				perc alatt szép aranybarnára sütjük a süteményeket.
-			</p>
+			</Markdown>
 			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 
@@ -88,7 +104,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 }
 
 // eslint-disable-next-line no-unused-vars
-async function getBlueprint(id: string) {
+async function getBlueprint(id: number) {
 	const blueprint: Blueprint = getRandomBlueprint();
 
 	return blueprint;

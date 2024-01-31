@@ -3,14 +3,13 @@
 import React, { useEffect } from "react";
 React.useLayoutEffect = React.useEffect;
 
-import Image from "next/image";
-import PhotoAlbum from "react-photo-album";
-import { useInView } from "react-intersection-observer";
-import { Photo } from "@/types/Photo";
-
-import Lightbox from "@/components/gallery/Lightbox";
-import { TRANSPARENT_IMAGES } from "../../../config";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { Photo } from "@/types/Photo";
+import PhotoAlbum from "react-photo-album";
+import { TRANSPARENT_IMAGES } from "../../../../config";
+import { useInView } from "react-intersection-observer";
+
 
 //TODO(KristofKekesi): TypeScriptify
 
@@ -60,7 +59,7 @@ function CustomImageRenderer(props: {
 
     return (
         <>
-            <div onClick={onClick} style={props.wrapperStyle}>
+            <div style={props.wrapperStyle}>
                 <div style={
                     { display: "block", position: "relative", width: "100%", height: "100%" }
                 }>
@@ -126,8 +125,8 @@ export default function CustomGallery(props: {images: Array<Photo>, className?: 
     }
 
     useEffect(() => {
-        removeEventListener("click", setThemeColor);
-        addEventListener("click", setThemeColor);
+        //removeEventListener("click", setThemeColor);
+        //addEventListener("click", setThemeColor);
 	}, []);
 
     return(
@@ -142,17 +141,6 @@ export default function CustomGallery(props: {images: Array<Photo>, className?: 
                     renderPhoto={CustomImageRenderer}
                 />
             </div>
-            {props.images.map((photo: Photo, index: number, array: object) => {
-                return (
-                    <Lightbox
-                        key={index}
-                        index={index}
-                        onClick={onClick}
-                        photo={photo}
-                        maxIndex={Object.keys(array).length}
-                    />
-                );
-            })}
         </>
     );
 }

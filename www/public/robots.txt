@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /images/
+
+Sitemap: https://www.csaladihazneked.hu/sitemap.xml
+Sitemap: https://www.csaladihazneked.hu/blog/sitemap.xml
+Sitemap: https://www.csaladihazneked.hu/tervrajzok/sitemap.xml

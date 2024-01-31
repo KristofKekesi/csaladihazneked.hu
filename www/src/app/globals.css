@@ -65,13 +65,29 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
- 
+
+::-moz-selection {
+  @apply bg-customGreen text-black
+}
+
+::selection {
+  @apply bg-customGreen text-black
+}
+
+.extendedFooter ::-moz-selection {
+  @apply bg-customGreen text-black
+}
+
+.extendedFooter ::selection {
+  @apply bg-black text-white
+}
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground select-none;
   }
 }
 

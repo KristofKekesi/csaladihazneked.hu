@@ -6,12 +6,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/button";
-import { Box, Building, ChevronRight, Factory, Home, Layers, Store } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import Featureset from "./Featureset";
 import Link from "next/link";
-import { Blueprint } from "@/types/Blueprint";
-import Balancer from "react-wrap-balancer";
+import { subtitleClassNames } from "../general/Typography";
 
 
 export default function BlueprintBig(props: {blueprint: Blueprint}) {
@@ -20,52 +21,46 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 			<div className="w-full md:w-2/3">
 				<CardHeader className="backdrop-blur-2xl bg-black/5 
 				rounded-t-3xl md:rounded-tl-3xl md:rounded-tr-none">
-					<CardTitle className="flex flex-nowrap justify-between items-baseline">
-						<Balancer>{props.blueprint.title}</Balancer>
-						<span className="text-lg whitespace-nowrap">
-							{props.blueprint.price} Ft
+					<CardTitle className="flex flex-nowrap justify-between items-baseline gap-4">
+						<span className="line-clamp-2 h-12 select-auto">
+							{props.blueprint.title}
+						</span>
+						<span className={cn( subtitleClassNames,
+						"text-xl whitespace-nowrap select-auto")}>
+							{Intl.NumberFormat("hu-HU").format(props.blueprint.price!)} Ft
 						</span>
 					</CardTitle>
-					<CardDescription>{props.blueprint.description}</CardDescription>
+					<CardDescription className="h-16 line-clamp-3 flex items-end select-auto">
+						{props.blueprint.description}
+					</CardDescription>
 				</CardHeader>
 				<CardContent className="pt-6 grid grid-cols-3">
-					<ul className="col-span-1">
-						<li className="flex items-baseline">
-							{ props.blueprint.type === "Bolt" ?
-							<Store className="h-4 w-4 mr-2" /> : null }
-							{ props.blueprint.type === "Családihaz" ?
-							<Home className="h-4 w-4 mr-2" /> : null }
-							{ props.blueprint.type === "Ipar" ?
-							<Factory className="h-4 w-4 mr-2" /> : null }
-							{ props.blueprint.type === "Lakás" ?
-							<Building className="h-4 w-4 mr-2" /> : null }
-							{ props.blueprint.type }
-						</li>
-						<li className="flex items-baseline">
-							<Box className="h-4 w-4 mr-2" />85 m<sup>2</sup>
-						</li>
-						<li className="flex items-baseline">
-							<Layers className="h-4 w-4 mr-2" />{ props.blueprint.floors } emelet
-						</li>
-					</ul>
+					<Featureset
+						blueprint={props.blueprint}
+						type={"general"}
+						maxReturn={4}
+						className="col-span-1"
+					/>
 					<Featureset
 						blueprint={props.blueprint}
 						type={"rooms"}
 						maxReturn={4}
 						className="col-start-3 sm:col-start-2"
 					/>
-					<ul className="col-span-1 hidden sm:inline">
-						<li>Amerikai konyha</li>
-						<li>Spájz</li>
-						<li>Biciklitároló</li>
-						<li>Padlás</li>
-					</ul>
+					<Featureset
+						blueprint={props.blueprint}
+						type={"features"}
+						maxReturn={4}
+						className="col-span-1 hidden sm:inline"
+					/>
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
-					<Button variant={"link"}>
-						<span className="inline md:hidden">Hasonlók</span>
-						<span className="hidden md:inline">Hasonló tervrajzok</span>
-					</Button>
+					{ //TODO(KristofKekesi): Implement
+					//<Button variant={"link"}>
+					//	<span className="inline md:hidden">Hasonlók</span>
+					//	<span className="hidden md:inline">Hasonló tervrajzok</span>
+					//</Button>
+					}
 					<Link href={`/tervrajzok/${props.blueprint.id}`}>
 						<Button>
 							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />

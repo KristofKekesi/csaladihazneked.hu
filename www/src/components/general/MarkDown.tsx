@@ -1,9 +1,7 @@
-import ReactMarkdown, { Components } from "react-markdown";
-
-import ImageRenderer from "./ImageRenderer";
-import { cn } from "@/lib/utils";
 import { Header, Subtitle, Title } from "./Typography";
-//import HeaderRenderer from "./Renderers/HeaderRenderer";
+import ReactMarkdown, { Components } from "react-markdown";
+import { cn } from "@/lib/utils";
+import ImageRenderer from "./ImageRenderer";
 
 
 //    TURTLE - TEKI
@@ -29,7 +27,7 @@ export default function Markdown(props: Props) {
 
     return (
         <ReactMarkdown components={components}
-		 className={cn("reactMarkDown " + props.className)}>
+		 className={cn("reactMarkDown select-auto", props.className)}>
             {props.children}
         </ReactMarkdown>
     );

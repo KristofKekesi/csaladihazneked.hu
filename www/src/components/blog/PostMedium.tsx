@@ -1,10 +1,10 @@
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import Balancer from "react-wrap-balancer";
+import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-import { Button } from "../ui/button";
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { Post } from "@/types/post";
-import Balancer from "react-wrap-balancer";
+import Link from "next/link";
+import { Post } from "@/types/Post";
 
 type Props = {
 	post: Post,
@@ -21,16 +21,19 @@ export default function PostMedium(props: Props) {
 			className={cn("flex justify-between items-end bg-cover", props.className)}
 			style={{backgroundImage: `url(${IMG})`}}
 		>
-			<CardHeader className="backdrop-blur-2xl rounded-l-lg bg-black/5 w-1/2 md:w-1/3 h-32">
+			<CardHeader className="backdrop-blur-2xl rounded-l-lg
+			bg-black/5 w-1/2 h-36 select-auto">
 				<CardTitle>
 					<Balancer>{props.post.title}</Balancer>
 				</CardTitle>
-				<CardDescription>{props.post.description}</CardDescription>
+				<CardDescription className="line-clamp-3">{props.post.description}</CardDescription>
 			</CardHeader>
 			<CardFooter>
-				<Button variant={"secondary"} className="drop-shadow-2xl">
-					Tovább <ChevronRight className="h-4 w-4 ml-2" />
-				</Button>
+				<Link href={`/blog/${props.post.id}`}>
+					<Button variant={"secondary"} className="drop-shadow-2xl">
+						Tovább <ChevronRight className="h-4 w-4 ml-2" />
+					</Button>
+				</Link>
 			</CardFooter>
 		</Card>
 	);

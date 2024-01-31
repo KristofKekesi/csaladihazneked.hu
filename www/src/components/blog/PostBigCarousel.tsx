@@ -6,10 +6,9 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
-
-import PostBig from "./PostBig";
 import { cn } from "@/lib/utils";
+import PostBig from "./PostBig";
+import { useRef } from "react";
 
 const IMG = "https://damassets.autodesk.net/content/" +
 "dam/autodesk/www/solutions/generative-design/fy22/images/" + 
