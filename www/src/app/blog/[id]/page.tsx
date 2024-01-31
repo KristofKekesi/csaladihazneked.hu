@@ -13,7 +13,6 @@ import PostSmall from "@/components/blog/PostSmall";
 
 type Props = {
 	params: { id: string }
-	searchParams: { [key: string]: string | string[] | undefined }
   }
    
   export async function generateMetadata(
