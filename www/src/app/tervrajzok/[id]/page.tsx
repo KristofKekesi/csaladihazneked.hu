@@ -1,5 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, ShoppingCart } from "lucide-react";
+import { InfoIcon, Mail } from "lucide-react";
 import { Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
@@ -61,19 +61,11 @@ export default async function Page(props : Props) {
 						<span className={ subtitleClassNames }>
 							{ `${Intl.NumberFormat("hu-HU").format(blueprint.price!)} Ft` }
 						</span>
-						<div className="flex justify-end gap-4">
-							<Link href="/#elerhetosegek">
-								<Button variant="secondary">
-									<Mail className="h-4 w-4 mr-2" />
-									Kapcsolat
-								</Button>
-							</Link>
-							<Link href="https://buy.stripe.com/test_4gw5kT6Xq5Sr9wI288">
-								<Button>
-									<ShoppingCart className="h-4 w-4 mr-2" /> Vásárlás
-								</Button>
-							</Link>
-						</div>
+						<Link href="/#elerhetosegek">
+							<Button>
+								<Mail className="h-4 w-4 mr-2" /> Kapcsolat
+							</Button>
+						</Link>
 					</CardFooter>
 				</Card>
 			</div>

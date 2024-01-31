@@ -1,12 +1,23 @@
 // MonkeProblems v0.3
+
+
+//   w  c(..)o   (
+//    \__(-)  ____)
+//	    /\   (
+//	   /(_)___)
+//	   w /|
+//	    | \
+//      m  m       ASCII art from ejm97
+
+
 {
 	"extends": ["next/core-web-vitals", "next"],
 	"rules": {
 		"semi": "warn",
 		"eol-last": "warn",
 		"quotes": ["warn", "double"],
-		"no-unused-expressions": "warn",
-		"no-unused-labels": "warn",
+		"no-unused-expressions": ["warn", { "argsIgnorePattern": "_" }],
+		"no-unused-labels": ["warn", { "argsIgnorePattern": "_" }],
 		"no-unused-vars": ["warn", { "argsIgnorePattern": "_" }],
 		"no-alert": "error",
 		"eqeqeq": "error",

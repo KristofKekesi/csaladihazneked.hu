@@ -2,7 +2,6 @@ import { Subtitle, Title } from "@/components/general/Typography";
 import { Blueprint } from "@/types/Blueprint";
 import BlueprintBigCarousel from "@/components/blueprint/BlueprintBigCarousel";
 import BlueprintMedium from "@/components/blueprint/BlueprintMedium";
-import ForgottenPurchaseExtendedFooter from "@/components/extendedFooters/forgottenPurchase";
 import { getRandomBlueprint } from "@/lib/random";
 import { Metadata } from "next";
 
@@ -28,7 +27,6 @@ export default async function Blueprints() {
 					return <BlueprintMedium blueprint={blueprint} key={blueprint.id} />;
 				}) }
 			</div>
-			<ForgottenPurchaseExtendedFooter />
 		</main>
 	);
 }

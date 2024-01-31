@@ -32,7 +32,9 @@ export default function PostBig(props: {post: Post}) {
 			</CardContent>
 			<CardFooter className="flex justify-end md:justify-between pt-6 
 			backdrop-blur-2xl bg-black/5 rounded-b-lg">
-				<Button className="hidden md:inline" variant={"link"}>Hasonló bejegyzések</Button>
+				{ //TODO(KristofKekesi): Implement
+				//<Button className="hidden md:inline" variant={"link"}>Hasonló bejegyzések</Button>
+				}
 				<Link href={`/blog/${props.post.id}`}>
 					<Button variant={"secondary"}>
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />

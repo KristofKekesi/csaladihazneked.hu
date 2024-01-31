@@ -1,23 +1,27 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getRandomBlueprint, getRandomPost } from "@/lib/random";
 import { Header, Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
+import { Metadata, ResolvingMetadata } from "next";
 import { Balancer } from "react-wrap-balancer";
 import BlueprintSmall from "@/components/blueprint/BlueprintSmall";
 import { cn } from "@/lib/utils";
 import Markdown from "@/components/general/MarkDown";
-import { Metadata } from "next";
 import { Post } from "@/types/Post";
 import PostMediumCarousel from "@/components/blog/PostMediumCarousel";
 import PostSmall from "@/components/blog/PostSmall";
 
 
 type Props = {
-	props: { id: string };
-	searchProps: { [key: string]: string | string[] | undefined };
-}
-
-export async function generateMetadata(props: Props): Promise<Metadata> {
-	console.log(props.props.id);
+	params: { id: string }
+	searchParams: { [key: string]: string | string[] | undefined }
+  }
+   
+  export async function generateMetadata(
+	{ params }: Props,
+	parent: ResolvingMetadata
+  ): Promise<Metadata> {
 	const post: Post = await getRandomPost();
 
 	return {
@@ -27,8 +31,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 
-export default async function Page({ props, searchProps }: Props) {
-	const post: Post = await getPost(props.id);
+export default async function Page({ params }: Props) {
+	const post: Post = await getPost(params.id);
 
 	return(
 		<main>

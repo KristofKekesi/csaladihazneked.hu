@@ -55,10 +55,12 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 					/>
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
-					<Button variant={"link"}>
-						<span className="inline md:hidden">Hasonlók</span>
-						<span className="hidden md:inline">Hasonló tervrajzok</span>
-					</Button>
+					{ //TODO(KristofKekesi): Implement
+					//<Button variant={"link"}>
+					//	<span className="inline md:hidden">Hasonlók</span>
+					//	<span className="hidden md:inline">Hasonló tervrajzok</span>
+					//</Button>
+					}
 					<Link href={`/tervrajzok/${props.blueprint.id}`}>
 						<Button>
 							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />

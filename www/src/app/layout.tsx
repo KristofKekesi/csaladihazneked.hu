@@ -21,7 +21,6 @@ export const metadata: Metadata = {
 	formatDetection: {
 		email: true, address: false, telephone: true
 	},
-	
 };
 
 

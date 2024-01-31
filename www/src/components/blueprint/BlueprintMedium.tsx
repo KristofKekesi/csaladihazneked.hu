@@ -47,11 +47,13 @@ export default function BlueprintMedium(props: Props) {
 			<Featureset blueprint={ props.blueprint } type={"general"} className="col-span-1" />
 				<Featureset blueprint={props.blueprint} type={"rooms"} maxReturn={4} />
 			</CardContent>
-			<CardFooter className="bg-white flex justify-between pt-6 rounded-b-3xl">
-				<Button variant={"link"}>
-					<span className="hidden md:inline">Hasonló tervrajzok</span>
-					<span className="inline md:hidden">Hasonlók</span>
-				</Button>
+			<CardFooter className="bg-white flex justify-end pt-6 rounded-b-3xl">
+				{ //TODO(KristofKekesi): Implement
+				//<Button variant={"link"}>
+				//	<span className="hidden md:inline">Hasonló tervrajzok</span>
+				//	<span className="inline md:hidden">Hasonlók</span>
+				//</Button>
+				}
 				<Link href={`/tervrajzok/${props.blueprint.id}`}>
 					<Button variant={"secondary"}>
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
