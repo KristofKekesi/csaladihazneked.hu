@@ -17,7 +17,7 @@ type Props = {
   }
    
   export async function generateMetadata(
-	{ params}: Props,
+	{ params, searchParams}: Props,
 	parent: ResolvingMetadata
   ): Promise<Metadata> {
 	const post: Post = await getRandomPost();
@@ -29,7 +29,7 @@ type Props = {
 }
 
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params, searchParams }: Props) {
 	const post: Post = await getPost(params.id);
 
 	return(
