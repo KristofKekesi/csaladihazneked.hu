@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getRandomBlueprint, getRandomPost } from "@/lib/random";
 import { Header, Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
