@@ -22,7 +22,7 @@ function randomBool(): boolean {
 	return Math.floor(Math.random() * 100 ) % 2 === 1;
 }
 
-export function getRandomBlueprint(): Blueprint {
+export function getRandomBlueprint(id?: number): Blueprint {
 	let randomType: "Lakás" | "Családihaz" | "Bolt" | "Ipar" = "Ipar";
 	let random = randomNumber(0, 3);
 	switch (random) {
@@ -33,7 +33,7 @@ export function getRandomBlueprint(): Blueprint {
 	}
 
 	return {
-		id: randomNumber(0, 100000),
+		id: id ?? randomNumber(0, 100000),
 		title: "_".repeat(10).split("").map(function(){
 			return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 			.charAt(Math.floor(62*Math.random()));}).join(""),
@@ -60,9 +60,9 @@ export function getRandomBlueprint(): Blueprint {
 	};
 }
 
-export function getRandomPost(): Post {
+export function getRandomPost(id?: number): Post {
 	return {
-		id: randomNumber(0, 100000),
+		id: id ?? randomNumber(0, 100000),
 		title: "_".repeat(10).split("").map(function(){
 			return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 			.charAt(Math.floor(62*Math.random()));}).join(""),

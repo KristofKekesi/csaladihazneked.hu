@@ -1,5 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { InfoIcon, Mail } from "lucide-react";
+import { Metadata, ResolvingMetadata } from "next";
 import { Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
@@ -10,16 +10,20 @@ import Featureset from "@/components/blueprint/Featureset";
 import { getRandomBlueprint } from "@/lib/random";
 import ImageCarousel from "@/components/general/ImageCarousel";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 import Markdown from "@/components/general/MarkDown";
-import { Metadata } from "next";
 
 
 type Props = {
-	id: string
-}
+	params: { id: number }
+	searchParams: { [key: string]: string | string[] | undefined }
+  }
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
-	console.log(props.id);
+  export async function generateMetadata(
+	{ params, searchParams }: Props,
+	parent: ResolvingMetadata
+  ): Promise<Metadata> {
+	console.log(params.id);
 	const blueprint: Blueprint = await getRandomBlueprint();
 
 	return {
@@ -29,8 +33,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 
-export default async function Page(props : Props) {
-	const blueprint: Blueprint = await getBlueprint(props.id);
+export default async function Page({ params, searchParams }: Props) {
+	const blueprint: Blueprint = await getBlueprint(params.id);
 
 	return(
 		<main>
@@ -100,7 +104,7 @@ export default async function Page(props : Props) {
 }
 
 // eslint-disable-next-line no-unused-vars
-async function getBlueprint(id: string) {
+async function getBlueprint(id: number) {
 	const blueprint: Blueprint = getRandomBlueprint();
 
 	return blueprint;

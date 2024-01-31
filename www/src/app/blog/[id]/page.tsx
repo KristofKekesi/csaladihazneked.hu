@@ -12,15 +12,15 @@ import PostSmall from "@/components/blog/PostSmall";
 
 
 type Props = {
-	params: { id: string },
+	params: { id: number }
 	searchParams: { [key: string]: string | string[] | undefined }
   }
    
   export async function generateMetadata(
-	{ params, searchParams}: Props,
+	{ params, searchParams }: Props,
 	parent: ResolvingMetadata
   ): Promise<Metadata> {
-	const post: Post = await getRandomPost();
+	const post: Post = await getRandomPost(params.id);
 
 	return {
 		title: post.title,
@@ -91,8 +91,8 @@ export default async function Page({ params, searchParams }: Props) {
 }
 
 // eslint-disable-next-line no-unused-vars
-async function getPost(id: string) {
-	const post: Post = getRandomPost();
+async function getPost(id: number) {
+	const post: Post = getRandomPost(id);
 
 	return post;
 }
