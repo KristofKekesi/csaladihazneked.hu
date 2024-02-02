@@ -1,5 +1,5 @@
 export type Photo = {
-	title: string,
+	title?: string,
 	src: string,
 	alt: string,
 	onClick?: any,

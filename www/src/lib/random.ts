@@ -22,7 +22,7 @@ function randomBool(): boolean {
 	return Math.floor(Math.random() * 100 ) % 2 === 1;
 }
 
-export function getRandomBlueprint(id?: number): Blueprint {
+export function getRandomBlueprint(): Blueprint {
 	let randomType: "Lakás" | "Családihaz" | "Bolt" | "Ipar" = "Ipar";
 	let random = randomNumber(0, 3);
 	switch (random) {
@@ -33,7 +33,9 @@ export function getRandomBlueprint(id?: number): Blueprint {
 	}
 
 	return {
-		id: id ?? randomNumber(0, 100000),
+		id: "_".repeat(10).split("").map(function(){
+			return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+			.charAt(Math.floor(62*Math.random()));}).join(""),
 		title: "_".repeat(10).split("").map(function(){
 			return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 			.charAt(Math.floor(62*Math.random()));}).join(""),
@@ -54,8 +56,9 @@ export function getRandomBlueprint(id?: number): Blueprint {
 			wc: randomNumber(1, 5),
 		},
 		features: {
-			basement: randomBool(),
-			american_kitchen: randomBool()
+			hasAttic: randomBool(),
+			hasGarage: randomBool(),
+			hasBasement: randomBool()
 		}
 	};
 }

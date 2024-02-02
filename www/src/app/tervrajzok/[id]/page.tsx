@@ -1,5 +1,4 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Metadata, ResolvingMetadata } from "next";
 import { Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
@@ -12,18 +11,18 @@ import ImageCarousel from "@/components/general/ImageCarousel";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import Markdown from "@/components/general/MarkDown";
+import { Metadata } from "next";
 
 
 type Props = {
-	params: { id: number }
+	params: { slug: string }
 	searchParams: { [key: string]: string | string[] | undefined }
   }
 
   export async function generateMetadata(
-	{ params, searchParams }: Props,
-	parent: ResolvingMetadata
+	{ params }: Props,
   ): Promise<Metadata> {
-	console.log(params.id);
+	console.log(params.slug);
 	const blueprint: Blueprint = await getRandomBlueprint();
 
 	return {
@@ -33,12 +32,12 @@ type Props = {
 }
 
 
-export default async function Page({ params, searchParams }: Props) {
-	const blueprint: Blueprint = await getBlueprint(params.id);
+export default async function Page() {
+	const blueprint: Blueprint = await getRandomBlueprint();
 
 	return(
 		<main>
-			<Subtitle className="pt-6 px-6">Gárdony</Subtitle>
+			<Subtitle className="pt-6 px-6">Tervrajz</Subtitle>
 			<Title className="px-6">{ blueprint.title }</Title>
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">

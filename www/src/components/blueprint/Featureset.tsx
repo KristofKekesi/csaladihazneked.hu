@@ -50,17 +50,19 @@ export default function Featureset(props: FeaturesetProps) {
 			</> : null }
 
 			{ props.type === "features" ? <>
-				{props.blueprint.features.american_kitchen ? 
-				<li className="flex items-baseline select-text">Amerikai konyha</li> : null}
-				{props.blueprint.features.basement ? 
+				{props.blueprint.features.hasAttic ? 
+				<li className="flex items-baseline select-text">Padlás</li> : null}
+				{props.blueprint.features.hasBasement ? 
 				<li className="flex items-baseline select-auto">Alagsor</li> : null}
+				{props.blueprint.features.hasGarage ? 
+				<li className="flex items-baseline select-auto">Garázs</li> : null}
 			</> : null }
 
 			{ props.type === "general" ? <>
 				<li className="flex items-baseline">
 					{ props.blueprint.type === "Bolt" ?
 					<Store className="h-4 w-4 mr-2" /> : null }
-					{ props.blueprint.type === "Családihaz" ?
+					{ props.blueprint.type === "Családiház" ?
 					<Home className="h-4 w-4 mr-2" /> : null }
 					{ props.blueprint.type === "Ipar" ?
 					<Factory className="h-4 w-4 mr-2" /> : null }
@@ -70,7 +72,7 @@ export default function Featureset(props: FeaturesetProps) {
 				</li>
 				<li className="flex items-baseline">
 					<Box className="h-4 w-4 mr-2" />
-					<span className="select-auto">85 m<sup>2</sup></span>
+					<span className="select-auto">{ props.blueprint.squarem } m<sup>2</sup></span>
 				</li>
 				<li className="flex items-baseline">
 					<Layers className="h-4 w-4 mr-2" />

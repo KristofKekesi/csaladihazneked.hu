@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getRandomBlueprint, getRandomPost } from "@/lib/random";
 import { Header, Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
-import { Metadata, ResolvingMetadata } from "next";
 import { Balancer } from "react-wrap-balancer";
 import BlueprintSmall from "@/components/blueprint/BlueprintSmall";
 import { cn } from "@/lib/utils";
 import Markdown from "@/components/general/MarkDown";
+import { Metadata } from "next";
 import { Post } from "@/types/Post";
 import PostMediumCarousel from "@/components/blog/PostMediumCarousel";
 import PostSmall from "@/components/blog/PostSmall";
@@ -17,8 +17,7 @@ type Props = {
   }
    
   export async function generateMetadata(
-	{ params, searchParams }: Props,
-	parent: ResolvingMetadata
+	{ params }: Props
   ): Promise<Metadata> {
 	const post: Post = await getRandomPost(params.id);
 
@@ -29,7 +28,7 @@ type Props = {
 }
 
 
-export default async function Page({ params, searchParams }: Props) {
+export default async function Page({ params }: Props) {
 	const post: Post = await getPost(params.id);
 
 	return(
