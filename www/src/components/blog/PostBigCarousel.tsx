@@ -7,14 +7,18 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
+import { Post } from "@/types/Post";
 import PostBig from "./PostBig";
 import { useRef } from "react";
 
-const IMG = "https://damassets.autodesk.net/content/" +
-"dam/autodesk/www/solutions/generative-design/fy22/images/" + 
-"blueprint-maker/what-difference-blueprints-floor-plans-thumb-1172x660.jpg";
 
-export default function PostBigCarousel(props: {className: string}) {
+type Props = {
+	posts: Array<Post>,
+	className?: string
+}
+
+
+export default function PostBigCarousel(props: Props) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);
@@ -29,17 +33,11 @@ export default function PostBigCarousel(props: {className: string}) {
 				opts={{align: "start", loop: true, direction: "ltr"}}
 			>
 				<CarouselContent>
-					{Array.from({ length: 5 }).map((_, index) => (
-					<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={index}>
-						<PostBig post={{
-							id: 0,
-							title: "Harmadik bejegyzés",
-							description: "Mi is ez itt?",
-							imageURL: IMG,
-							content: ""
-						}} />
-					</CarouselItem>
-					))}
+					{ props.posts.map((post, index) => (
+						<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={index}>
+							<PostBig post={post} />
+						</CarouselItem>
+					)) }
 				</CarouselContent>
 			</Carousel>
 		</div>

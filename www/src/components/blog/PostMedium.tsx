@@ -29,7 +29,7 @@ export default function PostMedium(props: Props) {
 				<CardDescription className="line-clamp-3">{props.post.description}</CardDescription>
 			</CardHeader>
 			<CardFooter>
-				<Link href={`/blog/${props.post.id}`}>
+				<Link href={`/blog/${props.post.slug}`}>
 					<Button variant={"secondary"} className="drop-shadow-2xl">
 						Tovább <ChevronRight className="h-4 w-4 ml-2" />
 					</Button>

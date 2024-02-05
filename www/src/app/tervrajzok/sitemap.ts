@@ -1,11 +1,11 @@
 import { Blueprint } from "@/types/Blueprint";
-import { getRandomBlueprint } from "@/lib/random";
+import { getAllBlueprint } from "@/lib/api";
 import { MetadataRoute } from "next";
 
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-	const blueprints: Array<Blueprint> = [getRandomBlueprint(), getRandomBlueprint()];
+export default async function sitemap() {
+	const blueprints: Array<Blueprint> = await getAllBlueprint();
 
 	let sitemap: MetadataRoute.Sitemap = [];
 	blueprints.map((blueprint: Blueprint) => {

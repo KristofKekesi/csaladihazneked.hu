@@ -1,11 +1,11 @@
-import { getRandomPost } from "@/lib/random";
+import { getAllPost } from "@/lib/api";
 import { MetadataRoute } from "next";
 import { Post } from "@/types/Post";
 
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-	const posts: Array<Post> = [getRandomPost(), getRandomPost()];
+export default async function sitemap() {
+	const posts: Array<Post> = await getAllPost();
 
 	let sitemap: MetadataRoute.Sitemap = [];
 	posts.map((post: Post) => {

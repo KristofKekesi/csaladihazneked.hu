@@ -35,7 +35,7 @@ export default function PostBig(props: {post: Post}) {
 				{ //TODO(KristofKekesi): Implement
 				//<Button className="hidden md:inline" variant={"link"}>Hasonló bejegyzések</Button>
 				}
-				<Link href={`/blog/${props.post.id}`}>
+				<Link href={`/blog/${props.post.slug}`}>
 					<Button variant={"secondary"}>
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
 					</Button>

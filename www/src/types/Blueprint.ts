@@ -1,6 +1,7 @@
 export type Blueprint = {
 	id: string,
 	isHighlighted?: boolean,
+	slug: string,
 	title: string,
 	description?: string,
 	price?: number,

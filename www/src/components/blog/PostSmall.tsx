@@ -12,7 +12,7 @@ type Props = {
 
 export default function PostSmall(props: Props) {
 	return (
-		<Link href={`/blog/${props.post.id}`}>
+		<Link href={`/blog/${props.post.slug}`}>
 			<Card className={
 				cn("w-fit rounded-full hover:bg-slate-50 transition-colors", props.className)
 			}>

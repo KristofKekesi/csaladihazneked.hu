@@ -2,7 +2,7 @@ import { Subtitle, Title } from "@/components/general/Typography";
 import { Blueprint } from "@/types/Blueprint";
 import BlueprintBigCarousel from "@/components/blueprint/BlueprintBigCarousel";
 import BlueprintMedium from "@/components/blueprint/BlueprintMedium";
-import { getAllBlueprints } from "@/lib/api";
+import { getAllBlueprint } from "@/lib/api";
 import { Metadata } from "next";
 
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 
 export default async function Blueprints() {
-	const blueprints: Array<Blueprint> = await getBlueprints();
+	const blueprints: Array<Blueprint> = await getAllBlueprint();
 	const highlightedBlueprints: Array<Blueprint> = 
 		blueprints.filter((blueprint) => {
 			return blueprint.isHighlighted;
@@ -39,10 +39,4 @@ export default async function Blueprints() {
 			</div>
 		</main>
 	);
-}
-
-async function getBlueprints() {
-	const blueprints: Array<Blueprint> = await getAllBlueprints();
-
-	return blueprints;
 }

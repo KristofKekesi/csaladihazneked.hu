@@ -6,7 +6,7 @@ import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarou
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
-import { getRandomBlueprint } from "@/lib/random";
+import { getBlueprint } from "@/lib/filter_data";
 import ImageCarousel from "@/components/general/ImageCarousel";
 import Link from "next/link";
 import { Mail } from "lucide-react";
@@ -23,7 +23,7 @@ type Props = {
 	{ params }: Props,
   ): Promise<Metadata> {
 	console.log(params.slug);
-	const blueprint: Blueprint = await getRandomBlueprint();
+	const blueprint: Blueprint = await getBlueprint({slug: params.slug});
 
 	return {
 		title: blueprint.title,
@@ -32,8 +32,8 @@ type Props = {
 }
 
 
-export default async function Page() {
-	const blueprint: Blueprint = await getRandomBlueprint();
+export default async function Page({params}: Props) {
+	const blueprint: Blueprint = await getBlueprint({slug: params.slug});
 
 	return(
 		<main>
@@ -100,11 +100,4 @@ export default async function Page() {
 			/>
 		</main>
 	);
-}
-
-// eslint-disable-next-line no-unused-vars
-async function getBlueprint(id: number) {
-	const blueprint: Blueprint = getRandomBlueprint();
-
-	return blueprint;
 }

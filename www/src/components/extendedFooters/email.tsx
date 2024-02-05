@@ -44,11 +44,6 @@ export default function EmailExtendedFooter() {
 					/>
 				</div>
 				<Button
-					onClick={() => fetch(
-						encodeURI(
-							`/api/mail?email-address=${email}&name=${name}&message=${message}`),
-						{ next: { revalidate: MAIL_FORM_API_COOLDOWN } }
-					)}
 					variant="secondary"
 					type="submit"
 					className="py-1 px-2 rounded-md bg-white hover:bg-white/80
@@ -72,11 +67,6 @@ export default function EmailExtendedFooter() {
 				<div className="grid grid-cols-5 col-span-5 items-baseline">
 					<span className="text-black/50 ml-2 text-base col-span-2">*: kötelező</span>
 					<Button
-						onClick={() => fetch(
-							encodeURI(
-								`/api/mail?email-address=${email}&name=${name}&message=${message}`),
-							{ next: { revalidate: MAIL_FORM_API_COOLDOWN } }
-						)}
 						variant="secondary"
 						type="submit"
 						className="py-1 mt-4 px-2 rounded-md bg-white hover:bg-white/80

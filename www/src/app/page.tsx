@@ -1,19 +1,21 @@
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { getAllBlueprint, getAllPartner, getAllPost } from "@/lib/api";
 import { Subtitle, Title } from "@/components/general/Typography";
 import Balancer from "react-wrap-balancer";
-import { Blueprint } from "@/types/Blueprint";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import EmailExtendedFooter from "@/components/extendedFooters/email";
-import { getRandomBlueprint } from "@/lib/random";
 import Link from "next/link";
 import Markdown from "@/components/general/MarkDown";
+import Partner from "@/components/index/Partner";
 import PostMedium from "@/components/blog/PostMedium";
 
 
 export default async function Home() {
-	const blueprints = await getBlueprints();
+	const blueprints = await getAllBlueprint();
+	const posts = await getAllPost();
+	const partners = await getAllPartner();
 
 	return (
 		<main className="flex flex-col pt-3">
@@ -28,21 +30,14 @@ export default async function Home() {
 			<Subtitle className="pt-4 px-6">Partnereink</Subtitle>
 			<hr className="pb-4" />
 			<div className="px-6 flex w-full justify-evenly gap-4">
-				<div className="rounded-full bg-slate-100 w-32 h-32" />
-				<div className="rounded-full bg-slate-100 w-32 h-32" />
-				<div className="rounded-full bg-slate-100 w-32 h-32" />
-				<div className="rounded-full bg-slate-100 w-32 h-32" />
+				{ partners.map((partner, index) => (
+					<Partner partner={partner} key={index} />
+				)) }
 			</div>
 			<Subtitle className="pt-6 px-6">Legutóbbi híreink</Subtitle>
 			<hr className="pb-4" />
 			<div className="mx-6 grid grid-cols-5 gap-4">
-				<PostMedium className="col-span-5 xl:col-span-4" post={{
-					id: 0,
-					title: "Harmadik bejegyzés",
-					description: "Mi is ez itt?",
-					imageURL: "",
-					content: ""
-				}} />
+				<PostMedium className="col-span-5 xl:col-span-4" post={posts[0]} />
 				<Card className="justify-between hidden xl:flex">
 					<CardHeader>
 						<CardTitle className="font-serif">
@@ -68,29 +63,26 @@ export default async function Home() {
 				</div>
 				<div className="px-6">
 					<div className="flex sm:flex-row flex-col gap-x-4 pb-4 select-all">
-						<div>
-							<span className="font-bold">Tel.: </span>
-							<Link href={"tel:+36302342037"}>+36 30 234 2037</Link>
-						</div>
-						<div>
-							<span className="font-bold">Email: </span>
-							<Link href={"mailto:hello@csaladihazneked.hu"}>
-								hello@csaladihazneked.hu
-							</Link>
-						</div>
+						{ process.env.NEXT_PUBLIC_PHONE_NUMBER !== undefined ?
+							<div>
+								<span className="font-bold">Tel.: </span>
+								<Link href={`tel:${ process.env.NEXT_PUBLIC_PHONE_NUMBER }`}>
+									{ process.env.NEXT_PUBLIC_PHONE_NUMBER }
+								</Link>
+							</div>
+						: null }
+						{ process.env.NEXT_PUBLIC_EMAIL_ADDRESS !== undefined ?
+							<div>
+								<span className="font-bold">Email: </span>
+								<Link href={`mailto:${ process.env.NEXT_PUBLIC_EMAIL_ADDRESS }`}>
+									{ process.env.NEXT_PUBLIC_EMAIL_ADDRESS }
+								</Link>
+							</div>
+						: null }
 					</div>
 				</div>
 			</div>
 			<EmailExtendedFooter />
 		</main>
 	);
-}
-
-async function getBlueprints() {
-	const blueprints: Array<Blueprint> = [
-		getRandomBlueprint(), getRandomBlueprint(), getRandomBlueprint(),
-		getRandomBlueprint(), getRandomBlueprint(), getRandomBlueprint()
-	];
-
-	return blueprints;
 }

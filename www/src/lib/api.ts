@@ -1,6 +1,8 @@
 import { API_FETCH_REVALIDATE } from "../../config";
 import { Blueprint } from "@/types/Blueprint";
+import { Partner } from "@/types/Partner";
 import { Photo } from "@/types/Photo";
+import { Post } from "@/types/Post";
 
 const API_URL = process.env.WORDPRESS_API_URL!;
 
@@ -35,7 +37,51 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	return json.data;
 }
 
-export async function getAllBlueprints() {
+export async function getAllPost() {
+	const data = await fetchAPI(`
+		{
+			customPosts {
+				edges {
+					node {
+						id
+						title
+						slug
+						content
+						dateGmt
+						postMeta {
+							isHighlighted
+							highlighted_imageURL {
+								node {
+									srcSet
+									sourceUrl
+								}
+		  					}
+							description
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	let posts: Array<Post> = [];
+	data.customPosts.edges.map((post: any) => {
+		posts.push({
+			id: post.node.id,
+			isHighlighted: post.node.postMeta.isHighlighted,
+			slug: post.node.slug,
+			description: post.node.description,
+			title: post.node.title,
+			imageURL: post.node.postMeta.highlighted_imageURL.node.sourceUrl,
+			imageSrcSet: post.node.postMeta.highlighted_imageURL.node.imageSrcSet,
+			content: post.node.content
+		}); 
+	});
+
+	return posts;
+}
+
+export async function getAllBlueprint() {
 	const data = await fetchAPI(`
 		{
 			blueprints {
@@ -43,6 +89,7 @@ export async function getAllBlueprints() {
 					node {
 						id
 						title
+						slug
 						content
 							blueprintMeta {
 								price
@@ -73,6 +120,7 @@ export async function getAllBlueprints() {
 	data.blueprints.edges.map((blueprint: any) => {
 		blueprints.push({
 			id: blueprint.node.id,
+			slug: blueprint.node.slug,
 			isHighlighted: blueprint.node.blueprintMeta.isHighlighted,
 			price: blueprint.node.blueprintMeta.price,
 			description: blueprint.node.content,
@@ -98,7 +146,8 @@ export async function getAllBlueprints() {
 	return blueprints;
 }
 
-export async function getImages() {
+
+export async function getAllImage() {
 	const data = await fetchAPI(`
 		{
 			mediaItems {
@@ -122,10 +171,45 @@ export async function getImages() {
 			title: photo.node.altText,
 			alt: photo.node.altText,
 			src: photo.node.sourceUrl,
-			width: photo.node.title.split("×")[0] ?? 16,
-			height: photo.node.title.split("×")[1] ?? 9
+			width: photo.node.title.split("×")[0] ?? 0,
+			height: photo.node.title.split("×")[1] ?? 0
 		});
 	});
 
 	return photos;
+}
+
+export async function getAllPartner() {
+	const data = await fetchAPI(`
+		{
+			partners {
+				edges {
+					node {
+						id
+						title
+						partnerMeta {
+							link
+							imageURL {
+								node {
+									sourceUrl
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`);	
+
+	let partners: Array<Partner> = [];
+	data.partners.edges.map(async (partner: any) => {		
+		partners.push({
+			name: partner.node.title,
+			id: partner.node.id,
+			imageURL: partner.node.partnerMeta.imageURL.node.sourceUrl,
+			link: partner.node.partnerMeta.link
+		});
+	});
+
+	return partners;
 }
