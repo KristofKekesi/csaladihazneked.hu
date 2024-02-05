@@ -91,15 +91,67 @@ export async function getAllBlueprint() {
 						title
 						slug
 						content
-							blueprintMeta {
-								price
-								isHighlighted
-								imageURL {
-									node {
-										sourceUrl
-									}
+						blueprintMeta {
+							subtitle
+							price
+							description
+							isHighlighted
+							imageURL {
+								node {
+									sourceUrl
 								}
-								type
+							}
+							image1 {
+								node {
+									sourceUrl
+								}
+							}
+							image2 {
+								node {
+									sourceUrl
+								}
+							}
+							image3 {
+								node {
+									sourceUrl
+								}
+							}
+							image4 {
+								node {
+									sourceUrl
+								}
+							}
+							image5 {
+								node {
+									sourceUrl
+								}
+							}
+							image6 {
+								node {
+									sourceUrl
+								}
+							}
+							image7 {
+								node {
+									sourceUrl
+								}
+							}
+							image8 {
+								node {
+									sourceUrl
+								}
+							}
+							image9 {
+								node {
+									sourceUrl
+								}
+							}
+							image10 {
+								node {
+									sourceUrl
+								}
+							}
+							type
 							squarem
 							floors
 							rooms
@@ -109,6 +161,7 @@ export async function getAllBlueprint() {
 							hasAttic
 							hasGarage
 							hasBasement
+							youtubeVideoURL
 						}
 					}
 				}
@@ -118,28 +171,44 @@ export async function getAllBlueprint() {
 
 	let blueprints: Array<Blueprint> = [];
 	data.blueprints.edges.map((blueprint: any) => {
+		const blueprintMeta =blueprint.node.blueprintMeta;
 		blueprints.push({
 			id: blueprint.node.id,
+			subtitle: blueprintMeta.subtitle,
 			slug: blueprint.node.slug,
-			isHighlighted: blueprint.node.blueprintMeta.isHighlighted,
-			price: blueprint.node.blueprintMeta.price,
-			description: blueprint.node.content,
+			isHighlighted: blueprintMeta.isHighlighted,
+			price: blueprintMeta.price,
+			description: blueprintMeta.description,
+			content: blueprint.node.content,
 			title: blueprint.node.title,
-			imageURL: blueprint.node.blueprintMeta.imageURL.node.sourceUrl,
-			type: blueprint.node.blueprintMeta.type[0],
-			squarem: blueprint.node.blueprintMeta.squarem,
-			floors: blueprint.node.blueprintMeta.floors,
+			imageURL: blueprintMeta.imageURL.node.sourceUrl,
+			images: [
+				blueprintMeta.image1 !== null ? blueprintMeta.image1.node.sourceUrl : null,
+				blueprintMeta.image2 !== null ? blueprintMeta.image2.node.sourceUrl : null,
+				blueprintMeta.image3 !== null ? blueprintMeta.image3.node.sourceUrl : null,
+				blueprintMeta.image4 !== null ? blueprintMeta.image4.node.sourceUrl : null,
+				blueprintMeta.image5 !== null ? blueprintMeta.image5.node.sourceUrl : null,
+				blueprintMeta.image6 !== null ? blueprintMeta.image6.node.sourceUrl : null,
+				blueprintMeta.image7 !== null ? blueprintMeta.image7.node.sourceUrl : null,
+				blueprintMeta.image8 !== null ? blueprintMeta.image8.node.sourceUrl : null,
+				blueprintMeta.image9 !== null ? blueprintMeta.image9.node.sourceUrl : null,
+				blueprintMeta.image10 !== null ? blueprintMeta.image10.node.sourceUrl : null,
+			].filter((string) => { return string !== null; }),
+			type: blueprintMeta.type[0],
+			squarem: blueprintMeta.squarem,
+			floors: blueprintMeta.floors,
 			rooms: {
-				rooms: blueprint.node.blueprintMeta.rooms,
-				livingroom: blueprint.node.blueprintMeta.livingroom,
-				bathroom: blueprint.node.blueprintMeta.bathroom,
-				wc: blueprint.node.blueprintMeta.wc
+				rooms: blueprintMeta.rooms,
+				livingroom: blueprintMeta.livingroom,
+				bathroom: blueprintMeta.bathroom,
+				wc: blueprintMeta.wc
 			},
 			features: {
-				hasAttic: blueprint.node.blueprintMeta.hasAttic,
-				hasBasement: blueprint.node.blueprintMeta.hasBasement,
-				hasGarage: blueprint.node.blueprintMeta.hasGarage
-			}
+				hasAttic: blueprintMeta.hasAttic,
+				hasBasement: blueprintMeta.hasBasement,
+				hasGarage: blueprintMeta.hasGarage
+			},
+			youtubeVideoURL: blueprintMeta.youtubeVideoURL
 		}); 
 	});
 
@@ -150,9 +219,8 @@ export async function getAllBlueprint() {
 export async function getAllImage() {
 	const data = await fetchAPI(`
 		{
-			mediaItems {
+			mediaItems(first: 500) {
 				edges {
-					cursor
 					node {
 						id
 						title

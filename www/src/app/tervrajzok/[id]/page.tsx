@@ -38,11 +38,14 @@ export default async function Page({params}: Props) {
 	return(
 		<main>
 			<Subtitle className="pt-6 px-6">Tervrajz</Subtitle>
+			<div className="flex justify-between">
 			<Title className="px-6">{ blueprint.title }</Title>
+			<Subtitle className="pt-6 px-6">{ blueprint.subtitle }</Subtitle>
+			</div>
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">
 				<ImageCarousel 
-					images={["/images/1.png", "/images/2.png", "/images/3.png", "/images/4.png"]} 
+					images={[blueprint.imageURL, ...blueprint.images]} 
 					className="col-span-5 md:col-span-3"
 				/>
 				<Card className="col-span-5 md:col-span-2 flex flex-col h-full justify-between">
@@ -75,22 +78,7 @@ export default async function Page({params}: Props) {
 			<Subtitle className="pt-6 px-6">Leírás</Subtitle>
 			<hr className="pb-4" />
 			<Markdown className="px-6">
-				A bejgli tésztájához a langyos tejben feloldjuk a porcukrot, majd az
-				élesztőt felfuttatjuk benne.A vajat kis tálban felolvasztjuk. A lisztet
-				tálba szitáljuk. Hozzáadjuk először az élesztős tejet és 2 db tojássárgáját,
-				majd a vajat és a sót, végül a reszelt citromhéjat. A tésztát jól összedolgozzuk:
-				viszonylag kemény, rugalmas tésztát kell kapnunk. Meleg helyen pihentetjük,
-				ameddig elkészítjük a töltelékeket. A darált diót és darált mákot külön tálba
-				rakjuk, és összekeverjük 10-10 dkg cukorral és 1-1 dl tejjel. A vaníliáscukrot
-				szintén kétfelé osztjuk, és a töltelékekhez keverjük. Ha szeretjük, keverhetünk bele
-				mazsolát és reszelt citromhéjat is. A megkelt tésztát 2 részre osztjuk, és gáztepsi
-				méretű téglalapokat nyújtunk belőle. A tölteléket kb. 1 cm vastagságban eloszlatjuk
-				a tészta teljes felületén a széleken hagyva kb. 1 centi széles csíkot, majd óvatosan
-				feltekerjük. A két rudat a tepsibe helyezzük, nem túl szorosan egymáshoz, hiszen a
-				sütés közben még kelni fognak. A bejglik tetejét megkenjük a maradék
-				tojássárgájával, amihez 1 kanál tejet is keverhetünk, hogy még szebb színe legyen.
-				Húsvillával megszurkáljuk őket. 200 fokra előmelegített sütőben kb. 50-55
-				perc alatt szép aranybarnára sütjük a süteményeket.
+				{ blueprint.content }
 			</Markdown>
 			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />

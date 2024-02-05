@@ -1,11 +1,14 @@
 export type Blueprint = {
 	id: string,
+	subtitle?: string,
 	isHighlighted?: boolean,
 	slug: string,
 	title: string,
-	description?: string,
+	description: string,
+	content: string,
 	price?: number,
 	imageURL: string,
+	images: Array<string>,
 	
 	type: string //"Lakás" | "Családiház" | "Bolt" | "Ipar",
 	squarem: number,
@@ -21,5 +24,6 @@ export type Blueprint = {
 		hasBasement: boolean,
 		hasAttic: boolean,
 		hasGarage: boolean
-	}
+	},
+	youtubeVideoURL?: string
 }
