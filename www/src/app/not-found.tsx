@@ -6,7 +6,6 @@ import Link from "next/link";
 
 
 export default function Blueprints() {
-
 	return (
 		<main className="flex flex-col just pt-3">
 			<Subtitle className="px-6">404</Subtitle>

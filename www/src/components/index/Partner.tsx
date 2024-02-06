@@ -12,8 +12,8 @@ export default function Partner(props: Props) {
 				<Image
 					src={ props.partner.imageURL }
 					alt={ props.partner.name }
-					fill objectFit="cover"
-					className="rounded-full"
+					fill
+					className="rounded-full object-cover"
 				/>
 			</div>
 			<p>{props.partner.name}</p>

@@ -8,6 +8,7 @@ export type Blueprint = {
 	content: string,
 	price?: number,
 	imageURL: string,
+	imageSrcSet: Array<String>,
 	images: Array<string>,
 	
 	type: string //"Lakás" | "Családiház" | "Bolt" | "Ipar",

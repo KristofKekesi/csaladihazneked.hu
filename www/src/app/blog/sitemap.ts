@@ -1,11 +1,11 @@
-import { getAllPost } from "@/lib/api";
+import { getAllPosts } from "@/lib/api";
 import { MetadataRoute } from "next";
 import { Post } from "@/types/Post";
 
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
 export default async function sitemap() {
-	const posts: Array<Post> = await getAllPost();
+	const posts: Array<Post> = await getAllPosts();
 
 	let sitemap: MetadataRoute.Sitemap = [];
 	posts.map((post: Post) => {

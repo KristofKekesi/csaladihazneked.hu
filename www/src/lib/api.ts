@@ -37,10 +37,10 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	return json.data;
 }
 
-export async function getAllPost() {
+export async function getAllPosts() {
 	const data = await fetchAPI(`
 		{
-			customPosts {
+			customPosts(first: ${ process.env.API_GET_POST_NUMBER_LIMIT }) {
 				edges {
 					node {
 						id
@@ -66,14 +66,16 @@ export async function getAllPost() {
 
 	let posts: Array<Post> = [];
 	data.customPosts.edges.map((post: any) => {
+		const postMeta = post.node.postMeta;
+
 		posts.push({
 			id: post.node.id,
-			isHighlighted: post.node.postMeta.isHighlighted,
+			isHighlighted: postMeta.isHighlighted,
 			slug: post.node.slug,
 			description: post.node.description,
 			title: post.node.title,
-			imageURL: post.node.postMeta.highlighted_imageURL.node.sourceUrl,
-			imageSrcSet: post.node.postMeta.highlighted_imageURL.node.imageSrcSet,
+			imageURL: postMeta.highlighted_imageURL.node.sourceUrl,
+			imageSrcSet: postMeta.highlighted_imageURL.node.imageSrcSet,
 			content: post.node.content
 		}); 
 	});
@@ -81,10 +83,10 @@ export async function getAllPost() {
 	return posts;
 }
 
-export async function getAllBlueprint() {
+export async function getAllBlueprints() {
 	const data = await fetchAPI(`
 		{
-			blueprints {
+			blueprints(first: ${ process.env.API_GET_BLUEPRINT_NUMBER_LIMIT }) {
 				edges {
 					node {
 						id
@@ -182,6 +184,7 @@ export async function getAllBlueprint() {
 			content: blueprint.node.content,
 			title: blueprint.node.title,
 			imageURL: blueprintMeta.imageURL.node.sourceUrl,
+			imageSrcSet: blueprintMeta.imageURL.node.srcSet,
 			images: [
 				blueprintMeta.image1 !== null ? blueprintMeta.image1.node.sourceUrl : null,
 				blueprintMeta.image2 !== null ? blueprintMeta.image2.node.sourceUrl : null,
@@ -216,10 +219,10 @@ export async function getAllBlueprint() {
 }
 
 
-export async function getAllImage() {
+export async function getAllImages() {
 	const data = await fetchAPI(`
 		{
-			mediaItems(first: 500) {
+			mediaItems(first: ${ process.env.API_GET_IMAGE_NUMBER_LIMIT }) {
 				edges {
 					node {
 						id
@@ -247,10 +250,10 @@ export async function getAllImage() {
 	return photos;
 }
 
-export async function getAllPartner() {
+export async function getAllPartners() {
 	const data = await fetchAPI(`
 		{
-			partners {
+			partners(first: ${ process.env.API_GET_PARTNER_NUMBER_LIMIT }) {
 				edges {
 					node {
 						id
@@ -270,7 +273,7 @@ export async function getAllPartner() {
 	`);	
 
 	let partners: Array<Partner> = [];
-	data.partners.edges.map(async (partner: any) => {		
+	data.partners.edges.map((partner: any) => {		
 		partners.push({
 			name: partner.node.title,
 			id: partner.node.id,
@@ -280,4 +283,34 @@ export async function getAllPartner() {
 	});
 
 	return partners;
+}
+
+export async function getAllPages() {
+	type Page = {
+		title: string,
+		content: string
+	}
+
+	const data = await fetchAPI(`
+		{
+			customPages(first:1000) {
+				edges {
+					node {
+					title
+					content
+					}
+				}
+			}
+		}
+	`);
+
+	let pages: Array<Page> = [];
+	data.customPages.edges.map((page: any) => {
+		pages.push({
+			title: page.node.title,
+			content: page.node.content
+		})
+	});
+
+	return pages;
 }

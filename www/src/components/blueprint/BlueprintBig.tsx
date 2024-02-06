@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Featureset from "./Featureset";
+import Image from "next/image";
 import Link from "next/link";
 import { subtitleClassNames } from "../general/Typography";
 
@@ -61,7 +62,7 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 					//	<span className="hidden md:inline">Hasonló tervrajzok</span>
 					//</Button>
 					}
-					<Link href={`/tervrajzok/${props.blueprint.id}`}>
+					<Link href={`/tervrajzok/${props.blueprint.slug}`}>
 						<Button>
 							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
 						</Button>
@@ -69,9 +70,10 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 				</CardFooter>
 			</div>
 			<div
-				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline bg-cover"
-				style={{backgroundImage: `url(${ props.blueprint.imageURL })`}}
-			/>
+				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline relative"
+			>
+				<Image src={ props.blueprint.imageURL } fill alt="" className="object-cover" />
+			</div>
 		</Card>
 	);
 }

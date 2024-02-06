@@ -36,8 +36,8 @@ export default function ImageCarousel(props: Props) {
 							items-center justify-center p-0 m-0 relative">
 							<Image
 								src={ image } alt={""}
-								fill objectFit="contain"
-								className="aspect-video bg-contain rounded-lg" />
+								fill
+								className="aspect-video bg-contain rounded-lg object-contain" />
 						</div>
 					</CarouselItem>
 					)) }

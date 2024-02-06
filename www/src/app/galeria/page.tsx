@@ -1,4 +1,4 @@
-import { getAllImage, getAllPartner } from "@/lib/api";
+import { getAllImages, getAllPartners } from "@/lib/api";
 import { Subtitle, Title } from "@/components/general/Typography";
 import CustomGallery from "@/components/general/gallery/CustomGallery";
 import { Metadata } from "next";
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 
 export default async function Galeria() {
-  const photos: Array<Photo> = await getAllImage();
+  const photos: Array<Photo> = await getAllImages();
 
-  const partners: Array<Partner> = await getAllPartner();
+  const partners: Array<Partner> = await getAllPartners();
   const partnerImageURLs: Array<string> = partners.map((partner) => { return partner.imageURL; });
 
   const filteredPhotos = photos.filter((photo) => { return !partnerImageURLs.includes(photo.src);});

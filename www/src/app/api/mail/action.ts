@@ -30,12 +30,13 @@ export async function sendMail(props: Props) {
 		return Response.json(validateResponse);
 	}
 	if (process.env.MAILGUN_API_KEY === undefined) {
-		//TODO(KristofKekesi): Better error handling
-		//TODO(KristofKekesi): uses http status codes
-		return Response.json("a");
+		throw new Error("No MAILGUN_API_KEY environmental variable were provided.");
 	}
 	if (process.env.MAILGUN_DOMAIN === undefined) {
-		return Response.json("a");
+		throw new Error("No MAILGUN_DOMAIN environmental variable were provided.");
+	}
+	if (process.env.MAILGUN_RECEIVER === undefined) {
+		throw new Error("No MAILGUN_RECEIVER environmental variable were provided.");
 	}
 
 	// Calling MailGun API. (https://www.mailgun.com/)

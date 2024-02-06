@@ -1,5 +1,5 @@
 import { Subtitle, Title } from "@/components/general/Typography";
-import { getAllPost } from "@/lib/api";
+import { getAllPosts } from "@/lib/api";
 import MailingListExtendedFooter from "@/components/extendedFooters/mailingList";
 import { Metadata } from "next";
 import { Post } from "@/types/Post";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 
 export default async function Blog() {
-	const posts: Array<Post> = await getAllPost();
+	const posts: Array<Post> = await getAllPosts();
 	const highlightedPosts: Array<Post> = 
 		posts.filter((post) => {
 			return post.isHighlighted;

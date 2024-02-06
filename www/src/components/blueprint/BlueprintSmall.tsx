@@ -13,7 +13,7 @@ type Props = {
 
 export default function BlueprintSmall(props: Props) {
 	return (
-		<Link href={`/tervrajzok/${props.blueprint.id}`}>
+		<Link href={`/tervrajzok/${props.blueprint.slug}`}>
 			<Card className={
 				cn("w-fit rounded-3xl hover:bg-slate-50 transition-colors", props.className)
 			}>
