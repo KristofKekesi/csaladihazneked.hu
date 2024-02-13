@@ -12,9 +12,6 @@ export default function Header() {
 					<span className="inline sm:hidden">Home</span>
 				</Link>
 					<div className="flex flex-row gap-4">
-					<Link className="hover:text-black/50 transition-colors" href="/blog">
-						Blog
-					</Link>
 					<Link className="hover:text-black/50 transition-colors" href="/galeria">
 						Galéria
 					</Link>

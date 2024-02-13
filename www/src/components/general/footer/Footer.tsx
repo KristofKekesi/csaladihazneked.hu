@@ -21,12 +21,6 @@ export default function Footer() {
 					<div className="flex flex-col sm:flex-row gap-4 items-end">
 						<Link
 							className="hover:text-black/50 transition-colors"
-							href="/blog"
-						>
-							Blog
-						</Link>
-						<Link
-							className="hover:text-black/50 transition-colors"
 							href="/galeria"
 						>
 							Galéria

@@ -1,3 +1,6 @@
+//** This page was removed because of client needs. 
+// Since this is such a core feature the page won't be deleted.
+
 import { Subtitle, Title } from "@/components/general/Typography";
 import { getAllPosts } from "@/lib/api";
 import MailingListExtendedFooter from "@/components/extendedFooters/mailingList";
@@ -5,7 +8,6 @@ import { Metadata } from "next";
 import { Post } from "@/types/Post";
 import PostBigCarousel from "@/components/blog/PostBigCarousel";
 import PostMedium from "@/components/blog/PostMedium";
-
 
 export const metadata: Metadata = {
 	title: "Blog"
