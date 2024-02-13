@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  csaladihazneked-hu-cms:
+    image: wordpress
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: csaladihazneked-hu
+      WORDPRESS_DB_PASSWORD: csaladihazneked-hu
+      WORDPRESS_DB_NAME: csaladihazneked-hu-wordpress
+    volumes:
+      - csaladihazneked-hu-cms:/var/www/html
+      - ./cms/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./cms/wp-content:/var/www/html/wp-content/
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: csaladihazneked-hu-wordpress
+      MYSQL_USER: csaladihazneked-hu
+      MYSQL_PASSWORD: csaladihazneked-hu
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  csaladihazneked-hu-cms:
+  db:
