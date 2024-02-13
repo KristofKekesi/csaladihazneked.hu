@@ -4,7 +4,9 @@ import { Subtitle, Title } from "@/components/general/Typography";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-
+/**
+ * @returns A page to render on 404 errors.
+ */
 export default function Blueprints() {
 
 	return (

@@ -1,14 +1,21 @@
+import { Photo } from "./Photo";
+
 export type Blueprint = {
-	id: number,
+	id: string,
+	subtitle?: string,
+	isHighlighted?: boolean,
+	slug: string,
 	title: string,
-	description?: string,
+	description: string,
+	content: string,
 	price?: number,
-	imageURL: string,
-	//
-	type: "Lakás" | "Családihaz" | "Bolt" | "Ipar",
+	highlightedPhoto: Photo,
+	images: Array<Photo>,
+	
+	type: string //"Lakás" | "Családiház" | "Bolt" | "Ipar",
 	squarem: number,
 	floors: number,
-	//
+	
 	rooms: {
 		rooms: number,
 		livingroom: number,
@@ -16,7 +23,9 @@ export type Blueprint = {
 		wc: number,
 	},
 	features: {
-		basement: boolean,
-		american_kitchen: boolean
-	}
+		hasBasement: boolean,
+		hasAttic: boolean,
+		hasGarage: boolean
+	},
+	youtubeVideoURL?: string
 }

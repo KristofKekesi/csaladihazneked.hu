@@ -1,17 +1,21 @@
-import { getRandomPost } from "@/lib/random";
+import { getAllPosts } from "@/lib/api";
 import { MetadataRoute } from "next";
 import { Post } from "@/types/Post";
 
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-	const posts: Array<Post> = [getRandomPost(), getRandomPost()];
+/**
+ * A function to generate a sitemap for /blog.
+ */
+
+export default async function sitemap() {
+	const posts: Array<Post> = await getAllPosts();
 
 	let sitemap: MetadataRoute.Sitemap = [];
 	posts.map((post: Post) => {
 		sitemap.push(
 			{
-				url: `${ DOMAIN }/tervrajzok/${ post.id }`,
+				url: `${ DOMAIN }/blog/${ post.id }`,
 				lastModified: new Date(),
 				changeFrequency: "weekly",
 				priority: 0.6,

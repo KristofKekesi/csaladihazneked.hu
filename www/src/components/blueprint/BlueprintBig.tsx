@@ -11,11 +11,23 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Featureset from "./Featureset";
+import Image from "next/image";
 import Link from "next/link";
 import { subtitleClassNames } from "../general/Typography";
 
+type Params = {
+	blueprint: Blueprint,
+	className?: string
+}
 
-export default function BlueprintBig(props: {blueprint: Blueprint}) {
+/**
+ * @param blueprint A `Blueprint` `Object` to populate the component with.
+ * @param className A `string` which contains CSS classes.
+ *  
+ * @returns A component with many info about the blueprint given.
+ */
+
+export default function BlueprintBig(params: Params) {
 	return (
 		<Card className="flex rounded-t-3xl">
 			<div className="w-full md:w-2/3">
@@ -23,33 +35,33 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 				rounded-t-3xl md:rounded-tl-3xl md:rounded-tr-none">
 					<CardTitle className="flex flex-nowrap justify-between items-baseline gap-4">
 						<span className="line-clamp-2 h-12 select-auto">
-							{props.blueprint.title}
+							{ params.blueprint.title }
 						</span>
 						<span className={cn( subtitleClassNames,
-						"text-xl whitespace-nowrap select-auto")}>
-							{Intl.NumberFormat("hu-HU").format(props.blueprint.price!)} Ft
+						"text-xl whitespace-nowrap select-auto" )}>
+							{Intl.NumberFormat("hu-HU").format(params.blueprint.price!)} Ft
 						</span>
 					</CardTitle>
 					<CardDescription className="h-16 line-clamp-3 flex items-end select-auto">
-						{props.blueprint.description}
+						{ params.blueprint.description }
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="pt-6 grid grid-cols-3">
 					<Featureset
-						blueprint={props.blueprint}
-						type={"general"}
+						blueprint={ params.blueprint }
+						type="general"
 						maxReturn={4}
 						className="col-span-1"
 					/>
 					<Featureset
-						blueprint={props.blueprint}
-						type={"rooms"}
+						blueprint={ params.blueprint }
+						type="rooms"
 						maxReturn={4}
 						className="col-start-3 sm:col-start-2"
 					/>
 					<Featureset
-						blueprint={props.blueprint}
-						type={"features"}
+						blueprint={ params.blueprint }
+						type="features"
 						maxReturn={4}
 						className="col-span-1 hidden sm:inline"
 					/>
@@ -61,7 +73,7 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 					//	<span className="hidden md:inline">Hasonló tervrajzok</span>
 					//</Button>
 					}
-					<Link href={`/tervrajzok/${props.blueprint.id}`}>
+					<Link href={`/tervrajzok/${ params.blueprint.slug }`}>
 						<Button>
 							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
 						</Button>
@@ -69,9 +81,13 @@ export default function BlueprintBig(props: {blueprint: Blueprint}) {
 				</CardFooter>
 			</div>
 			<div
-				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline bg-cover"
-				style={{backgroundImage: `url(${ props.blueprint.imageURL })`}}
-			/>
+				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline relative"
+			>
+				<Image
+					src={ params.blueprint.highlightedPhoto.src } fill
+					alt={ params.blueprint.title } className="object-cover"
+				/>
+			</div>
 		</Card>
 	);
 }

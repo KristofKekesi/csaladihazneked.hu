@@ -1,7 +1,11 @@
+import { Photo } from "./Photo";
+
 export type Post = {
-	id: number,
+	id: string,
 	title: string,
+	slug: string,
+	isHighlighted: boolean,
 	description: string,
-	imageURL: string,
+	highlightedPhoto: Photo
 	content: string
 }
