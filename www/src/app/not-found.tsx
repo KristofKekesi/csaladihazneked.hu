@@ -4,8 +4,11 @@ import { Subtitle, Title } from "@/components/general/Typography";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-
+/**
+ * @returns A page to render on 404 errors.
+ */
 export default function Blueprints() {
+
 	return (
 		<main className="flex flex-col just pt-3">
 			<Subtitle className="px-6">404</Subtitle>

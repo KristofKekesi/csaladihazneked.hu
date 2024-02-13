@@ -1,6 +1,8 @@
+import { Photo } from "./Photo";
+
 export type Partner = {
 	id: string,
 	name: string,
-	imageURL: string,
+	photo: Photo,
 	link?: string
 }

@@ -3,7 +3,7 @@ import { Header, Subtitle, subtitleClassNames, Title } from "@/components/genera
 import { Balancer } from "react-wrap-balancer";
 import BlueprintSmall from "@/components/blueprint/BlueprintSmall";
 import { cn } from "@/lib/utils";
-import { getPost } from "@/lib/filter_data";
+import { getPosts } from "@/lib/filter_data";
 import html2md from "@/lib/html2md";
 import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
@@ -20,7 +20,7 @@ type Props = {
   export async function generateMetadata(
 	{ params }: Props
   ): Promise<Metadata> {
-	const post: Post = await getPost({slug: params.slug});
+	const post: Post = ( await getPosts({slug: params.slug}) )[0];
 
 	return {
 		title: post.title,
@@ -28,9 +28,14 @@ type Props = {
 	};
 }
 
+/**
+ * @param params Object containing the slug of the URL and the post.
+ * 
+ * @returns Page for /blog/**
+ */
 
 export default async function Page({ params }: Props) {
-	const post: Post = await getPost({slug: params.slug});
+	const post: Post = ( await getPosts({slug: params.slug}) )[0];
 	const content = await html2md({html: post.content});
 
 	return(

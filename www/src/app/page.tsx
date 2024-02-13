@@ -6,20 +6,23 @@ import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarou
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import EmailExtendedFooter from "@/components/extendedFooters/email";
-import { getPage } from "@/lib/filter_data";
+import { getPages } from "@/lib/filter_data";
 import html2md from "@/lib/html2md";
 import Link from "next/link";
 import Markdown from "@/components/general/MarkDown";
-import Partner from "@/components/index/Partner";
+import { PartnerCarousel } from "@/components/index/PartnerCarousel";
 import PostMedium from "@/components/blog/PostMedium";
 
+/**
+ * @returns Page for /.
+ */
 
 export default async function Home() {
 	const blueprints = await getAllBlueprints();
 	const posts = await getAllPosts();
 	const partners = await getAllPartners();
 	
-	const data = await getPage({title: "Főoldal"});
+	const data = ( await getPages({title: "Főoldal", unique: true}) )[0];
 	const content = await html2md({html: data.content});
 
 	return (
@@ -30,13 +33,15 @@ export default async function Home() {
 			<Markdown className="px-6">
 				{ content }
 			</Markdown>
-			<Subtitle className="pt-4 px-6">Partnereink</Subtitle>
-			<hr className="pb-4" />
-			<div className="px-6 flex w-full justify-evenly gap-4">
-				{ partners.map((partner, index) => (
-					<Partner partner={partner} key={index} />
-				)) }
-			</div>
+			{ partners.length > 0 ?
+				<>
+					<Subtitle className="pt-4 px-6">
+						{ partners.length === 1 ? "Partnerünk" : "Partnereink"}
+					</Subtitle>
+					<hr className="pb-4" />
+					<PartnerCarousel partners={ partners } />
+				</>
+			: null }
 			<Subtitle className="pt-6 px-6">Legutóbbi híreink</Subtitle>
 			<hr className="pb-4" />
 			<div className="mx-6 grid grid-cols-5 gap-4">

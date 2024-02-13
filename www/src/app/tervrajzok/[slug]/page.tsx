@@ -6,7 +6,7 @@ import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarou
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
-import { getBlueprint } from "@/lib/filter_data";
+import { getBlueprints } from "@/lib/filter_data";
 import html2md from "@/lib/html2md";
 import ImageCarousel from "@/components/general/ImageCarousel";
 import Link from "next/link";
@@ -15,15 +15,15 @@ import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
 
 
-type Props = {
+type Params = {
 	params: { slug: string }
 	searchParams: { [key: string]: string | string[] | undefined }
   }
 
   export async function generateMetadata(
-	{ params }: Props,
+	{ params }: Params,
   ): Promise<Metadata> {
-	const blueprint: Blueprint = await getBlueprint({slug: params.slug});
+	const blueprint: Blueprint = ( await getBlueprints({slug: params.slug}) )[0];
 
 	return {
 		title: blueprint.title,
@@ -31,9 +31,13 @@ type Props = {
 	};
 }
 
+/**
+ * @param Object containing the slug from the URL and the slug of the blueprint to display.
+ * @returns Page for /tervrajzok/**
+ */
 
-export default async function Page({params}: Props) {
-	const blueprint: Blueprint = await getBlueprint({slug: params.slug});
+export default async function Page({params}: Params) {
+	const blueprint: Blueprint = ( await getBlueprints({slug: params.slug}) )[0];
 	const content = await html2md({html: blueprint.content});
 
 	return(
@@ -46,10 +50,10 @@ export default async function Page({params}: Props) {
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">
 				<ImageCarousel 
-					images={[blueprint.imageURL, ...blueprint.images]} 
-					className="col-span-5 md:col-span-3"
+					images={[blueprint.highlightedPhoto, ...blueprint.images]} 
+					className="col-span-5 lg:col-span-3"
 				/>
-				<Card className="col-span-5 md:col-span-2 flex flex-col h-full justify-between">
+				<Card className="col-span-5 lg:col-span-2 flex flex-col h-full justify-between">
 					<CardHeader className="flex flex-col">
 						<CardTitle className={ cn(subtitleClassNames, "pb-4 px-0" ) }>
 							<Balancer>Részletek</Balancer>
@@ -84,7 +88,7 @@ export default async function Page({params}: Props) {
 			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 
-				blueprints={[blueprint, blueprint, blueprint, blueprint, blueprint]}
+				blueprints={ [blueprint, blueprint, blueprint, blueprint, blueprint] }
 				className="px-6"
 			/>
 		</main>

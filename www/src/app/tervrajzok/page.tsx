@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	title: "Tervrajzok"
 };
 
+/**
+ * @returns Page for /tervrajzok.
+ */
 
 export default async function Blueprints() {
 	const blueprints: Array<Blueprint> = await getAllBlueprints();
@@ -34,7 +37,7 @@ export default async function Blueprints() {
 			<hr className="pb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-4 pb-4 px-6">
 				{ [...generalBlueprints, ...highlightedBlueprints].map((blueprint) => {
-					return <BlueprintMedium blueprint={blueprint} key={blueprint.id} />;
+					return <BlueprintMedium blueprint={ blueprint } key={ blueprint.id } />;
 				}) }
 			</div>
 		</main>

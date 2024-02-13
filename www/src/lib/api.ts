@@ -50,10 +50,11 @@ export async function getAllPosts() {
 						dateGmt
 						postMeta {
 							isHighlighted
-							highlighted_imageURL {
+							highlighted_image {
 								node {
-									srcSet
 									sourceUrl
+									altText
+									title
 								}
 		  					}
 							description
@@ -74,8 +75,12 @@ export async function getAllPosts() {
 			slug: post.node.slug,
 			description: post.node.description,
 			title: post.node.title,
-			imageURL: postMeta.highlighted_imageURL.node.sourceUrl,
-			imageSrcSet: postMeta.highlighted_imageURL.node.imageSrcSet,
+			highlightedPhoto: {
+				src: postMeta.highlighted_image.node.sourceUrl,
+				alt: postMeta.highlighted_image.node.alftText,
+				width: postMeta.highlighted_image.node.title.split("×")[0],
+				height: postMeta.highlighted_image.node.title.split("×")[0]
+			},
 			content: post.node.content
 		}); 
 	});
@@ -98,59 +103,81 @@ export async function getAllBlueprints() {
 							price
 							description
 							isHighlighted
-							imageURL {
+							highlighted_image {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image1 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image2 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image3 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image4 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image5 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image6 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image7 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image8 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image9 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							image10 {
 								node {
 									sourceUrl
+									title
+									altText
 								}
 							}
 							type
@@ -183,8 +210,12 @@ export async function getAllBlueprints() {
 			description: blueprintMeta.description,
 			content: blueprint.node.content,
 			title: blueprint.node.title,
-			imageURL: blueprintMeta.imageURL.node.sourceUrl,
-			imageSrcSet: blueprintMeta.imageURL.node.srcSet,
+			highlightedPhoto: {
+				src: blueprintMeta.highlighted_image.node.sourceUrl,
+				alt: blueprintMeta.highlighted_image.node.altText,
+				width: blueprintMeta.highlighted_image.node.title.split("×")[0],
+				height: blueprintMeta.highlighted_image.node.title.split("×")[1]
+			},
 			images: [
 				blueprintMeta.image1 !== null ? blueprintMeta.image1.node.sourceUrl : null,
 				blueprintMeta.image2 !== null ? blueprintMeta.image2.node.sourceUrl : null,
@@ -229,7 +260,6 @@ export async function getAllImages() {
 						title
 						altText
 						sourceUrl
-						mediaType
 					}
 				}
 			}
@@ -239,11 +269,10 @@ export async function getAllImages() {
 	let photos: Array<Photo> = [];
 	data.mediaItems.edges.map(async (photo: any) => {		
 		photos.push({
-			title: photo.node.altText,
 			alt: photo.node.altText,
 			src: photo.node.sourceUrl,
 			width: photo.node.title.split("×")[0] ?? 0,
-			height: photo.node.title.split("×")[1] ?? 0
+			height: photo.node.title.split("×")[1] ?? 0,
 		});
 	});
 
@@ -260,9 +289,11 @@ export async function getAllPartners() {
 						title
 						partnerMeta {
 							link
-							imageURL {
+							image {
 								node {
 									sourceUrl
+									altText
+									title
 								}
 							}
 						}
@@ -274,11 +305,18 @@ export async function getAllPartners() {
 
 	let partners: Array<Partner> = [];
 	data.partners.edges.map((partner: any) => {		
+		const partnerMeta = partner.node.partnerMeta;
+		
 		partners.push({
 			name: partner.node.title,
 			id: partner.node.id,
-			imageURL: partner.node.partnerMeta.imageURL.node.sourceUrl,
-			link: partner.node.partnerMeta.link
+			photo: {
+				alt: partnerMeta.image.node.altText,
+				src: partnerMeta.image.node.sourceUrl,
+				width: partnerMeta.image.node.title.split("×")[0] ?? 0,
+				height: partnerMeta.image.node.title.split("×")[1] ?? 0,
+			},
+			link: partner.node.partnerMeta.link,
 		});
 	});
 
@@ -296,8 +334,8 @@ export async function getAllPages() {
 			customPages(first:1000) {
 				edges {
 					node {
-					title
-					content
+						title
+						content
 					}
 				}
 			}
@@ -309,7 +347,7 @@ export async function getAllPages() {
 		pages.push({
 			title: page.node.title,
 			content: page.node.content
-		})
+		});
 	});
 
 	return pages;

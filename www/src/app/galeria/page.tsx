@@ -10,12 +10,15 @@ export const metadata: Metadata = {
 	title: "Galéria"
 };
 
+/**
+ * @returns Page for /galeria.
+ */
 
 export default async function Galeria() {
   const photos: Array<Photo> = await getAllImages();
 
   const partners: Array<Partner> = await getAllPartners();
-  const partnerImageURLs: Array<string> = partners.map((partner) => { return partner.imageURL; });
+  const partnerImageURLs: Array<string> = partners.map((partner) => { return partner.photo.src; });
 
   const filteredPhotos = photos.filter((photo) => { return !partnerImageURLs.includes(photo.src);});
 

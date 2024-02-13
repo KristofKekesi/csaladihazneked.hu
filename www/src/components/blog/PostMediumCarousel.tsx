@@ -11,7 +11,18 @@ import { Post } from "@/types/Post";
 import PostMedium from "./PostMedium";
 import { useRef } from "react";
 
-export default function PostMediumCarousel(props: {posts: Array<Post>, className: string}) {
+type Params = {
+	posts: Array<Post>,
+	className?: string
+}
+
+/**
+ * @param posts An array of `Post`s to populate to carousel from.
+ * @param className A `string` which contains CSS classes. 
+ * 
+ * @returns A carousel with `PostMedium` components.
+ */
+export default function PostMediumCarousel(params: Params) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);
@@ -19,7 +30,7 @@ export default function PostMediumCarousel(props: {posts: Array<Post>, className
 	return (
 		<div className={
 			cn("w-full flex flex-wrap justify-center cursor-ew-resize",
-			props.className)
+			params.className)
 		}>
 			<Carousel
 				className="w-full"
@@ -29,7 +40,7 @@ export default function PostMediumCarousel(props: {posts: Array<Post>, className
 				opts={{align: "start", loop: true, direction: "ltr"}}
 			>
 				<CarouselContent>
-					{props.posts.map((post, index) => (
+					{params.posts.map((post, index) => (
 					<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={index}>
 						<PostMedium post={post} />
 					</CarouselItem>

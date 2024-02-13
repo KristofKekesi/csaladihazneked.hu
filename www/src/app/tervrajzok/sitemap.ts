@@ -4,6 +4,10 @@ import { MetadataRoute } from "next";
 
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
+/**
+ * @returns Sitemap for /tervrajzok.
+ */
+
 export default async function sitemap() {
 	const blueprints: Array<Blueprint> = await getAllBlueprints();
 

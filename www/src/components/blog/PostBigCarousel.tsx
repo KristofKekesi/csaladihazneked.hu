@@ -17,6 +17,11 @@ type Props = {
 	className?: string
 }
 
+/**
+ * @param posts An array of `Post`s to populate the carousel from.
+ * @param className A `String` which contains CSS classes. 
+ * @returns A carousel component with auto scrolling from the array of `Post`s given.
+ */
 
 export default function PostBigCarousel(props: Props) {
 	const plugin = useRef(

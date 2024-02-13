@@ -1,3 +1,5 @@
+import { Photo } from "./Photo";
+
 export type Blueprint = {
 	id: string,
 	subtitle?: string,
@@ -7,9 +9,8 @@ export type Blueprint = {
 	description: string,
 	content: string,
 	price?: number,
-	imageURL: string,
-	imageSrcSet: Array<String>,
-	images: Array<string>,
+	highlightedPhoto: Photo,
+	images: Array<Photo>,
 	
 	type: string //"Lakás" | "Családiház" | "Bolt" | "Ipar",
 	squarem: number,

@@ -8,10 +8,11 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Photo } from "@/types/Photo";
 import { useRef } from "react";
 
 type Props = {
-	images: Array<string>,
+	images: Array<Photo>,
 	className?: string
 }
 
@@ -35,7 +36,7 @@ export default function ImageCarousel(props: Props) {
 						<div className="bg-slate-200 rounded-lg flex aspect-video
 							items-center justify-center p-0 m-0 relative">
 							<Image
-								src={ image } alt={""}
+								src={ image.src } alt={ image.alt }
 								fill
 								className="aspect-video bg-contain rounded-lg object-contain" />
 						</div>

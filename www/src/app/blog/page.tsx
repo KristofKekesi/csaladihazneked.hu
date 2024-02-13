@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 	title: "Blog"
 };
 
+/**
+ * @returns Page for /blog.
+ */
 
 export default async function Blog() {
 	const posts: Array<Post> = await getAllPosts();
