@@ -1,3 +1,6 @@
+//** This page was removed because of client needs. 
+// Since this is such a core feature the page won't be deleted.
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Header, Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import { Balancer } from "react-wrap-balancer";
