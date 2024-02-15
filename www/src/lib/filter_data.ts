@@ -24,11 +24,9 @@ type PostProps = {
  * @param limit Sets a limit to the number of `Post`s in the `Array<Post>`.
  * @param page Sets the page if a `limit` parameter is provided.
  * @param unique Throws an error if there are multiple results with the filters provided.
- * 
  * @returns All posts from `getAllPost()` where the parameters 
  * 			provided pass.
 */
-
 export async function getPosts(
 	{id, slug, isHighlighted, limit, page, unique}: PostProps
 ) : Promise<Array<Post>> {
@@ -75,11 +73,9 @@ type BlueprintParams = {
  * @param limit Sets a limit to the number of `Blueprint`s in the `Array<Blueprint>`.
  * @param page Sets the page if a `limit` parameter is provided.
  * @param unique Throws an error if there are multiple results with the filters provided.
- * 
  * @returns All blueprints from `getAllBlueprints()` where the parameters 
  * 			provided pass.
 */
-
 export async function getBlueprints(
 	{id, slug, isHighlighted, limit, page, unique} : BlueprintParams
 ) : Promise<Array<Blueprint>> {
@@ -118,11 +114,9 @@ type PageParams = {
 /**
  * @param id Filters the pages by ID.
  * @param unique Throws an error if there are multiple results with the filters provided.
- * 
  * @returns All pages from `getAllBlueprints()` where the parameters 
  * 			provided pass.
 */
-
 export async function getPages({title, unique}: PageParams) {
 	const pages = await getAllPages();
 

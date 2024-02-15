@@ -1,9 +1,7 @@
 <?php
 /**
  * Redirect functions and definitions
- * 
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
- * 
  * @package Redirect
  * @since Redirect 1.0
  */

@@ -6,6 +6,10 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { sendGAEvent } from "@next/third-parties/google";
 
+/**
+ * An `ExtendedFooter` with a mailing list action.
+ * @returns An `ExtendedFooter` with a join to a newsletter action.
+ */
 export default function MailingListExtendedFooter() {
 	return (
 		<ExtendedFooter

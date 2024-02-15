@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /blog.
  */
-
 export default async function Blog() {
 	const posts: Array<Post> = await getAllPosts();
 	const highlightedPosts: Array<Post> = 

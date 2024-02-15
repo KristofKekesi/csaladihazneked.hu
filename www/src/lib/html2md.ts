@@ -11,11 +11,12 @@ type Props = {
 	html: string
 }
 
-
+/**
+ * A function to convert html to Markdown.
+ * @param html A `string` containing html code.
+ * @returns The Markdown equivalent of the given html code.
+ */
 export default async function html2md(props: Props) {
-	//console.log(props.html );
-	//console.log(nhm.translate( props.html ));
-
 	return(
 		nhm.translate( props.html )
 	);

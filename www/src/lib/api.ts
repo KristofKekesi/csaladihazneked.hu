@@ -6,6 +6,12 @@ import { Post } from "@/types/Post";
 
 const API_URL = process.env.WORDPRESS_API_URL!;
 
+/**
+ * Function to fetch the WordPress Graphql API
+ * @param query The graphql query string.
+ * @param values 
+ * @returns The response with the query from the WordPress Graphql api.
+ */
 async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	type HeaderType = {"Content-Type": string, "Authorization"?: string};
 
@@ -37,7 +43,11 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	return json.data;
 }
 
-export async function getAllPosts() {
+/**
+ * Get all posts from the WordPress API.
+ * @returns Returns `Promise<Array<Post>>` from the response from the WordPress API.
+ */
+export async function getAllPosts(): Promise<Array<Post>> {
 	const data = await fetchAPI(`
 		{
 			customPosts(first: ${ process.env.API_GET_POST_NUMBER_LIMIT }) {
@@ -88,7 +98,11 @@ export async function getAllPosts() {
 	return posts;
 }
 
-export async function getAllBlueprints() {
+/**
+ * Get all blueprints from the WordPress API.
+ * @returns Returns `Promise<Array<Blueprint>>` from the response from the WordPress API.
+ */
+export async function getAllBlueprints(): Promise<Array<Blueprint>> {
 	const data = await fetchAPI(`
 		{
 			blueprints(first: ${ process.env.API_GET_BLUEPRINT_NUMBER_LIMIT }) {
@@ -249,8 +263,11 @@ export async function getAllBlueprints() {
 	return blueprints;
 }
 
-
-export async function getAllImages() {
+/**
+ * Get all images from the WordPress API.
+ * @returns Returns `Promise<Array<Photo>>` from the data fethed from the WordPress API.
+ */
+export async function getAllImages(): Promise<Array<Photo>> {
 	const data = await fetchAPI(`
 		{
 			mediaItems(first: ${ process.env.API_GET_IMAGE_NUMBER_LIMIT }) {
@@ -279,6 +296,10 @@ export async function getAllImages() {
 	return photos;
 }
 
+/**
+ * Get all partners from the WordPress API.
+ * @returns Returns `Promise<Array<Post>>` from the data fethed from the WordPress API.
+ */
 export async function getAllPartners() {
 	const data = await fetchAPI(`
 		{
@@ -323,6 +344,10 @@ export async function getAllPartners() {
 	return partners;
 }
 
+/**
+ * Get all images from the WordPress API.
+ * @returns Returns `Promise<Array<Photo>>` from the data fethed from the WordPress API.
+ */
 export async function getAllPages() {
 	type Page = {
 		title: string,

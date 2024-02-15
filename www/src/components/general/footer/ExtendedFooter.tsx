@@ -7,6 +7,15 @@ type Props = {
 	className?: string
 }
 
+/**
+ * A component styled to be used with the `Footer` component to display additional small actions.
+ * @param title An optional title to be displayed with proper style. 
+ * @param description An optional description to be displayed with proper style. 
+ * @param childern Component to be displayed inside the `ExtendedFooter`.
+ * @param className Optional CSS classes to modify the component.
+ * @returns A styled component to be used only with the `Footer` component to display aditional
+ * 			actions.
+ */
 export default function ExtendedFooter(props: Props) {
 	return (
 		<div className={cn(

@@ -5,6 +5,10 @@ type Props = {
 	partner: Partner
 }
 
+/**
+ * @param partner A `Partner` Object to display
+ * @returns A component with an optional link displaying the given `Partner`.
+ */
 export default function Partner(props: Props) {
 	return (
 		<div className="flex flex-col items-center gap-2">

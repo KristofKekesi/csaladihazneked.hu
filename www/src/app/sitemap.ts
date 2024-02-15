@@ -5,7 +5,6 @@ const DOMAIN: string = "https://www.csaladihazneked.hu";
 /**
  * @returns Sitemap for /.
  */
-
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{
@@ -13,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			lastModified: new Date(),
 			changeFrequency: "monthly",
 			priority: 1,
+		},
+		{
+			url: `${DOMAIN}/blog`,
+			lastModified: new Date(),
+			changeFrequency: "daily",
+			priority: 0.8,
 		},
 		{
 			url: `${DOMAIN}/galeria`,

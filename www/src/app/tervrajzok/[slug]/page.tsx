@@ -18,12 +18,18 @@ import { Metadata } from "next";
 type Params = {
 	params: { slug: string }
 	searchParams: { [key: string]: string | string[] | undefined }
-  }
+}
 
-  export async function generateMetadata(
+/**
+ * Generate dynamic metadata.
+ * @param params 
+ * @param searchParams 
+ * @returns The metadata generated for a specific slug.
+ */
+export async function generateMetadata(
 	{ params }: Params,
-  ): Promise<Metadata> {
-	const blueprint: Blueprint = ( await getBlueprints({slug: params.slug}) )[0];
+): Promise<Metadata> {
+	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
 
 	return {
 		title: blueprint.title,
@@ -35,7 +41,6 @@ type Params = {
  * @param Object containing the slug from the URL and the slug of the blueprint to display.
  * @returns Page for /tervrajzok/**
  */
-
 export default async function Page({params}: Params) {
 	const blueprint: Blueprint = ( await getBlueprints({slug: params.slug}) )[0];
 	const content = await html2md({html: blueprint.content});

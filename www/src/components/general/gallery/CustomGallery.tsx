@@ -1,3 +1,5 @@
+/* eslint-disable require-jsdoc */
+
 "use client";
 
 import React, { useEffect } from "react";
@@ -59,19 +61,19 @@ function CustomImageRenderer(props: {
 
     return (
         <>
-            <div style={props.wrapperStyle}>
+            <div style={ props.wrapperStyle }>
                 <div style={
                     { display: "block", position: "relative", width: "100%", height: "100%" }
                 }>
                     <Image
-                        data-src={props.photo.src}
-                        data-index={props.layout.index}
-                        className={"photo " + props.imageProps.className}
-                        src={source}
-                        alt={props.photo.alt}
-                        title={props.photo.title}
+                        data-src={ props.photo.src }
+                        data-index={ props.layout.index }
+                        className={ cn("photo", props.imageProps.className) }
+                        src={ source }
+                        alt={ props.photo.alt }
+                        title={ props.photo.title }
                         loading="lazy"
-                        sizes={props.imageProps.sizes}
+                        sizes={ props.imageProps.sizes }
                         fill
                     />
 					{
@@ -100,8 +102,8 @@ function CustomRowRenderer(props: any) {
             "motion-safe:transition-all opacity-0 motion-safe:delay-500motion-safe:duration-500"
             ,"motion-reduce:translate-y-0 select-none ",
             props.rowContainerProps.className
-        )} style={props.rowContainerProps.style}>
-            {props.children}
+        )} style={ props.rowContainerProps.style }>
+            { props.children }
         </div>
     );
 }

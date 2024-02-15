@@ -13,10 +13,8 @@ type Params = {
 /**
  * @param post A `Post` `Object` to use as data to populate the component.
  * @param className A `string` which conatains CSS classes.
- *  
  * @returns A small component with few info about the `Post`.
  */
-
 export default function PostSmall(params: Params) {
 	return (
 		<Link href={`/blog/${ params.post.slug }`}>
