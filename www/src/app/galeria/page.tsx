@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /galeria.
  */
-
 export default async function Galeria() {
   const photos: Array<Photo> = await getAllImages();
 

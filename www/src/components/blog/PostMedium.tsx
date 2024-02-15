@@ -14,11 +14,9 @@ type Params = {
 
 /**
  * @param post A `Post` to get data for the component to use.
- * @param className: A `String` which contains CSS classes.
- * 
+ * @param className: A `string` which contains CSS classes.
  * @returns A component to display some informations about a `Post`.
  */
-
 export default function PostMedium(params: Params) {
 	return (
 		<Card 
@@ -48,7 +46,7 @@ export default function PostMedium(params: Params) {
 						</CardHeader>
 						<CardFooter>
 							<Link href={`/blog/${ params.post.slug }`}>
-								<Button variant={"secondary"} className="drop-shadow-2xl">
+								<Button variant="secondary" className="drop-shadow-2xl">
 									Tovább <ChevronRight className="h-4 w-4 ml-2" />
 								</Button>
 							</Link>

@@ -26,6 +26,13 @@
 		"for-direction": "error",
 		"no-extra-boolean-cast": "error",
 		"no-extra-semi": "warn",
-		"sort-imports": ["warn", { "ignoreCase": true }]
+		"sort-imports": ["warn", { "ignoreCase": true }],
+		"require-jsdoc": ["warn", { "require": { 
+			"FunctionDeclaration": true,
+			"MethodDefinition": false,
+			"ClassDeclaration": false,
+			"ArrowFunctionExpression": false,
+			"FunctionExpression": false
+		} }]
 	}
 }

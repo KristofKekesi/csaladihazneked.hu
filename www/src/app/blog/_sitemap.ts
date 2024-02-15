@@ -10,7 +10,6 @@ const DOMAIN: string = "https://www.csaladihazneked.hu";
 /**
  * A function to generate a sitemap for /blog.
  */
-
 export default async function sitemap() {
 	const posts: Array<Post> = await getAllPosts();
 

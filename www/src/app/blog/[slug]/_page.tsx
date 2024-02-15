@@ -18,12 +18,18 @@ import PostSmall from "@/components/blog/PostSmall";
 type Props = {
 	params: { slug: string }
 	searchParams: { [key: string]: string | string[] | undefined }
-  }
-   
-  export async function generateMetadata(
+}
+
+/**
+ * Generate dynamic metadata.
+ * @param params 
+ * @param searchParams 
+ * @returns The metadata generated for a specific slug.
+ */
+export async function generateMetadata(
 	{ params }: Props
-  ): Promise<Metadata> {
-	const post: Post = ( await getPosts({slug: params.slug}) )[0];
+): Promise<Metadata> {
+	const post: Post = ( await getPosts({ slug: params.slug }) )[0];
 
 	return {
 		title: post.title,
@@ -33,10 +39,8 @@ type Props = {
 
 /**
  * @param params Object containing the slug of the URL and the post.
- * 
  * @returns Page for /blog/**
  */
-
 export default async function Page({ params }: Props) {
 	const post: Post = ( await getPosts({slug: params.slug}) )[0];
 	const content = await html2md({html: post.content});

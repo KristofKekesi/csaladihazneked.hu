@@ -19,14 +19,12 @@ type Params = {
 }
 
 /**
- * 
+ * A component with some information about a `blueprint`.
  * @param blueprint A `Blueprint` object containing essential 
  * 					informations about the blueprint displayed.
- * @param className A `String` containing CSS classes.
- * 
- * @returns 
+ * @param className A `string` containing CSS classes.
+ * @returns A component with some information about the `blueprint` provided.
  */
-
 export default function BlueprintMedium({ blueprint, className }: Params) {
 	return (
 		<Card
@@ -71,13 +69,13 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 			</CardContent>
 			<CardFooter className="bg-white flex justify-end pt-6 rounded-b-3xl">
 				{ //TODO(KristofKekesi): Implement
-				//<Button variant={"link"}>
+				//<Button variant="link">
 				//	<span className="hidden md:inline">Hasonló tervrajzok</span>
 				//	<span className="inline md:hidden">Hasonlók</span>
 				//</Button>
 				}
 				<Link href={`/tervrajzok/${ blueprint.slug }`}>
-					<Button variant={"secondary"}>
+					<Button variant="secondary">
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
 					</Button>
 				</Link>

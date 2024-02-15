@@ -1,4 +1,11 @@
 // from: https://stackoverflow.com/questions/7745741/auto-expanding-textarea
+
+/**
+ * A funtion to limit he maximum and minimum size of a textarea.
+ * @param textarea_id Id of the textarea.
+ * @param row_limit The maximum number of lines that
+ * the textarea will be able to display.
+ */
 export default function autosize(textarea_id, row_limit) {
     // Set default for row_limit parameter
     row_limit = parseInt(row_limit ?? "10");

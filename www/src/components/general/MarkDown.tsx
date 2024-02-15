@@ -3,20 +3,23 @@ import ReactMarkdown, { Components } from "react-markdown";
 import { cn } from "@/lib/utils";
 import ImageRenderer from "./ImageRenderer";
 
-
 //    TURTLE - TEKI
 //    (°-°) _______
 //      \ / - - - \_
 //       \_  ___  ___>
 //         \__) \__)
 
-
-type Props = {
+type Params = {
 	children: string,
 	className?: string
 }
 
-export default function Markdown(props: Props) {
+/**
+ * A component to render Markdown.
+ * @param children A `string` containing Markdown.
+ * @returns Returns HTML based on the `children` Mardown parameter.
+ */
+export default function Markdown(params: Params) {
     const components: Partial<Components> = {
         h1: Title,
         h2: Subtitle,
@@ -27,8 +30,8 @@ export default function Markdown(props: Props) {
 
     return (
         <ReactMarkdown components={components}
-		 className={cn("reactMarkDown select-auto", props.className)}>
-            {props.children}
+		 className={ cn("reactMarkDown select-auto", params.className) }>
+            { params.children }
         </ReactMarkdown>
     );
 }

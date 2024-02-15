@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { Separator } from "../../ui/separator";
 
+/**
+ * A general footer component.
+ * @returns The footer for the website.
+ */
 export default function Footer() {
 	return(
 		<footer className="w-full bg-customBrown pt-6 pb-3

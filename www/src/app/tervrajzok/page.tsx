@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /tervrajzok.
  */
-
 export default async function Blueprints() {
 	const blueprints: Array<Blueprint> = await getAllBlueprints();
 	const highlightedBlueprints: Array<Blueprint> = 

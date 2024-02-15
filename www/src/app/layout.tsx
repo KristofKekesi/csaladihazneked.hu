@@ -35,6 +35,10 @@ const Caprasimo = localFont({
 });
 
 
+/**
+ * Root layout.
+ * @return Root layout.
+ */
 export default function RootLayout({
 	children,
 }: {

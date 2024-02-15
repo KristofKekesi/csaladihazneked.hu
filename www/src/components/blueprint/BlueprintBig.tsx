@@ -23,10 +23,8 @@ type Params = {
 /**
  * @param blueprint A `Blueprint` `Object` to populate the component with.
  * @param className A `string` which contains CSS classes.
- *  
  * @returns A component with many info about the blueprint given.
  */
-
 export default function BlueprintBig(params: Params) {
 	return (
 		<Card className="flex rounded-t-3xl">
@@ -68,7 +66,7 @@ export default function BlueprintBig(params: Params) {
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
 					{ //TODO(KristofKekesi): Implement
-					//<Button variant={"link"}>
+					//<Button variant="link">
 					//	<span className="inline md:hidden">Hasonlók</span>
 					//	<span className="hidden md:inline">Hasonló tervrajzok</span>
 					//</Button>

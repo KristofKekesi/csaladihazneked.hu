@@ -2,6 +2,10 @@ import Link from "next/link";
 
 import { Separator } from "../../ui/separator";
 
+/**
+ * A general header component.
+ * @returns The header for the website.
+ */
 export default function Header() {
 	return(
 		<>

@@ -19,7 +19,6 @@ type Params = {
 /**
  * @param posts An array of `Post`s to populate to carousel from.
  * @param className A `string` which contains CSS classes. 
- * 
  * @returns A carousel with `PostMedium` components.
  */
 export default function PostMediumCarousel(params: Params) {

@@ -16,7 +16,6 @@ import PostMedium from "@/components/blog/PostMedium";
 /**
  * @returns Page for /.
  */
-
 export default async function Home() {
 	const blueprints = await getAllBlueprints();
 	const posts = await getAllPosts();
@@ -54,7 +53,7 @@ export default async function Home() {
 					</CardHeader>
 					<CardFooter className="flex items-end">
 						<Link href="/blog">
-							<Button variant={"secondary"}>
+							<Button variant="secondary">
 								<ChevronRight className="h-4 w-4" />
 							</Button>
 						</Link>
@@ -63,7 +62,7 @@ export default async function Home() {
 			</div>
 			<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
 			<hr className="pb-4" />
-			<BlueprintMediumCarousel className={"px-6"} blueprints={ blueprints } />
+			<BlueprintMediumCarousel className="px-6" blueprints={ blueprints } />
 			<div className="flex flex-col w-full justify-between items-baseline">
 				<div className="w-full">
 					<Subtitle className="pt-6 px-6" id="elerhetosegek">Elérhetőségek</Subtitle>

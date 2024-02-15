@@ -12,71 +12,83 @@ import Image from "next/image";
 import ToiletPaper from "./toiletPaper.svg";
 
 
-type FeatureProps = {
-	children: JSX.Element,
-	number: number,
+type FeatureParams = {
+	children?: JSX.Element,
 	label: string
 };
 
-function Feature( {children, number, label} : FeatureProps) {
+/**
+ * A component to display a numbered feature with a name.
+ * @param children An HTML element. Optionally an icon.
+ * @param label A `string` to name the feature.
+ * @returns A component with an icon or any HTML element and a label.
+ */
+function Feature(params: FeatureParams) {
 	return (
 		<li className="flex items-baseline">
-			{ children }
-			<span className="select-text">{ number } { label }</span>
+			{ params.children }
+			<span className="select-text">{ params.label }</span>
 		</li>
 	);
 }
 
 
-type FeaturesetProps = {
+type FeaturesetParams = {
 	blueprint: Blueprint,
 	type: "rooms" | "features" | "general",
 	maxReturn?: number,
 	className?: string
 };
 
-export default function Featureset(props: FeaturesetProps) {
+/**
+ * A list of `Feature`s to display in `blueprint`s.
+ * @param blueprint 
+ * @param type 
+ * @param blueprint 
+ * @returns A component with many features from a given `blueprint` based on a category.
+ */
+export default function Featureset(params: FeaturesetParams) {
 	return (
-		<ul className={cn(props.className)}>
-			{ props.type === "rooms" ? <>
-				<Feature number={props.blueprint.rooms.rooms} label="szoba">
+		<ul className={ cn(params.className) }>
+			{ params.type === "rooms" ? <>
+				<Feature label={`${ params.blueprint.rooms.rooms } szoba`}>
 					<Cuboid className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={props.blueprint.rooms.livingroom} label="nappali">
+				<Feature label={`${ params.blueprint.rooms.livingroom } nappali`}>
 					<Sofa className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={props.blueprint.rooms.bathroom} label="fürdő">
+				<Feature label={`${ params.blueprint.rooms.bathroom } fürdő`}>
 					<ShowerHead className="h-4 w-4 mr-2" /></Feature>
-				<Feature number={props.blueprint.rooms.wc} label="mosdó">
+				<Feature label={`${ params.blueprint.rooms.wc } mosdó`}>
 					<Image src={ ToiletPaper } alt="" className="h-4 w-4 mr-2" /></Feature>
 			</> : null }
 
-			{ props.type === "features" ? <>
-				{props.blueprint.features.hasAttic ? 
-				<li className="flex items-baseline select-text">Padlás</li> : null}
-				{props.blueprint.features.hasBasement ? 
-				<li className="flex items-baseline select-auto">Alagsor</li> : null}
-				{props.blueprint.features.hasGarage ? 
-				<li className="flex items-baseline select-auto">Garázs</li> : null}
+			{ params.type === "features" ? <>
+				{ params.blueprint.features.hasAttic ? 
+					<Feature label="Padlás" /> : null }
+				{ params.blueprint.features.hasBasement ? 
+					<Feature label="Alagsor" /> : null }
+				{ params.blueprint.features.hasGarage ? 
+					<Feature label="Garázs" /> : null }
 			</> : null }
 
-			{ props.type === "general" ? <>
+			{ params.type === "general" ? <>
 				<li className="flex items-baseline">
-					{ props.blueprint.type === "Bolt" ?
+					{ params.blueprint.type === "Bolt" ?
 					<Store className="h-4 w-4 mr-2" /> : null }
-					{ props.blueprint.type === "Családiház" ?
+					{ params.blueprint.type === "Családiház" ?
 					<Home className="h-4 w-4 mr-2" /> : null }
-					{ props.blueprint.type === "Ipar" ?
+					{ params.blueprint.type === "Ipar" ?
 					<Factory className="h-4 w-4 mr-2" /> : null }
-					{ props.blueprint.type === "Lakás" ?
+					{ params.blueprint.type === "Lakás" ?
 					<Building className="h-4 w-4 mr-2" /> : null }
-					<span className="select-auto">{ props.blueprint.type }</span>
+					<span className="select-auto">{ params.blueprint.type }</span>
 				</li>
 				<li className="flex items-baseline">
 					<Box className="h-4 w-4 mr-2" />
-					<span className="select-auto">{ props.blueprint.squarem } m<sup>2</sup></span>
+					<span className="select-auto">{ params.blueprint.squarem } m<sup>2</sup></span>
 				</li>
 				<li className="flex items-baseline">
 					<Layers className="h-4 w-4 mr-2" />
-					<span className="select-auto">{ props.blueprint.floors } emelet</span>
+					<span className="select-auto">{ params.blueprint.floors } emelet</span>
 				</li>
 			</> : null }
 		</ul>

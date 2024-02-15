@@ -16,6 +16,11 @@ type Props = {
 	className?: string
 }
 
+/**
+ * A carousel component with `BlueprintMediumCarousel`s inside.
+ * @param blueprints An `Array` of `Blueprint`s to populate the component from.
+ * @returns A carousel of `BlueprintMedium` components populated from the given `blueprints`.
+ */
 export default function BlueprintMediumCarousel(props: Props) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
@@ -28,17 +33,17 @@ export default function BlueprintMediumCarousel(props: Props) {
 		}>
 			<Carousel
 				className="w-full"
-				plugins={[plugin.current]}
-				onMouseEnter={plugin.current.stop}
-      			onMouseLeave={plugin.current.reset}
-				opts={{align: "start", loop: true, direction: "ltr"}}
+				plugins={ [plugin.current] }
+				onMouseEnter={ plugin.current.stop }
+      			onMouseLeave={ plugin.current.reset }
+				opts={{ align: "start", loop: true, direction: "ltr" }}
 			>
 				<CarouselContent>
-					{props.blueprints.map((blueprint, index) => (
-					<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={index}>
-						<BlueprintMedium blueprint={blueprint} />
-					</CarouselItem>
-					))}
+					{ props.blueprints.map((blueprint, index) => (
+						<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={ index }>
+							<BlueprintMedium blueprint={ blueprint } />
+						</CarouselItem>
+					)) }
 				</CarouselContent>
 			</Carousel>
 		</div>

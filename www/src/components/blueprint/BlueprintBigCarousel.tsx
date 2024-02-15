@@ -16,6 +16,12 @@ type Props = {
 	className?: string
 }
 
+/**
+ * A carousel of `blueprints` given.
+ * @param blueprint An `Array<Blueprint>` to populate the component with. 
+ * @param className An optional `string` of CSS classes.
+ * @returns A carousel of `blueprints` given.
+ */
 export default function BlueprintBigCarousel(props: Props) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })

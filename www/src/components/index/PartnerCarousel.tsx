@@ -13,6 +13,11 @@ type Props = {
 	className?: string
 }
 
+/**
+ * A component to display `Partner`s in an auto scrolling carousel.
+ * @param partners An `Array<Partner>` to populate the carousel from. 
+ * @returns An auto scrolling carousel displaying the given partners.
+ */
 export async function PartnerCarousel(props: Props) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })

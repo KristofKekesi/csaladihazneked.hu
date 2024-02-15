@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 /**
  * @returns The page for /aszf
  */
-
 export default async function Aszf() {
 	const data = ( await getPages({ title: "ÁSZF", unique: true }) )[0];
 	const content = await html2md({ html: data.content });

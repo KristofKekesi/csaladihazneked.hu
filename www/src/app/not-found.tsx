@@ -23,7 +23,7 @@ export default function Blueprints() {
 					</CardHeader>
 					<CardFooter className="flex items-end">
 						<Link href="/blog">
-							<Button variant={"secondary"}>
+							<Button variant="secondary">
 								<ChevronRight className="h-4 w-4" />
 							</Button>
 						</Link>
@@ -37,7 +37,7 @@ export default function Blueprints() {
 					</CardHeader>
 					<CardFooter className="flex items-end">
 						<Link href="/tervrajzok">
-							<Button variant={"secondary"}>
+							<Button variant="secondary">
 								<ChevronRight className="h-4 w-4" />
 							</Button>
 						</Link>
@@ -51,7 +51,7 @@ export default function Blueprints() {
 					</CardHeader>
 					<CardFooter className="flex items-end">
 						<Link href="/galeria">
-							<Button variant={"secondary"}>
+							<Button variant="secondary">
 								<ChevronRight className="h-4 w-4" />
 							</Button>
 						</Link>
@@ -65,7 +65,7 @@ export default function Blueprints() {
 					</CardHeader>
 					<CardFooter className="flex items-end">
 						<Link href="/#elerhetosegek">
-							<Button variant={"secondary"}>
+							<Button variant="secondary">
 								<ChevronRight className="h-4 w-4" />
 							</Button>
 						</Link>
@@ -78,13 +78,13 @@ export default function Blueprints() {
 						</CardTitle>
 					</CardHeader>
 					<CardFooter className="flex items-end gap-4">
-						<Button variant={"secondary"}>
+						<Button variant="secondary">
 							<Instagram className="h-4 w-4" />
 						</Button>
-						<Button variant={"secondary"}>
+						<Button variant="secondary">
 							<Facebook className="h-4 w-4" />
 						</Button>
-						<Button variant={"secondary"}>
+						<Button variant="secondary">
 							<Youtube className="h-4 w-4" />
 						</Button>
 					</CardFooter>
