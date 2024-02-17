@@ -1,8 +1,14 @@
 import { API_FETCH_REVALIDATE } from "../../config";
 import { Blueprint } from "@/types/Blueprint";
+import { Image } from "@/types/Image";
 import { Partner } from "@/types/Partner";
-import { Photo } from "@/types/Photo";
 import { Post } from "@/types/Post";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 const API_URL = process.env.WORDPRESS_API_URL!;
 
@@ -85,7 +91,7 @@ export async function getAllPosts(): Promise<Array<Post>> {
 			slug: post.node.slug,
 			description: post.node.description,
 			title: post.node.title,
-			highlightedPhoto: {
+			highlightedImage: {
 				src: postMeta.highlighted_image.node.sourceUrl,
 				alt: postMeta.highlighted_image.node.alftText,
 				width: postMeta.highlighted_image.node.title.split("×")[0],
@@ -224,7 +230,7 @@ export async function getAllBlueprints(): Promise<Array<Blueprint>> {
 			description: blueprintMeta.description,
 			content: blueprint.node.content,
 			title: blueprint.node.title,
-			highlightedPhoto: {
+			highlightedImage: {
 				src: blueprintMeta.highlighted_image.node.sourceUrl,
 				alt: blueprintMeta.highlighted_image.node.altText,
 				width: blueprintMeta.highlighted_image.node.title.split("×")[0],
@@ -265,9 +271,9 @@ export async function getAllBlueprints(): Promise<Array<Blueprint>> {
 
 /**
  * Get all images from the WordPress API.
- * @returns Returns `Promise<Array<Photo>>` from the data fethed from the WordPress API.
+ * @returns Returns `Promise<Array<Image>>` from the data fethed from the WordPress API.
  */
-export async function getAllImages(): Promise<Array<Photo>> {
+export async function getAllImages(): Promise<Array<Image>> {
 	const data = await fetchAPI(`
 		{
 			mediaItems(first: ${ process.env.API_GET_IMAGE_NUMBER_LIMIT }) {
@@ -283,17 +289,17 @@ export async function getAllImages(): Promise<Array<Photo>> {
 		}
 	`);	
 
-	let photos: Array<Photo> = [];
-	data.mediaItems.edges.map(async (photo: any) => {		
-		photos.push({
-			alt: photo.node.altText,
-			src: photo.node.sourceUrl,
-			width: photo.node.title.split("×")[0] ?? 0,
-			height: photo.node.title.split("×")[1] ?? 0,
+	let images: Array<Image> = [];
+	data.mediaItems.edges.map(async (image: any) => {		
+		image.push({
+			alt: image.node.altText,
+			src: image.node.sourceUrl,
+			width: image.node.title.split("×")[0] ?? 0,
+			height: image.node.title.split("×")[1] ?? 0,
 		});
 	});
 
-	return photos;
+	return images;
 }
 
 /**
@@ -331,7 +337,7 @@ export async function getAllPartners() {
 		partners.push({
 			name: partner.node.title,
 			id: partner.node.id,
-			photo: {
+			image: {
 				alt: partnerMeta.image.node.altText,
 				src: partnerMeta.image.node.sourceUrl,
 				width: partnerMeta.image.node.title.split("×")[0] ?? 0,
@@ -346,7 +352,7 @@ export async function getAllPartners() {
 
 /**
  * Get all images from the WordPress API.
- * @returns Returns `Promise<Array<Photo>>` from the data fethed from the WordPress API.
+ * @returns Returns `Promise<Array<Image>>` from the data fethed from the WordPress API.
  */
 export async function getAllPages() {
 	type Page = {

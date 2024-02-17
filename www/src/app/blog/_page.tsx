@@ -2,12 +2,18 @@
 // Since this is such a core feature the page won't be deleted.
 
 import { Subtitle, Title } from "@/components/general/Typography";
-import { getAllPosts } from "@/lib/api";
+import { getPosts } from "@/lib/filter_data";
 import MailingListExtendedFooter from "@/components/extendedFooters/mailingList";
 import { Metadata } from "next";
 import { Post } from "@/types/Post";
 import PostBigCarousel from "@/components/blog/PostBigCarousel";
 import PostMedium from "@/components/blog/PostMedium";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 export const metadata: Metadata = {
 	title: "Blog"
@@ -17,15 +23,8 @@ export const metadata: Metadata = {
  * @returns Page for /blog.
  */
 export default async function Blog() {
-	const posts: Array<Post> = await getAllPosts();
-	const highlightedPosts: Array<Post> = 
-		posts.filter((post) => {
-			return post.isHighlighted;
-		});
-	const generalPosts: Array<Post> = 
-		posts.filter((post) => {
-			return !post.isHighlighted;
-		});
+	const highlightedPosts: Array<Post> = await getPosts({ isHighlighted: true });
+	const generalPosts: Array<Post> = await getPosts({ isHighlighted: false });
 
 	return (
 		<main className="flex flex-col just pt-3">

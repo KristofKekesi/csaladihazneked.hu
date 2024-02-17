@@ -1,4 +1,4 @@
-import { getAllBlueprints, getAllPages, getAllPosts } from "./api";
+import { getAllBlueprints, getAllPages, getAllPosts } from "@/lib/api";
 import { Blueprint } from "@/types/Blueprint";
 import { Post } from "@/types/Post";
 
@@ -8,7 +8,7 @@ import { Post } from "@/types/Post";
 //       \_  ___  ___>
 //         \__) \__)
 
-type PostProps = {
+type PostParams = {
 	id?: string,
 	slug?: string,
 	isHighlighted?: boolean,
@@ -28,12 +28,8 @@ type PostProps = {
  * 			provided pass.
 */
 export async function getPosts(
-	{id, slug, isHighlighted, limit, page, unique}: PostProps
+	{id, slug, isHighlighted, limit = 10, page = 0, unique}: PostParams
 ) : Promise<Array<Post>> {
-	// Set default values
-	if (page === undefined) { page = 0; }
-	if (limit === undefined) { limit = 10; }
-
 	const posts: Array<Post> = await getAllPosts();
 
 	// Filter posts

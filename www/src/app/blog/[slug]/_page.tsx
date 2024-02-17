@@ -1,7 +1,7 @@
 //** This page was removed because of client needs. 
 // Since this is such a core feature the page won't be deleted.
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Header, Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import { Balancer } from "react-wrap-balancer";
 import BlueprintSmall from "@/components/blueprint/BlueprintSmall";
@@ -14,8 +14,13 @@ import { Post } from "@/types/Post";
 import PostMediumCarousel from "@/components/blog/PostMediumCarousel";
 import PostSmall from "@/components/blog/PostSmall";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
-type Props = {
+type Params = {
 	params: { slug: string }
 	searchParams: { [key: string]: string | string[] | undefined }
 }
@@ -27,7 +32,7 @@ type Props = {
  * @returns The metadata generated for a specific slug.
  */
 export async function generateMetadata(
-	{ params }: Props
+	{ params }: Params
 ): Promise<Metadata> {
 	const post: Post = ( await getPosts({ slug: params.slug }) )[0];
 
@@ -41,7 +46,7 @@ export async function generateMetadata(
  * @param params Object containing the slug of the URL and the post.
  * @returns Page for /blog/**
  */
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: Params) {
 	const post: Post = ( await getPosts({slug: params.slug}) )[0];
 	const content = await html2md({html: post.content});
 

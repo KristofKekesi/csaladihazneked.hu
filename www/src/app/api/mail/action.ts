@@ -5,17 +5,23 @@ import formData from "form-data";
 import MailGun from "mailgun.js";
 import z from "zod";
 
-type Props = {
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
+type Params = {
 	emailAddress: string,
 	name: string,
 	message: string
 }
 
-export async function sendMail(props: Props) {
+export async function sendMail(params: Params) {
 	// Getting data from the URL.
-	const emailAddress = props.emailAddress;
-	const name = props.name;
-	const message = props.message;
+	const emailAddress = params.emailAddress;
+	const name = params.name;
+	const message = params.message;
 
 	// Validating data.
 	const validate = z.object({

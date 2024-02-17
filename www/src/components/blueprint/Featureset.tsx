@@ -9,8 +9,13 @@ import {
 import { Blueprint } from "@/types/Blueprint";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import ToiletPaper from "./toiletPaper.svg";
+import ToiletPaper from "@/components/blueprint/toiletPaper.svg";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type FeatureParams = {
 	children?: JSX.Element,

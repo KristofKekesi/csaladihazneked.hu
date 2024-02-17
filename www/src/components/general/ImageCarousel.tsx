@@ -4,15 +4,21 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem
-} from "@/components/ui/carousel";
+} from "@/components/ui/Carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Photo } from "@/types/Photo";
+import { Image as ImageType } from "@/types/Image";
 import { useRef } from "react";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
 type Params = {
-	images: Array<Photo>,
+	images: Array<ImageType>,
 	className?: string
 }
 

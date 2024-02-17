@@ -4,12 +4,18 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-} from "@/components/ui/carousel";
+} from "@/components/ui/Carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import { Post } from "@/types/Post";
-import PostMedium from "./PostMedium";
+import PostMedium from "@/components/blog/PostMedium";
 import { useRef } from "react";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type Params = {
 	posts: Array<Post>,

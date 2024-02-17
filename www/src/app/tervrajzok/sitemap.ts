@@ -2,6 +2,12 @@ import { Blueprint } from "@/types/Blueprint";
 import { getAllBlueprints } from "@/lib/api";
 import { MetadataRoute } from "next";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
 /**

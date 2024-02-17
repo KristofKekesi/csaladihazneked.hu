@@ -1,5 +1,10 @@
 import { NodeHtmlMarkdown } from "node-html-markdown";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 const nhm = new NodeHtmlMarkdown(
 	/* options (optional) */ {}, 
@@ -7,7 +12,7 @@ const nhm = new NodeHtmlMarkdown(
 	/* customCodeBlockTranslators (optional) */ undefined
   );
 
-type Props = {
+type Params = {
 	html: string
 }
 
@@ -16,8 +21,8 @@ type Props = {
  * @param html A `string` containing html code.
  * @returns The Markdown equivalent of the given html code.
  */
-export default async function html2md(props: Props) {
+export default async function html2md(params: Params) {
 	return(
-		nhm.translate( props.html )
+		nhm.translate( params.html )
 	);
 }

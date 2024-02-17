@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { Separator } from "../../ui/separator";
+import { Separator } from "@/components/ui/Separator";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 /**
  * A general footer component.
@@ -25,9 +31,9 @@ export default function Footer() {
 					<div className="flex flex-col sm:flex-row gap-4 items-end">
 						<Link
 							className="hover:text-black/50 transition-colors"
-							href="/galeria"
+							href="/referencia"
 						>
-							Galéria
+							Referencia
 						</Link>
 					</div>
 					<Link

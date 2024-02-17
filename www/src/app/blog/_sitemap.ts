@@ -5,6 +5,12 @@ import { getAllPosts } from "@/lib/api";
 import { MetadataRoute } from "next";
 import { Post } from "@/types/Post";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
 const DOMAIN: string = "https://www.csaladihazneked.hu";
 
 /**

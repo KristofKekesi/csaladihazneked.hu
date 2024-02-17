@@ -1,4 +1,4 @@
-import { Photo } from "./Photo";
+import { Image } from "@/types/Image";
 
 export type Post = {
 	id: string,
@@ -6,6 +6,6 @@ export type Post = {
 	slug: string,
 	isHighlighted: boolean,
 	description: string,
-	highlightedPhoto: Photo
+	highlightedImage: Image
 	content: string
 }

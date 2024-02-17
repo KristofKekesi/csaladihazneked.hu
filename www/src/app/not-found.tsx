@@ -1,8 +1,14 @@
-import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import { ChevronRight, Facebook, Instagram, Youtube } from "lucide-react";
 import { Subtitle, Title } from "@/components/general/Typography";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 /**
  * @returns A page to render on 404 errors.

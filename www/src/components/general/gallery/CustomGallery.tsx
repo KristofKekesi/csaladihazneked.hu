@@ -7,14 +7,12 @@ React.useLayoutEffect = React.useEffect;
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Photo } from "@/types/Photo";
+import { Image as ImageType } from "@/types/Image";
 import PhotoAlbum from "react-photo-album";
 import { TRANSPARENT_IMAGES } from "../../../../config";
 import { useInView } from "react-intersection-observer";
 
-
 //TODO(KristofKekesi): TypeScriptify
-
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -22,10 +20,9 @@ import { useInView } from "react-intersection-observer";
 //       \_  ___  ___>
 //         \__) \__)
 
-
-export function onClick(props: any) {
-    const element = document.getElementById(props.target.getAttribute("data-index"))!;
-    const wrapper = document.getElementById(props.target.getAttribute("data-index") + "-wrapper")!;
+export function onClick(params: any) {
+    const element = document.getElementById(params.target.getAttribute("data-index"))!;
+    const wrapper = document.getElementById(params.target.getAttribute("data-index") + "-wrapper")!;
 
     element.classList.toggle("selected");
     if (!element.classList.contains("selected")) {
@@ -51,29 +48,27 @@ export function onClick(props: any) {
     }
 }
 
+function CustomImageRenderer(params: any) {
+    //Todo check if this file even exists
+    const source = TRANSPARENT_IMAGES ? "/transparent.png" : params.image.src;
 
-function CustomImageRenderer(props: {
-    photo: Photo, wrapperStyle: any, layout: any, imageProps: any
-}) {
-    const source = TRANSPARENT_IMAGES ? "/transparent.png" : props.photo.src;
-
-    props.wrapperStyle["height"] = props.layout.height;
+    params.wrapperStyle["height"] = params.layout.height;
 
     return (
         <>
-            <div style={ props.wrapperStyle }>
+            <div style={ params.wrapperStyle }>
                 <div style={
                     { display: "block", position: "relative", width: "100%", height: "100%" }
                 }>
                     <Image
-                        data-src={ props.photo.src }
-                        data-index={ props.layout.index }
-                        className={ cn("photo", props.imageProps.className) }
+                        data-src={ params.image.src }
+                        data-index={ params.layout.index }
+                        className={ cn("image", params.imageProps.className) }
                         src={ source }
-                        alt={ props.photo.alt }
-                        title={ props.photo.title }
+                        alt={ params.image.alt }
+                        title={ params.image.title }
                         loading="lazy"
-                        sizes={ props.imageProps.sizes }
+                        sizes={ params.imageProps.sizes }
                         fill
                     />
 					{
@@ -85,7 +80,7 @@ function CustomImageRenderer(props: {
     );
 }
 
-function CustomRowRenderer(props: any) {
+function CustomRowRenderer(params: any) {
     const { ref } = useInView({
         threshold: 0.1,
         triggerOnce: true,
@@ -101,14 +96,19 @@ function CustomRowRenderer(props: any) {
         <div ref={ref} className={cn(
             "motion-safe:transition-all opacity-0 motion-safe:delay-500motion-safe:duration-500"
             ,"motion-reduce:translate-y-0 select-none ",
-            props.rowContainerProps.className
-        )} style={ props.rowContainerProps.style }>
-            { props.children }
+            params.rowContainerProps.className
+        )} style={ params.rowContainerProps.style }>
+            { params.children }
         </div>
     );
 }
 
-export default function CustomGallery(props: {images: Array<Photo>, className?: string}) {
+type GalleryParams = {
+    images: Array<ImageType>,
+    className?: string
+}
+
+export default function CustomGallery(params: GalleryParams) {
     var height = 0;
     if (typeof screen !== "undefined") {
         height = screen ? (screen.height / 3.5) : 0;
@@ -133,14 +133,14 @@ export default function CustomGallery(props: {images: Array<Photo>, className?: 
 
     return(
         <>
-            <div className={props.className}>
+            <div className={ params.className }>
                 <PhotoAlbum
                     layout="rows"
-                    photos={props.images}
-                    targetRowHeight={height}
-                    spacing={3}
-                    renderRowContainer={CustomRowRenderer}
-                    renderPhoto={CustomImageRenderer}
+                    photos={ params.images }
+                    targetRowHeight={ height }
+                    spacing={ 3 }
+                    renderRowContainer={ CustomRowRenderer }
+                    renderPhoto={ CustomImageRenderer }
                 />
             </div>
         </>

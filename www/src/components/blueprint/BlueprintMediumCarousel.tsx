@@ -4,14 +4,20 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-} from "@/components/ui/carousel";
+} from "@/components/ui/Carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Blueprint } from "@/types/Blueprint";
-import BlueprintMedium from "./BlueprintMedium";
+import BlueprintMedium from "@/components/blueprint/BlueprintMedium";
 import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
-type Props = {
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
+type Params = {
 	blueprints: Array<Blueprint>,
 	className?: string
 }
@@ -21,7 +27,7 @@ type Props = {
  * @param blueprints An `Array` of `Blueprint`s to populate the component from.
  * @returns A carousel of `BlueprintMedium` components populated from the given `blueprints`.
  */
-export default function BlueprintMediumCarousel(props: Props) {
+export default function BlueprintMediumCarousel(params: Params) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);
@@ -29,7 +35,7 @@ export default function BlueprintMediumCarousel(props: Props) {
 	return (
 		<div className={
 			cn("w-full flex justify-center cursor-ew-resize",
-			props.className)
+			params.className)
 		}>
 			<Carousel
 				className="w-full"
@@ -39,7 +45,7 @@ export default function BlueprintMediumCarousel(props: Props) {
 				opts={{ align: "start", loop: true, direction: "ltr" }}
 			>
 				<CarouselContent>
-					{ props.blueprints.map((blueprint, index) => (
+					{ params.blueprints.map((blueprint, index) => (
 						<CarouselItem className="md:basis-1/2 xl:basis-1/3" key={ index }>
 							<BlueprintMedium blueprint={ blueprint } />
 						</CarouselItem>
