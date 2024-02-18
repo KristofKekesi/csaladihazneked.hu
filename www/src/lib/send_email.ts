@@ -17,7 +17,14 @@ type Params = {
 	message: string
 }
 
-export async function sendMail(params: Params) {
+/**
+ * Server action to send an email with.
+ * @param emailAddress Email address of the visitor. 
+ * @param name Name of the visitor. 
+ * @param message Message of the visitor. 
+ * @returns Success represented with a `Boolean`.
+ */
+export async function sendEmail(params: Params) : Promise<Boolean> {
 	// Getting data from the URL.
 	const emailAddress = params.emailAddress;
 	const name = params.name;
@@ -33,7 +40,7 @@ export async function sendMail(params: Params) {
 	// Guard closes.
 	const validateResponse = validate.safeParse({ emailAddress, name, message });
 	if (!validateResponse.success) {
-		return Response.json(validateResponse);
+		return false;
 	}
 	if (process.env.MAILGUN_API_KEY === undefined) {
 		throw new Error("No MAILGUN_API_KEY environmental variable were provided.");
@@ -67,8 +74,8 @@ export async function sendMail(params: Params) {
 	try {
 		client.messages.create(process.env.MAILGUN_DOMAIN, messageData);
 	} catch (error: any) {
-		return Response.json("a");
+		return false;
 	}
 
-	return Response.json("success");
+	return true;
 }

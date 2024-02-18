@@ -16,7 +16,7 @@ export default function Footer() {
 		<footer className="w-full bg-customBrown pt-6 pb-3
 		rounded-t-3xl text-black/75 flex flex-col gap-4">
 			<div className="flex flex-row justify-between gap-4 px-6">
-				<div className="flex flex-col sm:flex-row justify-between gap-2">
+				<div className="flex flex-col sm:flex-row gap-2">
 					<Link className="hover:text-black/50 transition-colors" href="/">
 						csaladihazneked.hu
 					</Link> 
@@ -24,10 +24,11 @@ export default function Footer() {
 						className="inline sm:hidden hover:text-black/50 transition-colors"
 						href="/aszf"
 					>
-						Általános Szerződési Feltételek
+						<span className="hidden sm:inline">Általános Szerződési Feltételek</span>
+						<span className="inline sm:hidden">ÁSZF</span>
 					</Link>
-				</div>
-				<div className="flex flex-row gap-4">
+					</div>
+					<div className="flex flex-col sm:flex-row justify-between gap-2">
 					<div className="flex flex-col sm:flex-row gap-4 items-end">
 						<Link
 							className="hover:text-black/50 transition-colors"
@@ -35,15 +36,12 @@ export default function Footer() {
 						>
 							Referencia
 						</Link>
-					</div>
 					<Link
 						className="hover:text-black/50 transition-colors hidden sm:inline"
 						href="/#elerhetosegek"
 					>
 						Elérhetőség
 					</Link>
-					<Separator orientation="vertical" className="bg-black/50" />
-					<div className="flex flex-col sm:flex-row gap-4">
 						<Link
 							className="hover:text-black/50 transition-colors"
 							href="/tervrajzok"
