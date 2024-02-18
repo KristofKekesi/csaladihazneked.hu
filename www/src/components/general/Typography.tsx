@@ -1,6 +1,11 @@
 import Balancer from "react-wrap-balancer";
-
 import { cn } from "@/lib/utils";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 export const titleClassNames: string = "text-6xl font-caprasimo select-auto";
 

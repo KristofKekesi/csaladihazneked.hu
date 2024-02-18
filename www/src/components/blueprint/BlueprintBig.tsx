@@ -5,15 +5,21 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/Card";
 import { Blueprint } from "@/types/Blueprint";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Featureset from "./Featureset";
+import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
-import { subtitleClassNames } from "../general/Typography";
+import { subtitleClassNames } from "@/components/general/Typography";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type Params = {
 	blueprint: Blueprint,
@@ -82,7 +88,7 @@ export default function BlueprintBig(params: Params) {
 				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline relative"
 			>
 				<Image
-					src={ params.blueprint.highlightedPhoto.src } fill
+					src={ params.blueprint.highlightedImage.src } fill
 					alt={ params.blueprint.title } className="object-cover"
 				/>
 			</div>

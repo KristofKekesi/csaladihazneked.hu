@@ -7,6 +7,11 @@ import Header from "@/components/general/header/Header";
 import localFont from "next/font/local";
 import { Provider } from "react-wrap-balancer";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 export const metadata: Metadata = {
 	title: {
@@ -23,7 +28,6 @@ export const metadata: Metadata = {
 	},
 };
 
-
 export const viewport: Viewport = {
 themeColor: "#BABEAE"
 };
@@ -33,7 +37,6 @@ const Caprasimo = localFont({
 	display: "swap",
 	variable: "--font-caprasimo"
 });
-
 
 /**
  * Root layout.

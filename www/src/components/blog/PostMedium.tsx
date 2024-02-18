@@ -1,11 +1,17 @@
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import Balancer from "react-wrap-balancer";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Post } from "@/types/Post";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type Params = {
 	post: Post,
@@ -27,7 +33,7 @@ export default function PostMedium(params: Params) {
 					<div className="w-full h-full relative group-hover:blur
 					group-hover:opacity-40 transition-all">
 						<Image
-							src={ params.post.highlightedPhoto.src } alt={ params.post.title }
+							src={ params.post.highlightedImage.src } alt={ params.post.title }
 							fill
 							className="rounded-md object-cover"
 						/>

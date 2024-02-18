@@ -1,9 +1,9 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
 import { getBlueprints } from "@/lib/filter_data";
@@ -14,6 +14,11 @@ import { Mail } from "lucide-react";
 import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type Params = {
 	params: { slug: string }
@@ -55,7 +60,7 @@ export default async function Page({params}: Params) {
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">
 				<ImageCarousel 
-					images={[blueprint.highlightedPhoto, ...blueprint.images]} 
+					images={[blueprint.highlightedImage, ...blueprint.images]} 
 					className="col-span-5 lg:col-span-3"
 				/>
 				<Card className="col-span-5 lg:col-span-2 flex flex-col h-full justify-between">

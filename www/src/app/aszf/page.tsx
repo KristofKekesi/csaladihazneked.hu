@@ -4,6 +4,11 @@ import html2md from "@/lib/html2md";
 import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 export const metadata: Metadata = {
 	title: "ÁSZF"

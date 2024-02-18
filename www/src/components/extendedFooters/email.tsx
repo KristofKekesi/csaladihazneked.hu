@@ -1,13 +1,23 @@
 "use client";
 
-import { Button } from "../ui/button";
-import ExtendedFooter from "../general/footer/ExtendedFooter";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+import { Button } from "@/components/ui/Button";
+import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
 import { MAIL_FORM_API_COOLDOWN } from "../../../config";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/Textarea";
 import { useState } from "react";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
+/**
+ * A component with an email sender action.
+ * @returns An `ExtendedFooter` with an email sender action.
+ */
 export default function EmailExtendedFooter() {
 	const [name, setName] = useState("a");
 	const [email, setEmail] = useState("a@a.com");

@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { Separator } from "@/components/ui/Separator";
 
-import { Separator } from "../../ui/separator";
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 /**
  * A general header component.
@@ -16,8 +21,8 @@ export default function Header() {
 					<span className="inline sm:hidden">Home</span>
 				</Link>
 					<div className="flex flex-row gap-4">
-					<Link className="hover:text-black/50 transition-colors" href="/galeria">
-						Galéria
+					<Link className="hover:text-black/50 transition-colors" href="/referencia">
+						Referencia
 					</Link>
 					<Link
 						className="hover:text-black/50 transition-colors hidden sm:inline"

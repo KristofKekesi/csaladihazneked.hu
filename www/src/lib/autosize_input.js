@@ -1,5 +1,11 @@
 // from: https://stackoverflow.com/questions/7745741/auto-expanding-textarea
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
 /**
  * A funtion to limit he maximum and minimum size of a textarea.
  * @param textarea_id Id of the textarea.

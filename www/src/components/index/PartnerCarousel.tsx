@@ -1,14 +1,19 @@
 "use client";
 
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/Carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
-import Partner from "./Partner";
+import Partner from "@/components/index/Partner";
 import { Partner as PartnerType } from "@/types/Partner";
 import { useRef } from "react";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
-type Props = {
+type Params = {
 	partners: Array<PartnerType>,
 	className?: string
 }
@@ -18,13 +23,13 @@ type Props = {
  * @param partners An `Array<Partner>` to populate the carousel from. 
  * @returns An auto scrolling carousel displaying the given partners.
  */
-export async function PartnerCarousel(props: Props) {
+export async function PartnerCarousel(params: Params) {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);
 
 	let carouselItemClassName: string;
-	switch ( props.partners.length ) {
+	switch ( params.partners.length ) {
 		case 1:
 			carouselItemClassName = "";
 			break;
@@ -41,19 +46,19 @@ export async function PartnerCarousel(props: Props) {
 	}
 	
 	return (
-		<div className={cn("w-full flex justify-center cursor-ew-resize", props.className)}>
+		<div className={cn("w-full flex justify-center cursor-ew-resize", params.className)}>
 			<Carousel
 				className="w-full"
-				plugins={[plugin.current]}
-				onMouseEnter={plugin.current.stop}
-      			onMouseLeave={plugin.current.reset}
-				opts={{align: "start", loop: true, direction: "ltr"}}
+				plugins={[ plugin.current ]}
+				onMouseEnter={ plugin.current.stop }
+      			onMouseLeave={ plugin.current.reset }
+				opts={{ align: "start", loop: true, direction: "ltr" }}
 			>
 				<CarouselContent>
-					{ props.partners.map((partner, index) => (
-					<CarouselItem key={ index } className={ carouselItemClassName }>
-						<Partner partner={ partner } />
-					</CarouselItem>
+					{ params.partners.map((partner, index) => (
+						<CarouselItem key={ index } className={ carouselItemClassName }>
+							<Partner partner={ partner } />
+						</CarouselItem>
 					)) }
 				</CarouselContent>
 			</Carousel>

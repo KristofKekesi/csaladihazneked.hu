@@ -3,15 +3,21 @@ import {
 	CardContent,
 	CardFooter,
 	CardHeader,
-} from "@/components/ui/card";
+} from "@/components/ui/Card";
 import { Blueprint } from "@/types/Blueprint";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { ChevronRight} from "lucide-react";
 import { cn } from "@/lib/utils";
-import Featureset from "./Featureset";
+import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
-import { Subtitle } from "../general/Typography";
+import { Subtitle } from "@/components/general/Typography";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type Params = {
 	blueprint: Blueprint,
@@ -37,7 +43,7 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 						<div className="w-full aspect-video relative group-hover:blur
 						group-hover:opacity-40 transition-all">
 							<Image
-								src={ blueprint.highlightedPhoto.src }
+								src={ blueprint.highlightedImage.src }
 								alt={ blueprint.title } fill
 								className="rounded-t-md object-cover"
 							/>

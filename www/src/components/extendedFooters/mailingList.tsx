@@ -1,10 +1,16 @@
 "use client";
 
-import { Button } from "../ui/button";
-import ExtendedFooter from "../general/footer/ExtendedFooter";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+import { Button } from "@/components/ui/Button";
+import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
 import { sendGAEvent } from "@next/third-parties/google";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 /**
  * An `ExtendedFooter` with a mailing list action.

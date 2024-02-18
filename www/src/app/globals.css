@@ -99,6 +99,6 @@ img.selected {
   @apply fixed top-0 left-0 z-40 object-contain bg-black
 }
 
-img.photo {
+img.image {
   @apply z-0
 }

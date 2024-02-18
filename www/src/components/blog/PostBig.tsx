@@ -5,13 +5,18 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Post } from "@/types/Post";
 
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 type Params = {
 	post: Post
@@ -29,7 +34,7 @@ export default function PostBig(params: Params) {
 					<div className="w-full aspect-square relative group-hover:blur
 					group-hover:opacity-40 transition-all">
 						<Image
-							src={ params.post.highlightedPhoto.src } alt={ params.post.title }
+							src={ params.post.highlightedImage.src } alt={ params.post.title }
 							fill
 							className="rounded-md object-cover"
 						/>

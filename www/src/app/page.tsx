@@ -1,24 +1,24 @@
-import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllBlueprints, getAllPartners, getAllPosts } from "@/lib/api";
+import { getBlueprints, getPages } from "@/lib/filter_data";
 import { Subtitle, Title } from "@/components/general/Typography";
-import Balancer from "react-wrap-balancer";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
 import EmailExtendedFooter from "@/components/extendedFooters/email";
-import { getPages } from "@/lib/filter_data";
+import { getAllPartners } from "@/lib/api";
 import html2md from "@/lib/html2md";
 import Link from "next/link";
 import Markdown from "@/components/general/MarkDown";
 import { PartnerCarousel } from "@/components/index/PartnerCarousel";
-import PostMedium from "@/components/blog/PostMedium";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
 
 /**
  * @returns Page for /.
  */
 export default async function Home() {
-	const blueprints = await getAllBlueprints();
-	const posts = await getAllPosts();
+	const highlightedBlueprints = await getBlueprints({ isHighlighted: true });
 	const partners = await getAllPartners();
 	
 	const data = ( await getPages({title: "Főoldal", unique: true}) )[0];
@@ -41,28 +41,9 @@ export default async function Home() {
 					<PartnerCarousel partners={ partners } />
 				</>
 			: null }
-			<Subtitle className="pt-6 px-6">Legutóbbi híreink</Subtitle>
-			<hr className="pb-4" />
-			<div className="mx-6 grid grid-cols-5 gap-4">
-				<PostMedium className="col-span-5 xl:col-span-4" post={posts[0]} />
-				<Card className="justify-between hidden xl:flex">
-					<CardHeader>
-						<CardTitle className="font-serif">
-							<Balancer>Minden bejegyzés</Balancer>
-						</CardTitle>
-					</CardHeader>
-					<CardFooter className="flex items-end">
-						<Link href="/blog">
-							<Button variant="secondary">
-								<ChevronRight className="h-4 w-4" />
-							</Button>
-						</Link>
-					</CardFooter>
-				</Card>
-			</div>
 			<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
 			<hr className="pb-4" />
-			<BlueprintMediumCarousel className="px-6" blueprints={ blueprints } />
+			<BlueprintMediumCarousel className="px-6" blueprints={ highlightedBlueprints } />
 			<div className="flex flex-col w-full justify-between items-baseline">
 				<div className="w-full">
 					<Subtitle className="pt-6 px-6" id="elerhetosegek">Elérhetőségek</Subtitle>

@@ -1,7 +1,7 @@
-import { Header, Subtitle, Title } from "./Typography";
+import { Header, Subtitle, Title } from "@/components/general/Typography";
 import ReactMarkdown, { Components } from "react-markdown";
 import { cn } from "@/lib/utils";
-import ImageRenderer from "./ImageRenderer";
+import ImageRenderer from "@/components/general/ImageRenderer";
 
 //    TURTLE - TEKI
 //    (°-°) _______

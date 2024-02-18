@@ -1,4 +1,4 @@
-import { Photo } from "./Photo";
+import { Image } from "@/types/Image";
 
 export type Blueprint = {
 	id: string,
@@ -9,8 +9,8 @@ export type Blueprint = {
 	description: string,
 	content: string,
 	price?: number,
-	highlightedPhoto: Photo,
-	images: Array<Photo>,
+	highlightedImage: Image,
+	images: Array<Image>,
 	
 	type: string //"Lakás" | "Családiház" | "Bolt" | "Ipar",
 	squarem: number,
