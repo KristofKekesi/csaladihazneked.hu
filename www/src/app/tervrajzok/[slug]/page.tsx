@@ -45,10 +45,10 @@ export async function generateMetadata(
 
 /**
  * @param Object containing the slug from the URL and the slug of the blueprint to display.
- * @returns Page for /tervrajzok/**
+ * @returns Page for /tervrajzok/slug
  */
-export default async function Page({params}: Params) {
-	const blueprint: Blueprint = ( await getBlueprints({slug: params.slug}) )[0];
+export default async function Page({ params }: Params) {
+	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
 	const similarBlueprints: Array<Blueprint> = ( await getAllBlueprints() ).splice(0, 10);
 	const content = await html2md({html: blueprint.content});
 

@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
@@ -21,9 +22,14 @@ import { z } from "zod";
  */
 export default function EmailExtendedFooter() {
 	const [state, setState] = useState("toBeSent");
+
 	const [name, setName] = useState("");
 	const [emailAddress, setEmailAddress] = useState("");
 	const [message, setMessage] = useState("");
+
+	const [validName, setValidName] = useState(true);
+	const [validEmailAddress, setValidEmailAddress] = useState(true);
+	const [validMessage, setValidMessage] = useState(true);
 
 	/**
 	 * A function to be executed on the submit event of the form.
@@ -45,33 +51,24 @@ export default function EmailExtendedFooter() {
 
 		let passed = true;
 		if (!validateEmailAddress.safeParse({ emailAddress }).success) {
-			document.getElementById("email-label")?.classList.add("text-red-700");
-			document.getElementById("email")?.classList.add("border-red-700", "bg-red-900/20");
-
+			setValidEmailAddress(false);
 			passed = false;
 		} else {
-			document.getElementById("email-label")?.classList.remove("text-red-700");
-			document.getElementById("email")?.classList.remove("border-red-700", "bg-red-900/20");
+			setValidEmailAddress(true);
 		}
 
 		if (!validateName.safeParse({ name }).success) {
-			document.getElementById("name-label")?.classList.add("text-red-700");
-			document.getElementById("name")?.classList.add("border-red-700", "bg-red-900/20");
-
+			setValidName(false);
 			passed = false;
 		} else {
-			document.getElementById("name-label")?.classList.remove("text-red-700");
-			document.getElementById("name")?.classList.remove("border-red-700", "bg-red-900/20");
+			setValidName(true);
 		}
 
 		if (!validateMessage.safeParse({ message }).success) {
-			document.getElementById("message-label")?.classList.add("text-red-700");
-			document.getElementById("message")?.classList.add("border-red-700", "bg-red-900/20");
-
+			setValidMessage(false);
 			passed = false;
 		} else {
-			document.getElementById("message-label")?.classList.remove("text-red-700");
-			document.getElementById("message")?.classList.remove("border-red-700", "bg-red-900/20");
+			setValidMessage(true);
 		}
 
 		// Guard close.
@@ -104,21 +101,21 @@ export default function EmailExtendedFooter() {
 				className="grid grid-cols-5 justify-between items-end gap-x-4 gap-y-2 col-span-5"
 			>
 				<div className="flex flex-col items-start col-span-5 md:col-span-2">
-					<Label className="text-base font-normal ml-2" htmlFor="email" id="email-label">
+					<Label className={ cn("text-base font-normal ml-2", 
+					!validEmailAddress ? "text-red-700" : null) } htmlFor="email">
 						Emailcím:
 					</Label>
 					<Input
 						id="email"
 						type="email"
 						value={ emailAddress }
+						variant={ !validEmailAddress ? "destructive" : null }
 						onChange={ (event) => setEmailAddress(event.target.value) }
-						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
-						border-2 border-dashed focus:border-white border-transparent
-						transition-colors w-full select-auto"
 					/>
 				</div>
 				<div className="flex flex-col items-start col-span-5 md:col-span-2">
-					<Label className="text-base font-normal ml-2" htmlFor="name" id="name-label">
+					<Label className={ cn("text-base font-normal ml-2", 
+					!validName ? "text-red-700" : null) } htmlFor="name">
 						Név:
 					</Label>
 					<Input
@@ -126,10 +123,8 @@ export default function EmailExtendedFooter() {
 						type="text"
 						autoComplete="username"
 						value={ name }
+						variant={ !validName ? "destructive" : null }
 						onChange={ (event) => setName(event.target.value) }
-						className="bg-white/40 focus:bg-white/20
-						hover:bg-white/30 border-2 border-dashed focus:border-white
-						border-transparent transition-colors w-full select-auto"
 					/>
 				</div>
 				<Button
@@ -144,20 +139,15 @@ export default function EmailExtendedFooter() {
 					{ state === "error" ? "Hiba" : null }
 				</Button>
 				<div className="flex flex-col items-start col-span-5 w-full">
-					<Label
-						className="text-base font-normal ml-2"
-						htmlFor="message" id="message-label"
-					>
+					<Label className={ cn("text-base font-normal ml-2",
+					!validMessage ? "text-red-700" : null) } htmlFor="message">
 						Üzenet:
 					</Label>
 					<Textarea
 						id="message"
 						value={ message }
+						variant={ !validMessage ? "destructive" : null }
 						onChange={ (event) => setMessage(event.target.value) }
-						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
-						border-2 border-dashed focus:border-white border-transparent
-						transition-colorsresize-none h-fit file:border-0 file:bg-transparent
-						file:text-sm file:font-medium select-auto"
 					/>
 				</div>
 				<div className="grid grid-cols-5 col-span-5 items-baseline">
