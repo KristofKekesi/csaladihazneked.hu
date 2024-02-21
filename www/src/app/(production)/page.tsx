@@ -1,7 +1,7 @@
 import { getBlueprints, getPages } from "@/lib/filter_data";
 import { Subtitle, Title } from "@/components/general/Typography";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
-import EmailExtendedFooter from "@/components/extendedFooters/email";
+import EmailExtendedFooter from "@/components/extendedFooters/Email";
 import { getAllPartners } from "@/lib/api";
 import html2md from "@/lib/html2md";
 import Link from "next/link";

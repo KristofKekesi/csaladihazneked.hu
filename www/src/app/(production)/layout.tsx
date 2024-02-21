@@ -33,7 +33,7 @@ themeColor: "#BABEAE"
 };
 
 const Caprasimo = localFont({
-	src: "../fonts/Caprasimo-Regular.ttf",
+	src: "../../fonts/Caprasimo-Regular.ttf",
 	display: "swap",
 	variable: "--font-caprasimo"
 });

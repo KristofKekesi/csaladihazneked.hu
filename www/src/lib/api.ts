@@ -220,7 +220,90 @@ export async function getAllBlueprints(): Promise<Array<Blueprint>> {
 
 	let blueprints: Array<Blueprint> = [];
 	data.blueprints.edges.map((blueprint: any) => {
-		const blueprintMeta =blueprint.node.blueprintMeta;
+		const blueprintMeta = blueprint.node.blueprintMeta;
+
+		const images: Array<Image> = [];
+		if (blueprintMeta.image1 !== null) {
+			images.push({
+				src: blueprintMeta.image1.node.sourceUrl,
+				alt: blueprintMeta.image1.node.altText,
+				width: blueprintMeta.image1.node.title.split("×")[0],
+				height: blueprintMeta.image1.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image2 !== null) {
+			images.push({
+				src: blueprintMeta.image2.node.sourceUrl,
+				alt: blueprintMeta.image2.node.altText,
+				width: blueprintMeta.image2.node.title.split("×")[0],
+				height: blueprintMeta.image2.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image3 !== null) {
+			images.push({
+				src: blueprintMeta.image3.node.sourceUrl,
+				alt: blueprintMeta.image3.node.altText,
+				width: blueprintMeta.image3.node.title.split("×")[0],
+				height: blueprintMeta.image3.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image4 !== null) {
+			images.push({
+				src: blueprintMeta.image4.node.sourceUrl,
+				alt: blueprintMeta.image4.node.altText,
+				width: blueprintMeta.image4.node.title.split("×")[0],
+				height: blueprintMeta.image4.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image5 !== null) {
+			images.push({
+				src: blueprintMeta.image5.node.sourceUrl,
+				alt: blueprintMeta.image5.node.altText,
+				width: blueprintMeta.image5.node.title.split("×")[0],
+				height: blueprintMeta.image5.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image6 !== null) {
+			images.push({
+				src: blueprintMeta.image6.node.sourceUrl,
+				alt: blueprintMeta.image6.node.altText,
+				width: blueprintMeta.image6.node.title.split("×")[0],
+				height: blueprintMeta.image6.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image7 !== null) {
+			images.push({
+				src: blueprintMeta.image7.node.sourceUrl,
+				alt: blueprintMeta.image7.node.altText,
+				width: blueprintMeta.image7.node.title.split("×")[0],
+				height: blueprintMeta.image7.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image8 !== null) {
+			images.push({
+				src: blueprintMeta.image8.node.sourceUrl,
+				alt: blueprintMeta.image8.node.altText,
+				width: blueprintMeta.image8.node.title.split("×")[0],
+				height: blueprintMeta.image8.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image9 !== null) {
+			images.push({
+				src: blueprintMeta.image9.node.sourceUrl,
+				alt: blueprintMeta.image9.node.altText,
+				width: blueprintMeta.image9.node.title.split("×")[0],
+				height: blueprintMeta.image9.node.title.split("×")[1],
+			});
+		}
+		if (blueprintMeta.image10 !== null) {
+			images.push({
+				src: blueprintMeta.image10.node.sourceUrl,
+				alt: blueprintMeta.image10.node.altText,
+				width: blueprintMeta.image10.node.title.split("×")[0],
+				height: blueprintMeta.image10.node.title.split("×")[1],
+			});
+		}
+
 		blueprints.push({
 			id: blueprint.node.id,
 			subtitle: blueprintMeta.subtitle,
@@ -236,18 +319,7 @@ export async function getAllBlueprints(): Promise<Array<Blueprint>> {
 				width: blueprintMeta.highlighted_image.node.title.split("×")[0],
 				height: blueprintMeta.highlighted_image.node.title.split("×")[1]
 			},
-			images: [
-				blueprintMeta.image1 !== null ? blueprintMeta.image1.node.sourceUrl : null,
-				blueprintMeta.image2 !== null ? blueprintMeta.image2.node.sourceUrl : null,
-				blueprintMeta.image3 !== null ? blueprintMeta.image3.node.sourceUrl : null,
-				blueprintMeta.image4 !== null ? blueprintMeta.image4.node.sourceUrl : null,
-				blueprintMeta.image5 !== null ? blueprintMeta.image5.node.sourceUrl : null,
-				blueprintMeta.image6 !== null ? blueprintMeta.image6.node.sourceUrl : null,
-				blueprintMeta.image7 !== null ? blueprintMeta.image7.node.sourceUrl : null,
-				blueprintMeta.image8 !== null ? blueprintMeta.image8.node.sourceUrl : null,
-				blueprintMeta.image9 !== null ? blueprintMeta.image9.node.sourceUrl : null,
-				blueprintMeta.image10 !== null ? blueprintMeta.image10.node.sourceUrl : null,
-			].filter((string) => { return string !== null; }),
+			images,
 			type: blueprintMeta.type[0],
 			squarem: blueprintMeta.squarem,
 			floors: blueprintMeta.floors,
@@ -290,12 +362,15 @@ export async function getAllImages(): Promise<Array<Image>> {
 	`);	
 
 	let images: Array<Image> = [];
-	data.mediaItems.edges.map(async (image: any) => {		
-		image.push({
+	data.mediaItems.edges.map(async (image: any) => {
+		const width = image.node.title.split("×")[0] ?? 0;
+		const height = image.node.title.split("×")[1] ?? 0;
+
+		images.push({
 			alt: image.node.altText,
 			src: image.node.sourceUrl,
-			width: image.node.title.split("×")[0] ?? 0,
-			height: image.node.title.split("×")[1] ?? 0,
+			width: width,
+			height: height,
 		});
 	});
 

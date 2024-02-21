@@ -14,6 +14,7 @@ import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
 import { subtitleClassNames } from "@/components/general/Typography";
+import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -35,7 +36,7 @@ export default function BlueprintBig(params: Params) {
 	return (
 		<Card className="flex rounded-t-3xl">
 			<div className="w-full md:w-2/3">
-				<CardHeader className="backdrop-blur-2xl bg-black/5 
+				<CardHeader className="backdrop-blur-2xl bg-[#f4f4f4]
 				rounded-t-3xl md:rounded-tl-3xl md:rounded-tr-none">
 					<CardTitle className="flex flex-nowrap justify-between items-baseline gap-4">
 						<span className="line-clamp-2 h-12 select-auto">
@@ -88,8 +89,10 @@ export default function BlueprintBig(params: Params) {
 				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline relative"
 			>
 				<Image
-					src={ params.blueprint.highlightedImage.src } fill
-					alt={ params.blueprint.title } className="object-cover"
+					src={ TRANSPARENT_IMAGES ? "/transparent.png" : 
+					params.blueprint.highlightedImage.src } 
+					fill alt={ params.blueprint.title }
+					className="object-cover rounded-tr-3xl rounded-br-md bg-[#f4f4f4]"
 				/>
 			</div>
 		</Card>

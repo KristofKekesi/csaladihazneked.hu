@@ -3,7 +3,7 @@
 
 import { Subtitle, Title } from "@/components/general/Typography";
 import { getPosts } from "@/lib/filter_data";
-import MailingListExtendedFooter from "@/components/extendedFooters/mailingList";
+import MailingListExtendedFooter from "@/components/extendedFooters/MailingList";
 import { Metadata } from "next";
 import { Post } from "@/types/Post";
 import PostBigCarousel from "@/components/blog/PostBigCarousel";

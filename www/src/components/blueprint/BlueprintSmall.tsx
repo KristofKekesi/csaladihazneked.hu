@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
+import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -30,9 +31,10 @@ export default function BlueprintSmall(params: Params) {
 				cn("w-fit rounded-3xl hover:bg-slate-50 transition-colors", params.className)
 			}>
 				<CardHeader className="flex flex-row items-center gap-4 pl-2 pr-6 py-2">
-					<Image src={ params.blueprint.highlightedImage.src }
+					<Image src={ TRANSPARENT_IMAGES ? "/transparent.png" : 
+					params.blueprint.highlightedImage.src }
 					height="32" width="32" alt={ params.blueprint.title }
-					className="object-cover rounded-full aspect-square" />
+					className="object-cover rounded-full aspect-square bg-[#f4f4f4]" />
 					<CardTitle className="text-base">
 						<span className="line-clamp-2 max-w-sm select-auto"><Balancer>
 							{ params.blueprint.title }

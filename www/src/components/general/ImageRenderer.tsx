@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -22,7 +23,7 @@ export default function ImageRenderer(params: any) {
                 loading="lazy"
                 width="0"
                 height="0"
-                src={ params.src }
+                src={ TRANSPARENT_IMAGES ? "/transparent.png" : params.src }
                 alt={ params.alt ? params.alt : "" }
                 sizes="100vw"
                 { ...params}

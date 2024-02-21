@@ -6,12 +6,15 @@ import { MetadataRoute } from "next";
 //       \_  ___  ___>
 //         \__) \__)
 
-const DOMAIN: string = "https://www.csaladihazneked.hu";
-
 /**
  * @returns Sitemap for /.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
+	if (!process.env.NEXT_PUBLIC_DOMAIN) {
+		throw new Error("NEXT_PUBLIC_DOMAIN environmental variable is not set.");
+	}
+	const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
+
 	return [
 		{
 			url: DOMAIN,

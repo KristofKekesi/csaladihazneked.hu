@@ -1,5 +1,6 @@
-import { getAllBlueprints, getAllPages, getAllPosts } from "@/lib/api";
+import { getAllBlueprints, getAllImages, getAllPages, getAllPartners, getAllPosts } from "@/lib/api";
 import { Blueprint } from "@/types/Blueprint";
+import { Image } from "@/types/Image";
 import { Post } from "@/types/Post";
 
 //    TURTLE - TEKI
@@ -129,4 +130,33 @@ export async function getPages({title, unique}: PageParams) {
 	}
 
 	return filteredPages;
+}
+
+type ImageParams = {
+	isPartnerImage?: boolean
+}
+
+/**
+ * @param isPartnerImage Filters the images by being used as a partner's image. 
+ * @returns 
+ */
+export async function getImages({isPartnerImage}: ImageParams) {
+	const images = await getAllImages();
+
+	const partners = await getAllPartners();
+	const partnerImages: Array<Image> = [];
+
+	partners.map((partner) => {
+		partnerImages.push(partner.image);
+	});
+
+	// Filter images
+	const filteredImages = images.filter(async (image) => {
+		if (isPartnerImage !== undefined && 
+			partnerImages.includes(image) === isPartnerImage) { return 0; }
+
+		return 1;
+	});
+
+	return filteredImages;
 }

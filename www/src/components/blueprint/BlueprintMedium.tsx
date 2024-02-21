@@ -12,6 +12,7 @@ import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
 import { Subtitle } from "@/components/general/Typography";
+import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -43,9 +44,10 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 						<div className="w-full aspect-video relative group-hover:blur
 						group-hover:opacity-40 transition-all">
 							<Image
-								src={ blueprint.highlightedImage.src }
+								src={ TRANSPARENT_IMAGES ? "/transparent.png" : 
+								blueprint.highlightedImage.src }
 								alt={ blueprint.title } fill
-								className="rounded-t-md object-cover"
+								className="rounded-t-md object-cover bg-[#f4f4f4]"
 							/>
 						</div>
 					</div>

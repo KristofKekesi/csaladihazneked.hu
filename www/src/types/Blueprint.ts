@@ -12,7 +12,7 @@ export type Blueprint = {
 	highlightedImage: Image,
 	images: Array<Image>,
 	
-	type: string //"Lakás" | "Családiház" | "Bolt" | "Ipar",
+	type: string //"Lakás" | "Családiház" | "Egyéb",
 	squarem: number,
 	floors: number,
 	

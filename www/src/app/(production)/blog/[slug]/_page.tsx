@@ -10,6 +10,7 @@ import { getPosts } from "@/lib/filter_data";
 import html2md from "@/lib/html2md";
 import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Post } from "@/types/Post";
 import PostMediumCarousel from "@/components/blog/PostMediumCarousel";
 import PostSmall from "@/components/blog/PostSmall";
@@ -35,6 +36,7 @@ export async function generateMetadata(
 	{ params }: Params
 ): Promise<Metadata> {
 	const post: Post = ( await getPosts({ slug: params.slug }) )[0];
+	if (!post) { notFound(); }
 
 	return {
 		title: post.title,

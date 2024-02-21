@@ -49,24 +49,22 @@ export function onClick(params: any) {
 }
 
 function CustomImageRenderer(params: any) {
-    //Todo check if this file even exists
-    const source = TRANSPARENT_IMAGES ? "/transparent.png" : params.image.src;
+    const source = TRANSPARENT_IMAGES ? "/transparent.png" : params.photo.src;
 
     params.wrapperStyle["height"] = params.layout.height;
 
     return (
         <>
             <div style={ params.wrapperStyle }>
-                <div style={
-                    { display: "block", position: "relative", width: "100%", height: "100%" }
-                }>
+                <div style={{ display: "block", position: "relative", 
+                width: "100%", height: "100%" }}>
                     <Image
-                        data-src={ params.image.src }
+                        data-src={ source }
                         data-index={ params.layout.index }
                         className={ cn("image", params.imageProps.className) }
                         src={ source }
-                        alt={ params.image.alt }
-                        title={ params.image.title }
+                        alt={ params.photo.alt }
+                        title={ params.photo.title }
                         loading="lazy"
                         sizes={ params.imageProps.sizes }
                         fill

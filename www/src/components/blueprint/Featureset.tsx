@@ -1,10 +1,5 @@
 import {
-	Box, Building,
-	Cuboid,
-	Factory,
-	Home,
-	Layers,
-	ShowerHead, Sofa, Store
+	Box, Building, Building2, Cuboid, Home, Layers, ShowerHead, Sofa, Warehouse
 } from "lucide-react";
 import { Blueprint } from "@/types/Blueprint";
 import { cn } from "@/lib/utils";
@@ -77,12 +72,12 @@ export default function Featureset(params: FeaturesetParams) {
 
 			{ params.type === "general" ? <>
 				<li className="flex items-baseline">
-					{ params.blueprint.type === "Bolt" ?
-					<Store className="h-4 w-4 mr-2" /> : null }
 					{ params.blueprint.type === "Családiház" ?
 					<Home className="h-4 w-4 mr-2" /> : null }
-					{ params.blueprint.type === "Ipar" ?
-					<Factory className="h-4 w-4 mr-2" /> : null }
+					{ params.blueprint.type === "Társasház" ?
+					<Building2 className="h-4 w-4 mr-2" /> : null }
+					{ params.blueprint.type === "Egyéb" ?
+					<Warehouse className="h-4 w-4 mr-2" /> : null }
 					{ params.blueprint.type === "Lakás" ?
 					<Building className="h-4 w-4 mr-2" /> : null }
 					<span className="select-auto">{ params.blueprint.type }</span>

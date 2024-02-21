@@ -14,6 +14,7 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -36,6 +37,7 @@ export async function generateMetadata(
 	{ params }: Params,
 ): Promise<Metadata> {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
+	if (!blueprint) { notFound(); }
 
 	return {
 		title: blueprint.title,

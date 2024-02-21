@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
@@ -16,11 +17,18 @@ import { z } from "zod";
 //       \_  ___  ___>
 //         \__) \__)
 
+type extendedFooterParams = {
+	blueprint: Blueprint,
+	className?: string
+}
+
 /**
  * A component with an email sender action.
+ * @param blueprint A `Blueprint` `Object` to display in the `ExtendedFooter`.
+ * @param className An optional `string` containing CSS classes.
  * @returns An `ExtendedFooter` with an email sender action.
  */
-export default function EmailExtendedFooter() {
+export default function BlueprintEmailExtendedFooter(params: extendedFooterParams) {
 	const [state, setState] = useState("toBeSent");
 
 	const [name, setName] = useState("");
@@ -72,25 +80,26 @@ export default function EmailExtendedFooter() {
 		}
 
 		// Guard close.
-		if (!passed) { return null; }
+		if (!passed) {
+			return null;
+		}
 
 		// Send email.
 		const status = await sendEmail({
-			url: `${process.env.NEXT_PUBLIC_DOMAIN}`,
+			url: `${ process.env.NEXT_PUBLIC_DOMAIN }/tervrajzok/${ params.blueprint.slug }`,
 			emailAddress: emailAddress,
 			name: name,
 			message: message
 		});
 
-		if (status) {
-			setState("sent");
-		} else {
-			setState("error");
-		}
+		if (status) { setState("sent"); } else { setState("error"); }
 	}
 
 	return (
-		<ExtendedFooter title="Email küldés">
+		<ExtendedFooter
+			title="Email küldés tervrajzzal kapcsolatban"
+			className={ params.className }
+		>
 			<form
 				onSubmit={ onSubmit }
 				className="grid grid-cols-5 justify-between items-end gap-x-4 gap-y-2 col-span-5"
@@ -104,7 +113,6 @@ export default function EmailExtendedFooter() {
 						id="email"
 						type="email"
 						value={ emailAddress }
-						disabled= { state === "sent" || state === "error" }
 						variant={ !validEmailAddress ? "destructive" : null }
 						onChange={ (event) => setEmailAddress(event.target.value) }
 					/>
@@ -117,10 +125,9 @@ export default function EmailExtendedFooter() {
 					<Input
 						id="name"
 						type="text"
-						value={ name }
 						autoComplete="username"
+						value={ name }
 						variant={ !validName ? "destructive" : null }
-						disabled= { state === "sent" || state === "error" }
 						onChange={ (event) => setName(event.target.value) }
 					/>
 				</div>
@@ -144,13 +151,12 @@ export default function EmailExtendedFooter() {
 						id="message"
 						value={ message }
 						variant={ !validMessage ? "destructive" : null }
-						disabled= { state === "sent" || state === "error" }
 						onChange={ (event) => setMessage(event.target.value) }
 					/>
 				</div>
 				<div className="grid grid-cols-5 col-span-5 items-baseline">
 					<span className={ cn("text-black/50 ml-2 text-base col-span-2", 
-					(!validEmailAddress || !validName || !validMessage) ? "text-red-700" : null )} >
+					(!validEmailAddress || !validName || !validMessage) ? "text-red-700" : null) }>
 						*: kötelező
 					</span>
 					<Button
