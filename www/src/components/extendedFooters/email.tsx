@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
-import { sendEmail } from "@/lib/send_email";
+import { sendMessage } from "@/lib/send_message";
 import { Textarea } from "@/components/ui/Textarea";
 import { z } from "zod";
 
@@ -75,7 +75,7 @@ export default function EmailExtendedFooter() {
 		if (!passed) { return null; }
 
 		// Send email.
-		const status = await sendEmail({
+		const status = await sendMessage({
 			url: `${process.env.NEXT_PUBLIC_DOMAIN}`,
 			emailAddress: emailAddress,
 			name: name,

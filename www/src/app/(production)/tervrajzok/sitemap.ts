@@ -1,5 +1,5 @@
 import { Blueprint } from "@/types/Blueprint";
-import { getAllBlueprints } from "@/lib/api";
+import { getAllBlueprints } from "@/lib/wp_api";
 import { MetadataRoute } from "next";
 
 //    TURTLE - TEKI

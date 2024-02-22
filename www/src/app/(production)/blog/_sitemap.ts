@@ -1,7 +1,7 @@
 //** This sitemap was removed because of client needs. 
 // Since this is such a core feature the sitemap won't be deleted.
 
-import { getAllPosts } from "@/lib/api";
+import { getAllPosts } from "@/lib/wp_api";
 import { MetadataRoute } from "next";
 import { Post } from "@/types/Post";
 

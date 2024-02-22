@@ -1,13 +1,10 @@
 import { Subtitle, Title } from "@/components/general/Typography";
 import { Blueprint } from "@/types/Blueprint";
-import BlueprintBigCarousel from "@/components/blueprint/BlueprintBigCarousel";
-import BlueprintMedium from "@/components/blueprint/BlueprintMedium";
+import BlueprintBig from "@/components/blueprint/BlueprintBig";
+import BlueprintEmailExtendedFooter from "@/components/extendedFooters/BlueprintEmail";
 import { getBlueprints } from "@/lib/filter_data";
 import { Metadata } from "next";
-import EmailExtendedFooter from "@/components/extendedFooters/Email";
-import BlueprintEmailExtendedFooter from "@/components/extendedFooters/BlueprintEmail";
 import { Separator } from "@/components/ui/Separator";
-import BlueprintBig from "@/components/blueprint/BlueprintBig";
 
 //    TURTLE - TEKI
 //    (°-°) _______

@@ -1,5 +1,5 @@
 import { Blueprint } from "@/types/Blueprint";
-import { getAllBlueprints } from "./api";
+import { getAllBlueprints } from "./wp_api";
 
 //    TURTLE - TEKI
 //    (°-°) _______

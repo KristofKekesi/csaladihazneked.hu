@@ -6,7 +6,7 @@ import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarou
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
-import { getAllBlueprints } from "@/lib/api";
+import { getAllBlueprints } from "@/lib/wp_api";
 import { getBlueprints } from "@/lib/filter_data";
 import html2md from "@/lib/html2md";
 import ImageCarousel from "@/components/general/ImageCarousel";

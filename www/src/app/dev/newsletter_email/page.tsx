@@ -1,4 +1,4 @@
-import { contactEmailHtml } from "@/lib/email_html";
+import { newsletterEmailHtml } from "@/lib/email_html";
 import { notFound } from "next/navigation";
 
 //    TURTLE - TEKI
@@ -15,11 +15,9 @@ export default async function Page() {
 
 	return (
 		<div dangerouslySetInnerHTML={{ __html:
-			contactEmailHtml({
-				url: process.env.NEXT_PUBLIC_DOMAIN,
-				emailAddress: "email@address.com",
-				name: "Test Visitor",
-				message: "This is a test message. This will not be sent."
+			newsletterEmailHtml({
+				subject: "Test issue",
+				text: "This is a test issue. This will not be sent."
 			})
 		}} />
 	);

@@ -1,4 +1,5 @@
-import { getAllBlueprints, getAllImages, getAllPages, getAllPartners, getAllPosts } from "@/lib/api";
+import { getAllBlueprints, getAllImages, getAllPages, 
+	getAllPartners, getAllPosts } from "@/lib/wp_api";
 import { Blueprint } from "@/types/Blueprint";
 import { Image } from "@/types/Image";
 import { Post } from "@/types/Post";

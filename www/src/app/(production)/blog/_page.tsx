@@ -3,8 +3,8 @@
 
 import { Subtitle, Title } from "@/components/general/Typography";
 import { getPosts } from "@/lib/filter_data";
-import MailingListExtendedFooter from "@/components/extendedFooters/MailingList";
 import { Metadata } from "next";
+import NewsletterExtendedFooter from "@/components/extendedFooters/Newsletter";
 import { Post } from "@/types/Post";
 import PostBigCarousel from "@/components/blog/PostBigCarousel";
 import PostMedium from "@/components/blog/PostMedium";
@@ -41,7 +41,7 @@ export default async function Blog() {
 		</section>
 		<Subtitle className="pt-6 px-6">Feliratkozás a hírlevélre</Subtitle>
 		<hr className="pb-4" />
-		<MailingListExtendedFooter />
+		<NewsletterExtendedFooter />
 		</main>
 	);
 }

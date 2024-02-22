@@ -2,10 +2,11 @@ import { getBlueprints, getPages } from "@/lib/filter_data";
 import { Subtitle, Title } from "@/components/general/Typography";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
 import EmailExtendedFooter from "@/components/extendedFooters/Email";
-import { getAllPartners } from "@/lib/api";
+import { getAllPartners } from "@/lib/wp_api";
 import html2md from "@/lib/html2md";
 import Link from "next/link";
 import Markdown from "@/components/general/MarkDown";
+import Newsletter from "@/components/index/Newsletter";
 import { PartnerCarousel } from "@/components/index/PartnerCarousel";
 
 //    TURTLE - TEKI
@@ -44,6 +45,7 @@ export default async function Home() {
 			<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel className="px-6" blueprints={ highlightedBlueprints } />
+			<Newsletter className="a rounded-t-lg" />
 			<div className="flex flex-col w-full justify-between items-baseline">
 				<div className="w-full">
 					<Subtitle className="pt-6 px-6" id="elerhetosegek">Elérhetőségek</Subtitle>

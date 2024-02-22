@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/Button";
 import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
-import { sendGAEvent } from "@next/third-parties/google";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -16,7 +15,7 @@ import { sendGAEvent } from "@next/third-parties/google";
  * An `ExtendedFooter` with a mailing list action.
  * @returns An `ExtendedFooter` with a join to a newsletter action.
  */
-export default function MailingListExtendedFooter() {
+export default function NewsletterExtendedFooter() {
 	return (
 		<ExtendedFooter
 			title="Szeretnél emailben értesülni a legfrissebb híreinkről?"
@@ -44,9 +43,6 @@ export default function MailingListExtendedFooter() {
 					type="submit"
 					className="py-1 px-2 rounded-md bg-white hover:bg-white/80
 					transition-colors col-start-3 col-span-3 md:col-span-1 h-10"
-					onClick={() => sendGAEvent(
-						{ event: "buttonClicked", value: "mailingList" }
-					) }
 				>
 					Feliratkozás
 				</Button>
