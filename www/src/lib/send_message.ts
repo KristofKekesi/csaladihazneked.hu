@@ -38,13 +38,13 @@ export async function sendMessage({url, emailAddress, name, message}: Params) : 
 	if (!validateResponse.success) {
 		return false;
 	}
-	if (process.env.MAILGUN_API_KEY === undefined) {
+	if (!process.env.MAILGUN_API_KEY) {
 		throw new Error("No MAILGUN_API_KEY environmental variable were provided.");
 	}
-	if (process.env.MAILGUN_DOMAIN === undefined) {
+	if (!process.env.MAILGUN_DOMAIN) {
 		throw new Error("No MAILGUN_DOMAIN environmental variable were provided.");
 	}
-	if (process.env.MAILGUN_RECEIVER === undefined) {
+	if (!process.env.MAILGUN_RECEIVER) {
 		throw new Error("No MAILGUN_RECEIVER environmental variable were provided.");
 	}
 

@@ -36,7 +36,7 @@ export async function generateMetadata(
 	{ params }: Params
 ): Promise<Metadata> {
 	const post: Post = ( await getPosts({ slug: params.slug }) )[0];
-	if (!post) { notFound(); }
+	if ( !post ) { notFound(); }
 
 	return {
 		title: post.title,
@@ -50,6 +50,8 @@ export async function generateMetadata(
  */
 export default async function Page({ params }: Params) {
 	const post: Post = ( await getPosts({slug: params.slug}) )[0];
+	if ( !post ) { notFound(); }
+	
 	const content = await html2md({html: post.content});
 
 	return(

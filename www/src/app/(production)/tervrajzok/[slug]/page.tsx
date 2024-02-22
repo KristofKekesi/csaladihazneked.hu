@@ -37,7 +37,7 @@ export async function generateMetadata(
 	{ params }: Params,
 ): Promise<Metadata> {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
-	if (!blueprint) { notFound(); }
+	if ( !blueprint ) { notFound(); }
 
 	return {
 		title: blueprint.title,
@@ -51,6 +51,8 @@ export async function generateMetadata(
  */
 export default async function Page({ params }: Params) {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
+	if ( !blueprint ) { notFound(); }
+
 	const similarBlueprints: Array<Blueprint> = ( await getAllBlueprints() ).splice(0, 10);
 	const content = await html2md({html: blueprint.content});
 

@@ -78,8 +78,8 @@ export async function getBlueprints(
 	{id, slug, isHighlighted, limit, page, unique} : BlueprintParams
 ) : Promise<Array<Blueprint>> {
 	// Set default values
-	if (page === undefined) { page = 0; }
-	if (limit === undefined) { limit = 10; }
+	if (!page) { page = 0; }
+	if (!limit) { limit = 10; }
 
 	const blueprints: Array<Blueprint> = await getAllBlueprints();
 
