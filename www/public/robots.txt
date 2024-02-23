@@ -4,3 +4,6 @@ Disallow: /admin/
 
 Sitemap: https://www.csaladihazneked.hu/sitemap.xml
 Sitemap: https://www.csaladihazneked.hu/tervrajzok/sitemap.xml
+
+User-agent: AhrefsBot
+Disallow: /
