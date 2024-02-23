@@ -54,7 +54,6 @@ export default async function Page({ params }: Params) {
 	if ( !blueprint ) { notFound(); }
 
 	const similarBlueprints: Array<Blueprint> = ( await getAllBlueprints() ).splice(0, 10);
-	const content = await html2md({html: blueprint.content});
 
 	return(
 		<main>
@@ -98,11 +97,15 @@ export default async function Page({ params }: Params) {
 					</CardFooter>
 				</Card>
 			</div>
-			<Subtitle className="pt-6 px-6">Leírás</Subtitle>
-			<hr className="pb-4" />
-			<Markdown className="px-6">
-				{ content }
-			</Markdown>
+			{ blueprint.content ?
+				<>
+					<Subtitle className="pt-6 px-6">Leírás</Subtitle>
+					<hr className="pb-4" />
+					<Markdown className="px-6">
+						{ await html2md({html: blueprint.content}) }
+					</Markdown>
+				</>
+			: null}
 			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 

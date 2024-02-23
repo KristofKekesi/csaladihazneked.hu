@@ -13,7 +13,9 @@ const textareaVariants = cva(cn(
   "px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground",
   "focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
   "bg-white/40 focus:bg-white/20 hover:bg-white/30",
-  "bg-white/40 focus:bg-white/20 hover:bg-white/30 border-2 border-dashed focus:border-white border-transparent transition-colorsresize-none h-fit file:border-0 file:bg-transparent file:text-sm file:font-medium select-auto"),
+  "bg-white/40 focus:bg-white/20 hover:bg-white/30 border-2 border-dashed", 
+  "focus:border-white border-transparent transition-colorsresize-none h-96",
+  "file:border-0 file:bg-transparent file:text-sm file:font-medium select-auto"),
   {
     variants: {
       variant: {

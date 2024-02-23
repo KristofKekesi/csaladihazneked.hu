@@ -7,7 +7,7 @@ export type Blueprint = {
 	slug: string,
 	title: string,
 	description: string,
-	content: string,
+	content?: string,
 	price?: number,
 	highlightedImage: Image,
 	images: Array<Image>,
