@@ -52,7 +52,8 @@ export default async function Page({ params }: Params) {
 	const post: Post = ( await getPosts({slug: params.slug}) )[0];
 	if ( !post ) { notFound(); }
 	
-	const content = await html2md({html: post.content});
+	const content = await html2md({html: post.content ?? 
+		"Ehhez a bejegyzéshez nem tartozik feltöltött tartalom."});
 
 	return(
 		<main>

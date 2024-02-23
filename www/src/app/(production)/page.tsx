@@ -23,16 +23,17 @@ export default async function Home() {
 	const partners = await getAllPartners();
 	
 	const data = ( await getPages({title: "Főoldal", unique: true}) )[0];
-	const content = await html2md({html: data.content});
 
 	return (
 		<main className="flex flex-col pt-3">
 			<Title className="text-xl md:text-6xl px-6">Csaladihazneked.hu</Title>
-			<Subtitle className="px-6">Bemutatkozás</Subtitle>
-			<hr className="pb-4" />
-			<Markdown className="px-6">
-				{ content }
-			</Markdown>
+			{ data.content ? <>
+				<Subtitle className="px-6">Bemutatkozás</Subtitle>
+				<hr className="pb-4" />
+				<Markdown className="px-6">
+					{ await html2md({html: data.content}) }
+				</Markdown>
+			</> : null }
 			{ partners.length > 0 ?
 				<>
 					<Subtitle className="pt-4 px-6">

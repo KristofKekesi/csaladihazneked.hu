@@ -39,14 +39,24 @@ type changeEmailAddressParams = {
 /**
  * A function to add an email address to the online database for later use.
  * @param emailAddress Email address of the user subscribing. 
+ * @returns Success represented as a `Boolean`.
  */
-export async function addEmailAddressToNewsletter(params: changeEmailAddressParams) {
+export async function 
+addEmailAddressToNewsletter(params: changeEmailAddressParams) : Promise<Boolean> {
 	const SQL = "INSERT IGNORE INTO `newsletter_subscribers` (`email_address`) VALUES (?);";
 
-	executeSQL({
+	const raw = await executeSQL({
 		SQL,
 		values: [ params.emailAddress ]
 	});
+	const result = Object.values(JSON.parse(JSON.stringify(raw)));
+	console.log(raw);
+
+	if (result[5] !== 0) {
+		throw new Error(`${result[5]}`);
+	} else {
+		return true;
+	}
 }
 
 /**

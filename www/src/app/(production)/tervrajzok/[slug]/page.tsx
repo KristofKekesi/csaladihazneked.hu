@@ -97,15 +97,13 @@ export default async function Page({ params }: Params) {
 					</CardFooter>
 				</Card>
 			</div>
-			{ blueprint.content ?
-				<>
+			{ blueprint.content ? <>
 					<Subtitle className="pt-6 px-6">Leírás</Subtitle>
 					<hr className="pb-4" />
 					<Markdown className="px-6">
 						{ await html2md({html: blueprint.content}) }
 					</Markdown>
-				</>
-			: null}
+			</> : null}
 			<Subtitle className="pt-6 px-6">Hasonló tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel 

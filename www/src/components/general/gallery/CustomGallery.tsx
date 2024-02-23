@@ -12,8 +12,6 @@ import PhotoAlbum from "react-photo-album";
 import { TRANSPARENT_IMAGES } from "../../../../config";
 import { useInView } from "react-intersection-observer";
 
-//TODO(KristofKekesi): TypeScriptify
-
 //    TURTLE - TEKI
 //    (°-°) _______
 //      \ \/ - - - \_
@@ -57,7 +55,7 @@ function CustomImageRenderer(params: any) {
         <>
             <div style={ params.wrapperStyle }>
                 <div style={{ display: "block", position: "relative", 
-                width: "100%", height: "100%" }}>
+                width: "100%", height: "100%" }} className="bg-[#f4f4f4]">
                     <Image
                         data-src={ source }
                         data-index={ params.layout.index }
@@ -69,9 +67,6 @@ function CustomImageRenderer(params: any) {
                         sizes={ params.imageProps.sizes }
                         fill
                     />
-					{
-						//TODO(KristofKekesi) accent-color: from css variables
-					}
                 </div>
             </div>
         </>

@@ -432,12 +432,12 @@ export async function getAllPartners() {
 export async function getAllPages() {
 	type Page = {
 		title: string,
-		content: string
+		content?: string
 	}
 
 	const data = await fetchAPI(`
 		{
-			customPages(first:1000) {
+			customPages(first:100) {
 				edges {
 					node {
 						title

@@ -54,8 +54,12 @@ export default function NewsletterSignUp(params: Params) {
 		if (!passed) { return null; }
 
 		// Subscribe user to the newsletter
-		await addEmailAddressToNewsletter({ emailAddress });
-		setState("sent");
+		const success = await addEmailAddressToNewsletter({ emailAddress });
+		if (success) {
+			setState("sent");
+		} else {
+			setState("error");
+		}
 	}
 
 	return (

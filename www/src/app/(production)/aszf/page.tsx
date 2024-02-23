@@ -19,7 +19,7 @@ export const metadata: Metadata = {
  */
 export default async function Aszf() {
 	const data = ( await getPages({ title: "ÁSZF", unique: true }) )[0];
-	const content = await html2md({ html: data.content });
+	const content = await html2md({ html: data.content ?? "Nem található feltöltött ÁSZF." });
 
 	return (
 		<main className="flex flex-col just pt-3">

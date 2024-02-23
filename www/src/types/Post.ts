@@ -7,5 +7,5 @@ export type Post = {
 	isHighlighted: boolean,
 	description: string,
 	highlightedImage: Image
-	content: string
+	content?: string
 }
