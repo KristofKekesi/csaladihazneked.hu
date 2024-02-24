@@ -46,7 +46,7 @@ export default async function Home() {
 			<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel className="px-6" blueprints={ highlightedBlueprints } />
-			<Newsletter className="a rounded-t-lg" />
+			<Newsletter className="rounded-t-lg" />
 			<div className="flex flex-col w-full justify-between items-baseline">
 				<div className="w-full">
 					<Subtitle className="pt-6 px-6" id="elerhetosegek">Elérhetőségek</Subtitle>

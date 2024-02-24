@@ -1,7 +1,7 @@
 "use client";
 
-import { Mail, MailCheck, MailX } from "lucide-react";
-import { addEmailAddressToNewsletter } from "@/lib/mysql_api";
+import { Loader2, Mail, MailCheck, MailX } from "lucide-react";
+import { addSubscriberToNewsletter } from "@/lib/mysql_api";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/Input";
@@ -52,9 +52,10 @@ export default function NewsletterSignUp(params: Params) {
 
 		// Guard close.
 		if (!passed) { return null; }
+		setState("sending");
 
 		// Subscribe user to the newsletter
-		const success = await addEmailAddressToNewsletter({ emailAddress });
+		const success = await addSubscriberToNewsletter({ subscriber: { emailAddress } });
 		if (success) {
 			setState("sent");
 		} else {
@@ -90,15 +91,22 @@ export default function NewsletterSignUp(params: Params) {
 						onClick={ onClick }
 						disabled={ state !== "toBeSent" }
 					>
-						{ (state === "toBeSent" && isEmailAddressValid) ? 
-							<Mail className="h-4 w-4 mr-2" /> : null }
-						{ (state === "error" || !isEmailAddressValid) ? 
-							<MailX className="h-4 w-4 mr-2" /> : null }
-						{ state === "sent" ? <MailCheck className="h-4 w-4 mr-2" /> : null }
-
-						{ state === "toBeSent" ? "Feliratkozás" : null }
-						{ state === "error" ? "Hiba" : null }
-						{ state === "sent" ? "Feliratkozva" : null }
+						{ state === "toBeSent" ? <>
+							<Mail className="h-4 w-4 mr-2" />
+							Feliratkozás
+						</> : null }
+						{ state === "sending" ? <>
+							<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+							Feliratkozás
+						</> : null }
+						{ state === "sent" ? <>
+							<MailCheck className="h-4 w-4 mr-2" />
+							Feliratkozva
+						</> : null }
+						{ state === "error" ? <>
+							<MailX className="h-4 w-4 mr-2" />
+							Hiba
+						</> : null }						
 					</Button>
 				</div>
 			}

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 	},
 	description: "todo",
 	keywords: [
-		"családiház", "családiház tervezés", "tervrajz", "építész tervezés", "építész"
+		"családiház", "családiház tervezés", "tervrajz", "tervrajz készítés", "építész"
 	],
 	authors: [{ name: "Kékesi Kristóf", url: "https://www.kekesi.dev" }],
 	formatDetection: {

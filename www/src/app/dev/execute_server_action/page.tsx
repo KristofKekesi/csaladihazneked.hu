@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
-import sendNewsletter from "@/lib/send_newsletter";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -24,7 +23,7 @@ export default function Page() {
 		 */
 		async function fetchDB() {
 			// run server action here.
-			await sendNewsletter({ subject: "test", text: "Szia Lili!" });
+			
 			//
 
 			setState("Ran");

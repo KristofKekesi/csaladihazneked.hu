@@ -1,8 +1,9 @@
 "use server";
 
-import { listEmailAddress } from "@/lib/mysql_api";
+import { listNewsletterSubscribers } from "@/lib/mysql_api";
 import { newsletterEmailHtml } from "@/lib/email_html";
 import { sendEmail } from "@/lib/send_email";
+import { Subscriber } from "@/types/Subscriber";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -10,10 +11,13 @@ import { sendEmail } from "@/lib/send_email";
 //       \_  ___  ___>
 //         \__) \__)
 
-export type Params = {
+type sendNewsletterParams = {
 	subject: string
-	text: string
+	text: string,
+	password: string
 }
+
+export type Params = Omit<sendNewsletterParams, "password">;
 
 /**
  * Server action to send newsletter to subscribers.
@@ -21,8 +25,10 @@ export type Params = {
  * @param text The content of the newsletter issue.
  * @returns Success represented with a `Boolean`.
  */
-export default async function sendNewsletter({subject, text}: Params) : Promise<Boolean> {
-	const emailAddresses = await listEmailAddress();
+export default async function 
+sendNewsletter({subject, text, password}: sendNewsletterParams) : Promise<Boolean> {
+	const emailAddresses = 
+		await listNewsletterSubscribers({ password });
 
 	const from = "Hírlevél <hirlevel@email.csaladihazneked.hu>";
 	const html = newsletterEmailHtml({
@@ -31,8 +37,8 @@ export default async function sendNewsletter({subject, text}: Params) : Promise<
 	});
 
 	let failed = 0;
-	emailAddresses.map(async (emailAddress) => {
-		const to = emailAddress;
+	emailAddresses.map(async (subscriber: Subscriber) => {
+		const to = subscriber.emailAddress;
 
 		const result = await sendEmail({
 			from,

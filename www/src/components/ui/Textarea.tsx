@@ -14,7 +14,7 @@ const textareaVariants = cva(cn(
   "focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
   "bg-white/40 focus:bg-white/20 hover:bg-white/30",
   "bg-white/40 focus:bg-white/20 hover:bg-white/30 border-2 border-dashed", 
-  "focus:border-white border-transparent transition-colorsresize-none h-96",
+  "focus:border-white border-transparent transition-colorsresize-none",
   "file:border-0 file:bg-transparent file:text-sm file:font-medium select-auto"),
   {
     variants: {

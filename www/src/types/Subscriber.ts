@@ -4,8 +4,6 @@
 //       \_  ___  ___>
 //         \__) \__)
 
-export default function Korlevel() {
-	return (
-		"a"
-	);
+export type Subscriber = {
+	emailAddress: string
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { Loader2, MailCheck, MailX, Send } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
@@ -73,6 +74,7 @@ export default function EmailExtendedFooter() {
 
 		// Guard close.
 		if (!passed) { return null; }
+		setState("sending");
 
 		// Send email.
 		const status = await sendMessage({
@@ -129,11 +131,20 @@ export default function EmailExtendedFooter() {
 					type="submit"
 					disabled= { state === "sent" || state === "error" }
 					className="py-1 px-2 rounded-md bg-white hover:bg-white/80
-					transition-colors col-span-1 h-10 hidden md:inline"
+					transition-colors col-span-1 h-10 hidden md:flex"
 				>
-					{ state === "toBeSent" ? "Küldés" : null }
-					{ state === "sent" ? "Elküldve" : null }
-					{ state === "error" ? "Hiba" : null }
+					{ state === "toBeSent" ? <>
+						<Send className="h-4 w-4 mr-2" /> Küldés
+					</> : null }
+					{ state === "sending" ? <>
+						<Loader2 className="h-4 w-4 mr-2 animate-spin" /> Küldés
+					</> : null }
+					{ state === "sent" ? <>
+						<MailCheck className="h-4 w-4 mr-2" /> Elküldve
+					</> : null }
+					{ state === "error" ? <>
+						<MailX className="h-4 w-4 mr-2" /> Hiba
+					</> : null }
 				</Button>
 				<div className="flex flex-col items-start col-span-5 w-full">
 					<Label className={ cn("text-base font-normal ml-2",
