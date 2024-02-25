@@ -8,12 +8,16 @@ import { MetadataRoute } from "next";
 //       \_  ___  ___>
 //         \__) \__)
 
-const DOMAIN: string = "https://www.csaladihazneked.hu";
-
 /**
  * @returns Sitemap for /tervrajzok.
  */
 export default async function sitemap() {
+	// Guard closes.
+	if (!process.env.NEXT_PUBLIC_DOMAIN) {
+		throw new Error("NEXT_PUBLIC_DOMAIN environmental variable is not set.");
+	}
+	const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
+
 	const blueprints: Array<Blueprint> = await getAllBlueprints();
 
 	let sitemap: MetadataRoute.Sitemap = [];

@@ -11,12 +11,16 @@ import { Post } from "@/types/Post";
 //       \_  ___  ___>
 //         \__) \__)
 
-const DOMAIN: string = "https://www.csaladihazneked.hu";
-
 /**
  * A function to generate a sitemap for /blog.
  */
 export default async function sitemap() {
+	// Guard closes.
+	if (!process.env.NEXT_PUBLIC_DOMAIN) {
+		throw new Error("NEXT_PUBLIC_DOMAIN environmental variable is not set.");
+	}
+	const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
+
 	const posts: Array<Post> = await getAllPosts();
 
 	let sitemap: MetadataRoute.Sitemap = [];

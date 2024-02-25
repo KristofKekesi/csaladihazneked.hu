@@ -1,6 +1,11 @@
 "use client";
 
 import {
+	CaretDownIcon,
+	CaretSortIcon,
+	CaretUpIcon,
+} from "@radix-ui/react-icons";
+import {
 	ColumnDef,
 	ColumnFiltersState,
 	flexRender,
@@ -26,9 +31,7 @@ import {
 } from "@/components/ui/Table";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import {
-	CaretSortIcon,
-} from "@radix-ui/react-icons";
+
 import { Subscriber } from "@/types/Subscriber";
 import { Trash2 } from "lucide-react";
 
@@ -54,6 +57,8 @@ export function SubscriberTable(params: Params) {
 
 	const [data, setData] = useState<Subscriber[]>([]);
 
+	const [sortingBy, setSortingBy] = useState<string>("");
+
 	useEffect(() => {
 		/**
 		 * Wrapper function to run async function in useEffect.
@@ -70,16 +75,50 @@ export function SubscriberTable(params: Params) {
 			accessorKey: "emailAddress",
 			header: ({ column }) => {
 				return (
-				<Button
-					variant="ghost"
-					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-				>
-					Email
-					<CaretSortIcon className="ml-2 h-4 w-4" />
-				</Button>
+					<Button
+						variant="ghost"
+						onClick={() => {
+							column.toggleSorting(column.getIsSorted() === "asc");
+							setSortingBy("emailAddress");
+						}}
+					>
+						Email
+						{ sortingBy === "emailAddress" ?
+							<>{ column.getIsSorted() === "asc" ? 
+								<CaretUpIcon className="ml-2 h-4 w-4" /> :
+								<CaretDownIcon className="ml-2 h-4 w-4" />
+							}</> :
+							<CaretSortIcon className="ml-2 h-4 w-4" />
+						}
+					</Button>
 				);
 			},
 			cell: ({ row }) => <div className="lowercase">{row.getValue("emailAddress")}</div>,
+		},
+		{
+			accessorKey: "timestampSubscribed",
+			header: ({ column }) => {
+				return (
+					<Button
+						variant="ghost"
+						onClick={() => {
+							column.toggleSorting(column.getIsSorted() === "asc");
+							setSortingBy("timestampSubscribed");
+						}}
+					>
+						Feliratkozás dátuma
+						{ sortingBy === "timestampSubscribed" ?
+							<>{ column.getIsSorted() === "asc" ? 
+								<CaretUpIcon className="ml-2 h-4 w-4" /> :
+								<CaretDownIcon className="ml-2 h-4 w-4" />
+							}</> :
+							<CaretSortIcon className="ml-2 h-4 w-4" />
+						}
+					</Button>
+				);
+			},
+			cell: ({ row }) => 
+			new Date(row.getValue("timestampSubscribed")).toLocaleString("hu-HU"),
 		},
 		{
 			id: "actions",

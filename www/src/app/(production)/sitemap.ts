@@ -10,6 +10,7 @@ import { MetadataRoute } from "next";
  * @returns Sitemap for /.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
+	// Guard closes.
 	if (!process.env.NEXT_PUBLIC_DOMAIN) {
 		throw new Error("NEXT_PUBLIC_DOMAIN environmental variable is not set.");
 	}

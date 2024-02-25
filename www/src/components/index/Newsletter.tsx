@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2, Mail, MailCheck, MailX } from "lucide-react";
-import { addSubscriberToNewsletter } from "@/lib/mysql_api";
+import { addEmailAddressToNewsletter } from "@/lib/mysql_api";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/Input";
@@ -52,13 +52,11 @@ export default function NewsletterSignUp(params: Params) {
 		setState("sending");
 
 		// Subscribe user to the newsletter
-		const success = await addSubscriberToNewsletter({ subscriber: { emailAddress } });
+		const success = await addEmailAddressToNewsletter({ emailAddress });
 		if (success) {
 			setState("sent");
 		} else {
-			// Todo this needs rework since duplicates are causing error.
-			//setState("error");
-			setState("sent");
+			setState("error");
 		}
 	}
 

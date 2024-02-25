@@ -33,8 +33,8 @@ export async function executeSQL(params: executeParams) {
 	return rows;
 }
 
-type addSubcriberParams = {
-	subscriber: Subscriber
+type addEmailAddressParams = {
+	emailAddress: string
 }
 
 /**
@@ -43,15 +43,21 @@ type addSubcriberParams = {
  * @returns Success represented as a `Boolean`.
  */
 export async function 
-addSubscriberToNewsletter(params: addSubcriberParams) : Promise<Boolean> {
+addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<Boolean> {
+	// Guard close.
+	const isThisEmailAddressSubscribed = 
+		await isEmailAddressSubscribed({ emailAddress: emailAddress });
+	if (isThisEmailAddressSubscribed) {
+		return true;
+	}
+
 	const SQL = "INSERT IGNORE INTO `newsletter_subscribers` (`email_address`) VALUES (?);";
 
 	const raw = await executeSQL({
 		SQL,
-		values: [ params.subscriber.emailAddress ]
+		values: [ emailAddress ]
 	});
 	const result = Object.values(JSON.parse(JSON.stringify(raw)));
-	console.log(result[5]);
 	if (result[5] !== 0) {
 		return false;
 	} else {
@@ -68,12 +74,43 @@ type removeSubscriberParams = {
  * @param emailAddress Email address to remove from the online database.
  */
 export async function removeSubscriberFromNewsletter(params: removeSubscriberParams) {
-	// eslint-disable-next-line max-len
-	const SQL = "DELETE FROM `newsletter_subscribers` WHERE `email_address`='" + params.subscriber.emailAddress + "';";
+	// Guard close.
+	const immutableSubscriberEmailAddresses =
+		(process.env.IMMUTABLE_NEWSLETTER_SUBSCRIBERS ?? "" ).split(";");
+	if (immutableSubscriberEmailAddresses.includes(params.subscriber.emailAddress)) {
+		return;
+	}
+
+	const SQL =
+		// eslint-disable-next-line max-len
+		"DELETE FROM `newsletter_subscribers` WHERE `email_address`='" + params.subscriber.emailAddress + "';";
 
 	executeSQL({
 		SQL
 	});
+}
+
+type isEmailAddressSubscribedParams = {
+	emailAddress: string
+}
+
+/**
+ * A function to verify if email address is subscribed.
+ * @param emailAddress Email address that we want to know if subscribed. 
+ */
+export async function 
+isEmailAddressSubscribed({ emailAddress }: isEmailAddressSubscribedParams) : Promise<Boolean> {
+	const SQL =
+		// eslint-disable-next-line max-len
+		"SELECT `email_address` FROM `newsletter_subscribers` WHERE `email_address`='" + emailAddress + "';";
+	const raw = await executeSQL({ SQL });
+	const result = Object.values(JSON.parse(JSON.stringify(raw)));
+
+	if (result.length === 1 ) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 type listSubscribersParams = {
@@ -91,15 +128,17 @@ listNewsletterSubscribers(params: listSubscribersParams) : Promise<Array<Subscri
 	}
 
 	const SQL =
-		"SELECT `email_address` FROM `newsletter_subscribers`;";
+		"SELECT `email_address`, `timestamp_subscribed` FROM `newsletter_subscribers`;";
 
 	const raw = await executeSQL({ SQL });
 	const result = Object.values(JSON.parse(JSON.stringify(raw)));
 
 	const emailAddresses: Array<Subscriber> = [];
-	result.map((row: any) => { emailAddresses.push(
-		{emailAddress: row.email_address}
-	); });
+	result.map((row: any) => { 
+		emailAddresses.push({
+		emailAddress: row.email_address,
+		timestampSubscribed: new Date(row.timestamp_subscribed)
+	}); });
 
 	return emailAddresses;
 }

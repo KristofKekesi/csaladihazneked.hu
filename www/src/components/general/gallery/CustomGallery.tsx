@@ -107,7 +107,7 @@ export default function CustomGallery(params: GalleryParams) {
         height = screen ? (screen.height / 3.5) : 0;
     }
 
-    function setThemeColor() {
+    function _setThemeColor() {
         if (document.getElementsByTagName("html")[0].getAttribute("selected") === "") {
             document.querySelector("meta[name='theme-color']")!.setAttribute("content",  "#000000");
         } else {

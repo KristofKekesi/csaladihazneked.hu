@@ -5,5 +5,6 @@
 //         \__) \__)
 
 export type Subscriber = {
-	emailAddress: string
+	emailAddress: string,
+	timestampSubscribed: Date
 }

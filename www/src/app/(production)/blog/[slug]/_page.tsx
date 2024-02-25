@@ -4,7 +4,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Header, Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
 import { Balancer } from "react-wrap-balancer";
-import BlueprintSmall from "@/components/blueprint/BlueprintSmall";
 import { cn } from "@/lib/utils";
 import { getPosts } from "@/lib/filter_data";
 import html2md from "@/lib/html2md";
