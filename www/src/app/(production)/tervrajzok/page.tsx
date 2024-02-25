@@ -24,7 +24,7 @@ export default async function Blueprints() {
 
 	return (
 		<main className="flex flex-col just pt-3">
-			<Title className="px-6">Tervrajzok</Title>
+			<Title className="px-6 pb-2">Tervrajzok</Title>
 			{ highlightedBlueprints.length !== 0 ? <>
 				<Subtitle className="px-6">Kiemelt tervrajzok</Subtitle>
 				<hr className="pb-4" />

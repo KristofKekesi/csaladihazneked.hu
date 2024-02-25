@@ -26,7 +26,7 @@ export default async function Home() {
 
 	return (
 		<main className="flex flex-col pt-3">
-			<Title className="text-xl md:text-6xl px-6">Csaladihazneked.hu</Title>
+			<Title className="text-xl md:text-6xl px-6 pb-2">Csaladihazneked.hu</Title>
 			{ data.content ? <>
 				<Subtitle className="px-6">Bemutatkozás</Subtitle>
 				<hr className="pb-4" />

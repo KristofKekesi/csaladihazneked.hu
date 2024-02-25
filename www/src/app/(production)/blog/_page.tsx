@@ -28,7 +28,7 @@ export default async function Blog() {
 
 	return (
 		<main className="flex flex-col just pt-3">
-		<Title className="px-6">Blog</Title>
+		<Title className="px-6 pb-2">Blog</Title>
 		<Subtitle className="px-6">Kiemelt bejegyzések</Subtitle>
 		<hr className="pb-4" />
 		<PostBigCarousel className="px-6" posts={highlightedPosts} />

@@ -22,7 +22,7 @@ export default async function Referencia() {
 
   return (
     <main className="flex flex-col just pt-3">
-      <Title className="px-6">Referencia</Title>
+      <Title className="px-6 pb-2">Referencia</Title>
       <Subtitle className="px-6">Kiemelt képek</Subtitle>
       <hr className="pb-4" />
       <CustomGallery className="px-6 pt-2" images={ images } />

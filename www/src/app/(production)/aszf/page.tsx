@@ -23,7 +23,7 @@ export default async function Aszf() {
 
 	return (
 		<main className="flex flex-col just pt-3">
-			<Title className="px-6">ÁSZF</Title>
+			<Title className="px-6 pb-2">ÁSZF</Title>
 			<div className="flex justify-start md:justify-between
 			items-start md:items-end flex-col md:flex-row">
 				<Subtitle className="px-6">Általános szerződési feltételek</Subtitle>

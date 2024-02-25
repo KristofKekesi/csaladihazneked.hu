@@ -29,7 +29,7 @@ export default async function Page({ params }: Params) {
 
 	return (
 		<main className="flex flex-col just pt-3">
-			<Title className="px-6">Kapcsolat</Title>
+			<Title className="px-6 pb-2">Kapcsolat</Title>
 			<Subtitle className="px-6">{ blueprint.title }</Subtitle>
 			<Separator className="mb-4" />
 			<BlueprintEmailExtendedFooter blueprint={ blueprint } className="rounded-3xl mb-4" />

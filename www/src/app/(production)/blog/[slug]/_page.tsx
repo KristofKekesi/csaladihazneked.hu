@@ -57,7 +57,7 @@ export default async function Page({ params }: Params) {
 	return(
 		<main>
 			<Subtitle className="pt-6 px-6 font-caprasimo font-normal">2024/01/14</Subtitle>
-			<Title className="px-6 font-serif font-bold text-3xl md:text-6xl">
+			<Title className="px-6 font-serif font-bold text-3xl md:text-6xl pb-2">
 				{ post.title }
 			</Title>
 			<hr className="pb-4" />

@@ -6,8 +6,8 @@ import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarou
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
-import { getAllBlueprints } from "@/lib/wp_api";
 import { getBlueprints } from "@/lib/filter_data";
+import getSimilarBlueprints from "@/lib/similar_blueprints";
 import html2md from "@/lib/html2md";
 import ImageCarousel from "@/components/general/ImageCarousel";
 import Link from "next/link";
@@ -53,7 +53,8 @@ export default async function Page({ params }: Params) {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
 	if ( !blueprint ) { notFound(); }
 
-	const similarBlueprints: Array<Blueprint> = ( await getAllBlueprints() ).splice(0, 10);
+	const similarBlueprints: Array<Blueprint> =
+		( await getSimilarBlueprints({ blueprint, limit: 10 }) ).splice(0, 10);
 
 	return(
 		<main>

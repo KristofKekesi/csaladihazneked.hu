@@ -57,9 +57,7 @@ export default function PostBig(params: Params) {
 			</CardContent>
 			<CardFooter className="flex justify-end md:justify-between pt-6 
 			backdrop-blur-2xl bg-white/20 rounded-b-lg">
-				{ //TODO(KristofKekesi): Implement
-				//<Button className="hidden md:inline" variant="link">Hasonló bejegyzések</Button>
-				}
+				<Button className="hidden md:inline" variant="link">Hasonló bejegyzések</Button>
 				<Link href={`/blog/${ params.post.slug }`}>
 					<Button variant="secondary">
 						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />

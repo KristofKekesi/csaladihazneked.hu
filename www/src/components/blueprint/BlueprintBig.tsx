@@ -72,12 +72,12 @@ export default function BlueprintBig(params: Params) {
 					/>
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
-					{ //TODO(KristofKekesi): Implement
-					//<Button variant="link">
-					//	<span className="inline md:hidden">Hasonlók</span>
-					//	<span className="hidden md:inline">Hasonló tervrajzok</span>
-					//</Button>
-					}
+					<Link href={ `/tervrajzok/${ params.blueprint.slug }/hasonloak` }>
+						<Button variant="link">
+							<span className="inline md:hidden">Hasonlók</span>
+							<span className="hidden md:inline">Hasonló tervrajzok</span>
+						</Button>
+					</Link>
 					<Link href={`/tervrajzok/${ params.blueprint.slug }`}>
 						<Button>
 							Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
