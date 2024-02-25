@@ -20,7 +20,7 @@ export default async function sitemap() {
 	blueprints.map((blueprint: Blueprint) => {
 		sitemap.push(
 			{
-				url: `${ DOMAIN }/tervrajzok/${ blueprint.id }`,
+				url: `${ DOMAIN }/tervrajzok/${ blueprint.slug }`,
 				lastModified: new Date(),
 				changeFrequency: "weekly",
 				priority: 0.6,

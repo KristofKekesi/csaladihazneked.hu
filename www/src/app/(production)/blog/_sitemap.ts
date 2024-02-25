@@ -23,7 +23,7 @@ export default async function sitemap() {
 	posts.map((post: Post) => {
 		sitemap.push(
 			{
-				url: `${ DOMAIN }/blog/${ post.id }`,
+				url: `${ DOMAIN }/blog/${ post.slug }`,
 				lastModified: new Date(),
 				changeFrequency: "weekly",
 				priority: 0.6,
