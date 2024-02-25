@@ -54,7 +54,7 @@ export default async function Home() {
 				</div>
 				<div className="px-6">
 					<div className="flex sm:flex-row flex-col gap-x-4 pb-4 select-all">
-						{ process.env.NEXT_PUBLIC_PHONE_NUMBER !== undefined ?
+						{ process.env.NEXT_PUBLIC_PHONE_NUMBER !== "" ?
 							<div>
 								<span className="font-bold">Tel.: </span>
 								<Link href={`tel:${ process.env.NEXT_PUBLIC_PHONE_NUMBER }`}>
@@ -62,7 +62,7 @@ export default async function Home() {
 								</Link>
 							</div>
 						: null }
-						{ process.env.NEXT_PUBLIC_EMAIL_ADDRESS !== undefined ?
+						{ process.env.NEXT_PUBLIC_EMAIL_ADDRESS !== "" ?
 							<div>
 								<span className="font-bold">Email: </span>
 								<Link href={`mailto:${ process.env.NEXT_PUBLIC_EMAIL_ADDRESS }`}>
