@@ -67,7 +67,11 @@ export default async function Page({ params }: Params) {
 			<hr className="pb-4" />
 			<div className="grid grid-cols-5 gap-4 px-6">
 				<ImageCarousel 
-					images={[blueprint.highlightedImage, ...blueprint.images]} 
+					images={ blueprint.youtubeVideoURL ?
+						[blueprint.highlightedImage, blueprint.youtubeVideoURL, ...blueprint.images]
+						 :
+						[blueprint.highlightedImage, ...blueprint.images]
+					} 
 					className="col-span-5 lg:col-span-3"
 				/>
 				<Card className="col-span-5 lg:col-span-2 flex flex-col h-full justify-between">
@@ -89,7 +93,7 @@ export default async function Page({ params }: Params) {
 						<span className={ subtitleClassNames }>
 							{ `${Intl.NumberFormat("hu-HU").format(blueprint.price!)} Ft` }
 						</span>
-						<Link href="/#elerhetosegek">
+						<Link href={ `/tervrajzok/${ blueprint.slug }/kapcsolat` }>
 							<Button>
 								<Mail className="h-4 w-4 mr-2" /> Kapcsolat
 							</Button>

@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import MidPageAction from "@/components/general/MidPageAction";
 import { useState } from "react";
-import { z } from "zod";
+import { validateEmailAddress } from "@/lib/validate";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -38,20 +38,17 @@ export default function NewsletterSignUp(params: Params) {
 		event.preventDefault();
 
 		// Validate data.
-		const validateEmailAddress = z.object({
-			emailAddress: z.string().regex(RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/))
-		});
-
 		let passed = true;
-		if (!validateEmailAddress.safeParse({ emailAddress }).success) {
+		if (validateEmailAddress({ emailAddress })) {
+			setIsEmailAddressValid(true);
+		} else {
 			setIsEmailAddressValid(false);
 			passed = false;
-		} else {
-			setIsEmailAddressValid(true);
 		}
 
 		// Guard close.
 		if (!passed) { return null; }
+		
 		setState("sending");
 
 		// Subscribe user to the newsletter
@@ -59,7 +56,9 @@ export default function NewsletterSignUp(params: Params) {
 		if (success) {
 			setState("sent");
 		} else {
-			setState("error");
+			// Todo this needs rework since duplicates are causing error.
+			//setState("error");
+			setState("sent");
 		}
 	}
 

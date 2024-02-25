@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Image as ImageType } from "@/types/Image";
 import { useRef } from "react";
+import YouTubeEmbed from "../blueprint/YouTubeEmbed";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -18,7 +19,7 @@ import { useRef } from "react";
 //         \__) \__)
 
 type Params = {
-	images: Array<ImageType>,
+	images: Array<ImageType | string>,
 	className?: string
 }
 
@@ -37,21 +38,23 @@ export default function ImageCarousel(params: Params) {
 		<div className={ cn("w-full flex justify-center cursor-ew-resize", params.className) }>
 			<Carousel
 				className="w-full"
-				plugins={[plugin.current]}
-				onMouseEnter={plugin.current.stop}
-      			onMouseLeave={plugin.current.reset}
-				opts={{align: "start", loop: true, direction: "ltr"}}
+				plugins={[ plugin.current ]}
+				onMouseEnter={ plugin.current.stop }
+      			onMouseLeave={ plugin.current.reset }
+				opts={{ align: "start", loop: true, direction: "ltr" }}
 			>
 				<CarouselContent>
 					{ params.images.map((image, index) => (
 					<CarouselItem key={index}>
-						<div className="bg-slate-200 rounded-lg flex aspect-video
-							items-center justify-center p-0 m-0 relative">
-							<Image
-								src={ image.src } alt={ image.alt }
-								fill
-								className="aspect-video bg-contain rounded-lg object-contain" />
-						</div>
+						{ typeof image === "object" ? <>
+							<div className="bg-slate-200 rounded-lg flex aspect-video
+								items-center justify-center p-0 m-0 relative">
+								<Image
+									src={ image.src } alt={ image.alt }
+									fill
+									className="aspect-video bg-contain rounded-lg object-contain" />
+							</div>
+						</> : <YouTubeEmbed youTubeVideoURL={ image } /> }
 					</CarouselItem>
 					)) }
 				</CarouselContent>

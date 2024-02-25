@@ -1,8 +1,8 @@
 "use server";
 
+import { validateEmailAddress, validateMessage, validateName } from "@/lib/validate";
 import { contactEmailHtml } from "@/lib/email_html";
 import { sendEmail } from "@/lib/send_email";
-import z from "zod";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -26,16 +26,11 @@ export type Params = {
  * @returns Success represented with a `Boolean`.
  */
 export async function sendMessage({url, emailAddress, name, message}: Params) : Promise<Boolean> {
-	// Validating data.
-	const validate = z.object({
-		emailAddress: z.string().regex(RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)),
-		name: z.string().min(1),
-		message: z.string().min(16)
-	});
-
 	// Guard closes.
-	const validateResponse = validate.safeParse({ emailAddress, name, message });
-	if (!validateResponse.success) {
+	// Validating data.
+	if (!validateEmailAddress({ emailAddress }) ||
+	 !validateName({ name }) || 
+	 !validateMessage({ message })) {
 		return false;
 	}
 	if (!process.env.MAILGUN_API_KEY) {

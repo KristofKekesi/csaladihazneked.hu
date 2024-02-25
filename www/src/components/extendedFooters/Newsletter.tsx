@@ -33,9 +33,6 @@ export default function NewsletterExtendedFooter() {
 					<Input
 						id="email"
 						type="email"
-						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
-						border-2 border-dashed focus:border-white border-transparent
-						transition-colors w-full select-auto"
 					/>
 				</div>
 				<Button

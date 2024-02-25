@@ -13,7 +13,7 @@ import { Subscriber } from "@/types/Subscriber";
 
 type sendNewsletterParams = {
 	subject: string
-	text: string,
+	message: string,
 	password: string
 }
 
@@ -26,14 +26,14 @@ export type Params = Omit<sendNewsletterParams, "password">;
  * @returns Success represented with a `Boolean`.
  */
 export default async function 
-sendNewsletter({subject, text, password}: sendNewsletterParams) : Promise<Boolean> {
+sendNewsletter({subject, message, password}: sendNewsletterParams) : Promise<Boolean> {
 	const emailAddresses = 
 		await listNewsletterSubscribers({ password });
 
 	const from = "Hírlevél <hirlevel@email.csaladihazneked.hu>";
 	const html = newsletterEmailHtml({
 		subject,
-		text
+		message
 	});
 
 	let failed = 0;
@@ -44,7 +44,7 @@ sendNewsletter({subject, text, password}: sendNewsletterParams) : Promise<Boolea
 			from,
 			to,
 			subject,
-			text,
+			text: message,
 			html
 		});
 

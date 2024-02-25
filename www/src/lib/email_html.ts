@@ -169,7 +169,7 @@ export function newsletterEmailHtml(params: newsletterEmailHtmlParams) {
 				<p class="font-bold">
 					${ params.subject }
 				</p>
-				<p class="pt-6">${ params.text }</p>
+				<p class="pt-6">${ params.message }</p>
 			</div>
 
 			<div class="flex justify-between rounded-tl-3xl 

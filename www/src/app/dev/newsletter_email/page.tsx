@@ -17,7 +17,7 @@ export default async function Page() {
 		<div dangerouslySetInnerHTML={{ __html:
 			newsletterEmailHtml({
 				subject: "Test issue",
-				text: "This is a test issue. This will not be sent."
+				message: "This is a test issue. This will not be sent."
 			})
 		}} />
 	);

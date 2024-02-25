@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { validateMessage, validateSubject } from "@/lib/validate";
 import { Button } from "@/components/ui/Button";
 import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
@@ -25,7 +26,10 @@ type Params = {
 export default function AdminWriteNewsletter({ password }: Params) {
 	const [state, setState] = useState("toBeSent");
 	const [subject, setSubject] = useState("");
-	const [text, setText] = useState("");
+	const [message, setMessage] = useState("");
+
+	const [isSubjectValid, setIsSubjectValid] = useState(true);
+	const [isMessageValid, setIsMesageValid] = useState(true);
 
 	/**
 	 * On submit event to send newsletter issue to subscribers.
@@ -33,9 +37,28 @@ export default function AdminWriteNewsletter({ password }: Params) {
 	 */
 	async function onSubmit(event: FormEvent) {
 		event.preventDefault();
+
+		// Validate data.
+		let passed = true;
+		if (validateSubject({ subject })) {
+			setIsSubjectValid(true);
+		} else {
+			setIsSubjectValid(false);
+			passed = false;
+		}
+		if (validateMessage({ message })) {
+			setIsMesageValid(true);
+		} else {
+			setIsMesageValid(false);
+			passed = false;
+		}
+
+		// Guard close.
+		if (!passed) { return null; }
+
 		setState("sending");
 
-		const success = await sendNewsletter({ subject, text, password });
+		const success = await sendNewsletter({ subject, message, password });
 
 		if (success) {
 			setState("sent");
@@ -62,12 +85,10 @@ export default function AdminWriteNewsletter({ password }: Params) {
 					<Input
 						type="text"
 						value={ subject }
+						variant={ !isSubjectValid ? "destructive" : null }
 						id="admin-newsletter-subject"
 						disabled={ state !== "toBeSent" }
 						onChange={ (event) => setSubject(event.target.value) }
-						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
-						border-2 border-dashed focus:border-white border-transparent
-						transition-colors w-full select-auto"
 					/>
 				</div>
 				<div className="flex flex-col items-start col-span-5 md:col-span-5">
@@ -78,13 +99,12 @@ export default function AdminWriteNewsletter({ password }: Params) {
 							Üzenet:
 					</Label>
 					<Textarea
-						value={ text }
+						value={ message }
 						disabled={ state !== "toBeSent" }
 						id="admin-newsletter-message"
-						onChange={ (event) => setText(event.target.value) }
-						className="bg-white/40 focus:bg-white/20 hover:bg-white/30
-						border-2 border-dashed focus:border-white border-transparent
-						transition-colors w-full select-auto col-span-5 h-96"
+						variant={ !isMessageValid ? "destructive" : null }
+						onChange={ (event) => setMessage(event.target.value) }
+						className="h-96"
 					/>
 				</div>
 				<div className="col-span-5 flex justify-end pt-4">

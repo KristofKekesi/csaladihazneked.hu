@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { Loader2, MailCheck, MailX, Send } from "lucide-react";
+import { validateEmailAddress, validateMessage, validateName } from "@/lib/validate";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
@@ -9,7 +10,6 @@ import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import { sendMessage } from "@/lib/send_message";
 import { Textarea } from "@/components/ui/Textarea";
-import { z } from "zod";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -28,9 +28,9 @@ export default function EmailExtendedFooter() {
 	const [emailAddress, setEmailAddress] = useState("");
 	const [message, setMessage] = useState("");
 
-	const [validName, setValidName] = useState(true);
-	const [validEmailAddress, setValidEmailAddress] = useState(true);
-	const [validMessage, setValidMessage] = useState(true);
+	const [isEmailAddressValid, setIsEmailAddressValid] = useState(true);
+	const [isNameValid, setIsNameValid] = useState(true);
+	const [isMessageValid, setIsMesageValid] = useState(true);
 
 	/**
 	 * A function to be executed on the submit event of the form.
@@ -40,36 +40,26 @@ export default function EmailExtendedFooter() {
 		event.preventDefault();
 
 		// Validate data.
-		const validateEmailAddress = z.object({
-			emailAddress: z.string().regex(RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/))
-		});
-		const validateName = z.object({
-			name: z.string().min(1)
-		});
-		const validateMessage = z.object({
-			message: z.string().min(16)
-		});
-
 		let passed = true;
-		if (!validateEmailAddress.safeParse({ emailAddress }).success) {
-			setValidEmailAddress(false);
-			passed = false;
+		if (validateEmailAddress({ emailAddress })) {
+			setIsEmailAddressValid(true);
 		} else {
-			setValidEmailAddress(true);
+			setIsEmailAddressValid(false);
+			passed = false;
 		}
 
-		if (!validateName.safeParse({ name }).success) {
-			setValidName(false);
-			passed = false;
+		if (validateName({ name })) {
+			setIsNameValid(true);
 		} else {
-			setValidName(true);
+			setIsNameValid(false);
+			passed = false;
 		}
 
-		if (!validateMessage.safeParse({ message }).success) {
-			setValidMessage(false);
-			passed = false;
+		if (validateMessage({ message })) {
+			setIsMesageValid(true);
 		} else {
-			setValidMessage(true);
+			setIsMesageValid(false);
+			passed = false;
 		}
 
 		// Guard close.
@@ -99,7 +89,7 @@ export default function EmailExtendedFooter() {
 			>
 				<div className="flex flex-col items-start col-span-5 md:col-span-2">
 					<Label className={ cn("text-base font-normal ml-2", 
-					!validEmailAddress ? "text-red-700" : null) } htmlFor="email">
+					!isEmailAddressValid ? "text-red-700" : null) } htmlFor="email">
 						Emailcím:
 					</Label>
 					<Input
@@ -107,13 +97,13 @@ export default function EmailExtendedFooter() {
 						type="email"
 						value={ emailAddress }
 						disabled= { state === "sent" || state === "error" }
-						variant={ !validEmailAddress ? "destructive" : null }
+						variant={ !isEmailAddressValid ? "destructive" : null }
 						onChange={ (event) => setEmailAddress(event.target.value) }
 					/>
 				</div>
 				<div className="flex flex-col items-start col-span-5 md:col-span-2">
 					<Label className={ cn("text-base font-normal ml-2", 
-					!validName ? "text-red-700" : null) } htmlFor="name">
+					!isNameValid ? "text-red-700" : null) } htmlFor="name">
 						Név:
 					</Label>
 					<Input
@@ -121,7 +111,7 @@ export default function EmailExtendedFooter() {
 						type="text"
 						value={ name }
 						autoComplete="username"
-						variant={ !validName ? "destructive" : null }
+						variant={ !isNameValid ? "destructive" : null }
 						disabled= { state === "sent" || state === "error" }
 						onChange={ (event) => setName(event.target.value) }
 					/>
@@ -148,20 +138,21 @@ export default function EmailExtendedFooter() {
 				</Button>
 				<div className="flex flex-col items-start col-span-5 w-full">
 					<Label className={ cn("text-base font-normal ml-2",
-					!validMessage ? "text-red-700" : null) } htmlFor="message">
+					!isMessageValid ? "text-red-700" : null) } htmlFor="message">
 						Üzenet:
 					</Label>
 					<Textarea
 						id="message"
 						value={ message }
-						variant={ !validMessage ? "destructive" : null }
+						variant={ !isMessageValid ? "destructive" : null }
 						disabled= { state === "sent" || state === "error" }
 						onChange={ (event) => setMessage(event.target.value) }
 					/>
 				</div>
 				<div className="grid grid-cols-5 col-span-5 items-baseline">
 					<span className={ cn("text-black/50 ml-2 text-base col-span-2", 
-					(!validEmailAddress || !validName || !validMessage) ? "text-red-700" : null )} >
+					(!isEmailAddressValid || !isNameValid || !isMessageValid) ? 
+					"text-red-700" : null )} >
 						*: kötelező
 					</span>
 					<Button
