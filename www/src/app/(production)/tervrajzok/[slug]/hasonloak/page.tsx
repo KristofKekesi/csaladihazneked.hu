@@ -27,7 +27,8 @@ export const metadata: Metadata = {
 export default async function Blueprints({params}: Params) {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }))[0];
 	const similarBlueprints: Array<Blueprint> =
-		await getSimilarBlueprints({ blueprint, limit: 18 });
+		await getSimilarBlueprints({ blueprint, limit: 
+			parseInt(process.env.WEBSITE_SIMILAR_BLUEPRINT_PAGE_LIMIT ?? "18") });
 
 	return (
 		<main className="flex flex-col just pt-3">
