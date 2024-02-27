@@ -4,7 +4,6 @@ import { FormEvent, useState } from "react";
 import { validateEmailAddress, validateMessage, validateName } from "@/lib/validate";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
