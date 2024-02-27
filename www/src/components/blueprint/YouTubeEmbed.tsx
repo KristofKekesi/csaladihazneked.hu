@@ -1,3 +1,9 @@
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
 type Params = {
 	youTubeVideoURL: string
 }
@@ -10,10 +16,10 @@ type Params = {
 export default function YouTubeEmbed(params: Params) {
 	return (
 			<iframe
+				id="youtube-embed"
 				className="w-full h-full rounded-lg"
 				src={ params.youTubeVideoURL }
 				title="YouTube video player"
-				frameBorder="0"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
 				gyroscope; picture-in-picture; web-share"
 				allowFullScreen
