@@ -25,23 +25,24 @@ export default function Adminlayout({
 
 	return (
 		<>
-			<div className="flex gap-4 px-6 pt-4 justify-between">
-				<div className="flex gap-4">
-					<Link href={ `/admin/korlevel/uj?password=${ password }` }>
+			<div className="flex flex-col sm:flex-row gap-4 px-6 pt-4 justify-between">
+				<div className="flex gap-4 overflow-x-auto">
+					<Link href={ `/admin/hirlevel/uj?password=${ password }` }>
 						<Button variant="secondary">
 							Körlevél írása
 						</Button>
 					</Link>
-					<Link href={ `/admin/korlevel/lista?password=${ password }` }>
+					<Link href={ `/admin/hirlevel/lista?password=${ password }` }>
 						<Button variant="secondary">
 							Feliratkozók
 						</Button>
 					</Link>
 				</div>
-				<div className="flex gap-4">
-					<div className="bg-secondary rounded-md">
+				<div className="flex gap-4 w-full sm:w-auto">
+					<div className="bg-secondary rounded-md w-full sm:w-auto">
 						<Input
 							type="password"
+							className="w-full sm:w-auto"
 							value={ password }
 							onChange={ (event) => {
 								setPassword(event.target.value);

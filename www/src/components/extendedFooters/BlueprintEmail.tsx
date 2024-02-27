@@ -95,8 +95,7 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 				className="grid grid-cols-5 justify-between items-end gap-x-4 gap-y-2 col-span-5"
 			>
 				<div className="flex flex-col items-start col-span-5 md:col-span-2">
-					<Label className={ cn("text-base font-normal ml-2", 
-					!isEmailAddressValid ? "text-red-700" : null) } htmlFor="email">
+					<Label className="text-base font-normal ml-2" htmlFor="email">
 						Emailcím: <sup>*</sup>
 					</Label>
 					<Input
@@ -108,8 +107,7 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 					/>
 				</div>
 				<div className="flex flex-col items-start col-span-5 md:col-span-2">
-					<Label className={ cn("text-base font-normal ml-2", 
-					!isNameValid ? "text-red-700" : null) } htmlFor="name">
+					<Label className="text-base font-normal ml-2" htmlFor="name">
 						Név: <sup>*</sup>
 					</Label>
 					<Input
@@ -133,8 +131,7 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 					{ state === "error" ? "Hiba" : null }
 				</Button>
 				<div className="flex flex-col items-start col-span-5 w-full">
-					<Label className={ cn("text-base font-normal ml-2",
-					!isMessageValid ? "text-red-700" : null) } htmlFor="message">
+					<Label className="text-base font-normal ml-2" htmlFor="message">
 						Üzenet: <sup>*</sup>
 					</Label>
 					<Textarea
@@ -145,9 +142,7 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 					/>
 				</div>
 				<div className="grid grid-cols-5 col-span-5 items-baseline">
-					<span className={ cn("text-black/50 ml-2 text-base col-span-2", 
-					(!isEmailAddressValid || !isNameValid || !isMessageValid) ?
-					 "text-red-700" : null) }>
+					<span className="text-black/50 ml-2 text-base col-span-2">
 						*: kötelező
 					</span>
 					<Button

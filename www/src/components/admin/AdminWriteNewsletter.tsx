@@ -80,7 +80,7 @@ export default function AdminWriteNewsletter({ password }: Params) {
 						className="text-base font-normal ml-2"
 						htmlFor="admin-newsletter-subject"
 					>
-							Tárgy:
+							Tárgy: <sup>*</sup>
 					</Label>
 					<Input
 						type="text"
@@ -96,7 +96,7 @@ export default function AdminWriteNewsletter({ password }: Params) {
 						className="text-base font-normal ml-2"
 						htmlFor="admin-newsletter-message"
 					>
-							Üzenet:
+							Üzenet: <sup>*</sup>
 					</Label>
 					<Textarea
 						value={ message }
@@ -107,7 +107,10 @@ export default function AdminWriteNewsletter({ password }: Params) {
 						className="h-96"
 					/>
 				</div>
-				<div className="col-span-5 flex justify-end pt-4">
+				<div className="col-span-5 flex justify-between">
+					<span className="text-black/50 ml-2 text-base col-span-2">
+						*: kötelező
+					</span>
 					<div className="flex gap-4">
 						<Button
 							variant="link"
