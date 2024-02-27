@@ -1,11 +1,13 @@
 "use client";
 
+import { Button, buttonVariants } from "@/components/ui/Button";
 import { FormEvent, useState } from "react";
 import { validateMessage, validateSubject } from "@/lib/validate";
-import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
+import Link from "next/link";
 import sendNewsletter from "@/lib/send_newsletter";
 import { Textarea } from "../ui/Textarea";
 
@@ -112,14 +114,20 @@ export default function AdminWriteNewsletter({ password }: Params) {
 						*: kötelező
 					</span>
 					<div className="flex gap-4">
-						<Button
-							variant="link"
-							type="submit"
-							className="py-1 px-0 rounded-md 
-							transition-colors col-span-2 md:col-span-1 h-10"
+						<Link
+							href={ 
+								`/admin/hirlevel/elonezet?subject=${ subject }&message=${ message }`
+							}
+							target="_blank"
 						>
-							Előnézet
-						</Button>
+							<div
+								className={ cn(buttonVariants({variant: "link"}), 
+								"py-1 px-0 rounded-md transition-colors col-span-2",
+								"md:col-span-1 h-10") }
+							>
+								Előnézet
+							</div>
+						</Link>
 						<Button
 							variant="secondary"
 							type="submit"
@@ -127,9 +135,9 @@ export default function AdminWriteNewsletter({ password }: Params) {
 							className="py-1 px-4 rounded-md bg-white hover:bg-white/80
 							transition-colors col-span-3 md:col-span-2 h-10"
 						>
-							{ state === "toBeSent" ? "Körlevél elküldése" : null }
+							{ state === "toBeSent" ? "Hírlevél elküldése" : null }
 							{ state === "sending" ? "Folyamanban" : null }
-							{ state === "sent" ? "Körlevél elküldve" : null }
+							{ state === "sent" ? "Hírlevél elküldve" : null }
 							{ state === "error" ? "Hiba" : null }
 							
 						</Button>
