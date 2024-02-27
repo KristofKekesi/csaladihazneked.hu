@@ -1,6 +1,6 @@
 {
   "name": "csaladihazneked.hu",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -54,7 +54,7 @@
     "typescript": "^5.3.3"
   },
   "main": "index.js",
-  "license": "ISC",
-  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
-  "author": ""
+  "license": "GNU General Public License",
+  "description": "Source code for the website csaladihazneked.hu",
+  "author": "Kristóf Kékesi"
 }

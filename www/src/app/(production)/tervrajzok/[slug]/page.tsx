@@ -94,11 +94,18 @@ export default async function Page({ params }: Params) {
 						<span className={ subtitleClassNames }>
 							{ `${Intl.NumberFormat("hu-HU").format(blueprint.price!)} Ft` }
 						</span>
-						<Link href={ `/tervrajzok/${ blueprint.slug }/kapcsolat` }>
-							<Button>
-								<Mail className="h-4 w-4 mr-2" /> Kapcsolat
-							</Button>
-						</Link>
+						<div className="flex gap-4 justify-between w-full">
+							<Link href={ `/tervrajzok/${ blueprint.slug }/hasonloak` }>
+								<Button variant="link">
+									Hasonló tervrajzok
+								</Button>
+							</Link>
+							<Link href={ `/tervrajzok/${ blueprint.slug }/kapcsolat` }>
+								<Button>
+									<Mail className="h-4 w-4 mr-2" /> Kapcsolat
+								</Button>
+							</Link>
+						</div>
 					</CardFooter>
 				</Card>
 			</div>

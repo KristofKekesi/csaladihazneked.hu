@@ -1,6 +1,5 @@
 // MonkeProblems v0.4
 
-
 //   w  c(..)o   (
 //    \__(-)  ____)
 //	    /\   (
@@ -8,7 +7,6 @@
 //	   w /|
 //	    | \
 //      m  m       ASCII art from ejm97
-
 
 {
 	"extends": ["next/core-web-vitals", "next"],
