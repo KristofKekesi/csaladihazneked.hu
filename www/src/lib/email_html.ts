@@ -87,8 +87,8 @@ export function contactEmailHtml(params: contactEmailHtmlParams) {
 			<div class="flex justify-between rounded-tl-3xl 
 			rounded-tr-3xl mt-6 py-3 bg-customBrown font-sans">
 				<div class="pl-6 pt-3">
-					<a href="${ process.env.NEXT_PUBLIC_DOMAIN }/#elerhetosegek" class="nodecor">
-						Elérhetőség
+					<a href="${ process.env.NEXT_PUBLIC_DOMAIN }/hirlevel" class="nodecor">
+						Leiratkozás
 					</a>
 				</div>
 				<div class="pr-6 pt-3 flex gap-4">
@@ -175,8 +175,8 @@ export function newsletterEmailHtml(params: newsletterEmailHtmlParams) {
 			<div class="flex justify-between rounded-tl-3xl 
 			rounded-tr-3xl mt-6 py-3 bg-customBrown font-sans">
 				<div class="pl-6 pt-3">
-					<a href="${ process.env.NEXT_PUBLIC_DOMAIN }/#elerhetosegek" class="nodecor">
-						Elérhetőség
+					<a href="${ process.env.NEXT_PUBLIC_DOMAIN }/hirlevel" class="nodecor">
+						Leiratkozás
 					</a>
 				</div>
 				<div class="pr-6 pt-3 flex gap-4">
