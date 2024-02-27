@@ -1,4 +1,4 @@
-import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 import { titleClassNames } from "./Typography";
 
@@ -12,6 +12,7 @@ type Params = {
 	title?: string,
 	children: JSX.Element
 	action: JSX.Element
+	footer?: JSX.Element
 	className?: string
 }
 
@@ -20,21 +21,24 @@ type Params = {
  * @param title An optional title to the call action.
  * @param children The content of the component.
  * @param action The action button of the component.
+ * @param footer Optional footer element. Mostly for small texts.
  * @param className An optional `string` containing CSS classes.
  */
 export default function MidPageAction(params: Params) {
 	return (
-		<Card className={ cn("flex flex-col xl:flex-row justify-between xl:items-end", 
-		params.className) }>
-			<CardHeader>
-				<CardTitle
-					className={ cn(titleClassNames, "text-2xl font-normal") }
-				>
-					{ params.title }
-				</CardTitle>
-				{ params.children }
-			</CardHeader>
-			<CardFooter>{ params.action }</CardFooter>
+		<Card className={ cn("flex flex-col", params.className) }>
+			<div className="flex flex-col xl:flex-row justify-between xl:items-end w-full">
+				<CardHeader>
+					<CardTitle
+						className={ cn(titleClassNames, "text-2xl font-normal") }
+					>
+						{ params.title }
+					</CardTitle>
+					{ params.children }
+				</CardHeader>
+				<CardContent>{ params.action }</CardContent>
+			</div>
+			{ params.footer ? <CardFooter className="pt-0">{ params.footer }</CardFooter> : null }
 		</Card>
 	);
 }

@@ -75,9 +75,9 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 			<Featureset blueprint={ blueprint } type="general" className="col-span-1" />
 				<Featureset blueprint={ blueprint } type="rooms" maxReturn={4} />
 			</CardContent>
-			<CardFooter className="bg-white flex justify-end pt-6 rounded-b-3xl">
+			<CardFooter className="bg-white flex justify-between pt-6 rounded-b-3xl">
 				<Link href={ `/tervrajzok/${ blueprint.slug }/hasonloak` }>
-					<Button variant="link">
+					<Button variant="link" className="pl-0">
 						<span className="hidden md:inline">Hasonló tervrajzok</span>
 						<span className="inline md:hidden">Hasonlók</span>
 					</Button>

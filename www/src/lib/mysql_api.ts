@@ -66,24 +66,24 @@ addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<Boo
 }
 
 type removeSubscriberParams = {
-	subscriber: Subscriber
+	emailAddress: string
 }
 
 /**
  * A function to remove an email address to the online database for later use.
  * @param emailAddress Email address to remove from the online database.
  */
-export async function removeSubscriberFromNewsletter(params: removeSubscriberParams) {
+export async function removeSubscriberFromNewsletter({ emailAddress }: removeSubscriberParams) {
 	// Guard close.
 	const immutableSubscriberEmailAddresses =
 		(process.env.IMMUTABLE_NEWSLETTER_SUBSCRIBERS ?? "" ).split(";");
-	if (immutableSubscriberEmailAddresses.includes(params.subscriber.emailAddress)) {
+	if (immutableSubscriberEmailAddresses.includes(emailAddress)) {
 		return;
 	}
 
 	const SQL =
 		// eslint-disable-next-line max-len
-		"DELETE FROM `newsletter_subscribers` WHERE `email_address`='" + params.subscriber.emailAddress + "';";
+		"DELETE FROM `newsletter_subscribers` WHERE `email_address`='" + emailAddress + "';";
 
 	executeSQL({
 		SQL

@@ -73,7 +73,7 @@ export default function BlueprintBig(params: Params) {
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
 					<Link href={ `/tervrajzok/${ params.blueprint.slug }/hasonloak` }>
-						<Button variant="link">
+						<Button variant="link" className="pl-0">
 							<span className="inline md:hidden">Hasonlók</span>
 							<span className="hidden md:inline">Hasonló tervrajzok</span>
 						</Button>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
+import Link from "next/link";
 import MidPageAction from "@/components/general/MidPageAction";
 import { useState } from "react";
 import { validateEmailAddress } from "@/lib/validate";
@@ -17,11 +18,15 @@ import { validateEmailAddress } from "@/lib/validate";
 //         \__) \__)
 
 type Params = {
+	title: string,
+	showWhereToOptOut?: boolean,
 	className?: string
 }
 
 /**
  * A component to sign up to the newsletter.
+ * @param title Title displayed.
+ * @param showWhereToOptOut Optional boolean to show link where to opt out from the newsletter.
  * @param className Optional CSS classes in a `string`.
  * @returns A newsletter sign up component.
  */
@@ -62,7 +67,7 @@ export default function NewsletterSignUp(params: Params) {
 
 	return (
 		<MidPageAction
-			title="Hírlevél"
+			title={ params.title }
 			action={
 				<div className="flex gap-4 items-end justify-between 
 				w-full sm:justify-normal flex-wrap">
@@ -107,6 +112,15 @@ export default function NewsletterSignUp(params: Params) {
 					</Button>
 				</div>
 			}
+			footer={ params.showWhereToOptOut ? 
+				<span className="text-black/50 text-sm">
+				Szeretnél leiratkozni?
+				<Link href="/hirlevel">
+					<Button variant="link" className="pl-2">
+						Itt teheted meg.
+					</Button>
+				</Link>
+			</span> : undefined}
 			className={ cn("mx-6 mt-6", params.className) }
 		>
 			<>

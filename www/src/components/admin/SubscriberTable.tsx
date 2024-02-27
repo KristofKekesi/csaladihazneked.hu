@@ -117,8 +117,11 @@ export function SubscriberTable(params: Params) {
 					</Button>
 				);
 			},
-			cell: ({ row }) => 
-			new Date(row.getValue("timestampSubscribed")).toLocaleString("hu-HU"),
+			cell: ({ row }) =>
+				<span className="font-mono">
+					{ new Date(row.getValue("timestampSubscribed")).toLocaleString("hu-HU") }
+				</span>
+			,
 		},
 		{
 			id: "actions",
@@ -132,7 +135,7 @@ export function SubscriberTable(params: Params) {
 				 */
 				function onClick(event: any) {
 				event.preventDefault();
-				removeSubscriberFromNewsletter({ subscriber });
+				removeSubscriberFromNewsletter({ emailAddress: subscriber.emailAddress });
 				setData(data.filter((iteration) => subscriber !== iteration));
 				}
 		

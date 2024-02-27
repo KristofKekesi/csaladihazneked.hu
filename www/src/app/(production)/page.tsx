@@ -6,7 +6,7 @@ import { getAllPartners } from "@/lib/wp_api";
 import html2md from "@/lib/html2md";
 import Link from "next/link";
 import Markdown from "@/components/general/MarkDown";
-import Newsletter from "@/components/index/Newsletter";
+import Newsletter from "@/components/newsletter/NewsletterSignUp";
 import { PartnerCarousel } from "@/components/index/PartnerCarousel";
 
 //    TURTLE - TEKI
@@ -46,7 +46,7 @@ export default async function Home() {
 			<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
 			<hr className="pb-4" />
 			<BlueprintMediumCarousel className="px-6" blueprints={ highlightedBlueprints } />
-			<Newsletter className="rounded-t-lg" />
+			<Newsletter title="Hírlevél" showWhereToOptOut className="rounded-t-lg" />
 			<div className="flex flex-col w-full justify-between items-baseline">
 				<div className="w-full">
 					<Subtitle className="pt-6 px-6" id="elerhetosegek">Elérhetőségek</Subtitle>
