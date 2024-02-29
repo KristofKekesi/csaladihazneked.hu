@@ -1,34 +1,39 @@
-//* Not working
-
-/* eslint-disable react-hooks/rules-of-hooks */
-
 //    TURTLE - TEKI
 //    (°-°) _______
 //      \ / - - - \_
 //       \_  ___  ___>
 //         \__) \__)
 
+type ReturnParams = {
+	angle: number
+}
+
 type Params = {
 	id: string,
-	onUpSwipe?: (_angle: number) => void,
-	onLeftSwipe?: (_angle: number) => void,
-	onRightSwipe?: (_angle: number) => void,
-	onDownSwipe?: (_angle: number) => void,
+	onSwipe?: (_params: ReturnParams) => void,
+	onUpSwipe?: (_params: ReturnParams) => void,
+	onLeftSwipe?: (_params: ReturnParams) => void,
+	onRightSwipe?: (_params: ReturnParams) => void,
+	onDownSwipe?: (_params: ReturnParams) => void,
+	onNoZoneSwipe?: (_params: ReturnParams) => void,
 	noZoneAngle?: number
 }
 
 /**
  * A function to detect swipes in different directions.
  * @param id The id of the HTML element thet we want to check for swipe detection.  
+ * @param onSwipe An optional `void` parameter to run when a swipe is detected.
  * @param onUpSwipe An optional `void` parameter to run when an up swipe is detected.
  * @param onLeftSwipe An optional `void` parameter to run when a left swipe is detected.
  * @param onRightSwipe An optional `void` parameter to run when a right swipe is detected.
  * @param onDownSwipe An optional `void` parameter to run when a down swipe is detected.
+ * @param onNoZoneSwipe An optional `void` parameter to run when a swipe is detected in the no zone.
  * @param noZoneAngle The angle of the zones between the up, down, left, right where nothing is 
- * 					  detected. Default is 20 degrees.
+ * 					  detected. Defaults to 20 degrees.
  */
 export default function swipeDetection(
-	{ id, onUpSwipe, onLeftSwipe, onRightSwipe, onDownSwipe, noZoneAngle = 20 }
+	{ id, onSwipe, onUpSwipe, onLeftSwipe, onRightSwipe, onDownSwipe,
+		onNoZoneSwipe, noZoneAngle = 20 }
 : Params) {
 	const element = document.getElementById(id);
 
@@ -51,20 +56,26 @@ export default function swipeDetection(
 		const x2 = event.pageX;
 		const y2 = event.pageY;
 
-		const angle = Math.atan2((y2-y1), (x2-x1));
-		console.log(angle);
+		const radian = Math.atan2((y2 - y1), (x2 - x1));
+		const angle = radian * (180 / Math.PI);
 
-		if (angle + noZoneAngle/2 > 45 || angle - noZoneAngle/2 < 135) {
-			onUpSwipe?.(angle);
+		onSwipe?.({ angle });
+
+		if (angle + noZoneAngle/2 > -135 && angle - noZoneAngle/2 < -45) {
+			onUpSwipe?.({ angle });
 		}
-		if (angle + noZoneAngle/2 > 135 || angle - noZoneAngle/2 < 225) {
-			onLeftSwipe?.(angle);
+		else if (angle + noZoneAngle/2 > -180 && angle - noZoneAngle/2 < -135 ||
+		angle + noZoneAngle/2 > 135 && angle - noZoneAngle/2 < 180) {
+			onLeftSwipe?.({ angle });
 		}
-		if (angle + noZoneAngle/2 > 225 || angle - noZoneAngle/2 < 315) {
-			onDownSwipe?.(angle);
+		else if (angle + noZoneAngle/2 > 45 && angle - noZoneAngle/2 < 135) {
+			onDownSwipe?.({ angle });
 		}
-		if (angle + noZoneAngle/2 > 315 || angle - noZoneAngle/2 < 45) {
-			onRightSwipe?.(angle);
+		else if (angle + noZoneAngle/2 > -45 && angle - noZoneAngle/2 < 45) {
+			onRightSwipe?.({ angle });
+		}
+		else {
+			onNoZoneSwipe?.({ angle });
 		}
 	}
 

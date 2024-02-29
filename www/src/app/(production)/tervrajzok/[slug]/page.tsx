@@ -36,7 +36,7 @@ type Params = {
 export async function generateMetadata(
 	{ params }: Params,
 ): Promise<Metadata> {
-	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
+	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug, unique: true }) )[0];
 	if ( !blueprint ) { notFound(); }
 
 	return {
@@ -50,11 +50,12 @@ export async function generateMetadata(
  * @returns Page for /tervrajzok/slug
  */
 export default async function Page({ params }: Params) {
-	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
+	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug, unique: true }) )[0];
 	if ( !blueprint ) { notFound(); }
 
 	const similarBlueprints: Array<Blueprint> =
-		( await getSimilarBlueprints({ blueprint, limit: 10 }) ).splice(0, 10);
+		( await getSimilarBlueprints({ blueprint, limit: 10 }) ).splice(0,
+			parseInt(process.env.WEBSITE_BLUEPRINT_PAGE_SIMILAR_BLUEPRINT_LIMIT ?? "18"));
 
 	return(
 		<main>

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
  * @returns Page for /tervrajzok/slug.
  */
 export default async function Page({ params }: Params) {
-	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
+	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug, unique: true }) )[0];
 
 	return (
 		<main className="flex flex-col just pt-3">

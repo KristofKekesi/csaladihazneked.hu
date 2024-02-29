@@ -25,7 +25,7 @@ export const metadata: Metadata = {
  * @returns Page for /tervrajzok/[slug]/hasonloak.
  */
 export default async function Blueprints({params}: Params) {
-	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }))[0];
+	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug, unique: true }))[0];
 	const similarBlueprints: Array<Blueprint> =
 		await getSimilarBlueprints({ blueprint, limit: 
 			parseInt(process.env.WEBSITE_SIMILAR_BLUEPRINT_PAGE_LIMIT ?? "18") });
