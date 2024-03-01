@@ -21,15 +21,15 @@ import { Textarea } from "@/components/ui/Textarea";
  * @returns An `ExtendedFooter` with an email sender action.
  */
 export default function EmailExtendedFooter() {
-	const [state, setState] = useState("toBeSent");
+	const [state, setState] = useState<string>("toBeSent");
 
-	const [name, setName] = useState("");
-	const [emailAddress, setEmailAddress] = useState("");
-	const [message, setMessage] = useState("");
+	const [name, setName] = useState<string>("");
+	const [emailAddress, setEmailAddress] = useState<string>("");
+	const [message, setMessage] = useState<string>("");
 
-	const [isEmailAddressValid, setIsEmailAddressValid] = useState(true);
-	const [isNameValid, setIsNameValid] = useState(true);
-	const [isMessageValid, setIsMesageValid] = useState(true);
+	const [isEmailAddressValid, setIsEmailAddressValid] = useState<boolean>(true);
+	const [isNameValid, setIsNameValid] = useState<boolean>(true);
+	const [isMessageValid, setIsMesageValid] = useState<boolean>(true);
 
 	/**
 	 * A function to be executed on the submit event of the form.

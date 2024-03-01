@@ -26,12 +26,12 @@ type Params = {
  * @returns An `ExtendedFooter` with a join to a newsletter action.
  */
 export default function AdminWriteNewsletter({ password }: Params) {
-	const [state, setState] = useState("toBeSent");
-	const [subject, setSubject] = useState("");
-	const [message, setMessage] = useState("");
+	const [state, setState] = useState<string>("toBeSent");
+	const [subject, setSubject] = useState<string>("");
+	const [message, setMessage] = useState<string>("");
 
-	const [isSubjectValid, setIsSubjectValid] = useState(true);
-	const [isMessageValid, setIsMesageValid] = useState(true);
+	const [isSubjectValid, setIsSubjectValid] = useState<boolean>(true);
+	const [isMessageValid, setIsMesageValid] = useState<boolean>(true);
 
 	/**
 	 * On submit event to send newsletter issue to subscribers.

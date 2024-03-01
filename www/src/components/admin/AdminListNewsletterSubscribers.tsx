@@ -21,7 +21,7 @@ type Params = {
  * @returns An `ExtendedFooter` with a join to a newsletter action.
  */
 export default function AdminListNewsletterSubscribers(params: Params) {
-	const [key, setKey] = useState(0);
+	const [key, setKey] = useState<number>(0);
 
 	/**
 	 * On click event handler for the refresh button.

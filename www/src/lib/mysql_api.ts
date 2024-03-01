@@ -43,7 +43,7 @@ type addEmailAddressParams = {
  * @returns Success represented as a `Boolean`.
  */
 export async function 
-addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<Boolean> {
+addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<boolean> {
 	// Guard close.
 	const isThisEmailAddressSubscribed = 
 		await isEmailAddressSubscribed({ emailAddress: emailAddress });
@@ -99,7 +99,7 @@ type isEmailAddressSubscribedParams = {
  * @param emailAddress Email address that we want to know if subscribed. 
  */
 export async function 
-isEmailAddressSubscribed({ emailAddress }: isEmailAddressSubscribedParams) : Promise<Boolean> {
+isEmailAddressSubscribed({ emailAddress }: isEmailAddressSubscribedParams) : Promise<boolean> {
 	const SQL =
 		// eslint-disable-next-line max-len
 		"SELECT `email_address` FROM `newsletter_subscribers` WHERE `email_address`='" + emailAddress + "';";

@@ -26,7 +26,7 @@ export type Params = Omit<sendNewsletterParams, "password">;
  * @returns Success represented with a `Boolean`.
  */
 export default async function 
-sendNewsletter({subject, message, password}: sendNewsletterParams) : Promise<Boolean> {
+sendNewsletter({subject, message, password}: sendNewsletterParams) : Promise<boolean> {
 	const emailAddresses = 
 		await listNewsletterSubscribers({ password });
 
