@@ -27,7 +27,7 @@ type Params = {
  * @param html HTML content of the email.
  * @returns Success represented with a `Boolean`.
  */
-export async function sendEmail({from, to, subject, text, html}: Params) : Promise<Boolean> {
+export async function sendEmail({from, to, subject, text, html}: Params) : Promise<boolean> {
 	// Guard closes.
 	if (!process.env.MAILGUN_API_KEY) {
 		throw new Error("No MAILGUN_API_KEY environmental variable were provided.");

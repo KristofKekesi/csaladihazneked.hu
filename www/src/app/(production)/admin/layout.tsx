@@ -21,7 +21,7 @@ export default function Adminlayout({
 }: {
 	children: React.ReactNode
 }) {
-	const [password, setPassword] = useState("");
+	const [password, setPassword] = useState<string>("");
 
 	return (
 		<>

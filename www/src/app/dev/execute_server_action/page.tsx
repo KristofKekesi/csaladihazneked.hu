@@ -15,7 +15,7 @@ import { notFound } from "next/navigation";
 export default function Page() {
 	if ( process.env.NODE_ENV !== "development" ) { notFound(); }
 
-	const [state, setState] = useState("toBeRan");
+	const [state, setState] = useState<string>("toBeRan");
 
 	useEffect(() => {
 		/**

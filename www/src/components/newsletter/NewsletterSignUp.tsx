@@ -31,9 +31,9 @@ type Params = {
  * @returns A newsletter sign up component.
  */
 export default function NewsletterSignUp(params: Params) {
-	const [state, setState] = useState("toBeSent");
-	const [emailAddress, setEmailAddress] = useState("");
-	const [isEmailAddressValid, setIsEmailAddressValid] = useState(true);
+	const [state, setState] = useState<string>("toBeSent");
+	const [emailAddress, setEmailAddress] = useState<string>("");
+	const [isEmailAddressValid, setIsEmailAddressValid] = useState<boolean>(true);
 
 	/**
 	 * A function to be executed on the click event of the button.
