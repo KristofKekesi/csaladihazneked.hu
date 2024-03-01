@@ -45,6 +45,9 @@ type addEmailAddressParams = {
 export async function 
 addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<boolean> {
 	// Guard close.
+	if (!(process.env.SHOULD_BE_ABLE_TO_SUBSCRIBE_TO_NEWSLETTER === "true")) {
+		return false;
+	}
 	const isThisEmailAddressSubscribed = 
 		await isEmailAddressSubscribed({ emailAddress: emailAddress });
 	if (isThisEmailAddressSubscribed) {

@@ -27,6 +27,11 @@ export type Params = Omit<sendNewsletterParams, "password">;
  */
 export default async function 
 sendNewsletter({subject, message, password}: sendNewsletterParams) : Promise<boolean> {
+	// Guard closes
+	if (!(process.env.SHOULD_BE_ABLE_TO_SEND_NEWSLETTER === "true")) {
+		return false;
+	}
+
 	const emailAddresses = 
 		await listNewsletterSubscribers({ password });
 
