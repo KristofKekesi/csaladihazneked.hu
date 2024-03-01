@@ -30,8 +30,7 @@ function PageWithContent() {
 }
 
 /**
- * Only here to provide a working page for the layout.
- * @returns Boilerplate for a working page.
+ * Page for /admin/hirlevel/elonezet.
  */
 export default function Elonezet() {
 	return (

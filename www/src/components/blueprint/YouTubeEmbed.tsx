@@ -1,3 +1,9 @@
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
 type Params = {
 	youTubeVideoURL: string
 }
