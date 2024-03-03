@@ -1,11 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { cn, isTrue } from "@/lib/utils";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
-import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
-import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -25,13 +24,21 @@ type Params = {
  * @returns Minimal information about a given `blueprint`.
  */
 export default function BlueprintSmall(params: Params) {
+	// Guard closes
+	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
+	if (DEV_TRANSPARENT_IMAGES === undefined) {
+		throw new Error(
+			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
+		);
+	}
+
 	return (
 		<Link href={`/tervrajzok/${params.blueprint.slug}`}>
 			<Card className={
 				cn("w-fit rounded-3xl hover:bg-slate-50 transition-colors", params.className)
 			}>
 				<CardHeader className="flex flex-row items-center gap-4 pl-2 pr-6 py-2">
-					<Image src={ TRANSPARENT_IMAGES ? "/transparent.png" : 
+					<Image src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : 
 					params.blueprint.highlightedImage.src }
 					height="32" width="32" alt={ params.blueprint.title }
 					className="object-cover rounded-full aspect-square bg-[#f4f4f4]" />

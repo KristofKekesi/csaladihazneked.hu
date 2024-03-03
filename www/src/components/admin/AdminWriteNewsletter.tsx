@@ -1,15 +1,16 @@
 "use client";
 
 import { Button, buttonVariants } from "@/components/ui/Button";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { validateMessage, validateSubject } from "@/lib/validate";
+import autosizeTextarea from "@/lib/autosize_textarea";
 import { cn } from "@/lib/utils";
 import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import Link from "next/link";
 import sendNewsletter from "@/lib/send_newsletter";
-import { Textarea } from "../ui/Textarea";
+import { Textarea } from "@/components/ui/Textarea";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -32,6 +33,14 @@ export default function AdminWriteNewsletter({ password }: Params) {
 
 	const [isSubjectValid, setIsSubjectValid] = useState<boolean>(true);
 	const [isMessageValid, setIsMesageValid] = useState<boolean>(true);
+
+	useEffect(() => {
+		autosizeTextarea({
+			textarea_id: "admin-newsletter-message",
+			default_rows: 15,
+			row_limit: Infinity
+		});
+	});
 
 	/**
 	 * On submit event to send newsletter issue to subscribers.
@@ -106,7 +115,6 @@ export default function AdminWriteNewsletter({ password }: Params) {
 						id="admin-newsletter-message"
 						variant={ !isMessageValid ? "destructive" : null }
 						onChange={ (event) => setMessage(event.target.value) }
-						className="h-96"
 					/>
 				</div>
 				<div className="col-span-5 flex justify-between">

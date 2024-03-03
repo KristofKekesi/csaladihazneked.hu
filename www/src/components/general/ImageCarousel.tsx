@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Image as ImageType } from "@/types/Image";
 import { useRef } from "react";
-import YouTubeEmbed from "../blueprint/YouTubeEmbed";
+import YouTubeEmbed from "@/components/blueprint/YouTubeEmbed";
 
 //    TURTLE - TEKI
 //    (°-°) _______

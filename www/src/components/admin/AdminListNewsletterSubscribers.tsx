@@ -1,7 +1,7 @@
 "use client";
 
-import { Card, CardContent, CardTitle } from "../ui/Card";
-import { Button } from "../ui/Button";
+import { Card, CardContent, CardTitle } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { RefreshCw } from "lucide-react";
 import { SubscriberTable } from "./SubscriberTable";
 import { useState } from "react";

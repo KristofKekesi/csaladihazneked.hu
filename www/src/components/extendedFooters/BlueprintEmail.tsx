@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { validateEmailAddress, validateMessage, validateName } from "@/lib/validate";
+import autosizeTextarea from "@/lib/autosize_textarea";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import ExtendedFooter from "@/components/general/footer/ExtendedFooter";
@@ -37,6 +38,12 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 	const [isEmailAddressValid, setIsEmailAddressValid] = useState<boolean>(true);
 	const [isNameValid, setIsNameValid] = useState<boolean>(true);
 	const [isMessageValid, setIsMesageValid] = useState<boolean>(true);
+
+	useEffect(() => {
+		autosizeTextarea({
+			textarea_id: "message"
+		});
+	});
 
 	/**
 	 * A function to be executed on the submit event of the form.

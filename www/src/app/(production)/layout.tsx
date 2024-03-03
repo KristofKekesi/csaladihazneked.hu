@@ -48,7 +48,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en">
+		<html lang="hu">
 			<body className={`${GeistSans.className} ${Caprasimo.variable} max-w-full`}>
 				<Provider>
 					<div className="flex flex-col justify-between min-h-[100vh]">
