@@ -71,8 +71,8 @@ export default function AdminWriteNewsletter({ password }: Params) {
 
 	return (
 		<ExtendedFooter
-			title="Új körlevél küldése"
-			description= { `Körlevél küldése maximum 
+			title="Új hírlevél küldése"
+			description= { `Hírlevél küldése maximum 
 			${ process.env.NEXT_PUBLIC_API_GET_NEWSLETTER_SUBSCRIBER_LIMIT } feliratkozónak.` }
 			className="mt-6"
 		>

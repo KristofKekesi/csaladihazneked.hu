@@ -29,7 +29,7 @@ export default function Adminlayout({
 				<div className="flex gap-4 overflow-x-auto">
 					<Link href={ `/admin/hirlevel/uj?password=${ password }` }>
 						<Button variant="secondary">
-							Körlevél írása
+							Hírlevél írása
 						</Button>
 					</Link>
 					<Link href={ `/admin/hirlevel/lista?password=${ password }` }>
