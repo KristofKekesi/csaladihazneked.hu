@@ -1,4 +1,5 @@
-import { API_FETCH_REVALIDATE } from "../../config";
+"use server";
+
 import { Blueprint } from "@/types/Blueprint";
 import { Image } from "@/types/Image";
 import { Partner } from "@/types/Partner";
@@ -19,6 +20,15 @@ const API_URL = process.env.WORDPRESS_API_URL!;
  * @returns The response with the query from the WordPress Graphql api.
  */
 async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
+	// Guard closes
+	const API_FETCH_REVALIDATE = process.env.API_FETCH_REVALIDATE;
+	if (!API_FETCH_REVALIDATE) {
+		throw new Error("API_FETCH_REVALIDATE environmental variable is not provided.");
+	}
+	if (Number.isNaN(parseInt(API_FETCH_REVALIDATE))) {
+		throw new Error("API_FETCH_REVALIDATE environmental variable is not a number.");
+	}
+
 	type HeaderType = {"Content-Type": string, "Authorization"?: string};
 
 	const headers: HeaderType = { "Content-Type": "application/json" };
@@ -31,7 +41,7 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	const res = await fetch(API_URL, {
 		headers,
 		next: {
-			revalidate: API_FETCH_REVALIDATE
+			revalidate: parseInt(API_FETCH_REVALIDATE)
 		},
 		method: "POST",
 		body: JSON.stringify({

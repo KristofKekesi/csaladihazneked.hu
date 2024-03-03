@@ -6,15 +6,14 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/Card";
+import { cn, isTrue } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
 import { subtitleClassNames } from "@/components/general/Typography";
-import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -33,6 +32,14 @@ type Params = {
  * @returns A component with many info about the blueprint given.
  */
 export default function BlueprintBig(params: Params) {
+	// Guard closes
+	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
+	if (DEV_TRANSPARENT_IMAGES === undefined) {
+		throw new Error(
+			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
+		);
+	}
+
 	return (
 		<Card className="flex rounded-t-3xl">
 			<div className="w-full md:w-2/3">
@@ -89,7 +96,7 @@ export default function BlueprintBig(params: Params) {
 				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline relative"
 			>
 				<Image
-					src={ TRANSPARENT_IMAGES ? "/transparent.png" : 
+					src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : 
 					params.blueprint.highlightedImage.src } 
 					fill alt={ params.blueprint.title }
 					className="object-cover rounded-tr-3xl rounded-br-md bg-[#f4f4f4]"

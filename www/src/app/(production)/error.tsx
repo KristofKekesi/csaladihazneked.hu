@@ -1,0 +1,85 @@
+"use client";
+
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Subtitle, Title } from "@/components/general/Typography";
+import { Button } from "@/components/ui/Button";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
+
+//    TURTLE - TEKI
+//    (°-°) _______
+//      \ / - - - \_
+//       \_  ___  ___>
+//         \__) \__)
+
+/**
+ * @returns A page to render on 404 errors.
+ */
+export default function Blueprints() {
+
+	return (
+		<main className="flex flex-col just pt-3">
+			<Subtitle className="px-6">500</Subtitle>
+			<Title className="px-6 z-30 text-xl sm:text-6xl">Szerver hiba</Title>
+			<hr className="pb-4" />
+			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 px-6">
+			<Card className="justify-between items-baseline flex">
+					<CardHeader>
+						<CardTitle className="font-serif">
+							Főoldal
+						</CardTitle>
+					</CardHeader>
+					<CardFooter className="flex items-end">
+						<Link href="/">
+							<Button variant="secondary">
+								<ChevronRight className="h-4 w-4" />
+							</Button>
+						</Link>
+					</CardFooter>
+				</Card>
+				<Card className="justify-between items-baseline flex">
+					<CardHeader>
+						<CardTitle className="font-serif">
+							Referencia
+						</CardTitle>
+					</CardHeader>
+					<CardFooter className="flex items-end">
+						<Link href="/referencia">
+							<Button variant="secondary">
+								<ChevronRight className="h-4 w-4" />
+							</Button>
+						</Link>
+					</CardFooter>
+				</Card>
+				<Card className="justify-between items-baseline flex">
+					<CardHeader>
+						<CardTitle className="font-serif">
+							Legutóbbi tervrajzok
+						</CardTitle>
+					</CardHeader>
+					<CardFooter className="flex items-end">
+						<Link href="/tervrajzok">
+							<Button variant="secondary">
+								<ChevronRight className="h-4 w-4" />
+							</Button>
+						</Link>
+					</CardFooter>
+				</Card>
+				<Card className="justify-between items-baseline flex">
+					<CardHeader>
+						<CardTitle className="font-serif">
+							Elérhetőségek
+						</CardTitle>
+					</CardHeader>
+					<CardFooter className="flex items-end">
+						<Link href="/#elerhetosegek">
+							<Button variant="secondary">
+								<ChevronRight className="h-4 w-4" />
+							</Button>
+						</Link>
+					</CardFooter>
+				</Card>
+			</div>
+		</main>
+	);
+}

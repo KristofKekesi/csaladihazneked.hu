@@ -2,14 +2,11 @@
 
 "use client";
 
+import { cn, isTrue } from "@/lib/utils";
 import React, { useEffect } from "react";
-React.useLayoutEffect = React.useEffect;
-
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Image as ImageType } from "@/types/Image";
 import PhotoAlbum from "react-photo-album";
-import { TRANSPARENT_IMAGES } from "../../../../config";
 import { useInView } from "react-intersection-observer";
 
 //    TURTLE - TEKI
@@ -47,7 +44,15 @@ export function onClick(params: any) {
 }
 
 function CustomImageRenderer(params: any) {
-    const source = TRANSPARENT_IMAGES ? "/transparent.png" : params.photo.src;
+    // Guard closes
+	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
+	if (DEV_TRANSPARENT_IMAGES === undefined) {
+		throw new Error(
+            "NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
+        );
+	}
+
+    const source = isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : params.photo.src;
 
     params.wrapperStyle["height"] = params.layout.height;
 

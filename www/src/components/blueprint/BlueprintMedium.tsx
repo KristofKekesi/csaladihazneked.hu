@@ -4,15 +4,14 @@ import {
 	CardFooter,
 	CardHeader,
 } from "@/components/ui/Card";
+import { cn, isTrue } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight} from "lucide-react";
-import { cn } from "@/lib/utils";
 import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
 import { Subtitle } from "@/components/general/Typography";
-import { TRANSPARENT_IMAGES } from "../../../config";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -33,6 +32,14 @@ type Params = {
  * @returns A component with some information about the `blueprint` provided.
  */
 export default function BlueprintMedium({ blueprint, className }: Params) {
+	// Guard closes
+	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
+	if (DEV_TRANSPARENT_IMAGES === undefined) {
+		throw new Error(
+			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
+		);
+	}
+
 	return (
 		<Card
 			className={cn("group rounded-b-3xl bg-cover", className)}
@@ -44,7 +51,7 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 						<div className="w-full aspect-video relative group-hover:blur
 						group-hover:opacity-40 transition-all">
 							<Image
-								src={ TRANSPARENT_IMAGES ? "/transparent.png" : 
+								src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : 
 								blueprint.highlightedImage.src }
 								alt={ blueprint.title } fill
 								className="rounded-t-md object-cover bg-[#f4f4f4]"

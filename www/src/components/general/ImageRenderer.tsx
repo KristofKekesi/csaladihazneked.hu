@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { TRANSPARENT_IMAGES } from "../../../config";
+import { isTrue } from "@/lib/utils";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -13,6 +13,14 @@ import { TRANSPARENT_IMAGES } from "../../../config";
  * @returns An image populated by the `params`.
  */
 export default function ImageRenderer(params: any) {
+    // Guard closes
+	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
+	if (DEV_TRANSPARENT_IMAGES === undefined) {
+		throw new Error(
+            "NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
+        );
+	}
+
     // Note: must use span: "Invalid HTML may cause hydration mismatch such as div inside p.".
     return (
         <span className="flex flex-col lg:flex-row lg:justify-center 
@@ -23,7 +31,7 @@ export default function ImageRenderer(params: any) {
                 loading="lazy"
                 width="0"
                 height="0"
-                src={ TRANSPARENT_IMAGES ? "/transparent.png" : params.src }
+                src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : params.src }
                 alt={ params.alt ? params.alt : "" }
                 sizes="100vw"
                 { ...params}
