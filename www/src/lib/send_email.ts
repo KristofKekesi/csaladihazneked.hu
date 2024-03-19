@@ -1,8 +1,8 @@
 "use server";
 
-// MonkeReacts > MailGun > v0.2
+// MonkeReacts > MailGun > v0.3
+import MailGun, { type MailgunMessageData } from "mailgun.js";
 import formData from "form-data";
-import MailGun from "mailgun.js";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -47,7 +47,7 @@ export async function sendEmail({from, to, subject, text, html}: Params) : Promi
 		url: "https://api.eu.mailgun.net/"
 	});
 
-	const messageData = {
+	const messageData: MailgunMessageData = {
 		from,
 		to,
 		subject,

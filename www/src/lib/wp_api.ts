@@ -72,7 +72,14 @@ export async function getAllPosts(): Promise<Array<Post>> {
 						title
 						slug
 						content
-						dateGmt
+						date
+						modified
+						lastEditedBy {
+							node {
+							  	firstName
+								lastName
+							}
+						} 
 						postMeta {
 							isHighlighted
 							highlighted_image {
@@ -106,7 +113,11 @@ export async function getAllPosts(): Promise<Array<Post>> {
 				width: postMeta.highlighted_image.node.title.split("×")[0],
 				height: postMeta.highlighted_image.node.title.split("×")[0]
 			},
-			content: post.node.content
+			content: post.node.content,
+			author:
+				`${post.node.lastEditedBy.node.lastName} ${post.node.lastEditedBy.node.firstName}`,
+			published: post.node.date,
+			modified: post.node.modified
 		}); 
 	});
 
@@ -441,7 +452,8 @@ export async function getAllPartners() {
 export async function getAllPages() {
 	type Page = {
 		title: string,
-		content?: string
+		content?: string,
+		lastEdit?: string
 	}
 
 	const data = await fetchAPI(`
@@ -451,6 +463,7 @@ export async function getAllPages() {
 					node {
 						title
 						content
+						modifiedGmt
 					}
 				}
 			}
@@ -461,7 +474,8 @@ export async function getAllPages() {
 	data.customPages.edges.map((page: any) => {
 		pages.push({
 			title: page.node.title,
-			content: page.node.content
+			content: page.node.content,
+			lastEdit: page.node.modifiedGmt
 		});
 	});
 
