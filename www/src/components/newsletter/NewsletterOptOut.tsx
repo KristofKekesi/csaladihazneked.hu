@@ -86,19 +86,19 @@ export default function NewsletterOptOut(params: Params) {
 						disabled={ state !== "toBeSent" }
 					>
 						{ state === "toBeSent" ? <>
-							<Trash2 className="h-4 w-4 mr-2" />
+							<Trash2 className="size-4 mr-2" />
 							Leiratkozás
 						</> : null }
 						{ state === "sending" ? <>
-							<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+							<Loader2 className="size-4 mr-2 animate-spin" />
 							Leiratkozás
 						</> : null }
 						{ state === "sent" ? <>
-							<MailMinus className="h-4 w-4 mr-2" />
+							<MailMinus className="size-4 mr-2" />
 							Leiratkozva
 						</> : null }
 						{ state === "error" ? <>
-							<MailX className="h-4 w-4 mr-2" />
+							<MailX className="size-4 mr-2" />
 							Hiba
 						</> : null }						
 					</Button>

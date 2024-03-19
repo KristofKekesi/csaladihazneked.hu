@@ -53,7 +53,7 @@ export default function PostMedium(params: Params) {
 						<CardFooter>
 							<Link href={`/blog/${ params.post.slug }`}>
 								<Button variant="secondary" className="drop-shadow-2xl">
-									Tovább <ChevronRight className="h-4 w-4 ml-2" />
+									Tovább <ChevronRight className="size-4 ml-2" />
 								</Button>
 							</Link>
 						</CardFooter>

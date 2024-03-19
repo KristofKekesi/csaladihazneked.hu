@@ -30,7 +30,7 @@ export default function Blueprints() {
 					<CardFooter className="flex items-end">
 						<Link href="/">
 							<Button variant="secondary">
-								<ChevronRight className="h-4 w-4" />
+								<ChevronRight className="size-4" />
 							</Button>
 						</Link>
 					</CardFooter>
@@ -44,7 +44,7 @@ export default function Blueprints() {
 					<CardFooter className="flex items-end">
 						<Link href="/referencia">
 							<Button variant="secondary">
-								<ChevronRight className="h-4 w-4" />
+								<ChevronRight className="size-4" />
 							</Button>
 						</Link>
 					</CardFooter>
@@ -58,7 +58,7 @@ export default function Blueprints() {
 					<CardFooter className="flex items-end">
 						<Link href="/tervrajzok">
 							<Button variant="secondary">
-								<ChevronRight className="h-4 w-4" />
+								<ChevronRight className="size-4" />
 							</Button>
 						</Link>
 					</CardFooter>
@@ -72,7 +72,7 @@ export default function Blueprints() {
 					<CardFooter className="flex items-end">
 						<Link href="/#elerhetosegek">
 							<Button variant="secondary">
-								<ChevronRight className="h-4 w-4" />
+								<ChevronRight className="size-4" />
 							</Button>
 						</Link>
 					</CardFooter>

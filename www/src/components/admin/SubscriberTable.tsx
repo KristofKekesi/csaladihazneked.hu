@@ -85,10 +85,10 @@ export function SubscriberTable(params: Params) {
 						Email
 						{ sortingBy === "emailAddress" ?
 							<>{ column.getIsSorted() === "asc" ? 
-								<CaretUpIcon className="ml-2 h-4 w-4" /> :
-								<CaretDownIcon className="ml-2 h-4 w-4" />
+								<CaretUpIcon className="ml-2 size-4" /> :
+								<CaretDownIcon className="ml-2 size-4" />
 							}</> :
-							<CaretSortIcon className="ml-2 h-4 w-4" />
+							<CaretSortIcon className="ml-2 size-4" />
 						}
 					</Button>
 				);
@@ -109,10 +109,10 @@ export function SubscriberTable(params: Params) {
 						Feliratkozás dátuma
 						{ sortingBy === "timestampSubscribed" ?
 							<>{ column.getIsSorted() === "asc" ? 
-								<CaretUpIcon className="ml-2 h-4 w-4" /> :
-								<CaretDownIcon className="ml-2 h-4 w-4" />
+								<CaretUpIcon className="ml-2 size-4" /> :
+								<CaretDownIcon className="ml-2 size-4" />
 							}</> :
-							<CaretSortIcon className="ml-2 h-4 w-4" />
+							<CaretSortIcon className="ml-2 size-4" />
 						}
 					</Button>
 				);
@@ -144,7 +144,7 @@ export function SubscriberTable(params: Params) {
 				variant="outline"
 				size="sm"
 				>
-					<Trash2 className="h-4 w-4" onClick={ onClick } /></Button>
+					<Trash2 className="size-4" onClick={ onClick } /></Button>
 				);
 			},
 		},

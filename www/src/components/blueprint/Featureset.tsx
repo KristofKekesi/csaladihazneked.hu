@@ -52,13 +52,13 @@ export default function Featureset(params: FeaturesetParams) {
 		<ul className={ cn(params.className) }>
 			{ params.type === "rooms" ? <>
 				<Feature label={`${ params.blueprint.rooms.rooms } szoba`}>
-					<Cuboid className="h-4 w-4 mr-2" /></Feature>
+					<Cuboid className="size-4 mr-2" /></Feature>
 				<Feature label={`${ params.blueprint.rooms.livingroom } nappali`}>
-					<Sofa className="h-4 w-4 mr-2" /></Feature>
+					<Sofa className="size-4 mr-2" /></Feature>
 				<Feature label={`${ params.blueprint.rooms.bathroom } fürdő`}>
-					<ShowerHead className="h-4 w-4 mr-2" /></Feature>
+					<ShowerHead className="size-4 mr-2" /></Feature>
 				<Feature label={`${ params.blueprint.rooms.wc } mosdó`}>
-					<Image src={ ToiletPaper } alt="" className="h-4 w-4 mr-2" /></Feature>
+					<Image src={ ToiletPaper } alt="" className="size-4 mr-2" /></Feature>
 			</> : null }
 
 			{ params.type === "features" ? <>
@@ -73,21 +73,21 @@ export default function Featureset(params: FeaturesetParams) {
 			{ params.type === "general" ? <>
 				<li className="flex items-baseline">
 					{ params.blueprint.type === "Családiház" ?
-					<Home className="h-4 w-4 mr-2" /> : null }
+					<Home className="size-4 mr-2" /> : null }
 					{ params.blueprint.type === "Társasház" ?
-					<Building2 className="h-4 w-4 mr-2" /> : null }
+					<Building2 className="size-4 mr-2" /> : null }
 					{ params.blueprint.type === "Egyéb" ?
-					<Warehouse className="h-4 w-4 mr-2" /> : null }
+					<Warehouse className="size-4 mr-2" /> : null }
 					{ params.blueprint.type === "Lakás" ?
-					<Building className="h-4 w-4 mr-2" /> : null }
+					<Building className="size-4 mr-2" /> : null }
 					<span className="select-auto">{ params.blueprint.type }</span>
 				</li>
 				<li className="flex items-baseline">
-					<Box className="h-4 w-4 mr-2" />
+					<Box className="size-4 mr-2" />
 					<span className="select-auto">{ params.blueprint.squarem } m<sup>2</sup></span>
 				</li>
 				<li className="flex items-baseline">
-					<Layers className="h-4 w-4 mr-2" />
+					<Layers className="size-4 mr-2" />
 					<span className="select-auto">{ params.blueprint.floors } emelet</span>
 				</li>
 			</> : null }
