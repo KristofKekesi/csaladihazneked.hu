@@ -102,7 +102,7 @@ export default async function Page({ params }: Params) {
 							</Link>
 							<Link href={ `/tervrajzok/${ blueprint.slug }/kapcsolat` }>
 								<Button>
-									<Mail className="h-4 w-4 mr-2" /> Kapcsolat
+									<Mail className="size-4 mr-2" /> Kapcsolat
 								</Button>
 							</Link>
 						</div>

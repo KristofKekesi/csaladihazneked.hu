@@ -94,19 +94,19 @@ export default function NewsletterSignUp(params: Params) {
 						disabled={ state !== "toBeSent" }
 					>
 						{ state === "toBeSent" ? <>
-							<Mail className="h-4 w-4 mr-2" />
+							<Mail className="size-4 mr-2" />
 							Feliratkozás
 						</> : null }
 						{ state === "sending" ? <>
-							<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+							<Loader2 className="size-4 mr-2 animate-spin" />
 							Feliratkozás
 						</> : null }
 						{ state === "sent" ? <>
-							<MailCheck className="h-4 w-4 mr-2" />
+							<MailCheck className="size-4 mr-2" />
 							Feliratkozva
 						</> : null }
 						{ state === "error" ? <>
-							<MailX className="h-4 w-4 mr-2" />
+							<MailX className="size-4 mr-2" />
 							Hiba
 						</> : null }						
 					</Button>

@@ -41,7 +41,7 @@ export default function AdminListNewsletterSubscribers(params: Params) {
 					size="sm"
 					onClick={ refreshOnClick }
 				>
-					<RefreshCw className="h-4 w-4" />
+					<RefreshCw className="size-4" />
 				</Button>
 			</CardTitle>
 			<CardContent>

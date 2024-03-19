@@ -128,16 +128,16 @@ export default function EmailExtendedFooter() {
 					transition-colors col-span-1 h-10 hidden md:flex"
 				>
 					{ state === "toBeSent" ? <>
-						<Send className="h-4 w-4 mr-2" /> Küldés
+						<Send className="size-4 mr-2" /> Küldés
 					</> : null }
 					{ state === "sending" ? <>
-						<Loader2 className="h-4 w-4 mr-2 animate-spin" /> Küldés
+						<Loader2 className="size-4 mr-2 animate-spin" /> Küldés
 					</> : null }
 					{ state === "sent" ? <>
-						<MailCheck className="h-4 w-4 mr-2" /> Elküldve
+						<MailCheck className="size-4 mr-2" /> Elküldve
 					</> : null }
 					{ state === "error" ? <>
-						<MailX className="h-4 w-4 mr-2" /> Hiba
+						<MailX className="size-4 mr-2" /> Hiba
 					</> : null }
 				</Button>
 				<div className="flex flex-col items-start col-span-5 w-full">

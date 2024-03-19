@@ -91,7 +91,7 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 				</Link>
 				<Link href={`/tervrajzok/${ blueprint.slug }`}>
 					<Button variant="secondary">
-						Olvass tovább <ChevronRight className="h-4 w-4 ml-2" />
+						Olvass tovább <ChevronRight className="size-4 ml-2" />
 					</Button>
 				</Link>
 			</CardFooter>
