@@ -56,7 +56,9 @@ export default async function Page({ params }: Params) {
 
 	return(
 		<main>
-			<Subtitle className="pt-6 px-6 font-caprasimo font-normal">2024/01/14</Subtitle>
+			<Subtitle className="pt-6 px-6 font-caprasimo font-normal">
+				{ new Date(post.published).toLocaleDateString("hu-HU") }
+			</Subtitle>
 			<Title className="px-6 font-serif font-bold text-3xl md:text-6xl pb-2">
 				{ post.title }
 			</Title>
@@ -74,9 +76,19 @@ export default async function Page({ params }: Params) {
 						<div className="flex flex-col select-auto">
 							<p className="text-lg font-semibold">
 								Első bejegyzés
-								<span className="pl-4 text-base font-normal">(2024/04/14)</span>
+								<span className="pl-4 text-base font-normal">
+									({ new Date(post.published).toLocaleDateString("hu-HU") })
+								</span>
 							</p>
-							<p>Írta: Kékesi Kristóf</p>
+							{ post.modified !== post.published ?
+								<p className="text-lg font-semibold">
+									Legutóbbi módósítás
+									<span className="pl-4 text-base font-normal">
+										({ new Date(post.modified).toLocaleDateString("hu-HU") })
+									</span>
+								</p>
+							: null }
+							<p>Írta: { post.author }</p>
 						</div>
 						<div>
 							<Header className="p-0 pl-6">Megemlített bejegyzések</Header>

@@ -27,7 +27,12 @@ export default async function Aszf() {
 			<div className="flex justify-start md:justify-between
 			items-start md:items-end flex-col md:flex-row">
 				<Subtitle className="px-6">Általános szerződési feltételek</Subtitle>
-				<Header className="px-6">Legutóbbi módosítás: 2024/01/24</Header>
+				{ data.lastEdit ?
+					<Header className="px-6">
+						<span className="mr-2">Legutóbbi módosítás:</span>
+						{ new Date(data.lastEdit).toLocaleDateString("hu-HU") }
+					</Header>
+				: null }
 			</div>
 			<hr className="pb-4" />
 			<Markdown className="px-6">

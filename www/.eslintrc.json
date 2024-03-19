@@ -1,4 +1,4 @@
-// MonkeProblems v0.4
+// MonkeProblems v0.5
 
 //   w  c(..)o   (
 //    \__(-)  ____)
@@ -22,8 +22,10 @@
 		"max-len": ["warn", 100],
 		"newline-before-return": "warn",
 		"for-direction": "error",
+		"no-warning-comments": ["error", {"terms": ["todo"], "location": "start"}],
 		"no-extra-boolean-cast": "error",
 		"no-extra-semi": "warn",
+		"no-empty": "error",
 		"sort-imports": ["warn", { "ignoreCase": true }],
 		"require-jsdoc": ["warn", { "require": { 
 			"FunctionDeclaration": true,
