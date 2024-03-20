@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { ExternalLink } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 import Link from "next/link";
 import { Separator } from "@/components/ui/Separator";
@@ -13,8 +14,8 @@ import { useState } from "react";
 //         \__) \__)
 
 /**
- * Newsletter layout.
- * @return Newsletter layout.
+ * Admin panel layout.
+ * @return Admin panel layout.
  */
 export default function Adminlayout({
 	children,
@@ -22,6 +23,11 @@ export default function Adminlayout({
 	children: React.ReactNode
 }) {
 	const [password, setPassword] = useState<string>("");
+
+	// Guard closes
+	if (!process.env.NEXT_PUBLIC_WORDPRESS_API_URL) {
+		throw new Error("Must provide NEXT_PUBLIC_WORDPRESS_API_URL environmental variable!");
+	}
 
 	return (
 		<>
@@ -35,6 +41,14 @@ export default function Adminlayout({
 					<Link href={ `/admin/hirlevel/lista?password=${ password }` }>
 						<Button variant="secondary">
 							Feliratkozók
+						</Button>
+					</Link>
+					<Link
+						href={ `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/wp-admin` }
+						target="_blank"
+					>
+						<Button>
+							Tartalomkezelő oldal<ExternalLink className="size-4 ml-2" />
 						</Button>
 					</Link>
 				</div>

@@ -11,7 +11,11 @@ import { Post } from "@/types/Post";
 //       \_  ___  ___>
 //         \__) \__)
 
-const API_URL = process.env.WORDPRESS_API_URL!;
+if (!process.env.NEXT_PUBLIC_WORDPRESS_API_URL) {
+	throw new Error("Must provide NEXT_PUBLIC_WORDPRESS_API_URL environmental variable!");
+}
+
+const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL! + "/graphql";
 
 /**
  * Function to fetch the WordPress Graphql API
