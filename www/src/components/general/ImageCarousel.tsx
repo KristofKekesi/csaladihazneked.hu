@@ -5,6 +5,7 @@ import {
 	CarouselContent,
 	CarouselItem
 } from "@/components/ui/Carousel";
+import { CustomCarouselNext, CustomCarouselPrev } from "./ImageCarouselNavigation";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -58,6 +59,10 @@ export default function ImageCarousel(params: Params) {
 					</CarouselItem>
 					)) }
 				</CarouselContent>
+				<div className="flex gap-2 absolute right-4 bottom-4">
+					<CustomCarouselPrev />
+					<CustomCarouselNext />
+				</div>
 			</Carousel>
 		</div>
 	);
