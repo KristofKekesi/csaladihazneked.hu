@@ -8,7 +8,6 @@
 
 import { cn, isTrue } from "@/lib/utils";
 import Image from "next/image";
-import { SyntheticEvent } from "react";
 
 
 type customImageParams = Required<
@@ -38,9 +37,9 @@ export default function CustomImage({
 	/**
 	 * Error handler to change the src parameter to the fallback image.
 	 */
-	function onError(this: HTMLImageElement, _event: SyntheticEvent<HTMLImageElement>) {
-		this.onerror = null;
-		this.src = "./image-fallback.svg";
+	function onError(event: any) {
+		event.target.onload = null;
+		event.target.src = "./image-fallback.svg";
 	}
 
 	return (
