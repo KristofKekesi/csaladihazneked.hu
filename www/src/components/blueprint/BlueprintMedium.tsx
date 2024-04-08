@@ -4,14 +4,13 @@ import {
 	CardFooter,
 	CardHeader,
 } from "@/components/ui/Card";
-import { cn, isTrue } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight} from "lucide-react";
+import { cn } from "@/lib/utils";
+import CustomImage from "../general/Image";
 import Featureset from "@/components/blueprint/Featureset";
-import Image from "next/image";
 import Link from "next/link";
-import onError from "@/lib/image_fallback";
 import { Subtitle } from "@/components/general/Typography";
 
 //    TURTLE - TEKI
@@ -32,7 +31,7 @@ type Params = {
  * @param className A `string` containing CSS classes.
  * @returns A component with some information about the `blueprint` provided.
  */
-export default function BlueprintMedium({ blueprint, className }: Params) {
+export default async function BlueprintMedium({ blueprint, className }: Params) {
 	// Guard closes
 	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
 	if (DEV_TRANSPARENT_IMAGES === undefined) {
@@ -49,15 +48,11 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 			 bg-transparent group-hover:bg-black/05 transition-all" >
 				<div className="relative">
 					<div className="absolute w-full">
+						<CustomImage alt={blueprint.title} src={blueprint.highlightedImage.src} 
+						className="w-full aspect-video relative group-hover:blur 
+						group-hover:opacity-40 transition-all" />
 						<div className="w-full aspect-video relative group-hover:blur
 						group-hover:opacity-40 transition-all">
-							<Image
-								src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : 
-								blueprint.highlightedImage.src }
-								alt={ blueprint.title } fill
-								className="rounded-t-md object-cover bg-[#f4f4f4]"
-								onError={ onError }
-							/>
 						</div>
 					</div>
 					<div className="absolute opacity-0 group-hover:opacity-10
