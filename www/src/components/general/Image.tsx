@@ -38,8 +38,10 @@ export default function CustomImage({
 	 * Error handler to change the src parameter to the fallback image.
 	 */
 	function onError(event: any) {
-		event.target.onload = null;
+		event.target.removeAttribute("srcset");
 		event.target.src = "./image-fallback.svg";
+		event.target.error = null;
+		event.target.style.objectFit = "cover";
 	}
 
 	return (
