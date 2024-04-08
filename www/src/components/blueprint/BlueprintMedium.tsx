@@ -11,6 +11,7 @@ import { ChevronRight} from "lucide-react";
 import Featureset from "@/components/blueprint/Featureset";
 import Image from "next/image";
 import Link from "next/link";
+import onError from "@/lib/image_fallback";
 import { Subtitle } from "@/components/general/Typography";
 
 //    TURTLE - TEKI
@@ -55,6 +56,7 @@ export default function BlueprintMedium({ blueprint, className }: Params) {
 								blueprint.highlightedImage.src }
 								alt={ blueprint.title } fill
 								className="rounded-t-md object-cover bg-[#f4f4f4]"
+								onError={ onError }
 							/>
 						</div>
 					</div>
