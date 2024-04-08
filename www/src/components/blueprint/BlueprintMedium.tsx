@@ -8,7 +8,7 @@ import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight} from "lucide-react";
 import { cn } from "@/lib/utils";
-import CustomImage from "../general/Image";
+import CustomImage from "@/components/general/Image";
 import Featureset from "@/components/blueprint/Featureset";
 import Link from "next/link";
 import { Subtitle } from "@/components/general/Typography";
