@@ -29,7 +29,6 @@ export default function PostSmall(params: Params) {
 			}>
 				<CardHeader className="flex flex-row items-center gap-4 pl-3 pr-6 py-2">
 					<CustomImage
-						fill
 						alt={ params.post.title }
 						src={ params.post.highlightedImage.src }
 						imageClassName="object-cover rounded-full aspect-square"

@@ -65,7 +65,6 @@ function CustomImageRenderer(params: any) {
                     src={ source }
                     loading="lazy"
                     sizes={ params.imageProps.sizes }
-                    fill
                     className="block w-full h-full"
                     imageClassName={cn("image", params.imageProps.className)}
 

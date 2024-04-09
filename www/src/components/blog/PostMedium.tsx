@@ -31,7 +31,6 @@ export default function PostMedium(params: Params) {
 			<div className="relative w-full h-full">
 				<div className="absolute w-full h-full">
 					<CustomImage
-						fill
 						alt={ params.post.title }
 						src={ params.post.highlightedImage.src }
 						className="w-full h-full group-hover:blur
