@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { cn, isTrue } from "@/lib/utils";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
+import { cn } from "@/lib/utils";
+import CustomImage from "@/components/general/Image";
 import Featureset from "@/components/blueprint/Featureset";
-import Image from "next/image";
 import Link from "next/link";
 
 //    TURTLE - TEKI
