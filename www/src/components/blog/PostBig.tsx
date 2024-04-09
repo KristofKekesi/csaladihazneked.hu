@@ -32,7 +32,6 @@ export default function PostBig(params: Params) {
 			<div className="relative">
 				<div className="absolute w-full h-full">
 					<CustomImage
-						fill
 						alt={ params.post.title }
 						src={params.post.highlightedImage.src}
 						className="w-full aspect-square relative group-hover:blur
