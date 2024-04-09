@@ -3,7 +3,7 @@ import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import CustomImage from "@/components/general/Image";
 import Link from "next/link";
 import { Post } from "@/types/Post";
 
@@ -30,14 +30,13 @@ export default function PostMedium(params: Params) {
 		>
 			<div className="relative w-full h-full">
 				<div className="absolute w-full h-full">
-					<div className="w-full h-full relative group-hover:blur
-					group-hover:opacity-40 transition-all">
-						<Image
-							src={ params.post.highlightedImage.src } alt={ params.post.title }
-							fill
-							className="rounded-md object-cover"
-						/>
-					</div>
+					<CustomImage
+						alt={ params.post.title }
+						src={ params.post.highlightedImage.src }
+						className="w-full h-full group-hover:blur
+						group-hover:opacity-40 transition-all"
+						imageClassName="rounded-md object-cover"
+					/>
 				</div>
 				<div className="absolute w-full">
 					<div className="flex justify-between items-end bg-cover">

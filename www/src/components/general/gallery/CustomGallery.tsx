@@ -4,7 +4,7 @@
 
 import { cn, isTrue } from "@/lib/utils";
 import React, { useEffect } from "react";
-import Image from "next/image";
+import CustomImage from "@/components/general/Image";
 import { Image as ImageType } from "@/types/Image";
 import PhotoAlbum from "react-photo-album";
 import { useInView } from "react-intersection-observer";
@@ -59,20 +59,18 @@ function CustomImageRenderer(params: any) {
     return (
         <>
             <div style={ params.wrapperStyle }>
-                <div style={{ display: "block", position: "relative", 
-                width: "100%", height: "100%" }} className="bg-[#f4f4f4]">
-                    <Image
-                        data-src={ source }
-                        data-index={ params.layout.index }
-                        className={ cn("image", params.imageProps.className) }
-                        src={ source }
-                        alt={ params.photo.alt }
-                        title={ params.photo.title }
-                        loading="lazy"
-                        sizes={ params.imageProps.sizes }
-                        fill
-                    />
-                </div>
+                <CustomImage
+                    alt={ params.photo.alt }
+                    title={ params.photo.title }
+                    src={ source }
+                    loading="lazy"
+                    sizes={ params.imageProps.sizes }
+                    className="block w-full h-full"
+                    imageClassName={cn("image", params.imageProps.className)}
+
+                    data-src={ source }
+                    data-index={ params.layout.index }
+                />
             </div>
         </>
     );

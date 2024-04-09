@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
+import CustomImage from "@/components/general/Image";
 import Link from "next/link";
 import { Post } from "@/types/Post";
 
@@ -31,14 +31,13 @@ export default function PostBig(params: Params) {
 		<Card>
 			<div className="relative">
 				<div className="absolute w-full h-full">
-					<div className="w-full aspect-square relative group-hover:blur
-					group-hover:opacity-40 transition-all">
-						<Image
-							src={ params.post.highlightedImage.src } alt={ params.post.title }
-							fill
-							className="rounded-md object-cover"
-						/>
-					</div>
+					<CustomImage
+						alt={ params.post.title }
+						src={params.post.highlightedImage.src}
+						className="w-full aspect-square relative group-hover:blur
+						group-hover:opacity-40 transition-all"
+						imageClassName="rounded-md object-cover"
+					/>
 				</div>
 			</div>
 			<CardHeader className="backdrop-blur-2xl bg-white/20 rounded-t-lg h-38">

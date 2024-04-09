@@ -1,4 +1,4 @@
-// MonkeProblems v0.5
+// MonkeProblems v0.5.1
 
 //   w  c(..)o   (
 //    \__(-)  ____)
@@ -16,7 +16,7 @@
 		"quotes": ["warn", "double"],
 		"no-unused-expressions": "warn",
 		"no-unused-labels": "warn",
-		"no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+		"no-unused-vars": ["warn", { "argsIgnorePattern": "^_|this", "varsIgnorePattern": "^_" }],
 		"no-alert": "error",
 		"eqeqeq": "error",
 		"max-len": ["warn", 100],
