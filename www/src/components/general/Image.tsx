@@ -16,8 +16,7 @@ type customImageParams = Required<
 	Pick<Partial<HTMLImageElement>, "className">
 > & {
 	imageClassName?: string, title?: string,
-	loading?: "lazy", sizes?: any,
-	fill?: boolean
+	loading?: "lazy", sizes?: any
 };
 	
 /**
@@ -39,7 +38,7 @@ export default function CustomImage({
 	 */
 	function onError(event: any) {
 		event.target.removeAttribute("srcset");
-		event.target.src = "./image-fallback.svg";
+		event.target.src = "/image-fallback.svg";
 		event.target.error = null;
 		event.target.style.objectFit = "cover";
 	}

@@ -6,12 +6,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/Card";
-import { cn, isTrue } from "@/lib/utils";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import CustomImage from "@/components/general/Image";
 import Featureset from "@/components/blueprint/Featureset";
-import Image from "next/image";
 import Link from "next/link";
 import { subtitleClassNames } from "@/components/general/Typography";
 
@@ -92,16 +92,12 @@ export default function BlueprintBig(params: Params) {
 					</Link>
 				</CardFooter>
 			</div>
-			<div
-				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline relative"
-			>
-				<Image
-					src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : 
-					params.blueprint.highlightedImage.src } 
-					fill alt={ params.blueprint.title }
-					className="object-cover rounded-tr-3xl rounded-br-md bg-[#f4f4f4]"
-				/>
-			</div>
+			<CustomImage
+				alt={ params.blueprint.title }
+				src={ params.blueprint.highlightedImage.src } 
+				className="w-1/3 rounded-tr-3xl rounded-br-md hidden md:inline"
+				imageClassName="object-cover rounded-tr-3xl rounded-br-md"
+			/>
 		</Card>
 	);
 }

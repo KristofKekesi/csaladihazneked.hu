@@ -8,7 +8,7 @@ import {
 import { CustomCarouselNext, CustomCarouselPrev } from "./ImageCarouselNavigation";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import CustomImage from "./Image";
 import { Image as ImageType } from "@/types/Image";
 import { useRef } from "react";
 import YouTubeEmbed from "@/components/blueprint/YouTubeEmbed";
@@ -48,13 +48,13 @@ export default function ImageCarousel(params: Params) {
 					{ params.images.map((image, index) => (
 					<CarouselItem key={index}>
 						{ typeof image === "object" ? <>
-							<div className="bg-slate-200 rounded-lg flex aspect-video
-								items-center justify-center p-0 m-0 relative">
-								<Image
-									src={ image.src } alt={ image.alt }
-									fill
-									className="aspect-video bg-contain rounded-lg object-contain" />
-							</div>
+							<CustomImage
+								alt={ image.alt }
+								src={ image.src }
+								className="rounded-lg flex aspect-video
+								items-center justify-center p-0 m-0"
+								imageClassName="aspect-video bg-contain rounded-lg object-contain"
+							/>
 						</> : <YouTubeEmbed youTubeVideoURL={ image } /> }
 					</CarouselItem>
 					)) }

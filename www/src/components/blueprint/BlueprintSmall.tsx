@@ -38,10 +38,12 @@ export default function BlueprintSmall(params: Params) {
 				cn("w-fit rounded-3xl hover:bg-slate-50 transition-colors", params.className)
 			}>
 				<CardHeader className="flex flex-row items-center gap-4 pl-2 pr-6 py-2">
-					<Image src={ isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : 
-					params.blueprint.highlightedImage.src }
-					height="32" width="32" alt={ params.blueprint.title }
-					className="object-cover rounded-full aspect-square bg-[#f4f4f4]" />
+					<CustomImage
+						alt={ params.blueprint.title }
+						src={ params.blueprint.highlightedImage.src }
+						className="size-8"
+						imageClassName="object-cover rounded-full aspect-square"
+					/>
 					<CardTitle className="text-base">
 						<span className="line-clamp-2 max-w-sm select-auto"><Balancer>
 							{ params.blueprint.title }

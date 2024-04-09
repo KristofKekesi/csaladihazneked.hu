@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { Partner } from "@/types/Partner";
+import CustomImage from "@/components/general/Image";
+import { type Partner as PartnerType } from "@/types/Partner";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -8,7 +8,7 @@ import { Partner } from "@/types/Partner";
 //         \__) \__)
 
 type Params = {
-	partner: Partner
+	partner: PartnerType
 }
 
 /**
@@ -18,14 +18,12 @@ type Params = {
 export default function Partner(params: Params) {
 	return (
 		<div className="flex flex-col items-center gap-2">
-			<div className="rounded-full bg-slate-100 w-32 h-32 relative">
-				<Image
-					src={ params.partner.image.src }
-					alt={ params.partner.name }
-					fill
-					className="rounded-full object-cover"
-				/>
-			</div>
+			<CustomImage
+				alt={ params.partner.name }
+				src={ params.partner.image.src }
+				className="rounded-full size-32"
+				imageClassName="rounded-full object-cover"
+			/>
 			<p>{ params.partner.name }</p>
 		</div>
 	);
