@@ -13,13 +13,9 @@ import { isTrue } from "@/lib/utils";
  * @returns An image populated by the `params`.
  */
 export default function ImageRenderer(params: any) {
-    // Guard closes
-	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
-	if (DEV_TRANSPARENT_IMAGES === undefined) {
-		throw new Error(
-            "NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
-        );
-	}
+    const DEV_TRANSPARENT_IMAGES = 
+		process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES ? 
+			process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES : "false";
 
     // Note: must use span: "Invalid HTML may cause hydration mismatch such as div inside p.".
     return (

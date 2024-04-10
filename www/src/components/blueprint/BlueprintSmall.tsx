@@ -24,14 +24,6 @@ type Params = {
  * @returns Minimal information about a given `blueprint`.
  */
 export default function BlueprintSmall(params: Params) {
-	// Guard closes
-	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
-	if (DEV_TRANSPARENT_IMAGES === undefined) {
-		throw new Error(
-			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
-		);
-	}
-
 	return (
 		<Link href={`/tervrajzok/${params.blueprint.slug}`}>
 			<Card className={

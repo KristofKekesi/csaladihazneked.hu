@@ -32,14 +32,6 @@ type Params = {
  * @returns A component with many info about the blueprint given.
  */
 export default function BlueprintBig(params: Params) {
-	// Guard closes
-	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
-	if (DEV_TRANSPARENT_IMAGES === undefined) {
-		throw new Error(
-			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
-		);
-	}
-
 	return (
 		<Card className="flex rounded-t-3xl">
 			<div className="w-full md:w-2/3">

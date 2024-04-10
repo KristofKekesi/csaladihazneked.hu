@@ -2,8 +2,8 @@
 
 "use client";
 
-import { cn, isTrue } from "@/lib/utils";
 import React, { useEffect } from "react";
+import { cn } from "@/lib/utils";
 import CustomImage from "@/components/general/Image";
 import { Image as ImageType } from "@/types/Image";
 import PhotoAlbum from "react-photo-album";
@@ -44,16 +44,6 @@ export function onClick(params: any) {
 }
 
 function CustomImageRenderer(params: any) {
-    // Guard closes
-	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
-	if (DEV_TRANSPARENT_IMAGES === undefined) {
-		throw new Error(
-            "NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
-        );
-	}
-
-    const source = isTrue(DEV_TRANSPARENT_IMAGES) ? "/transparent.png" : params.photo.src;
-
     params.wrapperStyle["height"] = params.layout.height;
 
     return (
@@ -62,13 +52,13 @@ function CustomImageRenderer(params: any) {
                 <CustomImage
                     alt={ params.photo.alt }
                     title={ params.photo.title }
-                    src={ source }
+                    src={ params.photo.src }
                     loading="lazy"
                     sizes={ params.imageProps.sizes }
                     className="block w-full h-full"
                     imageClassName={cn("image", params.imageProps.className)}
 
-                    data-src={ source }
+                    data-src={ params.photo.src }
                     data-index={ params.layout.index }
                 />
             </div>
