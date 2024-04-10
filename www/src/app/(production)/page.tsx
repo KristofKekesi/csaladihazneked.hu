@@ -57,15 +57,21 @@ export default async function Home() {
 						{ process.env.NEXT_PUBLIC_PHONE_NUMBER !== "" ?
 							<div>
 								<span className="font-bold">Tel.: </span>
-								<Link href={`tel:${ process.env.NEXT_PUBLIC_PHONE_NUMBER }`}>
+								<Link 
+									href={`tel:${ process.env.NEXT_PUBLIC_PHONE_NUMBER }`}
+									className="py-4"
+								>
 									{ process.env.NEXT_PUBLIC_PHONE_NUMBER }
 								</Link>
 							</div>
 						: null }
 						{ process.env.NEXT_PUBLIC_EMAIL_ADDRESS !== "" ?
-							<div>
+							<div>	
 								<span className="font-bold">Email: </span>
-								<Link href={`mailto:${ process.env.NEXT_PUBLIC_EMAIL_ADDRESS }`}>
+								<Link
+									href={`mailto:${ process.env.NEXT_PUBLIC_EMAIL_ADDRESS }`}
+									className="py-4"
+								>
 									{ process.env.NEXT_PUBLIC_EMAIL_ADDRESS }
 								</Link>
 							</div>
