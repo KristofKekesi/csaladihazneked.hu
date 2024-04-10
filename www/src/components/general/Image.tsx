@@ -25,13 +25,9 @@ type customImageParams = Required<
 export default function CustomImage({
 	alt, src, className, imageClassName, ...params
 }: customImageParams) {
-	// Guard closes
-	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
-	if (DEV_TRANSPARENT_IMAGES === undefined) {
-		throw new Error(
-			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
-		);
-	}
+	const DEV_TRANSPARENT_IMAGES = 
+		process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES ? 
+			process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES : "false";
 
 	/**
 	 * Error handler to change the src parameter to the fallback image.

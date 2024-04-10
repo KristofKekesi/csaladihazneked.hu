@@ -32,14 +32,6 @@ type Params = {
  * @returns A component with some information about the `blueprint` provided.
  */
 export default async function BlueprintMedium({ blueprint, className }: Params) {
-	// Guard closes
-	const DEV_TRANSPARENT_IMAGES = process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES;
-	if (DEV_TRANSPARENT_IMAGES === undefined) {
-		throw new Error(
-			"NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES environmental variable is not provided."
-		);
-	}
-
 	return (
 		<Card
 			className={cn("group rounded-b-3xl bg-cover", className)}
