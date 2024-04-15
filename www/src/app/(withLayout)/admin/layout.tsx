@@ -1,5 +1,6 @@
 "use client";
 
+import { AdminHirlevelLista, AdminHirlevelUj } from "@/routes";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -48,18 +49,17 @@ export default function Adminlayout({
 		<>
 			<div className="flex flex-col sm:flex-row gap-4 px-6 pt-4 justify-between">
 				<div className="flex gap-4 overflow-x-auto">
-					<Link href={ `/admin/hirlevel/uj?password=${ password }` }>
+					<AdminHirlevelUj.Link search={{ password: password }}>
 						<Button variant="secondary">
-							Hírlevél írása
+								Hírlevél írása
 						</Button>
-					</Link>
-					<Link href={ `/admin/hirlevel/lista?password=${ password }` }>
+					</AdminHirlevelUj.Link>
+					<AdminHirlevelLista.Link search={{ password: password }}>
 						<Button variant="secondary">
-							Feliratkozók
+								Feliratkozók
 						</Button>
-					</Link>
-					<Link
-						href={ `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/wp-admin` }
+					</AdminHirlevelLista.Link>
+					 href={ `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/wp-admin` }
 						target="_blank"
 					>
 						<Button className="flex gap-2" 

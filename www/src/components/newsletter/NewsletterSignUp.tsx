@@ -4,9 +4,9 @@ import { Loader2, Mail, MailCheck, MailX } from "lucide-react";
 import { addEmailAddressToNewsletter } from "@/lib/mysql_api";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { Hirlevel } from "@/routes";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
-import Link from "next/link";
 import MidPageAction from "@/components/general/MidPageAction";
 import { useState } from "react";
 import { validateEmailAddress } from "@/lib/validate";
@@ -115,11 +115,11 @@ export default function NewsletterSignUp(params: Params) {
 			footer={ params.showWhereToOptOut ? 
 				<span className="text-black/50 text-sm">
 				Szeretnél leiratkozni?
-				<Link href="/hirlevel">
+				<Hirlevel.Link>
 					<Button variant="link" className="pl-2">
-						Itt teheted meg.
+							Itt teheted meg.
 					</Button>
-				</Link>
+				</Hirlevel.Link>
 			</span> : undefined}
 			className={ cn("mx-6 mt-6", params.className) }
 		>

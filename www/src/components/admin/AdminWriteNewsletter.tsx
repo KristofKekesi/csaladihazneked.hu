@@ -3,6 +3,7 @@
 import { Button, buttonVariants } from "@/components/ui/Button";
 import { FormEvent, useEffect, useState } from "react";
 import { validateMessage, validateSubject } from "@/lib/validate";
+import { AdminHirlevelElonezet } from "@/routes";
 import autosizeTextarea from "@/lib/autosize_textarea";
 import { cn } from "@/lib/utils";
 import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
@@ -122,12 +123,8 @@ export default function AdminWriteNewsletter({ password }: Params) {
 						*: kötelező
 					</span>
 					<div className="flex gap-4">
-						<Link
-							href={ 
-								`/admin/hirlevel/elonezet?subject=${ subject }&message=${ message }`
-							}
-							target="_blank"
-						>
+						<AdminHirlevelElonezet.Link 
+						search={{ subject: subject, message: message }} target="_blank">
 							<div
 								className={ cn(buttonVariants({variant: "link"}), 
 								"py-1 px-0 rounded-md transition-colors col-span-2",
@@ -135,7 +132,7 @@ export default function AdminWriteNewsletter({ password }: Params) {
 							>
 								Előnézet
 							</div>
-						</Link>
+						</AdminHirlevelElonezet.Link>
 						<Button
 							variant="secondary"
 							type="submit"

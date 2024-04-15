@@ -34,5 +34,9 @@
 			"ArrowFunctionExpression": false,
 			"FunctionExpression": false
 		} }]
-	}
+	},
+	"ignorePatterns": [
+		"src/routes/",
+		"src/components/ui/"
+	]
 }
