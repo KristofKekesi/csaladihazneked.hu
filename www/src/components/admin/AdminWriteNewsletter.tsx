@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 import ExtendedFooter from  "@/components/general/footer/ExtendedFooter";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
-import Link from "next/link";
 import sendNewsletter from "@/lib/send_newsletter";
 import { Textarea } from "@/components/ui/Textarea";
 
