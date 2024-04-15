@@ -59,7 +59,7 @@ export default function Adminlayout({
 								Feliratkozók
 						</Button>
 					</AdminHirlevelLista.Link>
-					 href={ `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/wp-admin` }
+					<Link href={ `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/wp-admin` }
 						target="_blank"
 					>
 						<Button className="flex gap-2" 
