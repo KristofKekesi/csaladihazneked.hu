@@ -6,13 +6,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/Card";
+import { TervrajzokSlug, TervrajzokSlugHasonloak } from "@/routes";
 import { Blueprint } from "@/types/Blueprint";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import CustomImage from "@/components/general/Image";
 import Featureset from "@/components/blueprint/Featureset";
-import Link from "next/link";
 import { subtitleClassNames } from "@/components/general/Typography";
 
 //    TURTLE - TEKI
@@ -71,17 +71,17 @@ export default function BlueprintBig(params: Params) {
 					/>
 				</CardContent>
 				<CardFooter className="flex justify-between pt-6">
-					<Link href={ `/tervrajzok/${ params.blueprint.slug }/hasonloak` }>
+					<TervrajzokSlugHasonloak.Link slug={ params.blueprint.slug }>
 						<Button variant="link" className="pl-0">
 							<span className="inline md:hidden">Hasonlók</span>
 							<span className="hidden md:inline">Hasonló tervrajzok</span>
 						</Button>
-					</Link>
-					<Link href={`/tervrajzok/${ params.blueprint.slug }`}>
+					</TervrajzokSlugHasonloak.Link>
+					<TervrajzokSlug.Link slug={ params.blueprint.slug }>
 						<Button>
 							Olvass tovább <ChevronRight className="size-4 ml-2" />
 						</Button>
-					</Link>
+					</TervrajzokSlug.Link>
 				</CardFooter>
 			</div>
 			<CustomImage

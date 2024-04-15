@@ -4,7 +4,7 @@ import { Blueprint } from "@/types/Blueprint";
 import { cn } from "@/lib/utils";
 import CustomImage from "@/components/general/Image";
 import Featureset from "@/components/blueprint/Featureset";
-import Link from "next/link";
+import { TervrajzokSlug } from "@/routes";
 
 //    TURTLE - TEKI
 //    (°-°) _______
@@ -25,7 +25,7 @@ type Params = {
  */
 export default function BlueprintSmall(params: Params) {
 	return (
-		<Link href={`/tervrajzok/${params.blueprint.slug}`}>
+		<TervrajzokSlug.Link slug={ params.blueprint.slug }>
 			<Card className={
 				cn("w-fit rounded-3xl hover:bg-slate-50 transition-colors", params.className)
 			}>
@@ -46,6 +46,6 @@ export default function BlueprintSmall(params: Params) {
 					<Featureset blueprint={ params.blueprint } type="rooms" />
 				</CardContent>
 			</Card>
-		</Link>
+		</TervrajzokSlug.Link>
 	);
 }

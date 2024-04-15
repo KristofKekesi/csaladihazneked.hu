@@ -1,5 +1,6 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Subtitle, subtitleClassNames, Title } from "@/components/general/Typography";
+import { TervrajzokSlugHasonloak, TervrajzokSlugKapcsolat } from "@/routes";
 import Balancer from "react-wrap-balancer";
 import { Blueprint } from "@/types/Blueprint";
 import BlueprintMediumCarousel from "@/components/blueprint/BlueprintMediumCarousel";
@@ -10,7 +11,6 @@ import { getBlueprints } from "@/lib/filter_data";
 import getSimilarBlueprints from "@/lib/similar_blueprints";
 import html2md from "@/lib/html2md";
 import ImageCarousel from "@/components/general/ImageCarousel";
-import Link from "next/link";
 import { Mail } from "lucide-react";
 import Markdown from "@/components/general/MarkDown";
 import { Metadata } from "next";
@@ -95,16 +95,16 @@ export default async function Page({ params }: Params) {
 							{ `${Intl.NumberFormat("hu-HU").format(blueprint.price!)} Ft` }
 						</span>
 						<div className="flex gap-4 justify-between w-full">
-							<Link href={ `/tervrajzok/${ blueprint.slug }/hasonloak` }>
+							<TervrajzokSlugHasonloak.Link slug={ blueprint.slug } >
 								<Button variant="link">
 									Hasonló tervrajzok
 								</Button>
-							</Link>
-							<Link href={ `/tervrajzok/${ blueprint.slug }/kapcsolat` }>
+							</TervrajzokSlugHasonloak.Link>
+							<TervrajzokSlugKapcsolat.Link slug={ blueprint.slug }>
 								<Button>
 									<Mail className="size-4 mr-2" /> Kapcsolat
 								</Button>
-							</Link>
+							</TervrajzokSlugKapcsolat.Link>
 						</div>
 					</CardFooter>
 				</Card>

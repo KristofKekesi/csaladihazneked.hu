@@ -1,6 +1,5 @@
-"use client";
-
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Index, Referencia } from "@/routes";
 import { Subtitle, Title } from "@/components/general/Typography";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight } from "lucide-react";
@@ -19,8 +18,8 @@ export default function Blueprints() {
 
 	return (
 		<main className="flex flex-col just pt-3">
-			<Subtitle className="px-6">500</Subtitle>
-			<Title className="px-6 z-30 text-xl sm:text-6xl">Szerver hiba</Title>
+			<Subtitle className="px-6">404</Subtitle>
+			<Title className="px-6 z-30 text-xl sm:text-6xl">Nincs ilyen oldal</Title>
 			<hr className="pb-4" />
 			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 px-6">
 			<Card className="justify-between items-baseline flex">
@@ -30,11 +29,11 @@ export default function Blueprints() {
 						</CardTitle>
 					</CardHeader>
 					<CardFooter className="flex items-end">
-						<Link href="/">
+						<Index.Link>
 							<Button variant="secondary">
 								<ChevronRight className="size-4" />
 							</Button>
-						</Link>
+						</Index.Link>
 					</CardFooter>
 				</Card>
 				<Card className="justify-between items-baseline flex">
@@ -44,11 +43,11 @@ export default function Blueprints() {
 						</CardTitle>
 					</CardHeader>
 					<CardFooter className="flex items-end">
-						<Link href="/referencia">
+						<Referencia.Link>
 							<Button variant="secondary">
 								<ChevronRight className="size-4" />
 							</Button>
-						</Link>
+						</Referencia.Link>
 					</CardFooter>
 				</Card>
 				<Card className="justify-between items-baseline flex">
@@ -58,11 +57,11 @@ export default function Blueprints() {
 						</CardTitle>
 					</CardHeader>
 					<CardFooter className="flex items-end">
-						<Link href="/tervrajzok">
+						<Referencia.Link>
 							<Button variant="secondary">
 								<ChevronRight className="size-4" />
 							</Button>
-						</Link>
+						</Referencia.Link>
 					</CardFooter>
 				</Card>
 				<Card className="justify-between items-baseline flex">
