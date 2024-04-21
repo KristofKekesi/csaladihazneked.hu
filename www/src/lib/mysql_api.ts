@@ -33,6 +33,28 @@ export async function executeSQL(params: executeParams) {
 	return rows;
 }
 
+/**
+ * A function to inicialize the database with tables.
+ */
+export async function initDatabase() : Promise<boolean> {
+	const SQL = `
+		CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+			  email_address        varchar(320)                        UNIQUE NOT NULL
+			, timestamp_subscribed timestamp DEFAULT current_timestamp NOT NULL
+		);
+	`;
+
+	const raw = await executeSQL({
+		SQL
+	});
+	const result = Object.values(JSON.parse(JSON.stringify(raw)));
+	if (result[5] !== 0) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 type addEmailAddressParams = {
 	emailAddress: string
 }
@@ -53,6 +75,8 @@ addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<boo
 	if (isThisEmailAddressSubscribed) {
 		return true;
 	}
+
+	await initDatabase();
 
 	const SQL = "INSERT IGNORE INTO `newsletter_subscribers` (`email_address`) VALUES (?);";
 
@@ -83,6 +107,8 @@ export async function removeSubscriberFromNewsletter({ emailAddress }: removeSub
 	if (immutableSubscriberEmailAddresses.includes(emailAddress)) {
 		return;
 	}
+
+	await initDatabase();
 
 	const SQL =
 		// eslint-disable-next-line max-len
