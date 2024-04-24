@@ -1,2 +1,2 @@
-/test
-/playwright.config.ts
+/test/
+playwright.config.ts
