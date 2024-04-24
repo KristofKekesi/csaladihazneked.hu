@@ -4,6 +4,11 @@ on:
     branches: [master, main]
   pull_request:
     branches: [master, main]
+
+defaults:
+  run:
+    working-directory: ./www
+    
 jobs:
   build:
     runs-on: ubuntu-latest
