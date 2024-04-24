@@ -27,6 +27,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
   build:
+    name: Run tests
     needs: test_setup
     timeout-minutes: 5
     runs-on: ubuntu-latest
