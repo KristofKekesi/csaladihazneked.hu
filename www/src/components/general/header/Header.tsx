@@ -1,4 +1,4 @@
-import { Index, Referencia, Tervrajzok } from "@/routes";
+import { Referencia, Tervrajzok } from "@/routes";
 import Link from "next/link";
 import { Separator } from "@/components/ui/Separator";
 
@@ -17,10 +17,14 @@ export default function Header() {
 		<>
 			<header className="flex flex-col text-black/75 sticky top-0 z-30">
 				<div className="flex flex-row justify-between gap-4 px-6 py-3 bg-customGreen">
-					<Index.Link className="hover:text-black/50 transition-colors">
+					{//<Index.Link className="hover:text-black/50 transition-colors">
+					}
+					<Link href="/" className="hover:text-black/50 transition-colors">
 						<span className="hidden sm:inline">csaladihazneked.hu</span>
 						<span className="inline sm:hidden">Home</span>
-					</Index.Link>
+					</Link>
+					{//</Index.Link>
+					}
 					<div className="flex flex-row gap-4">
 						<Referencia.Link className="hover:text-black/50 transition-colors">
 							Referencia
