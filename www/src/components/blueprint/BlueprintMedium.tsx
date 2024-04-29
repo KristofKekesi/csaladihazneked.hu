@@ -43,6 +43,9 @@ export default async function BlueprintMedium({ blueprint, className }: Params) 
 						<CustomImage alt={blueprint.title} src={blueprint.highlightedImage.src} 
 						className="w-full aspect-video relative group-hover:blur 
 						group-hover:opacity-40 transition-all" />
+						<div className="w-full aspect-video relative group-hover:blur
+						group-hover:opacity-40 transition-all">
+						</div>
 					</div>
 					<div className="absolute opacity-0 group-hover:opacity-10
 					bg-black w-full aspect-video rounded-t-md" />

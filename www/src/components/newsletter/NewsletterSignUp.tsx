@@ -67,6 +67,7 @@ export default function NewsletterSignUp(params: Params) {
 
 	return (
 		<MidPageAction
+			id="newsletter-sign-up"
 			title={ params.title }
 			action={
 				<div className="flex gap-4 items-end justify-between 
