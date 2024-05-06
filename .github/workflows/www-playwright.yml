@@ -40,12 +40,12 @@ jobs:
       - run: echo $NEXT_PUBLIC_WORDPRESS_API_URL 
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
-          NEXT_PUBLIC_WORDPRESS_API_URL: ${{ env.NEXT_PUBLIC_WORDPRESS_API_URL }}
+          NEXT_PUBLIC_WORDPRESS_API_URL: ${{ secrets.NEXT_PUBLIC_WORDPRESS_API_URL }}
       - run: npx playwright install --with-deps
       - run: npx playwright test
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
-          NEXT_PUBLIC_WORDPRESS_API_URL: ${{ env.NEXT_PUBLIC_WORDPRESS_API_URL }}
+          NEXT_PUBLIC_WORDPRESS_API_URL: ${{ secrets.NEXT_PUBLIC_WORDPRESS_API_URL }}
       - uses: actions/upload-artifact@main
         if: always()
         with:
