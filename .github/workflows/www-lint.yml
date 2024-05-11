@@ -1,0 +1,37 @@
+name: Run Linter on ./www
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+defaults:
+  run:
+    working-directory: ./www
+    
+jobs:
+  lint:
+    name: Run linter
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@main
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Super-Linter
+        uses: super-linter/super-linter@v6.4.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     
