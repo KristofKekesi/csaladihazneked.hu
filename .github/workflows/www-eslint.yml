@@ -1,0 +1,27 @@
+name: Run Playwright Tests for www
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+defaults:
+  run:
+    working-directory: ./www
+    
+jobs:
+  eslint:
+    name: Run linter
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint

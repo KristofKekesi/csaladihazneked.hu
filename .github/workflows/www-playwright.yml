@@ -37,10 +37,6 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: echo $NEXT_PUBLIC_WORDPRESS_API_URL 
-        env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
-          NEXT_PUBLIC_WORDPRESS_API_URL: ${{ secrets.NEXT_PUBLIC_WORDPRESS_API_URL }}
       - run: npx playwright install --with-deps
       - run: npx playwright test
         env:
