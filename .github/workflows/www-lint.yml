@@ -34,7 +34,8 @@ jobs:
         uses: super-linter/super-linter@v6.4.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JAVASCRIPT_ES_CONFIG_FILE: www/.eslintrc.json
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+          TYPESCRIPT_ES_CONFIG_FILE: .eslintrc.json
           VALIDATE_CSS: false
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_PHP_BUILTIN: false
