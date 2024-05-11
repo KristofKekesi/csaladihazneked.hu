@@ -8,7 +8,11 @@ on:
     branches:
       - master
       - main
-    
+
+defaults:
+  run:
+    working-directory: ./www
+
 jobs:
   lint:
     name: Run linter
