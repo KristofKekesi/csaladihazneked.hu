@@ -1,4 +1,4 @@
-name: Run Playwright Tests for www
+name: Run Linter on /www
 on:
   push:
     branches:
@@ -24,4 +24,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run lint
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          prettier: true

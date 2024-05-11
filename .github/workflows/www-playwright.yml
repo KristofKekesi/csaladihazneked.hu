@@ -1,4 +1,4 @@
-name: Run Playwright Tests for www
+name: Run Playwright Tests on ./www
 on:
   push:
     branches:
