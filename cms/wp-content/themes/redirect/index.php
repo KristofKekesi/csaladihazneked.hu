@@ -1,3 +1,3 @@
 <?php
-	header( "Location: https://www.csaladihazneked.hu" );
+	header( "Location: https://tartalom.csaladihazneked.hu/wp-admin" );
 >

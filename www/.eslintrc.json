@@ -1,14 +1,5 @@
-// MonkeProblems v0.5.1
-
-//   w  c(..)o   (
-//    \__(-)  ____)
-//	    /\   (
-//	   /(_)___)
-//	   w /|
-//	    | \
-//      m  m       ASCII art from ejm97
-
 {
+	"version": "0.5.2",
 	"extends": ["next/core-web-vitals", "next"],
 	"rules": {
 		"semi": "warn",
