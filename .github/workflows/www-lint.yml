@@ -18,6 +18,10 @@ jobs:
     name: Run linter
     timeout-minutes: 5
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
