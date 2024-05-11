@@ -1,4 +1,4 @@
-name: Run Linter on /www
+name: Run Linter on ./www
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ defaults:
     working-directory: ./www
     
 jobs:
-  eslint:
+  lint:
     name: Run linter
     timeout-minutes: 5
     runs-on: ubuntu-latest
@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
+      - name: Super-Linter
+        uses: super-linter/super-linter@v6.4.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     
