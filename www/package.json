@@ -23,7 +23,7 @@
     "@tanstack/react-table": "^8.16.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "embla-carousel-autoplay": "^8.0.4",
+    "embla-carousel-autoplay": "^8.1.2",
     "embla-carousel-react": "^8.0.4",
     "form-data": "^4.0.0",
     "geist": "^1.0.0",
