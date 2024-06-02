@@ -23,7 +23,7 @@ type Params = {
  * @param className An optional `string` containing CSS classes. 
  * @returns Minimal information about a given `blueprint`.
  */
-export default function BlueprintSmall(params: Params) {
+export default function BlueprintSmall(params: Params): JSX.Element {
 	return (
 		<TervrajzokSlug.Link slug={ params.blueprint.slug }>
 			<Card className={

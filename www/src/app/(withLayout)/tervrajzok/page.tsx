@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /tervrajzok.
  */
-export default async function Blueprints() {
+export default async function Blueprints(): Promise<JSX.Element> {
 	const highlightedBlueprints: Array<Blueprint> = await getBlueprints({ isHighlighted: true });
 	const generalBlueprints: Array<Blueprint> = await getBlueprints({ isHighlighted: false });
 

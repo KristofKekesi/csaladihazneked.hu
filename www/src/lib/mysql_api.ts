@@ -19,7 +19,7 @@ type executeParams = {
  * @param SQL An SQL to run
  * @param valuse An optional `Array` to use when inserting data to a table.
  */
-export async function executeSQL(params: executeParams) {
+export async function executeSQL(params: executeParams): Promise<mysql.QueryResult> {
 	const connection = await mysql.createConnection({
 		host: process.env.MYSQL_ONLINE_DATABASE_HOST,
 		user: process.env.MYSQL_ONLINE_DATABASE_USER,
@@ -36,7 +36,7 @@ export async function executeSQL(params: executeParams) {
 /**
  * A function to inicialize the database with tables.
  */
-export async function initDatabase() : Promise<boolean> {
+export async function initDatabase(): Promise<boolean> {
 	const SQL = `
 		CREATE TABLE IF NOT EXISTS newsletter_subscribers (
 			  email_address        varchar(320)                        UNIQUE NOT NULL
@@ -65,7 +65,7 @@ type addEmailAddressParams = {
  * @returns Success represented as a `Boolean`.
  */
 export async function 
-addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams) : Promise<boolean> {
+addEmailAddressToNewsletter({emailAddress}: addEmailAddressParams): Promise<boolean> {
 	// Guard close.
 	if (!(process.env.SHOULD_BE_ABLE_TO_SUBSCRIBE_TO_NEWSLETTER === "true")) {
 		return false;
@@ -100,7 +100,8 @@ type removeSubscriberParams = {
  * A function to remove an email address to the online database for later use.
  * @param emailAddress Email address to remove from the online database.
  */
-export async function removeSubscriberFromNewsletter({ emailAddress }: removeSubscriberParams) {
+export async function removeSubscriberFromNewsletter({ emailAddress }: removeSubscriberParams) 
+: Promise<void> {
 	// Guard close.
 	const immutableSubscriberEmailAddresses =
 		(process.env.IMMUTABLE_NEWSLETTER_SUBSCRIBERS ?? "" ).split(";");
@@ -128,7 +129,7 @@ type isEmailAddressSubscribedParams = {
  * @param emailAddress Email address that we want to know if subscribed. 
  */
 export async function 
-isEmailAddressSubscribed({ emailAddress }: isEmailAddressSubscribedParams) : Promise<boolean> {
+isEmailAddressSubscribed({ emailAddress }: isEmailAddressSubscribedParams): Promise<boolean> {
 	const SQL =
 		// eslint-disable-next-line max-len
 		"SELECT `email_address` FROM `newsletter_subscribers` WHERE `email_address`='" + emailAddress + "';";
@@ -150,7 +151,7 @@ type listSubscribersParams = {
  * A function to list the first N number of addresses in the online database.
  */
 export async function 
-listNewsletterSubscribers(params: listSubscribersParams) : Promise<Array<Subscriber>> {
+listNewsletterSubscribers(params: listSubscribersParams): Promise<Array<Subscriber>> {
 	// Guard close
 	if (params.password !== process.env.ADMIN_PASSWORD) {
 		return [];

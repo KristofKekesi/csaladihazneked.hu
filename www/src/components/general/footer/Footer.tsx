@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/Separator";
  * A general footer component.
  * @returns The footer for the website.
  */
-export default function Footer() {
+export default function Footer(): JSX.Element {
 	return(
 		<footer className="w-full bg-customBrown pt-6 pb-3
 		rounded-t-3xl text-black/75 flex flex-col gap-4">

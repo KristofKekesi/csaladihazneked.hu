@@ -27,7 +27,7 @@ type Params = {
  * @param blueprints An `Array` of `Blueprint`s to populate the component from.
  * @returns A carousel of `BlueprintMedium` components populated from the given `blueprints`.
  */
-export default function BlueprintMediumCarousel(params: Params) {
+export default function BlueprintMediumCarousel(params: Params): JSX.Element {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);

@@ -13,7 +13,7 @@ import { useSearchParams } from "next/navigation";
 /**
  * Wrapper for the suspense boundary.
  */
-function PageWithPassword() {
+function PageWithPassword(): JSX.Element {
 	const searchParams = useSearchParams();
 	const password = searchParams.get("password") ?? "";
 
@@ -24,7 +24,7 @@ function PageWithPassword() {
  * Only here to provide a working page for the layout.
  * @returns Boilerplate for a working page.
  */
-export default function Lista() {
+export default function Lista(): JSX.Element {
 	return (
 		<Suspense>
 			<PageWithPassword />

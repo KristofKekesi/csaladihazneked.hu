@@ -1,4 +1,4 @@
-import { Index, Referencia, Tervrajzok } from "@/routes";
+import { Referencia, Tervrajzok } from "@/routes";
 import Link from "next/link";
 import { Separator } from "@/components/ui/Separator";
 
@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/Separator";
  * A general header component.
  * @returns The header for the website.
  */
-export default function Header() {
+export default function Header(): JSX.Element {
 	return(
 		<>
 			<header className="flex flex-col text-black/75 sticky top-0 z-30">

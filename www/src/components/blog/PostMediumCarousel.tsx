@@ -27,7 +27,7 @@ type Params = {
  * @param className A `string` which contains CSS classes. 
  * @returns A carousel with `PostMedium` components.
  */
-export default function PostMediumCarousel(params: Params) {
+export default function PostMediumCarousel(params: Params): JSX.Element {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);

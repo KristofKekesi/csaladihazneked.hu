@@ -26,7 +26,7 @@ type Params = {
  * @param footer Optional footer element. Mostly for small texts.
  * @param className An optional `string` containing CSS classes.
  */
-export default function MidPageAction(params: Params) {
+export default function MidPageAction(params: Params): JSX.Element {
 	return (
 		<Card id={ params.id } className={ cn("flex flex-col", params.className) }>
 			<div className="flex flex-col xl:flex-row justify-between xl:items-end w-full">

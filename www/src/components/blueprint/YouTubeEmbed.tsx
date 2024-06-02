@@ -13,7 +13,7 @@ type Params = {
  * @param youTubeVideo The YouTube video you want to embed. 
  * @returns The given YouTube video embeded.
  */
-export default function YouTubeEmbed(params: Params) {
+export default function YouTubeEmbed(params: Params): JSX.Element {
 	return (
 			<iframe
 				className="w-full h-full rounded-lg"

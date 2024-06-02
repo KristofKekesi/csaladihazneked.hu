@@ -11,13 +11,13 @@ import { Title } from "@/components/general/Typography";
 //         \__) \__)
 
 export const metadata: Metadata = {
-	title: "Hírlevél leiratkozás"
+	title: "Hírlevél le-, és feliratkozás"
 };
 
 /**
- * @returns Page for /hirlevel/leiratkozas
+ * @returns Page for /hirlevel
  */
-export default async function Blueprints() {
+export default function Newsletter(): JSX.Element {
 	return (
 		<main className="flex flex-col just pt-3">
 			<Title className="text-xl md:text-6xl px-6">Hírlevél</Title>

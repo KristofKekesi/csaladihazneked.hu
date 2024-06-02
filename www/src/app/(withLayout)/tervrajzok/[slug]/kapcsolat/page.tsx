@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * @returns Page for /tervrajzok/slug.
+ * @returns Page for /tervrajzok/slug/kapcsolat.
  */
-export default async function Page({ params }: Params) {
+export default async function AboutBlueprint({ params }: Params): Promise<JSX.Element> {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
 
 	return (

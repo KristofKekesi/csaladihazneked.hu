@@ -2,7 +2,7 @@ import "@/app/globals.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { type Metadata, Viewport } from "next";
 import Footer from "@/components/general/footer/Footer";
-import { GeistSans } from "geist/font";
+import { GeistSans } from "geist/font/sans";
 import Header from "@/components/general/header/Header";
 import localFont from "next/font/local";
 import { Provider } from "react-wrap-balancer";
@@ -46,7 +46,7 @@ export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
-}) {
+}): JSX.Element {
 	return (
 		<html lang="hu">
 			<body className={`${GeistSans.className} ${Caprasimo.variable} max-w-full`}>

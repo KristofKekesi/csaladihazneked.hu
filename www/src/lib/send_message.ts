@@ -26,7 +26,7 @@ export type Params = {
  * @returns Success represented with a `Boolean`.
  */
 export async function sendMessage({url, emailAddress, name, message}: Params) : Promise<boolean> {
-	// Guard closes.
+	// Guard clauses.
 	// Validating data.
 	if (!validateEmailAddress({ emailAddress }) ||
 	 !validateName({ name }) || 

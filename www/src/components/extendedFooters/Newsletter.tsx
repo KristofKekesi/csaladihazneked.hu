@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/Label";
  * An `ExtendedFooter` with a mailing list action.
  * @returns An `ExtendedFooter` with a join to a newsletter action.
  */
-export default function NewsletterExtendedFooter() {
+export default function NewsletterExtendedFooter(): JSX.Element {
 	return (
 		<ExtendedFooter
 			title="Szeretnél emailben értesülni a legfrissebb híreinkről?"

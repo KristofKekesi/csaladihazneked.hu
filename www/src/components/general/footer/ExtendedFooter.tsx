@@ -22,7 +22,7 @@ type Params = {
  * @returns A styled component to be used only with the `Footer` component to display aditional
  * 			actions.
  */
-export default function ExtendedFooter(params: Params) {
+export default function ExtendedFooter(params: Params): JSX.Element {
 	return (
 		<div className={ cn(
 			"extendedFooter mx-6 -mb-6 px-6 pt-6 pb-6", // padding, margin

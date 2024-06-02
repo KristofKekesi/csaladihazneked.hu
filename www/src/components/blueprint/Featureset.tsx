@@ -23,7 +23,7 @@ type FeatureParams = {
  * @param label A `string` to name the feature.
  * @returns A component with an icon or any HTML element and a label.
  */
-function Feature(params: FeatureParams) {
+function Feature(params: FeatureParams): JSX.Element {
 	return (
 		<li className="flex items-baseline">
 			{ params.children }
@@ -47,7 +47,7 @@ type FeaturesetParams = {
  * @param blueprint 
  * @returns A component with many features from a given `blueprint` based on a category.
  */
-export default function Featureset(params: FeaturesetParams) {
+export default function Featureset(params: FeaturesetParams): JSX.Element {
 	return (
 		<ul className={ cn(params.className) }>
 			{ params.type === "rooms" ? <>

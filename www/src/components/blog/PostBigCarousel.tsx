@@ -27,7 +27,7 @@ type Params = {
  * @param className A `string` which contains CSS classes. 
  * @returns A carousel component with auto scrolling from the array of `Post`s given.
  */
-export default function PostBigCarousel(params: Params) {
+export default function PostBigCarousel(params: Params): JSX.Element {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);

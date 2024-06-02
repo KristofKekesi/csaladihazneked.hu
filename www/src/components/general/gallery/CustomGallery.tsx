@@ -15,7 +15,7 @@ import { useInView } from "react-intersection-observer";
 //       \_  ___  ___>
 //         \__) \__)
 
-export function onClick(params: any) {
+export function onClick(params: any): void {
     const element = document.getElementById(params.target.getAttribute("data-index"))!;
     const wrapper = document.getElementById(params.target.getAttribute("data-index") + "-wrapper")!;
 
@@ -43,7 +43,7 @@ export function onClick(params: any) {
     }
 }
 
-function CustomImageRenderer(params: any) {
+function CustomImageRenderer(params: any): JSX.Element {
     params.wrapperStyle["height"] = params.layout.height;
 
     return (
@@ -66,7 +66,7 @@ function CustomImageRenderer(params: any) {
     );
 }
 
-function CustomRowRenderer(params: any) {
+function CustomRowRenderer(params: any): JSX.Element {
     const { ref } = useInView({
         threshold: 0.1,
         triggerOnce: true,
@@ -94,13 +94,13 @@ type GalleryParams = {
     className?: string
 }
 
-export default function CustomGallery(params: GalleryParams) {
+export default function CustomGallery(params: GalleryParams): JSX.Element {
     var height = 0;
     if (typeof screen !== "undefined") {
         height = screen ? (screen.height / 3.5) : 0;
     }
 
-    function _setThemeColor() {
+    function _setThemeColor(): void {
         if (document.getElementsByTagName("html")[0].getAttribute("selected") === "") {
             document.querySelector("meta[name='theme-color']")!.setAttribute("content",  "#000000");
         } else {

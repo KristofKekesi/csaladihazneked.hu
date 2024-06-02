@@ -28,7 +28,7 @@ type extendedFooterParams = {
  * @param className An optional `string` containing CSS classes.
  * @returns An `ExtendedFooter` with an email sender action.
  */
-export default function BlueprintEmailExtendedFooter(params: extendedFooterParams) {
+export default function BlueprintEmailExtendedFooter(params: extendedFooterParams): JSX.Element {
 	const [state, setState] = useState<string>("toBeSent");
 
 	const [name, setName] = useState<string>("");
@@ -49,7 +49,7 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 	 * A function to be executed on the submit event of the form.
 	 * @param event `FormEvent` on submit.
 	 */
-	async function onSubmit(event: FormEvent) {
+	async function onSubmit(event: FormEvent): Promise<void> {
 		event.preventDefault();
 		
 		// Validate data.
@@ -77,7 +77,7 @@ export default function BlueprintEmailExtendedFooter(params: extendedFooterParam
 
 		// Guard close.
 		if (!passed) {
-			return null;
+			return;
 		}
 
 		// Send email.

@@ -18,7 +18,7 @@ import { PartnerCarousel } from "@/components/index/PartnerCarousel";
 /**
  * @returns Page for /.
  */
-export default async function Home() {
+export default async function Home(): Promise<JSX.Element> {
 	const highlightedBlueprints = await getBlueprints({ isHighlighted: true });
 	const partners = await getAllPartners();
 	
@@ -27,7 +27,7 @@ export default async function Home() {
 	return (
 		<main className="flex flex-col pt-3">
 			<Title className="text-xl md:text-6xl px-6 pb-2">Csaladihazneked.hu</Title>
-			{ data.content ? <>
+			{ data && data.content ? <>
 				<Subtitle className="px-6">Bemutatkozás</Subtitle>
 				<hr className="pb-4" />
 				<Markdown className="px-6">
@@ -43,9 +43,16 @@ export default async function Home() {
 					<PartnerCarousel partners={ partners } />
 				</>
 			: null }
-			<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
-			<hr className="pb-4" />
-			<BlueprintMediumCarousel className="px-6" blueprints={ highlightedBlueprints } />
+			{ highlightedBlueprints.length > 0 ?
+				<>
+					<Subtitle className="pt-6 px-6">Kiemelt tervrajzok</Subtitle>
+					<hr className="pb-4" />
+					<BlueprintMediumCarousel 
+						className="px-6" 
+						blueprints={ highlightedBlueprints }
+					/>
+				</>
+			: null }
 			<Newsletter title="Hírlevél" showWhereToOptOut className="rounded-t-lg" />
 			<div className="flex flex-col w-full justify-between items-baseline">
 				<div className="w-full">

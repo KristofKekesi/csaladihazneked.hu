@@ -19,7 +19,7 @@ type Params = {
  * @param children A `string` containing Markdown.
  * @returns Returns HTML based on the `children` Mardown parameter.
  */
-export default function Markdown(params: Params) {
+export default function Markdown(params: Params): JSX.Element {
     const components: Partial<Components> = {
         h1: Title,
         h2: Subtitle,

@@ -14,7 +14,7 @@ import Link from "next/link";
 /**
  * @returns A page to render on 404 errors.
  */
-export default function Blueprints() {
+export default function NotFound(): JSX.Element {
 
 	return (
 		<main className="flex flex-col just pt-3">

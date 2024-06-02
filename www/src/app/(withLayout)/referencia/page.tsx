@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /referencia.
  */
-export default async function Referencia() {
+export default async function Referencia(): Promise<JSX.Element> {
   const images: Array<Image> = await getImages({ isPartnerImage: false});
 
   return (

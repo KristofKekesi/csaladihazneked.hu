@@ -49,7 +49,7 @@ export async function generateMetadata(
  * @param Object containing the slug from the URL and the slug of the blueprint to display.
  * @returns Page for /tervrajzok/slug
  */
-export default async function Page({ params }: Params) {
+export default async function Page({ params }: Params): Promise<JSX.Element> {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }) )[0];
 	if ( !blueprint ) { notFound(); }
 

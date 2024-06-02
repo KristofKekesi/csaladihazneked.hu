@@ -47,7 +47,7 @@ export async function generateMetadata(
  * @param params Object containing the slug of the URL and the post.
  * @returns Page for /blog/slug
  */
-export default async function Page({ params }: Params) {
+export default async function Page({ params }: Params): Promise<JSX.Element> {
 	const post: Post = ( await getPosts({slug: params.slug}) )[0];
 	if ( !post ) { notFound(); }
 	

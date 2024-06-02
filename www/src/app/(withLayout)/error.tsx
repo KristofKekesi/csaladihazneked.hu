@@ -14,9 +14,9 @@ import Link from "next/link";
 //         \__) \__)
 
 /**
- * @returns A page to render on 404 errors.
+ * @returns A page to render on errors.
  */
-export default function Blueprints() {
+export default function Error(): JSX.Element {
 
 	return (
 		<main className="flex flex-col just pt-3">

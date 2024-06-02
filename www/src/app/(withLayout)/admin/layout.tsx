@@ -24,17 +24,17 @@ export default function Adminlayout({
 	children,
 }: {
 	children: React.ReactNode
-}) {
+}): JSX.Element {
 	const [password, setPassword] = useState<string>("");
 	const [CMSStatus, setCMSStatus] = useState<number|undefined>(undefined);
 
-	// Guard closes
+	// Guard clauses
 	if (!process.env.NEXT_PUBLIC_WORDPRESS_API_URL) {
 		throw new Error("Must provide NEXT_PUBLIC_WORDPRESS_API_URL environmental variable!");
 	}
 
 	useEffect(() => {
-		const getCMSStatusCode = async () => {
+		const getCMSStatusCode = async (): Promise<void> =>  {
 			const status: number =
 				await getStatusCode({url: process.env.NEXT_PUBLIC_WORDPRESS_API_URL!});
 

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /tervrajzok/[slug]/hasonloak.
  */
-export default async function Blueprints({params}: Params) {
+export default async function SimilarBlueprints({params}: Params): Promise<JSX.Element> {
 	const blueprint: Blueprint = ( await getBlueprints({ slug: params.slug }))[0];
 	const similarBlueprints: Array<Blueprint> =
 		await getSimilarBlueprints({ blueprint, limit: 

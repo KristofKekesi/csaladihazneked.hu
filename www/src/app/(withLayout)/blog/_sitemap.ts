@@ -14,8 +14,8 @@ import { Post } from "@/types/Post";
 /**
  * A function to generate a sitemap for /blog.
  */
-export default async function sitemap() {
-	// Guard closes.
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+	// Guard clauses.
 	if (!process.env.NEXT_PUBLIC_DOMAIN) {
 		throw new Error("NEXT_PUBLIC_DOMAIN environmental variable is not set.");
 	}

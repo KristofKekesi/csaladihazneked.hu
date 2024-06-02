@@ -26,7 +26,7 @@ type Params = {
  * An `ExtendedFooter` with a mailing list action.
  * @returns An `ExtendedFooter` with a join to a newsletter action.
  */
-export default function AdminWriteNewsletter({ password }: Params) {
+export default function AdminWriteNewsletter({ password }: Params): JSX.Element {
 	const [state, setState] = useState<string>("toBeSent");
 	const [subject, setSubject] = useState<string>("");
 	const [message, setMessage] = useState<string>("");
@@ -46,7 +46,7 @@ export default function AdminWriteNewsletter({ password }: Params) {
 	 * On submit event to send newsletter issue to subscribers.
 	 * @param event `FormEvent` given from the `form`.
 	 */
-	async function onSubmit(event: FormEvent) {
+	async function onSubmit(event: FormEvent): Promise<void> {
 		event.preventDefault();
 
 		// Validate data.
@@ -65,7 +65,7 @@ export default function AdminWriteNewsletter({ password }: Params) {
 		}
 
 		// Guard close.
-		if (!passed) { return null; }
+		if (!passed) { return; }
 
 		setState("sending");
 
