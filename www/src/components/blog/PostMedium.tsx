@@ -23,10 +23,10 @@ type Params = {
  * @param className: A `string` which contains CSS classes.
  * @returns A component to display some informations about a `Post`.
  */
-export default function PostMedium(params: Params) {
+export default function PostMedium(params: Params): JSX.Element {
 	return (
 		<Card 
-			className={cn("h-[146px]", params.className)}
+			className={ cn("h-[146px]", params.className) }
 		>
 			<div className="relative w-full h-full">
 				<div className="absolute w-full h-full">
@@ -50,7 +50,7 @@ export default function PostMedium(params: Params) {
 							</CardDescription>
 						</CardHeader>
 						<CardFooter>
-							<Link href={`/blog/${ params.post.slug }`}>
+							<Link href={ `/blog/${ params.post.slug }` }>
 								<Button variant="secondary" className="drop-shadow-2xl">
 									Tovább <ChevronRight className="size-4 ml-2" />
 								</Button>

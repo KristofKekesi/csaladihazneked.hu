@@ -14,7 +14,7 @@ export const titleClassNames: string = "text-6xl font-caprasimo select-auto";
  * @param params 
  * @returns A title with all the available properties from the HTML `h1` element.
  */
-export function Title(params: any) {
+export function Title(params: any): JSX.Element {
 	return(
 		<h1
 			{ ...params }
@@ -33,7 +33,7 @@ export const subtitleClassNames: string = "text-2xl font-bold font-serif select-
  * @param params 
  * @returns A subtitle with all the available properties from the HTML `h2` element.
  */
-export function Subtitle(params: any) {
+export function Subtitle(params: any): JSX.Element {
 	return(
 		<h2
 			{ ...params }
@@ -52,7 +52,7 @@ export const headerClassNames: string = "text-lg font-bold font-serif select-aut
  * @param params 
  * @returns A header with all the available properties from the HTML `h3` element.
  */
-export function Header(params: any) {
+export function Header(params: any): JSX.Element {
 	return (
 		<h3
 			{ ...params }

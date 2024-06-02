@@ -12,7 +12,7 @@ import { twMerge } from "tailwind-merge";
  * @param inputs Array of CSS classes.
  * @returns CSS classes merged.
  */
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 

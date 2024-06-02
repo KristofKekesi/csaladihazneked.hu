@@ -21,7 +21,7 @@ type Params = {
  * @param className A `string` which conatains CSS classes.
  * @returns A small component with few info about the `Post`.
  */
-export default function PostSmall(params: Params) {
+export default function PostSmall(params: Params): JSX.Element {
 	return (
 		<Link href={`/blog/${ params.post.slug }`}>
 			<Card className={

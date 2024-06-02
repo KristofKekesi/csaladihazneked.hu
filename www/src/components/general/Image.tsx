@@ -24,7 +24,7 @@ type customImageParams = Required<
  */
 export default function CustomImage({
 	alt, src, className, imageClassName, ...params
-}: customImageParams) {
+}: customImageParams): JSX.Element {
 	const DEV_TRANSPARENT_IMAGES = 
 		process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES ? 
 			process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES : "false";
@@ -32,7 +32,7 @@ export default function CustomImage({
 	/**
 	 * Error handler to change the src parameter to the fallback image.
 	 */
-	function onError(event: any) {
+	function onError(event: any): void {
 		event.target.removeAttribute("srcset");
 		event.target.src = "/image-fallback.svg";
 		event.target.error = null;

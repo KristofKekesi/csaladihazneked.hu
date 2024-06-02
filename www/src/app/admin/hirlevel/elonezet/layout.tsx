@@ -4,6 +4,8 @@
 //       \_  ___  ___>
 //         \__) \__)
 
+import { ReactNode } from "react";
+
 export const metadata = {
 	title: "Hírlevél előnézet",
 };
@@ -15,6 +17,6 @@ export default function Layout({
 	children,
 }: {
 	children: React.ReactNode
-}) {
+}): ReactNode {
 	return children;
 }

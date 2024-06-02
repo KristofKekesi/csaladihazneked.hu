@@ -30,7 +30,7 @@ type Params = {
  * @param className An optional `string` containing CSS classes to modify the component with.
  * @returns A carousel populated with the `images` provided.
  */
-export default function ImageCarousel(params: Params) {
+export default function ImageCarousel(params: Params): JSX.Element {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);

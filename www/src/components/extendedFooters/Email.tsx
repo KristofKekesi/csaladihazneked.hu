@@ -21,7 +21,7 @@ import { Textarea } from "@/components/ui/Textarea";
  * A component with an email sender action.
  * @returns An `ExtendedFooter` with an email sender action.
  */
-export default function EmailExtendedFooter() {
+export default function EmailExtendedFooter(): JSX.Element {
 	const [state, setState] = useState<string>("toBeSent");
 
 	const [name, setName] = useState<string>("");
@@ -42,7 +42,7 @@ export default function EmailExtendedFooter() {
 	 * A function to be executed on the submit event of the form.
 	 * @param event `FormEvent` on submit.
 	 */
-	async function onSubmit(event: FormEvent) {
+	async function onSubmit(event: FormEvent): Promise<void> {
 		event.preventDefault();
 
 		// Validate data.
@@ -69,7 +69,7 @@ export default function EmailExtendedFooter() {
 		}
 
 		// Guard close.
-		if (!passed) { return null; }
+		if (!passed) { return; }
 		setState("sending");
 
 		// Send email.

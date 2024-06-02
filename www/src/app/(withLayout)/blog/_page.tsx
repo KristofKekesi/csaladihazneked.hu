@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 /**
  * @returns Page for /blog.
  */
-export default async function Blog() {
+export default async function Blog(): Promise<JSX.Element> {
 	const highlightedPosts: Array<Post> = await getPosts({ isHighlighted: true });
 	const generalPosts: Array<Post> = await getPosts({ isHighlighted: false });
 

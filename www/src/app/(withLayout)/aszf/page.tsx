@@ -17,9 +17,10 @@ export const metadata: Metadata = {
 /**
  * @returns The page for /aszf
  */
-export default async function Aszf() {
+export default async function Aszf(): Promise<JSX.Element> {
 	const data = ( await getPages({ title: "ÁSZF", unique: true }) )[0];
-	const content = await html2md({ html: data.content ?? "Nem található feltöltött ÁSZF." });
+	const content = await html2md({ html: data && data.content ? 
+		data.content : "Nem található feltöltött ÁSZF."});
 
 	return (
 		<main className="flex flex-col just pt-3">
@@ -27,7 +28,7 @@ export default async function Aszf() {
 			<div className="flex justify-start md:justify-between
 			items-start md:items-end flex-col md:flex-row">
 				<Subtitle className="px-6">Általános szerződési feltételek</Subtitle>
-				{ data.lastEdit ?
+				{ data && data.lastEdit ?
 					<Header className="px-6">
 						<span className="mr-2">Legutóbbi módosítás:</span>
 						{ new Date(data.lastEdit).toLocaleDateString("hu-HU") }

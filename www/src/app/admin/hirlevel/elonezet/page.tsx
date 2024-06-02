@@ -13,7 +13,7 @@ import { useSearchParams } from "next/navigation";
 /**
  * Wrapper for the suspense boundary.
  */
-function PageWithContent() {
+function PageWithContent(): JSX.Element | string {
 	const searchParams = useSearchParams();
 	const subject = searchParams.get("subject") ?? "";
 	const message = searchParams.get("message") ?? "";
@@ -32,7 +32,7 @@ function PageWithContent() {
 /**
  * Page for /admin/hirlevel/elonezet.
  */
-export default function Elonezet() {
+export default function Elonezet(): JSX.Element {
 	return (
 		<Suspense>
 			<PageWithContent />

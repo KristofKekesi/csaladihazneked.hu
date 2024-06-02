@@ -31,7 +31,8 @@ type Params = {
  * @param className A `string` containing CSS classes.
  * @returns A component with some information about the `blueprint` provided.
  */
-export default async function BlueprintMedium({ blueprint, className }: Params) {
+export default async function BlueprintMedium({ blueprint, className }: Params):
+Promise<JSX.Element> {
 	return (
 		<Card
 			className={cn("group rounded-b-3xl bg-cover", className)}

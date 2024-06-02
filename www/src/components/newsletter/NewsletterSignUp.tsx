@@ -30,7 +30,7 @@ type Params = {
  * @param className Optional CSS classes in a `string`.
  * @returns A newsletter sign up component.
  */
-export default function NewsletterSignUp(params: Params) {
+export default function NewsletterSignUp(params: Params): JSX.Element {
 	const [state, setState] = useState<string>("toBeSent");
 	const [emailAddress, setEmailAddress] = useState<string>("");
 	const [isEmailAddressValid, setIsEmailAddressValid] = useState<boolean>(true);
@@ -39,7 +39,7 @@ export default function NewsletterSignUp(params: Params) {
 	 * A function to be executed on the click event of the button.
 	 * @param event `MouseEvent` on submit.
 	 */
-	async function onClick(event: any) {
+	async function onClick(event: any): Promise<void> {
 		event.preventDefault();
 
 		// Validate data.
@@ -52,7 +52,7 @@ export default function NewsletterSignUp(params: Params) {
 		}
 
 		// Guard close.
-		if (!passed) { return null; }
+		if (!passed) { return; }
 		
 		setState("sending");
 

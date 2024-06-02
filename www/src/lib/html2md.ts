@@ -21,7 +21,7 @@ type Params = {
  * @param html A `string` containing html code.
  * @returns The Markdown equivalent of the given html code.
  */
-export default async function html2md(params: Params) {
+export default async function html2md(params: Params): Promise<string> {
 	return(
 		nhm.translate( params.html )
 	);

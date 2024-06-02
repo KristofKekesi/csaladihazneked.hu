@@ -31,7 +31,7 @@ type Params = {
  * @param className A `string` which contains CSS classes.
  * @returns A component with many info about the blueprint given.
  */
-export default function BlueprintBig(params: Params) {
+export default function BlueprintBig(params: Params): JSX.Element {
 	return (
 		<Card className="flex rounded-t-3xl">
 			<div className="w-full md:w-2/3">

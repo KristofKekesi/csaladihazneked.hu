@@ -28,7 +28,7 @@ type Params = {
  * @param className An optional `string` of CSS classes.
  * @returns A carousel of `blueprints` given.
  */
-export default function BlueprintBigCarousel(params: Params) {
+export default function BlueprintBigCarousel(params: Params): JSX.Element {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);

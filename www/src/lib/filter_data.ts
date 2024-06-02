@@ -115,7 +115,7 @@ type PageParams = {
  * @returns All pages from `getAllBlueprints()` where the parameters 
  * 			provided pass.
 */
-export async function getPages({title, unique}: PageParams) {
+export async function getPages({title, unique}: PageParams): Promise<Array<any>> {
 	const pages = await getAllPages();
 
 	// Filter pages
@@ -141,7 +141,7 @@ type ImageParams = {
  * @param isPartnerImage Filters the images by being used as a partner's image. 
  * @returns 
  */
-export async function getImages({isPartnerImage}: ImageParams) {
+export async function getImages({isPartnerImage}: ImageParams): Promise<Array<Image>> {
 	const images = await getAllImages();
 
 	const partners = await getAllPartners();

@@ -23,7 +23,7 @@ type Params = {
  * @param partners An `Array<Partner>` to populate the carousel from. 
  * @returns An auto scrolling carousel displaying the given partners.
  */
-export async function PartnerCarousel(params: Params) {
+export async function PartnerCarousel(params: Params): Promise<JSX.Element> {
 	const plugin = useRef(
 		Autoplay({ delay: 4000, stopOnInteraction: false })
 	);

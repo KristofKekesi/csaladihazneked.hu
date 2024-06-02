@@ -14,7 +14,7 @@ import { type Params as newsletterEmailHtmlParams } from "@/lib/send_newsletter"
  * @param name The name of the visitor.
  * @param message The message of the visitor.
  */
-export function contactEmailHtml(params: contactEmailHtmlParams) {
+export function contactEmailHtml(params: contactEmailHtmlParams): string {
 	return (`
 		<style>
 			* { padding: 0; margin: 0; }
@@ -109,7 +109,7 @@ export function contactEmailHtml(params: contactEmailHtmlParams) {
  * @param subject The subject of the newsletter issue.
  * @param text The content of the newsletter issue.
  */
-export function newsletterEmailHtml(params: newsletterEmailHtmlParams) {
+export function newsletterEmailHtml(params: newsletterEmailHtmlParams): string {
 	return (`
 		<style>
 			* { padding: 0; margin: 0; }

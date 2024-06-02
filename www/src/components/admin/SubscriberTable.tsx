@@ -49,7 +49,7 @@ type Params = {
  * @param password Password to auth the API calls.
  * @returns A table component with the newsletter subscribers.
  */
-export function SubscriberTable(params: Params) {
+export function SubscriberTable(params: Params): JSX.Element {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -63,7 +63,7 @@ export function SubscriberTable(params: Params) {
 		/**
 		 * Wrapper function to run async function in useEffect.
 		 */
-		async function getData() {
+		async function getData(): Promise<void> {
 			setData( await listNewsletterSubscribers({ password: params.password }) );
 		}
 	
@@ -73,7 +73,7 @@ export function SubscriberTable(params: Params) {
 	const columns: ColumnDef<Subscriber>[] = [
 		{
 			accessorKey: "emailAddress",
-			header: ({ column }) => {
+			header: ({ column }): JSX.Element => {
 				return (
 					<Button
 						variant="ghost"
@@ -97,7 +97,7 @@ export function SubscriberTable(params: Params) {
 		},
 		{
 			accessorKey: "timestampSubscribed",
-			header: ({ column }) => {
+			header: ({ column }): JSX.Element => {
 				return (
 					<Button
 						variant="ghost"
@@ -127,13 +127,13 @@ export function SubscriberTable(params: Params) {
 			id: "actions",
 			enableHiding: false,
 			header: "Törlés",
-			cell: ({ row }) => {
+			cell: ({ row }): JSX.Element => {
 				const subscriber = row.original;
 		
 				/**
 				 * On click event handler function.
 				 */
-				function onClick(event: any) {
+				function onClick(event: any): void {
 				event.preventDefault();
 				removeSubscriberFromNewsletter({ emailAddress: subscriber.emailAddress });
 				setData(data.filter((iteration) => subscriber !== iteration));

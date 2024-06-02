@@ -21,10 +21,10 @@ export default function autosizeTextarea({
 	textarea_id,
 	default_rows = 3,
 	row_limit = default_rows > 10 ? default_rows : 10
-}: Params) {
+}: Params): void {
 	const textarea = document.getElementById(textarea_id);
 
-	// Guard closes
+	// Guard clauses
 	if (!textarea) {
 		throw new Error(`Textarea with the id of ${ textarea_id } is not exists.`);
 	}
@@ -36,7 +36,7 @@ export default function autosizeTextarea({
 	textarea.style.setProperty("height", "auto");
 
 	// Set rows attribute to number of lines in content
-	textarea.oninput = function() {
+	textarea.oninput = function(): void {
 		// Reset rows attribute to get accurate scrollHeight
 		textarea.setAttribute("rows", default_rows.toString());
 

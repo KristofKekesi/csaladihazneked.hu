@@ -26,7 +26,7 @@ type Params = {
  * @param post A Post object to render the component from.
  * @returns A component to show information about a given `Post`.
  */
-export default function PostBig(params: Params) {
+export default function PostBig(params: Params): JSX.Element {
 	return (
 		<Card>
 			<div className="relative">

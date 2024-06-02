@@ -20,13 +20,13 @@ type Params = {
  * An `ExtendedFooter` with a mailing list action.
  * @returns An `ExtendedFooter` with a join to a newsletter action.
  */
-export default function AdminListNewsletterSubscribers(params: Params) {
+export default function AdminListNewsletterSubscribers(params: Params): JSX.Element {
 	const [key, setKey] = useState<number>(0);
 
 	/**
 	 * On click event handler for the refresh button.
 	 */
-	function refreshOnClick(event: any) {
+	function refreshOnClick(event: any): void {
 		event.preventDefault();
 		setKey(key + 1);
 	}

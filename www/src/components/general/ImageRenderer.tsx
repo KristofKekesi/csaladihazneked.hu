@@ -12,7 +12,7 @@ import { isTrue } from "@/lib/utils";
  * @param params 
  * @returns An image populated by the `params`.
  */
-export default function ImageRenderer(params: any) {
+export default function ImageRenderer(params: any): JSX.Element {
     const DEV_TRANSPARENT_IMAGES = 
 		process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES ? 
 			process.env.NEXT_PUBLIC_DEV_TRANSPARENT_IMAGES : "false";
