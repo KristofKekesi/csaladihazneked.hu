@@ -9,6 +9,7 @@ import { titleClassNames } from "./Typography";
 //         \__) \__)
 
 type Params = {
+	id?: string,
 	title?: string,
 	children: JSX.Element
 	action: JSX.Element
@@ -18,6 +19,7 @@ type Params = {
 
 /**
  * A component to call the users to an action mid-page.
+ * @param id An optional id for the returned component.
  * @param title An optional title to the call action.
  * @param children The content of the component.
  * @param action The action button of the component.
@@ -26,7 +28,7 @@ type Params = {
  */
 export default function MidPageAction(params: Params) {
 	return (
-		<Card className={ cn("flex flex-col", params.className) }>
+		<Card id={ params.id } className={ cn("flex flex-col", params.className) }>
 			<div className="flex flex-col xl:flex-row justify-between xl:items-end w-full">
 				<CardHeader>
 					<CardTitle

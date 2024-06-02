@@ -8,4 +8,5 @@ updates:
   - package-ecosystem: "npm"
     directory: "/www"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+      day: "monday"
