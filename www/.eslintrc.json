@@ -1,15 +1,10 @@
-// MonkeProblems v0.5.1
-
-//   w  c(..)o   (
-//    \__(-)  ____)
-//	    /\   (
-//	   /(_)___)
-//	   w /|
-//	    | \
-//      m  m       ASCII art from ejm97
-
 {
-	"extends": ["next/core-web-vitals", "next"],
+	"extends": [
+		"next/core-web-vitals",
+		"next"
+	],
+	"parser": "@typescript-eslint/parser",
+  	"plugins": ["@typescript-eslint"],
 	"rules": {
 		"semi": "warn",
 		"eol-last": "warn",
